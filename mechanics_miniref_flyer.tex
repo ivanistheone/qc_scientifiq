@@ -22,6 +22,9 @@
 
 
 
+\usepackage{enumitem}
+\setitemize{itemsep=0.0in}   % LISTS WERE TOO AIRY
+
 
 
 \newcommand{\settexitref}[2]{(\ref{#1}p\pageref{#1})}
@@ -80,21 +83,21 @@
 \dokutitlelevelone{Mechanics}
 \label{05f8e33b48d5f8430980e3d1f38e5116}%% mechanics
 
-Mechanics is the precise study of moving objects, forces and energy.
-You already have an intuitive understanding of these concepts,
-but in this chapter I will teach you how to use precise mathematical 
-models which will support your intuition.
+%Mechanics is the precise study of moving objects, forces and energy.
+%You already have an intuitive understanding of these concepts,
+%but in this chapter I will teach you how to use precise mathematical 
+%models which will support your intuition.
+%
+%Mechanics is the part of physics that is most well understood.
+%Ever since Newton figured out the whole \(F=ma\) thing and 
+%the law of gravitation, people have \dokuitalic{used} mechanics in order
+%to achieve great technological feats. 
 
-Mechanics is the part of physics that is most well understood.
-Ever since Newton figured out the whole \(F=ma\) thing and 
-the law of gravitation, people have \dokuitalic{used} mechanics in order
-to achieve great technological feats. 
-
-There will be math, yes, but nothing too complicated.
-In fact, the hardest type of equation you will have to solve is a quadratic equation, so don't worry too much about that.
-The upshot of understanding the math, is that you will 
-be able to calculate and predict phenomena in the world around you
-simply by plugging numbers into the right equation.
+%There will be math, yes, but nothing too complicated.
+%In fact, the hardest type of equation you will have to solve is a quadratic equation, so don't worry too much about that.
+%The upshot of understanding the math, is that you will 
+%be able to calculate and predict phenomena in the world around you
+%simply by plugging numbers into the right equation.
 
 In short, mechanics is powerful stuff, so let's get right into it.
 
@@ -106,8 +109,8 @@ In short, mechanics is powerful stuff, so let's get right into it.
 \label{508ac5264059de6a350383a9f1e87977}%% kinematics
 Kinematics (from the Greek root kinema \dokuitalic{motion}) is the study of trajectories of objects moving in space. It can be used to calculate how long a ball thrown upwards will stay in the air, or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
 
-To carry out these calculations we need to know the \dokuitalic{equation of motion} and the \dokuitalic{initial conditions} (like how fast you threw the ball up \(v_{i}\)) and then carry out some simple algebra steps to calculate anything we want. No seriously, this entire chapter boils down to three equations. 
-It is all about the plug-number-into-equation skills.
+%To carry out these calculations we need to know the \dokuitalic{equation of motion} and the \dokuitalic{initial conditions} (like how fast you threw the ball up \(v_{i}\)) and then carry out some simple algebra steps to calculate anything we want. No seriously, this entire chapter boils down to three equations. 
+%It is all about the plug-number-into-equation skills.
 
 
 \dokutitleleveltree{Concepts}
@@ -130,15 +133,13 @@ The basic concepts of kinematics are:
 When solving some problem, where we calculate the motion of an object that starts
 form an \dokuitalic{initial} point an goes to a \dokuitalic{final} point we will use the following terminology:
 
-
-
 \begin{itemize}
 \dokuitem  \(t_i\): initial time (the beginning of the motion).
 \dokuitem  \(t_f\): final time (when the motion stops).
 \dokuitem  \(x_i\): initial position.
 \dokuitem  \(x_f\): final position.
-\dokuitem  \(\vec{d} = \Delta x = x_f-x_i\): delta x  = change in position = displacement.
-\dokuitem  \(d = |\Delta x| = |x_f-x_i|\): distance traveled = absolute value of displacement.
+%\dokuitem  \(\vec{d} = \Delta x = x_f-x_i\): delta x  = change in position = displacement.
+%\dokuitem  \(d = |\Delta x| = |x_f-x_i|\): distance traveled = absolute value of displacement.
 \dokuitem  \(v_i\): initial velocity of the object.
 \dokuitem  \(v_f\): final velocity of the object.
 \end{itemize}
@@ -185,9 +186,9 @@ Chapter done.
 
 The special case where there is zero acceleration (\(a=0\)),
 is called \dokuitalic{uniform velocity motion} or UVM.
-The velocity is uniform (constant), because there is no acceleration.
-The following three equations describe the motion of the object
-under uniform velocity:
+%The velocity is uniform (constant), because there is no acceleration.
+%The following three equations describe the motion of the object
+%under uniform velocity:
 \[
   a(t) = 0,
 \]
@@ -221,88 +222,28 @@ which means that we start from the acceleration \(a(t)\) and use integration wit
 respect to time to obtain the velocity \(v(t)\). If we integrate the velocity 
 we obtain the position function \(x(t)\).
 
-This is how the \dokuitalic{equations of motion} are derived. 
-Assuming that the acceleration is constant in time \(a(t) =a\),
-we can calculate the velocity by \dokuitalic{adding up} all the acceleration (integrating)
-to obtain the change in the velocity
-\[
- v(t) = \int a(t) \ dt = \int a \ dt = at + v_i.
-\]
-If you are moving at velocity \(100\)[m/s] and you accelerate
-at a rate of \(10\)[m/s\^{ }2] during 3 seconds, then your final 
-velocity at the end of the three seconds will be
-\[
- v(3)  = \int_0^3 10\ dt + 100 = 10(3) + 100 = 130 [m/s].
-\]
-
-If you feel mystified by this integral sign, you are not alone.
-Just keep in mind that integration is \dokuitalic{accumulating} some quantity
-to see what the total contribution is going to be.
-
-The meaning of integration is actually a bit simpler to see with 
-the relation:
-\[
- x_f \equiv x(t_f) = \int_{t_i}^{t_f} v(t) \ dt + x_i,
-\]
-which says that if you start at position \(x_i=x(t_i)\) and move at
-a velocity \(v(t)\) between \(t_i\) and \(t_f\), then you final
-position will be \(x_f\).
-%
-You are probably most familiar with this kind of reasoning 
-from the context of driving in your car.
-Indeed you know that if you start at 
-Montreal \(x_i=0\)[km], and drive at \(110\)[km/h] for 2 hours,
-you can get to Quebec city which is at \(x_f=220\)[km].
-Most people have an intuitive feel about this kind of calculation,
-but mathematicians invented a fancy notation to describe it:
-\[ 
- \int_{t_i=0}^{t_f=2} 110 \ dt + 0 = 220.
-\]
-We \dokuitalic{accumulate} a total of 220[km] displacement.
-During the first hour we move 110[km], and during the second hour another 110[km].
-
-So where does the equation of motion \(x(t)=\frac{1}{2}at^2 + v_it + x_i\)
-come from?  Well, remember that we assumed that the 
-acceleration is a constant \(a(t)=a\), and we calculated
-that \(v(t)= at+ v_i\), so now we just do the next step:
-\[
- x(t) = \int_{t_i}^{tf} v(t)\ dt  = \int_{t_i}^{tf} at+ v_i \ dt = \frac{1}{2}at^2+ v_it + x_i.
-\]
-
-So basically \dokuitalic{every} time you have constant acceleration, you have
-\(x(t) = \frac{1}{2}at^2 + v_it + x_i\). Two steps of \dokuitalic{calculus} say so.
-
+%This is how the \dokuitalic{equations of motion} are derived. 
+%Assuming that the acceleration is constant in time \(a(t) =a\),
+%we can calculate the velocity by \dokuitalic{adding up} all the acceleration (integrating)
+%to obtain the change in the velocity
+%\[
+% v(t) = \int a(t) \ dt = \int a \ dt = at + v_i.
+%\]
+%If you are moving at velocity \(100\)[m/s] and you accelerate
+%at a rate of \(10\)[m/s\^{ }2] during 3 seconds, then your final 
+%velocity at the end of the three seconds will be
+%\[
+% v(3)  = \int_0^3 10\ dt + 100 = 10(3) + 100 = 130 [m/s].
+%\]
 
 
 \dokutitleleveltwo{Projectile motion}
 \label{58cd2d3ddbcebb1c53893cb4a182ffbf}%% projectile_motion
 
-Ever since the invention of gun powder, 
-generation after generation of men have found countless 
-different ways of hurtling shrapnel and explosives at each other.
-Indeed, mankind has been stuck to the idea of two dimensional 
-projectile motion like flies on shit.
-So long as there is money to be made in selling weapons,
-and TV stations to keep justifying the legitimacy of the use
-of these weapons, it is likely that the trend will continue.
-
-As a first step towards reversing this trend, we will learn 
-the physics of projectile motion, which is a type of 
-two-dimensional kinematics problem.
-You need to know the techniques of the enemy (the Military-industrial complex) 
-before you can fight them.
-We will see that, kinematics in two dimensions is nothing 
-more than two parallel one-dimensional kinematics problems: UVM in the $x$ direction
-and UAM in the $y$ direction.
-
-
-
 \dokutitleleveltree{Concepts}
 \label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
 
 The basic concepts of kinematics in two dimensions are:
-
-
 
 \begin{itemize}
 \dokuitem  $\hat{x},\hat{y}$: a coordinate system.
@@ -474,69 +415,69 @@ that points towards the centre of the earth, and \(g=9.81\)[m/s\^{ }2].
 \dokuitem  \(\mu_k\): Kinetic coefficient of friction. ex: \(\mu_k=0.1\). Dimensionless.   it is just the ratio that describes how much friction an object feels for a given amount of normal force.
 \end{itemize}
 
-\dokutitleleveltree{Discussion}
-\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-Ok so what is mechanics all about? You should know by now, since you have already 
-learned about forces and about acceleration, velocity and position.
-Doesn't mechanics have something to do with \(F=ma\)?
+%\dokutitleleveltree{Discussion}
+%\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
+%Ok so what is mechanics all about? You should know by now, since you have already 
+%learned about forces and about acceleration, velocity and position.
+%Doesn't mechanics have something to do with \(F=ma\)?
 
-You can think of the different forces as the ``causes of motion'',
-and the effect is the acceleration \(a\).
-Once you have the acceleration, you can use the basic kinematics equations like 
-\(x(t)=\frac{1}{2}at^2+v_{i}t + x_i\) which describe the motion
-at all times $t$.
+%You can think of the different forces as the ``causes of motion'',
+%and the effect is the acceleration \(a\).
+%Once you have the acceleration, you can use the basic kinematics equations like 
+%\(x(t)=\frac{1}{2}at^2+v_{i}t + x_i\) which describe the motion
+%at all times $t$.
 
-The causes and effects of the motion of bodies are represented in this diagram:
+%The causes and effects of the motion of bodies are represented in this diagram:
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=320pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitei6f7D.png}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=320pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitei6f7D.png}
+%\end{figure}
 
+%
+%To understand any physics problem you must first check which kinds of forces are relevant,
+%make a force diagram and add up all the forces to obtain \(\vec{F}_{net}\), the net force on the object.
+%Then you use \(\vec{a}=\frac{\vec{F}_{net}}{m}\) and you have your acceleration. 
+%Problem solved,  because once you have \(a\) you just need to plug
+%it into equations of motion:
+%\[
+% \vec{a}(t) = \vec{a},
+%\]
+%\[
+% \vec{v}(t) = \vec{a}t+\vec{v}_i,
+%\]
+%\[
+% \vec{r}(t) = \frac{1}{2}\vec{a}t^2+\vec{v}_it + \vec{r}_i.
+%\]
+%There you have it. All of undergraduate level mechanics boils down to your understanding and \dokuitalic{usage} of the equation \(F=ma\).
 
-To understand any physics problem you must first check which kinds of forces are relevant,
-make a force diagram and add up all the forces to obtain \(\vec{F}_{net}\), the net force on the object.
-Then you use \(\vec{a}=\frac{\vec{F}_{net}}{m}\) and you have your acceleration. 
-Problem solved,  because once you have \(a\) you just need to plug
-it into equations of motion:
-\[
- \vec{a}(t) = \vec{a},
-\]
-\[
- \vec{v}(t) = \vec{a}t+\vec{v}_i,
-\]
-\[
- \vec{r}(t) = \frac{1}{2}\vec{a}t^2+\vec{v}_it + \vec{r}_i.
-\]
-There you have it. All of undergraduate level mechanics boils down to your understanding and \dokuitalic{usage} of the equation \(F=ma\).
+%\dokubold{Disclaimer:} Of course physics is more complicated than that, but what you are learning is an important
+%and very useful subset. Namely, the above three equations make the assumption that the acceleration is constant,
+%which in turn assumes that the balance of the forces acting on the object will always remain the same.
+%We assume that during the entire time between \(t_i\) and \(t_f\) the force \(\vec{F}_{net}\) stays constant.
+%In a \dokuitalic{lot} of situations this assumption is true.
 
-\dokubold{Disclaimer:} Of course physics is more complicated than that, but what you are learning is an important
-and very useful subset. Namely, the above three equations make the assumption that the acceleration is constant,
-which in turn assumes that the balance of the forces acting on the object will always remain the same.
-We assume that during the entire time between \(t_i\) and \(t_f\) the force \(\vec{F}_{net}\) stays constant.
-In a \dokuitalic{lot} of situations this assumption is true.
+%In more complicated situations you could have \(\vec{F}_{net}\) changing over time and thus
+%\(a(t)\) changing over time too. You would have to start from \(a(t)\) and do the integration
+%thing twice on \(a(t)\) to get the \(x(t)\) for the motion. 
 
-In more complicated situations you could have \(\vec{F}_{net}\) changing over time and thus
-\(a(t)\) changing over time too. You would have to start from \(a(t)\) and do the integration
-thing twice on \(a(t)\) to get the \(x(t)\) for the motion. 
+%Sometimes the net force on the object \(\vec{F}_{net}\) might be constant, 
+%but the mass of the object may change
+%over time (like a multi-stage rocket losing its booster tanks) 
+%so you would still have \(a(t)=\frac{F_{net}}{m(t)}\)
+%changing with time because \(m(t)\) would be changing.
+%Again, for those situations you have to go back to calculus and integrate \(a(t)\)
+%twice to get the \(x(t)\) function.
 
-Sometimes the net force on the object \(\vec{F}_{net}\) might be constant, 
-but the mass of the object may change
-over time (like a multi-stage rocket losing its booster tanks) 
-so you would still have \(a(t)=\frac{F_{net}}{m(t)}\)
-changing with time because \(m(t)\) would be changing.
-Again, for those situations you have to go back to calculus and integrate \(a(t)\)
-twice to get the \(x(t)\) function.
-
-
+%
 
 
 \dokutitleleveltwo{Force diagrams}
 \label{dac25f0c5f2078a480e480009deb52c9}%% force_diagrams
 
-Welcome to force-accounting 101. In this section we will learn how 
-identify all the forces acting on an object and predict the resulting
-acceleration.
+%Welcome to force-accounting 101. In this section we will learn how 
+%identify all the forces acting on an object and predict the resulting
+%acceleration.
 
 Newton's 2nd law says that the \dokuitalic{net} force on an object
 causes an acceleration:
@@ -655,41 +596,41 @@ about the same problem, but the first row represents the \(x\)-dimension
 and the second row represents the \(y\)-dimension.
 
 
-\dokutitlelevelfour{Force check}
+%\dokutitlelevelfour{Force check}
 
-It is important to account for \dokuitalic{all} the forces acting on an object.
+%It is important to account for \dokuitalic{all} the forces acting on an object.
 
-Any object with mass on the surface of the earth will feel a 
-gravitational pull of magnitude \(\vec{F}_{gravity}=\vec{W}=m\vec{g}\)
-downwards. 
+%Any object with mass on the surface of the earth will feel a 
+%gravitational pull of magnitude \(\vec{F}_{gravity}=\vec{W}=m\vec{g}\)
+%downwards. 
 
-Then you have to think about which of the other forces
-you know might be present: \(\vec{T}\), \(\vec{N}\), \(\vec{F}_{f}\), \(\vec{F}_{spring}\).
+%Then you have to think about which of the other forces
+%you know might be present: \(\vec{T}\), \(\vec{N}\), \(\vec{F}_{f}\), \(\vec{F}_{spring}\).
 
-Anytime you see a rope tugging on the object  you know you there must be some tension \(\vec{T}\), which is a force vector pulling on the block. 
+%Anytime you see a rope tugging on the object  you know you there must be some tension \(\vec{T}\), which is a force vector pulling on the block. 
 
-Anytime you have an object sitting on a surface, the surface will push back with a \dokuitalic{normal} force \(\vec{N}\). 
+%Anytime you have an object sitting on a surface, the surface will push back with a \dokuitalic{normal} force \(\vec{N}\). 
 
-If the object is sliding on the surface there will be a force of friction acting acting against the direction of the motion:
-\[
- F_{fk}=\mu_k|\vec{N}|.
-\]
+%If the object is sliding on the surface there will be a force of friction acting acting against the direction of the motion:
+%\[
+% F_{fk}=\mu_k|\vec{N}|.
+%\]
 
-If the object is not moving, then you have to use \(\mu_s\) in
-the friction force equation, to get the maximum static 
-friction force that the contact between the object and the ground
-can support before the object starts to slip:
-\[
- \max\{ F_{fs} \}=\mu_s|\vec{N}|.
-\]
+%If the object is not moving, then you have to use \(\mu_s\) in
+%the friction force equation, to get the maximum static 
+%friction force that the contact between the object and the ground
+%can support before the object starts to slip:
+%\[
+% \max\{ F_{fs} \}=\mu_s|\vec{N}|.
+%\]
 
-If you see a spring that is either stretched or compressed by the object, then you must account for the spring force. The force of a spring is \dokuitalic{restorative}: it always acts against the deformation you are making to the spring. If you stretch it by \(x\)[cm], then
-it will try to pull itself back to its normal length with a force of:
-\[
- \vec{F}_s = -kx \hat{\imath}.
-\]
-The constant of proportionality \(k\) is called the \dokuitalic{spring constant} and in the above
-example would be measured in [N/cm]. 
+%If you see a spring that is either stretched or compressed by the object, then you must account for the spring force. The force of a spring is \dokuitalic{restorative}: it always acts against the deformation you are making to the spring. If you stretch it by \(x\)[cm], then
+%it will try to pull itself back to its normal length with a force of:
+%\[
+% \vec{F}_s = -kx \hat{\imath}.
+%\]
+%The constant of proportionality \(k\) is called the \dokuitalic{spring constant} and in the above
+%example would be measured in [N/cm]. 
 
 
 \dokutitleleveltree{Recipe for solving force diagrams}
@@ -717,10 +658,10 @@ Force diagrams are best explained through examples.
 \dokutitleleveltwo{Momentum}
 \label{3a749f8e94241d303c81e056e18621d4}%% momentum
 
-Say you have a 1g piece of paper and a 1000kg car moving at the same speed 100km/h.
-Which would you rather get hit by? In physics the ``amount moving stuff'' has a precise
-name: \dokuitalic{momentum}, and it is denoted with \(\vec{p}\).
-You see, your gut feeling about the paper and the car is correct: in collisions it is the momentum that counts. In this section, we will add some mathematical precision to that gut feeling. 
+%Say you have a 1g piece of paper and a 1000kg car moving at the same speed 100km/h.
+%Which would you rather get hit by? In physics the ``amount moving stuff'' has a precise
+%name: \dokuitalic{momentum}, and it is denoted with \(\vec{p}\).
+%You see, your gut feeling about the paper and the car is correct: in collisions it is the momentum that counts. In this section, we will add some mathematical precision to that gut feeling. 
 
 The momentum is equal to the velocity of the moving object multiplied by the object's mass
  (\(\vec{p} = m\vec{v}\)).
@@ -760,13 +701,13 @@ If you speed is \(\vec{v}=(20,0,0)\)[m/s], which is
 equivalent to saying ``20[m/s] in the \(x\)-axis direction'', and your mass is 100kg then your momentum is \(\vec{p}=(2000,0,0)\)[kg*m/s].
 
 
-\dokutitlelevelfour{Newton's first law}
+%\dokutitlelevelfour{Newton's first law}
 
-Newton's first law states that whenever there is no acceleration (\(\vec{a}=0\)), 
-an object will maintain a constant velocity. 
-This is kind of obvious if you know Calculus, since \(\vec{a}\) is the derivative of \(\vec{v}\).
-For example, if an object is stationary and there are no forces on it to cause it to accelerate, then it will stay stationary.
-If an object was moving with velocity \(\vec{v}\) and there is no acceleration, then it will keep moving with velocity \(\vec{v}\) forever.
+%Newton's first law states that whenever there is no acceleration (\(\vec{a}=0\)), 
+%an object will maintain a constant velocity. 
+%This is kind of obvious if you know Calculus, since \(\vec{a}\) is the derivative of \(\vec{v}\).
+%For example, if an object is stationary and there are no forces on it to cause it to accelerate, then it will stay stationary.
+%If an object was moving with velocity \(\vec{v}\) and there is no acceleration, then it will keep moving with velocity \(\vec{v}\) forever.
 In the absence of acceleration, objects will conserve their velocity:
 \[
   \vec{v}_{in}= \vec{v}_{out}.
@@ -785,9 +726,9 @@ of all the particles stays constant:
 
 This is amazingly powerful stuff, and one of the furthest reaching 
 laws of physics. Whatever momentum comes into a collision must come out.
-This is a kind of Le Chatelier's principle 
-``rien ne se crée, et rien ne disparait tout se transforme''.
-Motion cannot simply appear or disappear, it can only be exchanged between systems.
+%This is a kind of Le Chatelier's principle 
+%``rien ne se crée, et rien ne disparait tout se transforme''.
+%Motion cannot simply appear or disappear, it can only be exchanged between systems.
 
 
 
@@ -797,9 +738,9 @@ Motion cannot simply appear or disappear, it can only be exchanged between syste
 \label{05e7d19a6d002118deef70d21ff4226e}%% energy
 
 Instead of thinking about velocities \(v(t)\) and motion trajectories \(x(t)\), we can solve physics problems using \dokuitalic{energy} calculations.
-The key idea in this section is the principle \dokuitalic{total energy conservation}, which tells us
-that the sum of the initial energies is equal to the sum of the final energies.
-We will define precisely the different kinds of energy, and then learn the rules of converting one energy into another.
+%The key idea in this section is the principle \dokuitalic{total energy conservation}, which tells us
+%that the sum of the initial energies is equal to the sum of the final energies.
+%We will define precisely the different kinds of energy, and then learn the rules of converting one energy into another.
 
 
 \dokutitleleveltree{Concepts}
@@ -883,131 +824,131 @@ Conservation of energy:
   \sum E_{in} + W_{in}  = \sum E_{out}  + W_{out}.
 \]
 
+%
+%\dokutitleleveltree{Explanations}
+%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
 
-\dokutitleleveltree{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+%Energy is measured in Joules \([J]\).
+%The dimension of energy [J] is related
+%to other dimension you are familiar with:
+%\[
+% \text{ [J] = [N][m] = } \text{[kg]}[\text{m}^2][\text{s}^{-2}].
+%\]
+%You can check the second equality from \(F=ma\), which
+%has dimensions [N] = [kg m/s\^{ }2].
 
-Energy is measured in Joules \([J]\).
-The dimension of energy [J] is related
-to other dimension you are familiar with:
-\[
- \text{ [J] = [N][m] = } \text{[kg]}[\text{m}^2][\text{s}^{-2}].
-\]
-You can check the second equality from \(F=ma\), which
-has dimensions [N] = [kg m/s\^{ }2].
+%
+%\dokutitlelevelfour{Kinetic energy}
 
+%A moving object has energy,
+%which we call \dokuitalic{kinetic} energy from the Greek word for motion \dokuitalic{kinema}.
+%The kinetic energy is given by
+%\[
+% K=\frac{1}{2}mv^2.
+%\]
+%Note that velocity \(v\) and speed \(|v|\) are not the same as energy. Suppose you have two objects of the same mass and one is moving twice faster than the other. The faster object will have twice the velocity, but four times more kinetic energy.
 
-\dokutitlelevelfour{Kinetic energy}
+%
+%\dokutitlelevelfour{Work}
 
-A moving object has energy,
-which we call \dokuitalic{kinetic} energy from the Greek word for motion \dokuitalic{kinema}.
-The kinetic energy is given by
-\[
- K=\frac{1}{2}mv^2.
-\]
-Note that velocity \(v\) and speed \(|v|\) are not the same as energy. Suppose you have two objects of the same mass and one is moving twice faster than the other. The faster object will have twice the velocity, but four times more kinetic energy.
+%When hiring someone to help you move, you have to pay them for the \dokuitalic{work} they do.
+%Work is the product of how much force is necessary to move your furniture and
+%the distance of the move.
+%The more force, the more work there will be for a fixed displacement.
+%The more displacement (think moving to south shore versus moving next door) the 
+%more money the movers will ask for.
 
+%The amount of work a force \(\vec{F}(x)\) (possibly changing) will produce when
+%moved along some path \(p\) is given by:
+%\[
+% W = \int_p \vec{F}(x) \cdot d\vec{x}.
+%\]
 
-\dokutitlelevelfour{Work}
+%If the force is constant, this expression simplifies to:
+%\[
+%  W = \int_0^d \vec{F}(x)\cdot d\vec{x} = \vec{F}\cdot\int_0^d d\vec{x}  = \vec{F}\cdot \vec{d} = |F||d|\cos\theta,
+%\]
+%where the factor of \(\cos\theta\) comes from the dot product.
+%Indeed, we only want to account for the part of \(\vec{F}\) that is pushing in the direction of the displacement \(\vec{d}\).
 
-When hiring someone to help you move, you have to pay them for the \dokuitalic{work} they do.
-Work is the product of how much force is necessary to move your furniture and
-the distance of the move.
-The more force, the more work there will be for a fixed displacement.
-The more displacement (think moving to south shore versus moving next door) the 
-more money the movers will ask for.
+%
+%\dokutitlelevelfour{Potential energy is stored work}
 
-The amount of work a force \(\vec{F}(x)\) (possibly changing) will produce when
-moved along some path \(p\) is given by:
-\[
- W = \int_p \vec{F}(x) \cdot d\vec{x}.
-\]
+%Some kinds of work are just a waste of your time, like working
+%in a bank for example. You work and you get your paycheque, but nothing
+%remains with you.
+%Other kinds of work leave with you some \dokuitalic{resource} at the end of the work day.
+%Maybe you learn something, or you network with a lot of good people.
 
-If the force is constant, this expression simplifies to:
-\[
-  W = \int_0^d \vec{F}(x)\cdot d\vec{x} = \vec{F}\cdot\int_0^d d\vec{x}  = \vec{F}\cdot \vec{d} = |F||d|\cos\theta,
-\]
-where the factor of \(\cos\theta\) comes from the dot product.
-Indeed, we only want to account for the part of \(\vec{F}\) that is pushing in the direction of the displacement \(\vec{d}\).
+%In physics, we make a similar distinction. Some types of work like
+%work against friction are called \dokuitalic{dissipative} since they just waste energy.
+%Other kinds of work are called \dokuitalic{conservative} since the work you do
+%is not lost -- it was just converted into a different form.
 
+%The gravitational and spring forces are conservative.
+%Any work you do while lifting an object up into the air against the force 
+%of gravity is not lost  it is \dokuitalic{stored} in the height of the object.
+%You can get \dokuitalic{all} the work/energy back if you just let go of the 
+%object. The energy will come back in the form of kinetic energy as the object
+%gets accelerated during the fall.
 
-\dokutitlelevelfour{Potential energy is stored work}
+%The negative of the work done against conservative forces is called \dokuitalic{potential energy}.
+%Being high in the air means you have a lot of potential to fall,
+%and compressing a spring by a certain distance means it has the 
+%potential to spring back to its normal position.
+%Let us look at the exact formulas now.
 
-Some kinds of work are just a waste of your time, like working
-in a bank for example. You work and you get your paycheque, but nothing
-remains with you.
-Other kinds of work leave with you some \dokuitalic{resource} at the end of the work day.
-Maybe you learn something, or you network with a lot of good people.
+%
+%\dokutitlelevelfour{Gravitational potential energy}
 
-In physics, we make a similar distinction. Some types of work like
-work against friction are called \dokuitalic{dissipative} since they just waste energy.
-Other kinds of work are called \dokuitalic{conservative} since the work you do
-is not lost -- it was just converted into a different form.
+%The force of gravity is given by:
+%\[
+% F_g = W = mg.
+%\]
+%The gravitational potential energy of lifting an object for a height \(h\) is:
+%\[
+%  U_g = - \int_0^h \vec{F}_g \cdot d\vec{y} = \int_0^h mg dy = mh \int_0^h 1dy = mh y\big\vert_{y=0}^{y=h} = mgh.
+%\]
 
-The gravitational and spring forces are conservative.
-Any work you do while lifting an object up into the air against the force 
-of gravity is not lost  it is \dokuitalic{stored} in the height of the object.
-You can get \dokuitalic{all} the work/energy back if you just let go of the 
-object. The energy will come back in the form of kinetic energy as the object
-gets accelerated during the fall.
+%
+%\dokutitlelevelfour{Spring energy}
 
-The negative of the work done against conservative forces is called \dokuitalic{potential energy}.
-Being high in the air means you have a lot of potential to fall,
-and compressing a spring by a certain distance means it has the 
-potential to spring back to its normal position.
-Let us look at the exact formulas now.
+%The force of a spring when stretched a distance \(x\) is given by:
+%\[
+% \vec{F}_s(\vec{x}) = - k\vec{x}.
+%\]
+%The sprint potential energy is:
+%\[
+% U_s = - \int_0^x \vec{F}_{s}(y) \cdot d\vec{y} = \int_0^x ky dy 
+%= k\int_0^x y dy =  k\frac{1}{2}y^2\big\vert_{y=0}^{y=x} = \frac{1}{2}kx^2.
+%\]
 
+%
+%\dokutitlelevelfour{Conservation of energy}
 
-\dokutitlelevelfour{Gravitational potential energy}
+%Energy cannot be created or destroyed. 
+%It just transforms from one form into another.
 
-The force of gravity is given by:
-\[
- F_g = W = mg.
-\]
-The gravitational potential energy of lifting an object for a height \(h\) is:
-\[
-  U_g = - \int_0^h \vec{F}_g \cdot d\vec{y} = \int_0^h mg dy = mh \int_0^h 1dy = mh y\big\vert_{y=0}^{y=h} = mgh.
-\]
+%If there are no dissipative forces, then we have
+%\[
+%  \sum E_i    =   \sum E_f.
+%\]
 
+%If there are dissipative forces like friction or external
+%forces that do work, we must take their energy contributions into
+%account as well:
 
-\dokutitlelevelfour{Spring energy}
+%\[
+% \sum E_i \  +\   W_{in}   =  \sum E_f,
+%\]
+%or
+%\[
+% \sum E_i    =  \sum E_f \  +\  W_{out}.
+%\]
 
-The force of a spring when stretched a distance \(x\) is given by:
-\[
- \vec{F}_s(\vec{x}) = - k\vec{x}.
-\]
-The sprint potential energy is:
-\[
- U_s = - \int_0^x \vec{F}_{s}(y) \cdot d\vec{y} = \int_0^x ky dy 
-= k\int_0^x y dy =  k\frac{1}{2}y^2\big\vert_{y=0}^{y=x} = \frac{1}{2}kx^2.
-\]
-
-
-\dokutitlelevelfour{Conservation of energy}
-
-Energy cannot be created or destroyed. 
-It just transforms from one form into another.
-
-If there are no dissipative forces, then we have
-\[
-  \sum E_i    =   \sum E_f.
-\]
-
-If there are dissipative forces like friction or external
-forces that do work, we must take their energy contributions into
-account as well:
-
-\[
- \sum E_i \  +\   W_{in}   =  \sum E_f,
-\]
-or
-\[
- \sum E_i    =  \sum E_f \  +\  W_{out}.
-\]
-
-This is one of the most important equations you will find in this book,
-because it will allow you to solve very complicated problems simply by
-accounting for all different kinds of energies.
+%This is one of the most important equations you will find in this book,
+%because it will allow you to solve very complicated problems simply by
+%accounting for all different kinds of energies.
 
 
 
@@ -1118,102 +1059,102 @@ This means that we can solve for \(F_r\),
 which could be due to a rope pulling towards the centre, of a tire-road friction force \(F_f\)
 or some other force acting towards the centre.
 
+%
+%\dokutitleleveltree{Explanations}
+%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
 
-\dokutitleleveltree{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+%\dokutitlelevelfour{Radial coordinate system}
 
-\dokutitlelevelfour{Radial coordinate system}
+%To understand this whole \(\hat{r}\) and \(\hat{t}\) business, I want you to imagine for a
+%second that you can freeze time. The \(\hat{r}\) direction will be towards the centre
+%of the circle and \(\hat{t}\) is along a line touching the circle,  i.e., though moving 
+%in a circle overall, instantaneously you are moving in the \(\hat{t}\) direction.
+%If you unfreeze time and one microsecond elapses the \(\hat{r}\) and \(\hat{t}\) directions
+%will change, you will have moved a little along the circle and the \(\hat{r}\) vector
+%will have to rotate to keep pointing at the centre. Similarly, your instantaneous direction of motion, \(\hat{t}\), will have shifted a bit. 
 
-To understand this whole \(\hat{r}\) and \(\hat{t}\) business, I want you to imagine for a
-second that you can freeze time. The \(\hat{r}\) direction will be towards the centre
-of the circle and \(\hat{t}\) is along a line touching the circle,  i.e., though moving 
-in a circle overall, instantaneously you are moving in the \(\hat{t}\) direction.
-If you unfreeze time and one microsecond elapses the \(\hat{r}\) and \(\hat{t}\) directions
-will change, you will have moved a little along the circle and the \(\hat{r}\) vector
-will have to rotate to keep pointing at the centre. Similarly, your instantaneous direction of motion, \(\hat{t}\), will have shifted a bit. 
+%
+%\dokutitlelevelfour{Period}
 
+%From kinematics we know that motion with constant velocity (UVM)
+%is described by the formula \(x = vt\), where the speed is 
+%\dokuitalic{defined} as ratio of distance travelled over time: \(v=\frac{\Delta x}{\Delta t}\).
+%In this case the distance travelled, \(\Delta x\), is not a straight line 
+%but a curve following the circumference of a circle:
+%\[
+% C = 2\pi R.
+%\]
+%The period is defined as the time it takes for the object to complete one full turn:
+%\[
+% T = \frac{\text{distance}}{\text{speed}} = \frac{2\pi R}{v_t}.
+%\]
 
-\dokutitlelevelfour{Period}
+%Tangential speed \(v_t\) is measured in \([m/s]\), whereas \(R\) is measured in \([m]\)
+%so if you divide the two you get seconds \([s]\).
 
-From kinematics we know that motion with constant velocity (UVM)
-is described by the formula \(x = vt\), where the speed is 
-\dokuitalic{defined} as ratio of distance travelled over time: \(v=\frac{\Delta x}{\Delta t}\).
-In this case the distance travelled, \(\Delta x\), is not a straight line 
-but a curve following the circumference of a circle:
-\[
- C = 2\pi R.
-\]
-The period is defined as the time it takes for the object to complete one full turn:
-\[
- T = \frac{\text{distance}}{\text{speed}} = \frac{2\pi R}{v_t}.
-\]
+%
+%\dokutitlelevelfour{Radial acceleration}
 
-Tangential speed \(v_t\) is measured in \([m/s]\), whereas \(R\) is measured in \([m]\)
-so if you divide the two you get seconds \([s]\).
+%Newton's first law says that if there is no acceleration acting on a moving object,
+%then it will continue moving (1) in a straight line and (2) maintain the same speed.
+%So far we have studied mostly problems involving \dokuitalic{linear acceleration}, 
+%where some $a_x$ is causing changes in speed.
+%This section deals with problems where the speed $\|\vec{v}\|$ 
+%stays constant, but $\vec{v}$ changes direction.
 
+%Circular motion violates the requirement (1) in Newton's law (conservation of momentum). 
+%The logic is as follows. If you see any motion that is \dokuitalic{not a straight line}, 
+%then there must be some acceleration involved which is producing the rotation.
+%This is the radial acceleration.
 
-\dokutitlelevelfour{Radial acceleration}
+%
+%\dokutitlelevelfour{Centrifugal force}
 
-Newton's first law says that if there is no acceleration acting on a moving object,
-then it will continue moving (1) in a straight line and (2) maintain the same speed.
-So far we have studied mostly problems involving \dokuitalic{linear acceleration}, 
-where some $a_x$ is causing changes in speed.
-This section deals with problems where the speed $\|\vec{v}\|$ 
-stays constant, but $\vec{v}$ changes direction.
+%People often get confused about the meaning of things when they talk
+%about circular motion. There is the point of view of the passenger,
+% and there is the point of view of the car door, 
+%which is holding the passenger into the circular trajectory.
 
-Circular motion violates the requirement (1) in Newton's law (conservation of momentum). 
-The logic is as follows. If you see any motion that is \dokuitalic{not a straight line}, 
-then there must be some acceleration involved which is producing the rotation.
-This is the radial acceleration.
+%
 
+%\begin{itemize}
+%\dokuitem  \(\vec{F}_{dp}\): The amount of force the door is exerting on the passenger.
+%\dokuitem  \(\vec{F}_{pd}\): The amount of force the passenger is exerting on the door.
+%\end{itemize}
 
-\dokutitlelevelfour{Centrifugal force}
+%This is the same force really, but one is relevant in the sum-of-the-forces
+%calculation for the passenger \(\sum F_{psngr}\), whereas the second should be 
+%added with all the other forces that act on the car (like the friction 
+%between the pavement and the car tires).
 
-People often get confused about the meaning of things when they talk
-about circular motion. There is the point of view of the passenger,
- and there is the point of view of the car door, 
-which is holding the passenger into the circular trajectory.
+%Viewed from the point of view of the passenger there is no confusion.
+%The force \(F_{dp}\) acting towards the centre of rotation is causing
+%a \(ma_r=m\frac{v_t^2}{R}\), and thus the circular motion 
+%of the passenger results.
 
+%Viewed from the point of view of the door, it feels a 
+%certain push towards the outside of the circle which corresponds to the counter-force 
+%to the force that the passenger feels.
+%This comes from Newton's third law, which says that for each contact force 
+%\(C_{12}\) exerted by object 1 on object 2, there exists a counter force 
+%exerted of equal magnitude and opposite direction, \(C_{21}\) which is the
+%force of object 2 pushing back.
 
+%The confusion people get into, and the whole \dokuitalic{false concept} of centrifugal force,
+%comes from thinking of a force diagram on yourself and falsely including the 
+%outwards force on the door. You have to be clear. Which force diagram
+%are you doing? If you are thinking of yourself as the object, the force that you
+%feel is a \dokuitalic{centripetal} force. The door pushes you each instant towards the
+%centre of the circle. If it weren't for the door, you would fly straight on.
 
-\begin{itemize}
-\dokuitem  \(\vec{F}_{dp}\): The amount of force the door is exerting on the passenger.
-\dokuitem  \(\vec{F}_{pd}\): The amount of force the passenger is exerting on the door.
-\end{itemize}
+%
+%In some problems, it is also necessary to consider the \(y\) direction of the force diagram,
+%where you will have the weight of the passenger \(\vec{W}=-mg\hat{\jmath}\).
+%You should be able to solve joint \(ry\)-dimension problems, 
+%with radial and vertical forces \(F_r\), \(F_y\) and radial and vertical 
+%accelerations \(a_r\), \(a_y\).
 
-This is the same force really, but one is relevant in the sum-of-the-forces
-calculation for the passenger \(\sum F_{psngr}\), whereas the second should be 
-added with all the other forces that act on the car (like the friction 
-between the pavement and the car tires).
-
-Viewed from the point of view of the passenger there is no confusion.
-The force \(F_{dp}\) acting towards the centre of rotation is causing
-a \(ma_r=m\frac{v_t^2}{R}\), and thus the circular motion 
-of the passenger results.
-
-Viewed from the point of view of the door, it feels a 
-certain push towards the outside of the circle which corresponds to the counter-force 
-to the force that the passenger feels.
-This comes from Newton's third law, which says that for each contact force 
-\(C_{12}\) exerted by object 1 on object 2, there exists a counter force 
-exerted of equal magnitude and opposite direction, \(C_{21}\) which is the
-force of object 2 pushing back.
-
-The confusion people get into, and the whole \dokuitalic{false concept} of centrifugal force,
-comes from thinking of a force diagram on yourself and falsely including the 
-outwards force on the door. You have to be clear. Which force diagram
-are you doing? If you are thinking of yourself as the object, the force that you
-feel is a \dokuitalic{centripetal} force. The door pushes you each instant towards the
-centre of the circle. If it weren't for the door, you would fly straight on.
-
-
-In some problems, it is also necessary to consider the \(y\) direction of the force diagram,
-where you will have the weight of the passenger \(\vec{W}=-mg\hat{\jmath}\).
-You should be able to solve joint \(ry\)-dimension problems, 
-with radial and vertical forces \(F_r\), \(F_y\) and radial and vertical 
-accelerations \(a_r\), \(a_y\).
-
-
+%
 
 \dokutitleleveltwo{Angular motion}
 \label{318857367a8b72161a4bda9b7e83ce98}%% angular_motion
@@ -1222,11 +1163,12 @@ We will now study the physics of rotating objects.
 Rotating disks, wheels, spinning footballs and ice skaters.
 Anything spinning really.
 
-This is also a review chapter.
-You already know all the basic concepts for linear motion:
-position, velocity, acceleration, force, momentum and energy.
-In this chapter we define the \dokuitalic{angular} equivalents for 
-each of these, which will be appropriate whenever we have a rotating object.
+%
+%This is also a review chapter.
+%You already know all the basic concepts for linear motion:
+%position, velocity, acceleration, force, momentum and energy.
+%In this chapter we define the \dokuitalic{angular} equivalents for 
+%each of these, which will be appropriate whenever we have a rotating object.
 
 
 \dokutitleleveltree{Concepts}
@@ -1407,94 +1349,94 @@ rotating, then it must also have no net toques on it:
 \]
 where we can take the torques with respect to \dokuitalic{any} centre of rotation (A).
 
+%
+%\dokutitlelevelfour{Example: walking the plank}
 
-\dokutitlelevelfour{Example: walking the plank}
+%Plank is one third of the way out, and not attached to the ship.
+%It weights 300 kg in total, so 100kg sticking out of the ship
+%and 200kg on the ship.
+%How far on the plank can you walk before it tips into the sea?
 
-Plank is one third of the way out, and not attached to the ship.
-It weights 300 kg in total, so 100kg sticking out of the ship
-and 200kg on the ship.
-How far on the plank can you walk before it tips into the sea?
+%
+%\dokutitleleveltree{Explanations}
+%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
 
+%\dokutitlelevelfour{Torque}
 
-\dokutitleleveltree{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+%People in the Mid West and other rural areas like to buy trucks because they have a lot of torque.
+%Big engine, big torque. You can pull stuff. Wait isn't that force? But toque should be good too?
+%What is the difference?  I am confused.
 
-\dokutitlelevelfour{Torque}
+%Don't be confused. Torque is just force times distance, i.e. we have to take into account not only 
+%what force is exerted but also the leverage: how far from the center of rotation you are exerting the force:
+%\[
+% \mathcal{T} = F_{rot} \times r.
+%\]
+%The bigger the leverage \(r\), the bigger torque you will create with a fixed amount of force.
 
-People in the Mid West and other rural areas like to buy trucks because they have a lot of torque.
-Big engine, big torque. You can pull stuff. Wait isn't that force? But toque should be good too?
-What is the difference?  I am confused.
+%When it comes down to the question how much you can pull, and you want to answer it by
+%looking at the specs of your truck, you have to look at (1) the max torque \(\mathcal{T}\) and (2) the radius of
+%your wheels \(r\), and divide the numbers to get the maximum pulling force \(F\).
 
-Don't be confused. Torque is just force times distance, i.e. we have to take into account not only 
-what force is exerted but also the leverage: how far from the center of rotation you are exerting the force:
-\[
- \mathcal{T} = F_{rot} \times r.
-\]
-The bigger the leverage \(r\), the bigger torque you will create with a fixed amount of force.
+%
+%\dokutitlelevelfour{Rotational F=ma}
 
-When it comes down to the question how much you can pull, and you want to answer it by
-looking at the specs of your truck, you have to look at (1) the max torque \(\mathcal{T}\) and (2) the radius of
-your wheels \(r\), and divide the numbers to get the maximum pulling force \(F\).
+%The angular analogue of $F=ma$ is:
+%\[
+% \mathcal{T} = I \alpha,
+%\]
+%where
+%\[
+% I = \sum m_i r_i^2 = \int_{obj} r^2 \ dm.
+%\]
 
+%
+%\dokutitleleveltree{Examples}
+%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
 
-\dokutitlelevelfour{Rotational F=ma}
+%\dokutitlelevelfour{Rotational UVM}
 
-The angular analogue of $F=ma$ is:
-\[
- \mathcal{T} = I \alpha,
-\]
-where
-\[
- I = \sum m_i r_i^2 = \int_{obj} r^2 \ dm.
-\]
+%Something is spinning at a constant angular velocity during
+%some time \(t\). Just use \(\theta(t) = \omega t + \theta_0\).
+%Waaay too simple and boring.
 
+%
+%\dokutitlelevelfour{Rotational UAM}
 
-\dokutitleleveltree{Examples}
-\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
+%A pulley of radius \(R\) and moment of inertia \(I\) has a rope wound around it
+%and a mass \(m\) attached at the end of that rope.
+%What is the angular acceleration caused by the mass
+%as it unwinds the rope.
 
-\dokutitlelevelfour{Rotational UVM}
+%The force diagram on \(m\) tells us that \(mg-T=ma_y\) (where \(\hat{y}\) points downwards).
+%The torque diagram on the disk tells us that \(TR = I \alpha\).
+%Adding \(R\) times the first equation to the second we get:
+%\[
+% R({mg - T}) + T  R  = R m a_y + I \alpha,
+%\]
+%or after simplification we get:
+%\[
+% R  m  g = R m a_y + I \alpha.
+%\]
+%But we know that the rope forms a solid connection between the disk and the mass block,
+%so we must also have \(R \alpha = a_y\), so if we substitute for \(a_y\) we get:
+%\[
+% R  m  g = R m R \alpha + I \alpha = (R^2 m + I) \alpha,
+%\]
+%or 
+%\[
+% \alpha = \frac{  R  m  g  }{ R^2 m + I }.
+%\]
+%This makes sense. The numerator is the ``cause'', and the denominator is the effective moment of inertia of the system
+%as a whole.
 
-Something is spinning at a constant angular velocity during
-some time \(t\). Just use \(\theta(t) = \omega t + \theta_0\).
-Waaay too simple and boring.
+%\dokutitleleveltree{Discussion}
+%\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
 
+%It is really important that you connect all of the above 
+%rotational concepts with their linear counterparts.
 
-\dokutitlelevelfour{Rotational UAM}
-
-A pulley of radius \(R\) and moment of inertia \(I\) has a rope wound around it
-and a mass \(m\) attached at the end of that rope.
-What is the angular acceleration caused by the mass
-as it unwinds the rope.
-
-The force diagram on \(m\) tells us that \(mg-T=ma_y\) (where \(\hat{y}\) points downwards).
-The torque diagram on the disk tells us that \(TR = I \alpha\).
-Adding \(R\) times the first equation to the second we get:
-\[
- R({mg - T}) + T  R  = R m a_y + I \alpha,
-\]
-or after simplification we get:
-\[
- R  m  g = R m a_y + I \alpha.
-\]
-But we know that the rope forms a solid connection between the disk and the mass block,
-so we must also have \(R \alpha = a_y\), so if we substitute for \(a_y\) we get:
-\[
- R  m  g = R m R \alpha + I \alpha = (R^2 m + I) \alpha,
-\]
-or 
-\[
- \alpha = \frac{  R  m  g  }{ R^2 m + I }.
-\]
-This makes sense. The numerator is the ``cause'', and the denominator is the effective moment of inertia of the system
-as a whole.
-
-\dokutitleleveltree{Discussion}
-\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-
-It is really important that you connect all of the above 
-rotational concepts with their linear counterparts.
-
-
+%
 
 
 \dokutitleleveltwo{Simple harmonic motion}
@@ -1533,118 +1475,118 @@ The equation of motion of an object undergoing simple harmonic motion is:
 \[
  x(t)=A\cos(\omega t   + \phi).
 \]
+%
+%Now don't be scared. It is really simple.
+%Let us just study the properties of \(\sin(x)\) for a moment,
+%so that you can be get familiar with the math of periodic functions.
 
-Now don't be scared. It is really simple.
-Let us just study the properties of \(\sin(x)\) for a moment,
-so that you can be get familiar with the math of periodic functions.
+%
+%\dokutitlelevelfour{The function sin(x)}
 
+%\begin{wrapfigure}{r}{0pt}
+%\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitmrNnmQ.png}
+%\end{wrapfigure}
 
-\dokutitlelevelfour{The function sin(x)}
+%
+%The functions \(f(x)=\sin(x)\) and \(f(x)=\cos(x)\) are both angular functions,
+%that is, they take an angle \(\theta\) as input.
+%Sometimes we call the input \(x\), but in the next paragraphs
+%we will call the input \(\theta\) so that we keep in mind
+%that we are talking about angles.
 
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitmrNnmQ.png}
-\end{wrapfigure}
+%
+%The period \(T\) of \(\sin(t)\) with no coefficients
+%inside of it is \(2\pi\), because this is how long
+%it takes (in radians) to do one full turn.
 
+%
+%\dokutitlelevelfour{Time-scaling sin}
 
-The functions \(f(x)=\sin(x)\) and \(f(x)=\cos(x)\) are both angular functions,
-that is, they take an angle \(\theta\) as input.
-Sometimes we call the input \(x\), but in the next paragraphs
-we will call the input \(\theta\) so that we keep in mind
-that we are talking about angles.
+%If you want a sin function with a different period,
+%you have to add a multiplier in front of \(x\) inside
+%the sin. This multiplier is, by convention, called
+%\(\omega\), so now we have a input-scaled \(\sin\) function:
+%\[
+% \sin(\omega t ),
+%\]
+%which will have period
+%\[
+% T=\frac{2\pi}{\omega}.
+%\]
+%No seriously, if you don't believe me check for yourself.
+%If you let \(t\) go from \(0\) to \(T\) you should see
+%the motion go though one cycle. 
+%Indeed, when multiplied with the scaling \(\omega=\frac{2\pi}{T}\),
+%the input to sin goes from \(0\) to \(2\pi\) as \(t\) goes from \(0\) to \(T\).
 
+%
+%\dokutitlelevelfour{Sin or cos up to you}
 
-The period \(T\) of \(\sin(t)\) with no coefficients
-inside of it is \(2\pi\), because this is how long
-it takes (in radians) to do one full turn.
+%Simple harmonic motion is equally well described
+%by the \(\sin\) function or the \(\cos\) function.
 
+%You should use cos when the spring starts from the stretched position: 
+%\(x_i = x_{max}=A\), because naturally when \(t=0\) cos
+%will be one, and the overall function will be:
+%\[
+% x(t) = A\cos(\omega t).
+%\]
 
-\dokutitlelevelfour{Time-scaling sin}
+%If the harmonic motion starts from \(x(t)=0\)
+%when \(t=0\), then \(\sin\) is a more appropriate
+%function to describe this motion:
+%\[
+% x(t) = A\sin(\omega t),
+%\]
+%which correctly predicts the initial position \(x(0)=0\).
 
-If you want a sin function with a different period,
-you have to add a multiplier in front of \(x\) inside
-the sin. This multiplier is, by convention, called
-\(\omega\), so now we have a input-scaled \(\sin\) function:
-\[
- \sin(\omega t ),
-\]
-which will have period
-\[
- T=\frac{2\pi}{\omega}.
-\]
-No seriously, if you don't believe me check for yourself.
-If you let \(t\) go from \(0\) to \(T\) you should see
-the motion go though one cycle. 
-Indeed, when multiplied with the scaling \(\omega=\frac{2\pi}{T}\),
-the input to sin goes from \(0\) to \(2\pi\) as \(t\) goes from \(0\) to \(T\).
+%Any combination of the above scenarios is possible too.
+%So now it becomes difficult to see what the motion is,
+%with \dokuitalic{two} amplitudes (one for stretched initial conditions,
+%and one for centered  initial conditions) and a sum of 
+%sin and cos:
+%\[
+% x(t) = A_1\cos(\omega t) + A_2\sin(\omega t).
+%\]
+%
+%Lo and behold. There is actually a simpler way of 
+%writing the above equation. Sin and cos are 
+%identical except for the fact that one is a
+%shifted version of the other.
+%By using trigonometric identity Kung Fu, we can 
+%rewrite the above in terms of sin or cos with some 
+%combined amplitude and a \dokuitalic{phase shift}:
+%\[
+% x(t)=A\cos(\omega t   + \phi).
+%\]
+%The initial conditions $x_i$ and $v_i$ are used 
+%to find either the individual coefficients $A_1$ and $A_2$
+%of the sin and the cos or the common coefficient $A$ and
+%the phase shift $\phi$.
 
+%Let me go over what just happened here one more time,
+%because this is some crazy stuff.
+%You are not supposed to learn about this stuff until 
+%the \dokuitalic{differential equations} class, but I will tell
+%you about it right now because it is like \dokuitalic{woooow}.
+%Let's draw an analogy with a situation which we have
+%seen previously. We are trying to describe (and predict)
+%the position of an object as a function of time \(x(t)\).
+%In kinematics there was \dokuitalic{one} equation \(x(t)=x_i+v_it + \frac{1}{2}at^2\),
+%and depending on the initial velocity and the initial position we got 
+%different trajectories, because of the different values of \(x_i\)
+%and \(v_i\).
+%In the case of simple harmonic motion we have \dokuitalic{two} functions and
+%the initial position \(x_i\) and initial velocity \(v_i\) determine
+%how much of each function we should include
+%in the formula for \(x(t)\).
 
-\dokutitlelevelfour{Sin or cos up to you}
-
-Simple harmonic motion is equally well described
-by the \(\sin\) function or the \(\cos\) function.
-
-You should use cos when the spring starts from the stretched position: 
-\(x_i = x_{max}=A\), because naturally when \(t=0\) cos
-will be one, and the overall function will be:
-\[
- x(t) = A\cos(\omega t).
-\]
-
-If the harmonic motion starts from \(x(t)=0\)
-when \(t=0\), then \(\sin\) is a more appropriate
-function to describe this motion:
-\[
- x(t) = A\sin(\omega t),
-\]
-which correctly predicts the initial position \(x(0)=0\).
-
-Any combination of the above scenarios is possible too.
-So now it becomes difficult to see what the motion is,
-with \dokuitalic{two} amplitudes (one for stretched initial conditions,
-and one for centered  initial conditions) and a sum of 
-sin and cos:
-\[
- x(t) = A_1\cos(\omega t) + A_2\sin(\omega t).
-\]
-
-Lo and behold. There is actually a simpler way of 
-writing the above equation. Sin and cos are 
-identical except for the fact that one is a
-shifted version of the other.
-By using trigonometric identity Kung Fu, we can 
-rewrite the above in terms of sin or cos with some 
-combined amplitude and a \dokuitalic{phase shift}:
-\[
- x(t)=A\cos(\omega t   + \phi).
-\]
-The initial conditions $x_i$ and $v_i$ are used 
-to find either the individual coefficients $A_1$ and $A_2$
-of the sin and the cos or the common coefficient $A$ and
-the phase shift $\phi$.
-
-Let me go over what just happened here one more time,
-because this is some crazy stuff.
-You are not supposed to learn about this stuff until 
-the \dokuitalic{differential equations} class, but I will tell
-you about it right now because it is like \dokuitalic{woooow}.
-Let's draw an analogy with a situation which we have
-seen previously. We are trying to describe (and predict)
-the position of an object as a function of time \(x(t)\).
-In kinematics there was \dokuitalic{one} equation \(x(t)=x_i+v_it + \frac{1}{2}at^2\),
-and depending on the initial velocity and the initial position we got 
-different trajectories, because of the different values of \(x_i\)
-and \(v_i\).
-In the case of simple harmonic motion we have \dokuitalic{two} functions and
-the initial position \(x_i\) and initial velocity \(v_i\) determine
-how much of each function we should include
-in the formula for \(x(t)\).
-
-The thing to remember is that you can pick cos or sin 
-as the situation requires and, if the situation requires
-it, add a phase factor.
-I assure you that the fact that \(a\sin(x)+b\cos(x)\) can
-be expressed as \(A\cos(x+\phi)\) or \(A\sin(x-\psi)\) is not 
-magic, but simple application of \hyperref[dfc96c1062532291f8378374353a33c7]{trig{\textbackslash}\_identities}.
+%The thing to remember is that you can pick cos or sin 
+%as the situation requires and, if the situation requires
+%it, add a phase factor.
+%I assure you that the fact that \(a\sin(x)+b\cos(x)\) can
+%be expressed as \(A\cos(x+\phi)\) or \(A\sin(x-\psi)\) is not 
+%magic, but simple application of \hyperref[dfc96c1062532291f8378374353a33c7]{trig{\textbackslash}\_identities}.
 
 
 \dokutitlelevelfour{Mass and spring}
@@ -1657,14 +1599,14 @@ with angular frequency:
 \[
  \omega = \sqrt{ \frac{k}{m} }.
 \]
-
-A typical exam question is to tell you \(k\) and \(m\)
-and ask about the period \(T\), at which point you have
-to remember the definition of period to obtain the 
-answer:
-\[
- T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }.
-\]
+%
+%A typical exam question is to tell you \(k\) and \(m\)
+%and ask about the period \(T\), at which point you have
+%to remember the definition of period to obtain the 
+%answer:
+%\[
+% T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }.
+%\]
 
 
 \dokutitlelevelfour{Pendulum}
@@ -1678,21 +1620,21 @@ The period of oscillation will be:
 \[
  T = 2\pi \sqrt{ \frac{\ell}{g} }.
 \]
-Note in particular that this equation does not depend
-on the amplitude of the oscillation (how far the pendulum swings)
-nor the mass of the pendulum. Kind of cool no?
-For a long while, this was how people kept track of time: with pendulum clocks.
+%Note in particular that this equation does not depend
+%on the amplitude of the oscillation (how far the pendulum swings)
+%nor the mass of the pendulum. Kind of cool no?
+%For a long while, this was how people kept track of time: with pendulum clocks.
 
-To describe the angular position of the pendulum 
-we can use a the formula:
-\[
- \theta(t) = \theta_{max} \cos(\omega t + \phi),
-\]
-where \(\theta_{max}\) is the maximum angle the pendulum swings to.
-The coefficient inside the \(\cos\) is equal to:
-\[
- \omega \equiv \frac{2\pi}{T} = \sqrt{ \frac{g}{\ell} }.
-\]
+%To describe the angular position of the pendulum 
+%we can use a the formula:
+%\[
+% \theta(t) = \theta_{max} \cos(\omega t + \phi),
+%\]
+%where \(\theta_{max}\) is the maximum angle the pendulum swings to.
+%The coefficient inside the \(\cos\) is equal to:
+%\[
+% \omega \equiv \frac{2\pi}{T} = \sqrt{ \frac{g}{\ell} }.
+%\]
 
 
 \dokutitlelevelfour{SHM equations of motion}
@@ -1719,11 +1661,11 @@ and the \dokuitalic{amplitude} of the acceleration:
 You will often be asked to solve for these quantities,
 which is going to be an easy task if you know \(A\) and \(\omega\).
 
-
-And equivalent set of equations of motion exists with \(x(t)\propto \sin(\omega t + \psi)\),
-but in this section we will just talk about the \(\cos\) kind of \(x(t)\). 
-Everything I say would be true if we had
-started with \(x(t)\propto \sin(\omega t + \psi)\) instead.
+%
+%And equivalent set of equations of motion exists with \(x(t)\propto \sin(\omega t + \psi)\),
+%but in this section we will just talk about the \(\cos\) kind of \(x(t)\). 
+%Everything I say would be true if we had
+%started with \(x(t)\propto \sin(\omega t + \psi)\) instead.
 
 
 \dokutitlelevelfour{Energy}
@@ -1745,112 +1687,119 @@ The total energy is: \\
  &= U(t) + K(t) \\
  &= \frac{1}{2}kA^2\cos^2(\omega t) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t) \\
  &= \frac{1}{2}kA^2\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} =\frac{1}{2}kA^2 = U_{max} \\
- &= \frac{1}{2}m\omega^2A^2\cos^2(\omega t ) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t ) \ \ (\text{since } k  = m\omega^2 )\\
- &= \frac{1}{2}m\underbrace{\omega^2A^2}_{v_{max}^2}\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} = \frac{1}{2}mv_{max}^2 = K_{max}.
+% &= \frac{1}{2}m\omega^2A^2\cos^2(\omega t ) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t ) \ \ (\text{since } k  = m\omega^2 )\\
+ &=  %\frac{1}{2}m\underbrace{\omega^2A^2}_{v_{max}^2}\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} 
+  \frac{1}{2}mv_{max}^2 = K_{max}.
 \end{align*}
 
+%
+%\dokutitlelevelfour{Conservation of energy}
 
-\dokutitlelevelfour{Conservation of energy}
+%In simple harmonic motion, the total 
+%energy is conserved:
+%\[
+% E_T = U+ K.
+%\]
+%Energy shifts between the potential energy of the spring
+%and the kinetic energy of the moving mass.
+%For any two points \(t_i\) and \(t_f\):
+%\[
+% U_i + K_i = U_f + K_f.
+%\]
 
-In simple harmonic motion, the total 
-energy is conserved:
-\[
- E_T = U+ K.
-\]
-Energy shifts between the potential energy of the spring
-and the kinetic energy of the moving mass.
-For any two points \(t_i\) and \(t_f\):
-\[
- U_i + K_i = U_f + K_f.
-\]
+%Two particularly important moments of the SHM are
+%the points where it is at its maximum position
+%and zero velocity \(x=\pm A\), \(K=0\), \(E_T= U\), 
+%which corresponds to all the energy being stored in the spring,
+%and the point where it has zero displacement but
+%maximal velocity \(x=0, U=0, v=\pm A\omega, E_T=K\),
+%which corresponds to all the energy being kinetic.
 
-Two particularly important moments of the SHM are
-the points where it is at its maximum position
-and zero velocity \(x=\pm A\), \(K=0\), \(E_T= U\), 
-which corresponds to all the energy being stored in the spring,
-and the point where it has zero displacement but
-maximal velocity \(x=0, U=0, v=\pm A\omega, E_T=K\),
-which corresponds to all the energy being kinetic.
+%
+%\dokutitleleveltree{Explanations}
+%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
 
+%\dokutitlelevelfour{Derivation of SHM equation}
 
-\dokutitleleveltree{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+%OK, wait a minute, you are saying. 
+%First I told you about uniform velocity \(x(t)=v_it+x_i\)
+%and then I added in acceleration \(x(t) = x_i + v_it + \frac{1}{2}at^2\),
+%which is a little more complex but still manageable.
+%Now I am talking about \(\sin\) and \(\cos\) and Greek letters with dubious
+%names like phase. 
+%Are you phased by all of this?
+%When I was learning this stuff, I was totally
+%phased because I didn't understand where the \(\sin\) and \(\cos\) came from.
 
-\dokutitlelevelfour{Derivation of SHM equation}
+%The \(\sin\) comes from \(F=ma\),
+%and the fact that the force of a spring is \(F_{s} = -kx\).
 
-OK, wait a minute, you are saying. 
-First I told you about uniform velocity \(x(t)=v_it+x_i\)
-and then I added in acceleration \(x(t) = x_i + v_it + \frac{1}{2}at^2\),
-which is a little more complex but still manageable.
-Now I am talking about \(\sin\) and \(\cos\) and Greek letters with dubious
-names like phase. 
-Are you phased by all of this?
-When I was learning this stuff, I was totally
-phased because I didn't understand where the \(\sin\) and \(\cos\) came from.
+%Recall the definition of acceleration:
+%\[
+% a=\frac{dv}{dt} = \frac{d^2x(t)}{dt^2}.
+%\]
 
-The \(\sin\) comes from \(F=ma\),
-and the fact that the force of a spring is \(F_{s} = -kx\).
+%We now substitute these facts into \(F=ma\) to get:
 
-Recall the definition of acceleration:
-\[
- a=\frac{dv}{dt} = \frac{d^2x(t)}{dt^2}.
-\]
+%\begin{align*}
+% F & =ma \\
+% -kx  	&= ma 	\\
+% -kx(t) &= m\frac{d^2x(t)}{dt^2} \\
+% 0 & = m\frac{d^2x}{dt^2}+ kx(t) \\
+% 0 & = \frac{d^2x}{dt^2}+ \frac{k}{m}x(t).
+%\end{align*}
 
-We now substitute these facts into \(F=ma\) to get:
+%This is as far as Newton's second law will be able to bring us.
+%The formula \(F=ma\) is not enough 
+%to tell us the exact function \(x(t)\), like in
+%the UVM and UAM kinematics motion in the earlier
+%chapters.  Instead of knowing the function \(x(t)\),
+%we know one of its properties, namely, that its
+%second derivative is equal to the negative of itself
+%multiplied by some numbers.
 
-\begin{align*}
- F & =ma \\
- -kx  	&= ma 	\\
- -kx(t) &= m\frac{d^2x(t)}{dt^2} \\
- 0 & = m\frac{d^2x}{dt^2}+ kx(t) \\
- 0 & = \frac{d^2x}{dt^2}+ \frac{k}{m}x(t).
-\end{align*}
+%Can you think of a function whose second derivative
+%is equal to itself times \(\frac{k}{m}\)? 
+%Ok I thought of one:
+%\[
+% x_1(t)=A \cos( \sqrt{ \frac{k}{m}}t + \phi),
+%\]
+%and come to think of it I thought of a second
+%one which also works:
+%\[
+% x_2(t)=A \sin( \sqrt{ \frac{k}{m}}t + \psi).
+%\]
+%Hmm, now you see where the \(\sin\) comes from 
+%and why we said that \(\omega = \sqrt{ \frac{k}{m} }\)
+%for a mass-spring system. It is all from \(F=ma\).
 
-This is as far as Newton's second law will be able to bring us.
-The formula \(F=ma\) is not enough 
-to tell us the exact function \(x(t)\), like in
-the UVM and UAM kinematics motion in the earlier
-chapters.  Instead of knowing the function \(x(t)\),
-we know one of its properties, namely, that its
-second derivative is equal to the negative of itself
-multiplied by some numbers.
+%
+%\dokutitleleveltree{Examples}
+%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
 
-Can you think of a function whose second derivative
-is equal to itself times \(\frac{k}{m}\)? 
-Ok I thought of one:
-\[
- x_1(t)=A \cos( \sqrt{ \frac{k}{m}}t + \phi),
-\]
-and come to think of it I thought of a second
-one which also works:
-\[
- x_2(t)=A \sin( \sqrt{ \frac{k}{m}}t + \psi).
-\]
-Hmm, now you see where the \(\sin\) comes from 
-and why we said that \(\omega = \sqrt{ \frac{k}{m} }\)
-for a mass-spring system. It is all from \(F=ma\).
+%In various word problems you will either be told the initial
+%amplitude \(x_i=A\) or the initial velocity \(v_i=\omega A\)
+%and asked to solve for some unknown. 
+%Nothing should be too difficult provided
+%you write down the equations 
+%\(x(t)\), \(v(t)\) and \(a(t)\) and fill in the knowns.
 
+%
+%\dokutitleleveltree{Links}
+%\label{807765384d9d5527da8848df14a4f02f}%% links
 
-\dokutitleleveltree{Examples}
-\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
-
-In various word problems you will either be told the initial
-amplitude \(x_i=A\) or the initial velocity \(v_i=\omega A\)
-and asked to solve for some unknown. 
-Nothing should be too difficult provided
-you write down the equations 
-\(x(t)\), \(v(t)\) and \(a(t)\) and fill in the knowns.
-
-
-\dokutitleleveltree{Links}
-\label{807765384d9d5527da8848df14a4f02f}%% links
-
-
-
-
+%
 
 
-%\bibliographystyle{alpha}
-%\bibliography{interferenceChannel}
+
+\section{Minireference}
+
+
+I hope this short excerpt from the \texttt{MATH and PHYSICS Minireference} 
+has given you some inspiration for compact teaching. No blah blah. Straight to the point.
+
+If you liked this tutorial you can check out the other ones on \url{http://minireference.com}
+and order the printed book which has not only formulas but also compact explanations:
+\url{http://minireference.com/order_book/}.
 
 \end{document}

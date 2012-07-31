@@ -1,0 +1,797 @@
+\documentclass[twocolumn,8pt]{extarticle}
+
+\title{ \Huge Equation quadratique}
+\author{Ivan Savov} 
+
+
+\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
+
+\usepackage[english]{babel} %% Use your own babel language
+
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\def\mcal{\mathcal}
+\def\eps{\epsilon}
+
+\newcommand{\comment}[1]{\noindent [\textit{#1}]}
+
+
+
+
+
+\newcommand{\settexitref}[2]{(\ref{#1}p\pageref{#1})}
+\newcommand{\dokutitlelevelone}[1]{\chapter{#1}}
+\newcommand{\dokutitleleveltwo}[1]{\section{#1}}
+\newcommand{\dokutitleleveltree}[1]{\subsection{#1}}
+\newcommand{\dokutitlelevelfour}[1]{\subsubsection{#1}}
+\newcommand{\dokutitlelevelfive}[1]{\paragraph{#1}}
+\newcommand{\dokufootnote}[1]{\footnote{#1}}
+\newcommand{\dokufootmark}[1]{\footnotemark{#1}}
+\newcommand{\dokubold}[1]{\textbf{#1}}
+\newcommand{\dokuitalic}[1]{\textsl{#1}}
+\newcommand{\dokumonospace}[1]{\texttt{#1}}
+\newcommand{\dokuunderline}[1]{\underline{#1}}
+\newcommand{\dokuoverline}[1]{\sout{#1}}
+\newcommand{\dokusupscript}[1]{\textsuperscript{#1}}
+\newcommand{\dokusubscript}[1]{$_{#1}$}
+\newcommand{\dokuhline}{\line(1,0){400}}
+\newcommand{\dokulabel}[1]{\label{#1}}
+\newcommand{\dokuitem}{\item}
+\newcommand{\dokuquoting}{\textbar}
+\newcommand{\dokutabularwidth}{\textwidth}
+% added by Ivan Savov
+\newcommand{\dokuheadingstyle}[1]{#1}
+
+
+
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,decorations,automata,backgrounds,petri}
+\usetikzlibrary{shapes.gates.logic.US}
+\usepackage[latin1]{inputenc}
+% http://tex.stackexchange.com/questions/13933/drawing-mechanical-systems-in-latex/13952#13952
+\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings}
+
+
+
+
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+We review some basic math notions and the 
+quadratic equation.
+\end{abstract}
+
+
+
+
+
+\dokutitlelevelfour{Example 1}
+
+Let's say your teacher doesn't like you and right away on the first day of classes he gives you 
+a serious equation and wants you to find \(x\):
+\[
+   \log_5\left(3 + \sqrt{6\sqrt{x}-7}   \right) = 34+\sin(345)-\Psi(1).
+\]
+Do you see now what I meant when I said that the teacher doesn't like you?
+
+First note that it doesn't matter what \(\Psi\) is, since \(x\) is on the other 
+side of the equation. We can just keep copying \(\Psi(1)\) from line to line
+and throw the ball back to the teacher: ``My answer is in terms of your variables dude\ldots{} \dokuitalic{you} go ahead and figure out what the hell \(\Psi\) is,
+since you brought it up.''
+The same goes with \(\sin(345)\). If you don't have a calculator don't worry about it. 
+We will just keep \(\sin(345)\) around and not try to evaluate it.
+Besides would you type in \(345\) radians or \(345\) degrees?
+
+
+\dokubold{Let's just find \(x\) and get it over with!}
+
+On the right side we have the sum of a bunch of terms and no \(x\) in them so we can leave them alone.
+On the left hand side, the outer most function is a logarithm base \(5\). 
+Cool\ldots{}. no problem look up in the table and find the 
+row where we have: \(a^x \leftrightarrow \log_a(x)\).
+We are going to apply the inverse on both sides:
+\[
+   5^{ \log_5\left(3 + \sqrt{6\sqrt{x}-7}   \right) }  = 5^{ 34+\sin(345)-\Psi(1) },
+\]
+which simplifies to:
+\[
+  3 + \sqrt{6\sqrt{x}-7} = 5^{ 34+\sin(345)-\Psi(1) }.
+\]
+
+From here on it's like if Bruce Lee walked into a place with lots of bad guys. Addition of 3 is undone by subtracting \(3\) on both sides:
+\[
+  \sqrt{6\sqrt{x}-7} = 5^{ 34+\sin(345)-\Psi(1) } - 3,
+\]
+and to undo a square root you take the square
+\[
+  6\sqrt{x}-7 = \left(5^{ 34+\sin(345)-\Psi(1) } - 3\right)^2.
+\]
+Add \(7\) to both sides
+\[
+  6\sqrt{x} = \left(5^{ 34+\sin(345)-\Psi(1) } - 3\right)^2+7.
+\]
+Divide by \(6\):
+\[
+  \sqrt{x} = \frac{1}{6}\left(\left(5^{ 34+\sin(345)-\Psi(1) } - 3\right)^2+7\right),
+\]
+and then we square again plus some simplifications to get:
+\begin{align*}
+  x 
+ &= \left[\frac{1}{6}\left(\left(5^{ 34+\sin(345)-\Psi(1) } - 3\right)^2+7\right) \right]^2  \\
+ &= \frac{1}{36}\left[\left(5^{ 34+\sin(345)-\Psi(1) } - 3\right)^2+7\right]^2.
+\end{align*}
+
+Do you see what I am doing?
+Next time a function stands in your way, hit it with its inverse!
+
+
+\dokutitlelevelfour{Discussion}
+
+The recipe I have outlined above is not universal.
+Sometimes \(x\) isn't alone on one side. Sometimes \(x\) appears in several places in the same equation
+so just throwing complications from one side to the other won't help you.
+You need other techniques for solving equations like that.
+
+The bad news is that there is no general formula for solving complicated formulas.
+The good news is that the above technique of digging towards \(x\) is sufficient for 80\% 
+of what you are going to be doing.
+You can get another 10\% if you learn how to solve the \hyperref[470dad9cac00a9924004d164cb491a31]{quadratic{\textbackslash}\_equation}:
+\[
+  ax^2 +bx + c = 0.
+\]
+
+Solving third order equations \(ax^3+bx^2+cx+d=0\) with 
+pen and paper is still possible, but at this point you really
+might as well start using a computer. 
+
+There are all kinds of other equations which you can learn how
+to solve: equations with multiple unknowns, equations with
+logarithms, equations with exponentials, and equations
+with trigonometric functions.
+The essential principle of \dokuitalic{digging}
+towards the unknown will get you pretty far though, so be sure
+to practice it.
+
+
+
+
+
+\dokutitleleveltwo{Basic algebra rules}
+\label{c3e38dc40d7a0015b4d8b65d875bd50b}%% basic_algebra_rules
+
+For \(a,b,c,d\in\mathbb{R}\) holds:
+
+
+\begin{enumerate}\dokuitem  Distributive property: \(a(b+c)=ab+ac\).
+\dokuitem  Associative property: \(a(bc)=b(ac)=c(ab)\).
+\dokuitem  Commutative property: \(a+b=b+a\), \(ab=ba\).
+\end{enumerate}
+
+Combining the distributive and the associative property we can get this: \\ 
+\((a+b)(c+d)=a(c+d) + b(c+d) = ac+ad+bc+bd\).
+
+
+\dokutitlelevelfive{Example}
+This is useful when you are dealing with polynomials:
+\[
+  (x+3)(x+2)=x(x+2) + 3(x+2)= x^2 +x2 +3x + 6.
+\]
+Now for polynomials, we can use the commutative property
+on the second term \(x2=2x\), and then combine the
+two \(x\) terms into one to obtain:
+\[
+  (x+3)(x+2)= x^2 + 5x + 6.
+\]
+
+
+This kind of calculation happens so often that it is
+good idea to see it in more abstract form
+\[
+  (x+a)(x+b) = x^2 + (a+b)x + ab.
+\]
+My high school teacher used to repeat this to us all
+the time ``a binomial times a binomial gives a trinomial''.
+
+
+\dokutitleleveltree{Factoring}
+\label{bd72fce91eca7fd86b64fe98d212427e}%% factoring
+
+Factoring means to take out some common part in a
+complicated expression to make it more compact.
+Given an expression, we can ask what the 
+factors of each term are:
+\[
+  6x^2y + 15x =   (3)(2)(x)(x)y + (5)(3)x.
+\]
+We see that \(x\) and \(3\) appear in both terms.
+This means we can \dokuitalic{factor them out} to the front
+like this:
+\[
+ 6x^2y + 15x =  3x(2xy+5).
+\]
+Now is this simpler? 
+On the left there are \(8\) characters and on the 
+right there are \(7\) characters so we are saving space.
+More significant savings can occur in expressions like this:
+\[
+  2x^2y + 2x + 4x = 2x(xy+1+2) =  2x(xy+3).
+\]
+
+
+\dokutitlelevelfive{Example}
+
+You are asked to solve for \(t\) in 
+\[
+ 7(3 + 4t) = 11(6t - 4).
+\]
+As you can see, \(t\) is on both sides. We don't like that.
+We have to bring all the \(t\) terms to one side and all the
+constant terms on the other.
+First let's expand the two brackets:
+\[
+ 21 + \tikz[remember picture] \node[fill=blue!20] (n2) {$28t$};  = 66t - 44.
+\]
+Now we move things around to get:
+\[
+ 21 + 44 = 66t -  \tikz[remember picture] \node[fill=blue!20] (n2bis) {$28t$};  .
+\]
+If we factor out \(t\) on the right hand side we get:
+\[
+ 21 + 44 = (66 - 28)t,
+\]
+so \(t = \frac{21 + 44}{66 - 28} = \frac{65}{38}\).
+
+\begin{tikzpicture}[remember picture,overlay] 
+	\draw[blue!20,->] (n2) -- (n2bis);\end{tikzpicture}
+
+\dokutitleleveltree{Quadratic factoring}
+\label{231e44a9b24528f89d83cbc42d87e094}%% quadratic_factoring
+
+When dealing with a quadratic functions, it is often
+useful to rewrite it as a product of two terms.
+If I give you the quadratic expression
+\[
+  x^2+5x+6,
+\]
+you can't really tell what its properties are.
+What are its roots? Where is it positive and where is it negative?
+
+We can factor this expression, that is express it as a product of two things \((x-?)(x-?)\)
+as follows:
+\[
+  x^2+5x+6 = (x+2)(x+3),
+\]
+and you see immediately that \(x=-2\) and \(x=-3\) are the solutions (roots).
+You can also see that for \(x>-2\) the expression is positive, since 
+both terms will be positive. For \(x< -3\) both terms will be negative, but
+negative times negative gives positive, so the expression will be positive again.
+For values of \(x\) such that \(-3<x< -2\), the first term will be negative, and
+the second positive so the overall expression will be negative.
+
+For some simple quadratics you can \dokuitalic{guess} what the factors are.
+For more complicated ones, you need the \hyperref[470dad9cac00a9924004d164cb491a31]{quadratic formula}.
+
+Quadratic functions that never cross the \(x\)-axis cannot be factored.
+
+
+\dokutitleleveltree{Completing the square}
+\label{b94fc77efd4263b48096cc83d6dee58b}%% completing_the_square
+
+Any quadratic formula can be written in the form \(A(x-h)^2+k\).
+This is because all quadratic function with the same quadratic coefficient 
+are essentially shifted version of each other. 
+By \dokuitalic{completing the square} we are making these shifts explicit. 
+The value of \(h\) is how much the function is shifted to the \dokuitalic{right} and
+the value \(k\) is the vertical shift.
+
+Let's try to find the values \(A,k,h\) for our previous formula
+\[
+  x^2+5x+6  =   A(x-h)^2+k = A(x^2-2hx + h^2) + k = Ax^2 - 2Ahx + Ah^2 + k.
+\]
+
+By focussing on quadratic terms on both sides of the equation
+we see that \(A=1\), so we have
+\[
+  x^2+\underline{5x}+6 =  x^2  \underline{-2hx} + h^2 + k.
+\]
+Next we look at the terms multiplying \(x\), and we see that \(h=-2.5\),
+so we obtain
+\[
+  x^2+5x+\underline{6} =  x^2+ 2(2.5)x + \underline{(2.5)^2 + k}.
+\]
+Finally we pick value of \(k\) which would make the constant terms match
+\[
+ k = 6 - (2.5)^2 = 6 - \left(\frac{5}{2}\right)^2 = 6 \times \frac{4}{4} - \frac{25}{4} = \frac{24 - 25}{4} = \frac{-1}{4}.
+\]
+This is how we complete the square, to obtain:
+\[
+  x^2+5x+6  = (x+2.5)^2 - \frac{1}{4},
+\]
+which tells us that our function was just the basic \(x^2\), shifted 2.5 units to the left, and \(1/4\) units downwards.
+This would be really useful information if you ever had to draw this function, since it is easy to plot the basic \(x^2\) graph, and then shift
+it appropriately.
+
+
+
+
+\dokutitleleveltwo{Solving quadratic equations}
+\label{194a7a851bde33e69ef4857d4aec9049}%% solving_quadratic_equations
+
+If you are asked to find \(x\) in the equation 
+\[
+  x^2 = 45x + 23,
+\]
+what would you do?
+
+In math this happens a \dokuitalic{whole} lot, so people came up with a 
+formula for solving it.
+
+To apply the formula you need to put the equation into the
+standard form
+\[
+  ax^2 + bx + c = 0,
+\]
+where we have moved all the numbers and \(x\)'s to one side and left 
+just \(0\) on the other side.
+
+For our numerical example above this would mean that we subtract 
+\(45x+23\) on both sides of the equation to obtain
+\[
+  x^2 - 45x - 23 = 0.
+\]
+
+What are the values of \(x\) that satisfy this formula?
+
+
+\dokutitlelevelfour{Claim}
+
+The solutions to the equation 
+\[
+  ax^2 + bx + c = 0,
+\]
+are
+\[
+   x_1 = \frac{-b + \sqrt{b^2-4ac} }{2a}, \ \ \text{  and  }
+ \ \ x_2 = \frac{-b - \sqrt{b^2-4ac} }{2a}.
+\]
+
+
+Using the quadratic formula, solving the above complicated
+equation \(x^2 - 45x - 23 = 0\) becomes a mechanics task of plugging
+in the appropriate numbers into the formula:
+\[
+  x_1 = \frac{45 + \sqrt{45^2-4(1)(-23)} }{2} = 45.5054\ldots,
+\]
+\[
+  x_2 = \frac{45 - \sqrt{45^2-4(1)(-23)} }{2} = -0.5054\ldots
+\]
+Answers obtained by using \href{http://www.google.ca/search?hl=en&client=safari&rls=en&q=%28++45+%2B+sqrt%2845%5E2-4%281%29%28-23%29%29++++%29%2F2&aq=f&aqi=&aql=&oq=&gs_rfai=}{google}.
+
+
+\dokutitlelevelfour{Proof of claim}
+
+This is an important proof. You should know how to derive the quadratic
+formula in case your younger brother asks you one day 
+to derive the formula from first principles.
+To understand the proof, all you need to know is
+how to ``complete the square'',
+which we just saw, so you can't say that you are not prepared.
+
+
+We start with
+\[
+  ax^2 + bx + c = 0.
+\]
+As a first step we move \(c\) to the other side
+\[
+  ax^2 + bx  = -c,
+\]
+and then we divide by \(a\) on both sides
+\[
+  x^2 + \frac{b}{a}x  = -\frac{c}{a}.
+\]
+
+Now we \dokuitalic{complete the square} on the left hand side, 
+which is to say we ask the question: what are the values of \(h\) and \(k\)
+for this equation to hold?
+\[
+  (x+h)^2 + k = x^2 + \frac{b}{a}x = -\frac{c}{a}.
+\]
+The answer is \(h = \frac{b}{2a}\).
+It can be a bit confusing to figure out what \(k\) is, so let's
+work it out step by step.
+Just remember that \dokubold{to complete the square you 
+have to use half of the linear term inside the bracket.}
+
+So what do we have so far:
+\[
+  \left(x + \frac{b}{2a} \right)^2
+= \left(x + \frac{b}{2a} \right)\!\!\left(x + \frac{b}{2a} \right)
+= x^2 + \frac{b}{2a}x + x\frac{b}{2a} + \frac{b^2}{4a^2}  = x^2 + \frac{b}{a}x + \frac{b^2}{4a^2},
+\]
+which means that 
+\[
+  \left(x + \frac{b}{2a} \right)^2 - \frac{b^2}{4a^2}  = x^2 + \frac{b}{a}x.
+\]
+
+Remember where we left off in the proof?
+\[
+  x^2 + \frac{b}{a}x  = -\frac{c}{a}
+\]
+We replace the left hand side by the completed square expression:
+\[
+   \left(x + \frac{b}{2a} \right)^2 - \frac{b^2}{4a^2}  = -\frac{c}{a}.
+\]
+From here on it is standard stuff from \hyperref[de8b0e5156f4d2cb51a8bfd6e08459a0]{solving{\textbackslash}\_equations}.
+We put all the constants on the same side
+\[
+   \left(x + \frac{b}{2a} \right)^2  = -\frac{c}{a} +  \frac{b^2}{4a^2}, 
+\]
+Since \(x^2\) maps both positive and negative numbers to the same value,
+there will be two solutions:
+\[
+   x + \frac{b}{2a}  = \pm \sqrt{ -\frac{c}{a} +  \frac{b^2}{4a^2}  }.
+\]
+Let's take this moment to cleanup the mess on the right hand side.
+\[
+  \sqrt{ -\frac{c}{a} +  \frac{b^2}{4a^2}  } 
+= \sqrt{ -\frac{(4a)c}{(4a)a} +  \frac{b^2}{4a^2}  }
+= \sqrt{ \frac{- 4ac + b^2}{4a^2}  }
+= \frac{\sqrt{b^2 -4ac}   }{ 2a   }.
+\]
+
+Thus we have:
+\[
+   x + \frac{b}{2a}  = \pm \frac{\sqrt{b^2 -4ac}   }{ 2a   },
+\]
+which is just one step away from the final answer
+\[
+   x  = \frac{-b}{2a}  \pm \frac{\sqrt{b^2 -4ac}   }{ 2a   } = \frac{-b \pm \sqrt{b^2 -4ac}   }{ 2a   },
+\]
+which completes the proof.
+
+
+\dokutitlelevelfour{Alternative proof of claim}
+
+We didn't need to necessarily show the derivation of the formula
+as we did.  The claim was that \(x_1\) and \(x_2\) are solutions,
+so to prove the claim we could simply plug in \(x_1\)
+and \(x_2\) into the quadratic equation and verify that we get zero.
+\dokubold{Verify on your own.}
+
+
+\dokutitleleveltree{Applications}
+\label{b5fba9ff24d0045d1377a05a46b32f68}%% applications
+
+\dokutitlelevelfour{The Golden Ratio}
+
+The golden ratio, usually denoted \(\phi=1.6180339\ldots\)
+is a very important  proportion in geometry, art, aesthetics, biology and mysticism. 
+It comes about from the solution to the equation
+\[
+  x^2 +x -1 = 0.
+\]
+
+Using the quadratic formula we get the two solutions
+which are
+\[
+   x_1 = \frac{-1+\sqrt{5}}{2} = \frac{1}{\phi}, \qquad x_2 = \frac{-1-\sqrt{5}}{2} = - \phi.
+\]
+
+You can \hyperref[d7bbf6d9d4bc796ac89630339c203241]{read more about the golden ratio} to learn
+about the verious contexts in which it appears.
+
+
+
+
+\dokutitleleveltwo{Exponents}
+\label{2f711bc1acfc4fcc18827d8a2655a05f}%% exponents
+
+We often have to multiply number together the same number many times
+in math so we use the notation
+\[
+  x^n  = \underbrace{xxx \cdots xx}_{n \text{ times} }
+\]
+to denote some number \(x\) multiplied together \(n\) times.
+
+
+\dokutitleleveltree{Definitions}
+\label{9fdc1f6b239f0e86ec8651552f2b0683}%% definitions
+
+\begin{itemize}
+\dokuitem  \(b^x\): \(b\) exponent \(x\):
+\begin{itemize}
+\dokuitem  \(b\): is called the \dokuitalic{base}.
+\dokuitem  \(x\): is the exponent.
+\end{itemize}
+
+\dokuitem  \(\exp(x)=e^x\): the ``natural'' exponential function base \(e\)  Euler's number.
+\dokuitem  \(2^x\): exponential function base \(2\), very important in computer science.
+\dokuitem  \(b^0=1\): by definitions zero times something gives \(1\).
+\end{itemize}
+
+\dokutitleleveltree{Formulas}
+\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+
+The number \(e=2.7182818\ldots\) is a special base that has lots of applications.
+We call that the \dokuitalic{natural} base.
+
+Another special base is \(10\) because we use the decimal
+system for our numbers.
+The \(\log_{10}\) of a number corresponds to 
+how many digits there are in the number. 
+
+
+\dokutitlelevelfive{Property 1}
+
+\[
+   b^m b^n = b^{m+n},
+\]
+which follows from first principles:
+Exponentiation means multiplying together the base many times.
+So \(b^m\) means you multiply \(b\) times itself \(m\) times. So if you
+count the total number of \(b\)s on the left side you will see that
+there is a total of \(m+n\) of them.
+
+
+\dokutitlelevelfive{Property 2}
+\[
+   b^{-n} = \frac{1}{b^n},
+\]
+
+
+\dokutitlelevelfive{Property 3}
+\[
+   \frac{b^m}{b^n} = b^{m-n},
+\]
+
+
+\dokutitlelevelfive{Property 4}
+\[
+   ({b^m})^n = b^{mn},
+\]
+
+
+\dokutitlelevelfive{Property 5}
+\[
+   (ab)^n = a^n b^n,
+\]
+
+
+\dokutitlelevelfive{Property 5.2}
+\[
+   \left(\frac{a}{b}\right)^n = \frac{a^n}{b^n},
+\]
+
+
+\dokutitlelevelfive{Property 6}
+\[
+  b^{1/n} = \sqrt[n]{b},
+\]
+in particular \(b^{1/2}=\sqrt{b}\).
+
+\[
+  \sqrt[n]{ab} = \sqrt[n]{a}\sqrt[n]{b},
+\]
+\[
+  \sqrt[n]{\left(\frac{a}{b}\right)} = \frac{\sqrt[n]{a} }{ \sqrt[n]{b} },
+\]
+
+If \(n\) is odd
+\[
+  \left( \sqrt[n]{b} \right)^n = \sqrt[n]{ b^n } = b.
+\]
+
+If \(n\) is even and \(b\) is positive
+\[
+  \left( \sqrt[n]{b} \right)^n = \sqrt[n]{ b^n } = |b|,
+\]
+but if \(b\) is negative then we can't evaluate \(\sqrt[n]{b}\)
+(there is no real number which multiplied times itself gives a negative number)
+so only the second part of the ``cancellation'' holds
+\[
+   \sqrt[n]{ b^n } = |b|,
+\]
+where \(|b|\) is the absolute value.
+
+
+
+
+\dokutitleleveltwo{Logarithms}
+\label{c95a6da6fb331984f198feec0b0bb1a5}%% logarithms
+
+The word ``logarithms'' makes most people think about some mythical
+mathematical beast. Probably many headed and extremely difficult to
+understand.
+
+None such thing!  Logarithms are simple. It will take you 
+at most a couple of pages to get used to manipulating them. 
+Logarithms are used all over the place.
+The strength of your sound system is measured in decibels \([dB]\), 
+which is because your ear is sensitive only to exponential differences
+in sound.
+Logarithms allow us to compare very large numbers and very 
+small numbers on the same scale. If we were measuring sound
+in linear units instead of logarithmic then your sound system
+volume control would have to go from \(1\) to \(1048576\). 
+Indeed, if the volume notches on your sound system go from 1 to 20,
+then each notch probably doubles the power 
+instead of increasing it by a fixed amount.
+
+Let's get started.
+
+
+\dokutitleleveltree{Definitions}
+\label{9fdc1f6b239f0e86ec8651552f2b0683}%% definitions
+
+You are probably familiar with these concepts already:
+
+
+\begin{itemize}\dokuitem  \(b^x\): the exponential function base \(b\).
+\dokuitem  \(\exp(x)=e^x\): the ``natural'' exponential function base \(e\)  Euler's number.
+\dokuitem  \(2^x\): exponential function base \(2\), very important in computer science.
+\dokuitem  \(f(x)\): some function.
+\dokuitem  \(f^{-1}(x)\): the inverse of the function \(f(x)\). It is defined in terms of \(f(x)\)  such that the following holds \(f^{-1}(f(x))=x\) i.e.,  if you apply \(f\) to some number and get the output \(y\), and then you feed \(y\) into \(f^{-1}\) the output of \(f^{-1}\) will be \(x\).
+\end{itemize}
+
+In this section we will play with the following new concepts:
+
+
+\begin{itemize}\dokuitem  \(\log_b(x)\): logarithm of \(x\) base \(b\). This is the inverse function of \(b^x\).
+\dokuitem  \(\ln(x)\); the ``natural'' logarithm base \(e\). This is the inverse of \(e^x\).
+\dokuitem  \(\log_2(x)\): logarithms base \(2\). The answer to the question, how many bits of computer memory does it take to store a large number \(N\)  is \(\log_2(N)\) bits.
+\end{itemize}
+
+\dokutitleleveltree{Formulas}
+\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+
+The main thing to realize is that \(\log\)s don't really exist on their own.
+They are defined as the inverses of the corresponding exponential function.
+The following statements are equivalent:
+\[
+  \log_b(x)=m \ \ \ \ \  \Leftrightarrow \ \ \ \ \ b^m=x.
+\]
+
+For logarithms with base \(e\) one writes \(\ln(x)\) because
+\(e\) is a special base that has lots of applications.
+This is a subject for another lesson, but I wanted also
+to mention that \(e^x\) is actually related to \(\sin(x)\) and \(\cos(x)\).
+
+Another special base is \(10\) because we use the decimal
+system for our numbers. \(\log_{10}(x)\) tells you roughly
+the size of the number \(x\): how many digits it has. 
+When a system pawn with a high paying financial sector job
+boast about his or her ``six-figure'' salary, they are really talking
+about the \(\log\) of how much money they make.
+What wankers! 
+
+Let me show you the two-three equations that you need to know
+for dealing with logs.
+
+
+\dokutitlelevelfive{Property 1}
+
+\[
+  \log(x)+\log(y)=\log(xy),
+\]
+from which we can derive two other useful ones:
+\[
+  \log(x^k)=k\log(x),
+\]
+and 
+\[ 
+  \log(x)-\log(y)=\log\left(\frac{x}{y}\right).
+\]
+
+\dokuitalic{Proof:} For all three equations above we have to show
+that the expression on the left is equal to the expression
+on the right.
+
+We have only been acquainted with logarithms for a very
+short time. We don't know each other that well. 
+In fact, the only thing we know about \(\log\)s is the 
+inverse relationship with the exponential function.
+So the only way to prove this property is to use this relationship.
+
+The following statement is true for any base \(b\):
+\[
+   b^m b^n = b^{m+n},
+\]
+which follows from first principles. 
+Exponentiation means multiplying together the base many times.
+So \(b^m\) means you multiply \(b\) times itself \(m\) times. So if you
+count the total number of \(b\)s on the left side you will see that
+there is a total of \(m+n\) of them.
+
+If you define some new variables \(x\) and \(y\) such that
+\(b^m=x\) and \(b^n=y\) then the above equation will read 
+\[
+  xy = b^{m+n},
+\]
+if you take the logarithm of both sides you get
+\[
+  \log_b(xy) = \log_b\left(  b^{m+n} \right) = m + n = \log_b(x) + \log_b(y).
+\]
+In the last step we used the definition of log again which
+states that \(b^m=x \Leftrightarrow m=\log_b(x)\) and \(b^n=y \Leftrightarrow n=\log_b(y)\).
+
+
+Next we discuss another set some more rules about changing from
+one base to another. 
+Is there some relation between \(\log_{10}(S)\) and \(\log_2(S)\)?
+
+
+\dokutitlelevelfive{Property 2}
+
+\[
+  \log_{B}(x) =  \frac{\log_b(x)}{\log_b(B)}
+\]
+
+
+
+
+This means that:
+\[
+ \log_{10}(S) 
+ =\frac{\log_{10}(S)}{1}
+ =\frac{\log_{10}(S)}{\log_{10}(10)} 
+ = \frac{\log_{2}(S)}{\log_{2}(10)}=\frac{\ln(S)}{\ln(10)}.
+\]
+
+This property is very useful in case when you want to compute 
+\(\log_{10}\), but your calculator only gives you \(\ln\) then you simply compute the 
+two numbers on the right hand side and divide them.
+
+
+\dokutitleleveltree{Discussion}
+\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
+
+\dokutitlelevelfive{Applications of logarithms}
+
+In many sciences people often interchange multiplication and addition 
+by using a logarithm transform
+\[
+  \log_3(f(x)) + log_3(g(x)) = z,
+\]
+which by the properties of logarithms (see definition) can be written as  
+\[
+  \log_3(f(x)g(x)) = z,
+\]
+which in turn means \(f(x)g(x)=3^z\).
+
+This is useful in probability theory since if you have some probability distribution \(p(x,y)\) that is independent then \(p(x,y)=p_X(x)p_Y(y)\). If you take the logarithm of this expression (the concept of log likelihood is the basis of \dokuitalic{machine learning}) then you
+you get
+\[
+  \log(p_X(x)p_Y(y)) = \log(p_X(x)) + \log(p_Y(y)),
+\]
+so very complicated product expressions can be evaluated as sums.
+Human and computers are much better at adding numbers 
+than multiplying them, so we use this trick all the time.
+
+
+
+
+\section{Strudent loan interest rate}
+
+We need the exponental function here...
+
+
+
+
+
+
+%\bibliographystyle{alpha}
+%\bibliography{interferenceChannel}
+
+\end{document}
