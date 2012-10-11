@@ -1,13 +1,13 @@
-\documentclass[twocolumn,8pt]{extbook}
+\documentclass[twocolumn,8pt]{extarticle}
 
-\title{ \Huge Equation quadratique}
-\author{Ivan Savov} 
+\title{ \Huge Mechanics in four pages}
+%\author{Ivan Savov} 
 
 
 \usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
 
 \usepackage[english]{babel} %% Use your own babel language
-
+\date{}
 
 
 \usepackage{amsthm}
@@ -22,8 +22,14 @@
 
 
 
+\usepackage{wrapfig}
+
+
+
+%\usepackage{standalone}
+
 \usepackage{enumitem}
-\setitemize{itemsep=0.0in}   % LISTS WERE TOO AIRY
+\setitemize{itemsep=-0.04in}   % LISTS WERE TOO AIRY
 
 
 
@@ -67,21 +73,38 @@
 
 
 \begin{document}
-%\maketitle
 
+
+
+\twocolumn[
+  \begin{@twocolumnfalse}
+\begin{center}
+\fontsize{27}{16}\selectfont
+%EZ \ MECHANICS \ TUTORIALS
+MECHANICS \ \  in \ \  FOUR PAGES
+\normalsize 
+%\vspace{2mm}
+%by Ivan Savov
+\vspace{6mm}
+\end{center}
+	%    \maketitle
+	%    \begin{abstract}
+	%      ...
+	%    \end{abstract}
+  \end{@twocolumnfalse}
+  ]
+  
 
 %\begin{abstract}
-%This document is a self contained reference of the key concepts
-%of Newtonian Mechanics.
+%{\small This document is a self contained reference of the key concepts in Mechanics. 
+%Because I know that you have beers to drink and parties to go to, I will teach you the
+%important parts right now so you can chill later on in the semester. }
 %\end{abstract}
 
 
 
-
-
-
-\dokutitlelevelone{Mechanics}
-\label{05f8e33b48d5f8430980e3d1f38e5116}%% mechanics
+%\dokutitlelevelone{Mechanics}
+%\label{05f8e33b48d5f8430980e3d1f38e5116}%% mechanics
 
 %Mechanics is the precise study of moving objects, forces and energy.
 %You already have an intuitive understanding of these concepts,
@@ -99,7 +122,223 @@
 %be able to calculate and predict phenomena in the world around you
 %simply by plugging numbers into the right equation.
 
-In short, mechanics is powerful stuff, so let's get right into it.
+\section{Introduction}
+
+Mechanics is the precise study of the motion of objects, the forces acting
+on them and more abstract concepts such as momentum and energy.
+You probably have an intuitive understanding of these concepts already,
+but in this tutorial you will learn how to use precise mathematical
+equations to support your intuition. Perhaps more importantly, I will also
+teach you where the equations come from.
+
+The key concept which we want to obtain in a physics problem is the 
+\emph{equation of motion} $x(t)$ of an object which describes its position at all times. 
+%
+To find $x(t)$ we will start from 
+Newton's second law $F=ma$, which says that forces \emph{cause} objects to accelerate
+and that the amount of acceleration produced is inversely proportional to the mass of the object. 
+Once we the acceleration of an object (the rate of change of its velocity), we can use \emph{integration}
+to find the velocity of the object at all times $v(t)$ and from there we can also
+find its position as a function of time $x(t)$:
+\begin{equation}
+ \frac{1}{m}\sum \vec{F} = a(t) \overset{\ \int\!dt }{\longrightarrow} v(t) \overset{\ \int\!dt }{\longrightarrow} x(t).
+ \label{fma-eqn}
+\end{equation}
+Note that the left hand side in the above equation involves the calculation of \emph{net force}
+which is the sum of all the forces acting on the object: $\vec{F}_{\mathrm{net}} \equiv \sum \vec{F}$.
+%
+%Kinematics is the study of the right hand side in the above equation:
+%it involves computing the velocity and the position starting from the acceleration.
+
+
+\begin{equation}
+  U(h) = \int_0^h  \vec{F}_g \cdot d\vec{y} = mgh.
+\end{equation}
+
+You may have observed that both of the above equations contained
+vector quantities and involved integrals. Indeed, in order to properly
+understand the laws of physics, you need to know about vectors and
+a little bit of calculus.  The background section will introduce these
+concepts.
+
+\section{Background}
+
+The basic quantities that will appear in the equations of physics are 
+measured in meters [m], seconds [s], meters per second [m/s],  meters per second squared [m/s$^2$] and
+Newtons [N]. You should always keep in mind which units are being used (meters vs. kilometres) and
+\emph{what type} the type quantity you are manipulating (length vs. velocity). 
+%
+You should also be aware whether the quantities are regular numbers 
+or \emph{vectors} with multiple components.
+
+
+\subsection{Vectors}
+
+Forces, velocities, and accelerations are vector quantities.
+When working with vectors you will have to work their \dokuitalic{components}:
+
+\begin{itemize}
+\dokuitem $\vec{F}=(F_x,F_y)$: a vector quantity, a force.
+\dokuitem  \(x\)-axis:  The \(x\)-axis is the horizontal the coordinate system.
+\dokuitem  \(y\)-axis: The \(y\)-axis is an axis \dokuitalic{perpendicular} to the \(x\)-axis.
+\dokuitem  \(F_x\): the \dokuitalic{component} of \(\vec{F}\) along the \(x\) axis.
+\dokuitem  \(F_y\): the \dokuitalic{component} of \(\vec{F}\) along the \(y\) axis.
+\dokuitem  \(\hat{\imath},\hat{\jmath}\): Unit vectors in the \(x\) and \(y\) directions. 
+%\end{itemize}
+%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
+%\begin{itemize}
+%Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
+\end{itemize}
+
+Given the $xy$ coordinate system, we can denote a vector in three equivalent ways:
+\[
+  \vec{F}  
+  \ \equiv \ (F_x,F_y)
+  \ \equiv \  F_x\hat{\imath} + F_y\hat{\jmath} 
+  %\equiv F_x\hat{x} + F_y\hat{y} \equiv  (F_x,F_y)
+  \ \equiv \ 
+  \|\vec{F}\| \angle \theta,
+\]
+where $\|\vec{F}\|$ denotes the length of the vector $\vec{F}$ and
+$\theta$ is the angle that it makes with the $x$ axis.
+
+
+
+
+
+
+
+\subsection{Integrals}
+\label{3369022ed3e212789ba2790306add593}%% integrals
+\begin{wrapfigure}{r}{0pt}
+\includegraphics[width=0.21\textwidth]{/Library/WebServer/Documents/miniref/data/media/calculus/integral_as_region_under_curve_t.png}
+\end{wrapfigure}
+
+An integral corresponds to the computation of an \dokuitalic{area}
+under a curve $f(t)$ between two points:
+\[
+ A(a,b) \equiv \int_{t=a}^{t=b} f(t)\;dt.
+\]
+The symbol $\int$ is a mnemonic for \dokuitalic{sum}, 
+since the area under the curve corresponds in some
+sense to the sum of the values of the function $f(t)$
+between $t=a$ and $t=b$.
+The integral is the total amount of $f$ between $a$ and $b$.
+%
+%For certain functions, it is possible to find an anti-derivative function 
+%$F(t)$ which is the ``running total'' of the total area under the curve. 
+%The area under $f(t)$ between $a$ and $b$ is computed as the \dokuitalic{change} in $F(\tau)$:
+%\[
+% A(a,b) = F(b) - F(a).
+%\]
+
+%The anti-derivative function $F(\tau)$ is also known 
+%as the \dokuitalic{indefinite integral} of $f(t)$ because it 
+%corresponds to the integral calculation without the
+%need to specify a \dokuitalic{definite} number for the upper limit:
+%\[
+% F(\tau) = \int^\tau_0 f(t)\;dt + F(0) = A(0,\tau) + F(0).
+%\]
+%We use the Greek letter $\tau$ (tau) to denote the input of $F$ since $t$
+%is already used as the integration variable.
+
+%The choice of $t=0$ as the starting point is 
+%completely arbitrary.  We could have used a different
+%starting point and obtained a different anti-derivative:
+%\[
+% F_2(\tau) = \int^\tau_{42} f(t)\;dt + F_2(42) = A(42,\tau) + F_2(42).
+%\]
+%Both $F$ and $F_2$ are anti-derivatives of the function $f$
+%and contain all the information about the area under the curve
+%\[
+%  A(a,b) = F(b) - F(a) = F_2(b) - F_2(a).
+%\]
+%The effect of the choice of the starting point is to
+%add or subtract a constant term to the anti-derivative.
+%All anti-derivatives of the function $f(t)$ differ only by
+%an additive constant factor $F=F_2 + C$.
+%We call $C$ the integration constant, and its value
+%is usually specified by external conditions.
+
+
+Consider for example the constant function $f(t)=3$,
+and let us find the expression $F(\tau)\equiv A(0,\tau)$
+that corresponds to the area under $f(t)$ between 
+$t=0$ and the time $t=\tau$.
+
+\begin{wrapfigure}{r}{0pt}
+\includegraphics[width=84pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_one_tikz-0.png}
+\end{wrapfigure}
+
+We can easily find this area because the region under the curve is rectangular:
+\[ 
+ \! F(\tau) \!= \! \! \int_0^\tau \!\! f(t)\;dt  = 3 \tau.
+\]
+Indeed the area is equal to the height times the length of the 
+base of the rectangle.
+
+
+\begin{wrapfigure}{r}{0pt}
+\includegraphics[width=84pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_two_tikz-0.png}
+\end{wrapfigure}
+
+Anther important calculation is the area under 
+the function $g(t)=t$. We will compute $G(\tau)\equiv A(0,\tau)$,
+which corresponds to the area under $g(t)$ between $0$ and $\tau$.
+This area is also easily computed since the region under the curve 
+is triangular:
+\[
+ G(\tau) = \int_0^\tau f(t) \; dt = \frac{\tau\times\tau}{2} = \frac{1}{2}\tau^2,
+\]
+since the area of a triangle is the product of the length of
+the base times the height divided by two.
+
+
+We were able to compute the above integrals thanks to the
+simple geometry of the areas under the curves. Later on in
+this book we will develop techniques for finding 
+integrals of more complicated functions.
+%In fact, there is an entire course, Calculus II,
+%which is dedicated to the task of finding integrals.
+
+What you need to remember for now that the integral 
+of a function is the total amount of the function accumulated
+during some time period.
+You should try to remember the formulas:
+\[
+ \int_c^\tau a \;dt = a\tau + C, \quad 
+ \int_c^\tau at \;dt = \frac{1}{2}a\tau^2 + C,
+\]
+which correspond to the integral of a constant function
+$f(t)=a$ and the integral of $f(t)=at$, a line with slope $a$.
+%Note how we always add an additive constant term $+C$ when
+%we state integral formulas. This is to remind  us that the 
+%answer has an extra parameter (an additive constant term),
+%which must be specified by the problem.
+Note that each time you give a general integral formula
+the answer will contain an additive constant term $+C$,
+which depends on the starting point $t=c$, which 
+we use for the area calculation. 
+In the above examples we used $c=0$ as the initial
+point so we had $C=0$.
+
+Using the above formulas in combination,
+you can now compute the integral under of 
+an arbitrary line $f(t)=mt+b$ as follows:
+\[
+% F(\tau)=
+%  \int_0^\tau f(t)\;dt =
+  \int_c^\tau (mt + b)\;dt 
+%  =  \int_0^\tau \!mt\;dt\  + \int_0^\tau \!b\;dt
+ = \frac{1}{2}m\tau^2 + b \tau  + C,
+\]
+since the integral of the sum of two functions is the
+sum of the integrals.
+
+Now that you know about some basic integrals, we can 
+start learning about the laws of physics and
+derive the equation of motion for a particle in free fall. 
+
 
 
 
@@ -107,70 +346,91 @@ In short, mechanics is powerful stuff, so let's get right into it.
 
 \dokutitleleveltwo{Kinematics}
 \label{508ac5264059de6a350383a9f1e87977}%% kinematics
-Kinematics (from the Greek root kinema \dokuitalic{motion}) is the study of trajectories of objects moving in space. It can be used to calculate how long a ball thrown upwards will stay in the air, or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
-
-%To carry out these calculations we need to know the \dokuitalic{equation of motion} and the \dokuitalic{initial conditions} (like how fast you threw the ball up \(v_{i}\)) and then carry out some simple algebra steps to calculate anything we want. No seriously, this entire chapter boils down to three equations. 
-%It is all about the plug-number-into-equation skills.
-
+Kinematics (from the Greek word \dokuitalic{kinema} for \dokuitalic{motion}) is the study of trajectories of moving objects.  
+The equations of kinematics can be used to calculate how long a ball thrown upwards will stay in the air, 
+or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
 
 \dokutitleleveltree{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
+\label{408d82ccb63ca28fa1665f5ee146b453}%% position_velocity_and_acceleration_revisited
 
-The basic concepts of kinematics are:
-
-
-
+The key notions which we use to describe the motion of some object are:
 \begin{itemize}
-\dokuitem  \(t\): time, measured in seconds [s].
-\dokuitem  \(x\): the \dokuitalic{position} of an object with respect to a coordinate system, measured in meters [m].
-\dokuitem  \(x(t)\): the position as a function of time, also known as the equation of motion.
-\dokuitem  \(v(t)\): speed measured in meters per second [m/s].
-\dokuitem  \(a(t)\): acceleration measured in meters per second squared [m/s\^{ }2].
-\dokuitem  \(x_0=x(0)\): the position at \(t=0\).
-\dokuitem  \(v_{0}=v(0)\): the velocity at \(t=0\).
+\dokuitem  $t$: the time, measured in seconds [s].
+\dokuitem  $x(t)$: the position of an object as a function of time, also known as the equation of motion.
+\dokuitem  $v(t)$: the velocity of the object over time.
+\dokuitem  $a(t)$: the acceleration of the object.
+\dokuitem  $x_i=x(0), v_i=v(0)$: the initial conditions.
 \end{itemize}
 
-When solving some problem, where we calculate the motion of an object that starts
-form an \dokuitalic{initial} point an goes to a \dokuitalic{final} point we will use the following terminology:
 
-\begin{itemize}
-\dokuitem  \(t_i\): initial time (the beginning of the motion).
-\dokuitem  \(t_f\): final time (when the motion stops).
-\dokuitem  \(x_i\): initial position.
-\dokuitem  \(x_f\): final position.
-%\dokuitem  \(\vec{d} = \Delta x = x_f-x_i\): delta x  = change in position = displacement.
-%\dokuitem  \(d = |\Delta x| = |x_f-x_i|\): distance traveled = absolute value of displacement.
-\dokuitem  \(v_i\): initial velocity of the object.
-\dokuitem  \(v_f\): final velocity of the object.
-\end{itemize}
+The position, velocity and acceleration functions ($x(t)$, $v(t)$ and $a(t)$) are connected. 
+They all describe different aspects of the same motion.
+The function $x(t)$ is the main function since it describes the position of the object at all times.
+The velocity function describes the change in the position over time, hence it is measured in [m/s].
+The acceleration function describes how the velocity changes over time.
+A constant positive acceleration means the velocity of the motion 
+is steadily increasing, like when you press the gas pedal in your car.
+A constant negative acceleration means the velocity is steadily decreasing,
+like when pressing the brake pedal.
 
-\dokutitleleveltree{Formulas}
-\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
-There are basically three equations that you need to be aware
-of for this entire chapter.
-Together, these three equations fully describe all the aspects
-of motion with constant acceleration. 
+{\bf If you know the exact function $x(t)$}, then you can compute its \emph{derivative}
+and obtain the velocity function $v(t)$. You can obtain the acceleration function $a(t)$
+by computing the derivative of the velocity $v(t)$:
+\[
+  a(t) \overset{\frac{d}{dt} }{\longleftarrow} v(t) \overset{\frac{d}{dt} }{\longleftarrow} x(t).
+\]
+
+Alternately, {\bf if you know the acceleration function $a(t)$}, you can use
+integration in order to obtain the velocity function $v(t)$ and then integrate
+the velocity function in order to obtain the position function $x(t)$:
+\[
+ a(t) \overset{\ \int\!dt}{\longrightarrow} v(t) \overset{\ \int\!dt }{\longrightarrow} x(t).
+\]
+which means that we start from the acceleration $a(t)$ and use integration with
+respect to time to obtain the velocity $v(t)$. If we integrate the velocity 
+we obtain the position function $x(t)$.
+
+Recall that the integral is the calculation of the total 
+
+This is 
+The main subject in this section is how to use 
 
 
-\dokutitlelevelfour{Uniform acceleration motion (UAM)}
 
-If the object undergoes a \dokuitalic{constant} acceleration \(a_{const}=a\),
+\dokutitlelevelfour{Uniform acceleration motion}
+
+ (UAM)
+ 
+This is how the \dokuitalic{equations of motion} are derived. 
+Assuming that the acceleration is constant in time $a(t) =a$,
+we can calculate the velocity by \dokuitalic{adding up} all the acceleration (integrating)
+to obtain the change in the velocity
+\[
+ v(t) = \int a(t) \ dt = \int a \ dt = at + v_i.
+\]
+
+\[
+ x(t) = \int v(t) \; dt = \int (at+v_i) \; dt = \frac{1}{2}at^2 + v_it + x_i.
+\]
+
+
+
+
+\dokutitlelevelfour{Formula}
+
+If the object undergoes a \dokuitalic{constant} acceleration $a(t)=a$,
 like your car if you floor the \dokuitalic{accelerator} pedal, then
 the equations of motion are:
 
-\[
-  a(t) = a,
-\]
-\[
-  v(t) = at + v_0,
-\]
-\[
-  x(t) = \frac{1}{2}at^2 + v_0t + x_0.
-\]
+\begin{align*}
+  x(t) &= \frac{1}{2}at^2 +  v_i t + x_i, \\
+  v(t) &= at + v_i, \\
+  a(t) &= a.
+\end{align*}
 
 There is also another very useful equation to remember:
 \[
- v(t)^2 = v_0^2 + 2a[x(t)- x_0],
+ v(t)^2 = v_i^2 + 2a[x(t)- x_i],
 \]
 which is usually written
 \[
@@ -182,80 +442,192 @@ and you can solve any kinematics problem humanly imaginable.
 Chapter done.
 
 
-\dokutitlelevelfour{Uniform velocity motion (UVM)}
 
-The special case where there is zero acceleration (\(a=0\)),
-is called \dokuitalic{uniform velocity motion} or UVM.
-%The velocity is uniform (constant), because there is no acceleration.
-%The following three equations describe the motion of the object
-%under uniform velocity:
-\[
-  a(t) = 0,
-\]
-\[
-  v(t) = v_0,
-\]
-\[
-  x(t) = v_0t + x_0.
-\]
+%
 
-As you can see, these are really the same equations as above, but
-because \(a=0\), some terms are missing.
+%
+%%To carry out these calculations we need to know the \dokuitalic{equation of motion} and the \dokuitalic{initial conditions} (like how fast you threw the ball up \(v_{i}\)) and then carry out some simple algebra steps to calculate anything we want. No seriously, this entire chapter boils down to three equations. 
+%%It is all about the plug-number-into-equation skills.
 
+%
+%\dokutitleleveltree{Concepts}
+%\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
 
-\dokutitleleveltree{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+%The basic concepts of kinematics are:
 
-\dokutitlelevelfour{Calculus}
-The functions \(x(t)\), \(v(t)\) and \(a(t)\) are connected. They all describe
-different aspects of the same motion. We have:
-\[
-  x(t) \overset{\frac{d}{dt} }{\longrightarrow} v(t) \overset{\frac{d}{dt} }{\longrightarrow} a(t),
-\]
-which means that starting from the position function, \(x(t)\), we can use the derivative
-operation to obtain the velocity and the acceleration.
-We can also use this relationship in the other direction:
-\[
-  x(t) \overset{\ \int\!dt }{\longleftarrow} v(t) \overset{\ \int\!dt }{\longleftarrow} a(t),
-\]
-which means that we start from the acceleration \(a(t)\) and use integration with
-respect to time to obtain the velocity \(v(t)\). If we integrate the velocity 
-we obtain the position function \(x(t)\).
+%
 
-%This is how the \dokuitalic{equations of motion} are derived. 
-%Assuming that the acceleration is constant in time \(a(t) =a\),
-%we can calculate the velocity by \dokuitalic{adding up} all the acceleration (integrating)
-%to obtain the change in the velocity
+%\begin{itemize}
+%\dokuitem  \(t\): time, measured in seconds [s].
+%\dokuitem  \(x\): the \dokuitalic{position} of an object with respect to a coordinate system, measured in meters [m].
+%\dokuitem  \(x(t)\): the position as a function of time, also known as the equation of motion.
+%\dokuitem  \(v(t)\): speed measured in meters per second [m/s].
+%\dokuitem  \(a(t)\): acceleration measured in meters per second squared [m/s\^{ }2].
+%\dokuitem  \(x_0=x(0)\): the position at \(t=0\).
+%\dokuitem  \(v_{0}=v(0)\): the velocity at \(t=0\).
+%\end{itemize}
+
+%When solving some problem, where we calculate the motion of an object that starts
+%form an \dokuitalic{initial} point an goes to a \dokuitalic{final} point we will use the following terminology:
+
+%\begin{itemize}
+%\dokuitem  \(t_i\): initial time (the beginning of the motion).
+%\dokuitem  \(t_f\): final time (when the motion stops).
+%\dokuitem  \(x_i\): initial position.
+%\dokuitem  \(x_f\): final position.
+%%\dokuitem  \(\vec{d} = \Delta x = x_f-x_i\): delta x  = change in position = displacement.
+%%\dokuitem  \(d = |\Delta x| = |x_f-x_i|\): distance traveled = absolute value of displacement.
+%\dokuitem  \(v_i\): initial velocity of the object.
+%\dokuitem  \(v_f\): final velocity of the object.
+%\end{itemize}
+
+%\dokutitleleveltree{Formulas}
+%\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+%There are basically three equations that you need to be aware
+%of for this entire chapter.
+%Together, these three equations fully describe all the aspects
+%of motion with constant acceleration. 
+
+%
+
+%
+%\dokutitlelevelfour{Uniform acceleration motion (UAM)}
+
+%If the object undergoes a \dokuitalic{constant} acceleration \(a_{const}=a\),
+%like your car if you floor the \dokuitalic{accelerator} pedal, then
+%the equations of motion are:
+
 %\[
-% v(t) = \int a(t) \ dt = \int a \ dt = at + v_i.
+%  a(t) = a,
 %\]
-%If you are moving at velocity \(100\)[m/s] and you accelerate
-%at a rate of \(10\)[m/s\^{ }2] during 3 seconds, then your final 
-%velocity at the end of the three seconds will be
 %\[
-% v(3)  = \int_0^3 10\ dt + 100 = 10(3) + 100 = 130 [m/s].
+%  v(t) = at + v_0,
+%\]
+%\[
+%  x(t) = \frac{1}{2}at^2 + v_0t + x_0.
 %\]
 
+%There is also another very useful equation to remember:
+%\[
+% v(t)^2 = v_0^2 + 2a[x(t)- x_0],
+%\]
+%which is usually written
+%\[
+% v_f^2 = v_i^2 + 2a\Delta x.
+%\]
 
-\dokutitleleveltwo{Projectile motion}
-\label{58cd2d3ddbcebb1c53893cb4a182ffbf}%% projectile_motion
+%That is it. Memorize these equations, plug-in the right numbers,
+%and you can solve any kinematics problem humanly imaginable.
+%Chapter done.
 
-\dokutitleleveltree{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
+%
+%\dokutitlelevelfour{Uniform velocity motion (UVM)}
 
-The basic concepts of kinematics in two dimensions are:
+%The special case where there is zero acceleration (\(a=0\)),
+%is called \dokuitalic{uniform velocity motion} or UVM.
+%%The velocity is uniform (constant), because there is no acceleration.
+%%The following three equations describe the motion of the object
+%%under uniform velocity:
+%\[
+%  a(t) = 0,
+%\]
+%\[
+%  v(t) = v_0,
+%\]
+%\[
+%  x(t) = v_0t + x_0.
+%\]
+
+%As you can see, these are really the same equations as above, but
+%because \(a=0\), some terms are missing.
+
+%
+%\dokutitleleveltree{Explanations}
+%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+
+%\dokutitlelevelfour{Calculus}
+%The functions \(x(t)\), \(v(t)\) and \(a(t)\) are connected. They all describe
+%different aspects of the same motion. We have:
+%\[
+%  x(t) \overset{\frac{d}{dt} }{\longrightarrow} v(t) \overset{\frac{d}{dt} }{\longrightarrow} a(t),
+%\]
+%which means that starting from the position function, \(x(t)\), we can use the derivative
+%operation to obtain the velocity and the acceleration.
+%We can also use this relationship in the other direction:
+%\[
+%  x(t) \overset{\ \int\!dt }{\longleftarrow} v(t) \overset{\ \int\!dt }{\longleftarrow} a(t),
+%\]
+%which means that we start from the acceleration \(a(t)\) and use integration with
+%respect to time to obtain the velocity \(v(t)\). If we integrate the velocity 
+%we obtain the position function \(x(t)\).
+
+%%This is how the \dokuitalic{equations of motion} are derived. 
+%%Assuming that the acceleration is constant in time \(a(t) =a\),
+%%we can calculate the velocity by \dokuitalic{adding up} all the acceleration (integrating)
+%%to obtain the change in the velocity
+%%\[
+%% v(t) = \int a(t) \ dt = \int a \ dt = at + v_i.
+%%\]
+%%If you are moving at velocity \(100\)[m/s] and you accelerate
+%%at a rate of \(10\)[m/s\^{ }2] during 3 seconds, then your final 
+%%velocity at the end of the three seconds will be
+%%\[
+%% v(3)  = \int_0^3 10\ dt + 100 = 10(3) + 100 = 130 [m/s].
+%%\]
+
+
+
+\paragraph{Moroccan example}
+
+Suppose your friend wants to send you a ball wrapped in aluminum 
+foil from his balcony, which is located on the 14th floor (height of $44.145$[m]). 
+At  $t=0$[s] he \dokuitalic{throws} the ball straight down with an initial velocity 
+of $10$[m/s]. How long does it take for the ball to hit the ground?
+
+Assume that the $y$-axis measuring distance upwards starting from the ground floor.
+We know that the balcony is located at a height of $y_i=44.145$[m],
+and that at $t=0$[s] the ball starts with $v_i=-10$[m/s].
+The initial velocity is negative, because it points in the opposite direction to the $y$-axis.
+We know that there is an acceleration due to gravity of $a_y=-g=-9.81$ [m/s$^{2}$].
+
+We start by writing out the general UAM equation:
+\[
+ y(t) = \frac{1}{2}a_yt^2 + v_i t + y_i.
+\]
+We want to find the time when the ball will hit the ground,
+so $y(t)=0$. To find $t$,
+we plug in all the known values into the general equation:
+\[
+ y(t) = 0 = \frac{1}{2}(-9.81)t^2  -10 t + 44.145,
+\]
+which is a quadratic equation in $t$.
+First rewrite the quadratic equation into the standard form:
+\[
+ 0 =  \underbrace{4.905}_a t^2 + \underbrace{5.0}_b \ t - \underbrace{44.145}_c,
+\]
+and then solve using the quadratic equation:
+\[
+ t_{f} = \frac{-b \pm \sqrt{ b^2 - 4ac }}{2a} = \frac{-5 \pm \sqrt{ 25 +  866.12}}{9.81} =  2.53 \text{ [s]}.
+\]
+We ignored the negative-time solution.
+Comparing with the first Moroccan example, we see that the answer makes sense: 
+throwing a ball downwards will make it fall to the ground faster than just dropping it.
+
+
+
+
+
+
+
+\section{Projectile motion}
+
+The basic concepts of kinematics  in two dimensions are:
 
 \begin{itemize}
-\dokuitem  $\hat{x},\hat{y}$: a coordinate system.
 \dokuitem  \(t\): time, measured in seconds.
-\dokuitem  \(x\): the \(x\) position of an object as measured according to the coordinate system.
-\dokuitem  \(x(t)\): the \(x\) position as a function of time.
-\dokuitem  \(v_x(t)\): speed in the \(x\) direction, measured in meters per second.
-\dokuitem  \(a_x(t)\): acceleration in the \(x\) direction, measured in meters per second squared.
-\dokuitem  \(y(t)\): the \(y\) position as a function of time.
-\dokuitem  \(v_y(t)\): velocity in the \(y\) direction as a function of time.
-\dokuitem  \(a_y(t)\): the \(y\)-acceleration.
-\dokuitem  \(\vec{r}(t)=(x(t),y(t))\): position \dokuitalic{vector}, the combined \(x\) and \(y\) positions.
+\dokuitem  \(\vec{r}(t)\equiv (x(t),y(t))\): the position vector 
+\dokuitem  \(\vec{v}(t) \equiv (v_x(t), v_y(t) ) \): the velocity as a function of time.
+\dokuitem  \(\vec{a}(t) \equiv (a_x(t), a_y(t) ) \): the acceleration as a function of time.
 \end{itemize}
 
 When solving some problem, where we calculate the motion of an object that starts
@@ -263,12 +635,21 @@ form an \dokuitalic{initial} point an goes to a \dokuitalic{final} point we will
 
 
 \begin{itemize}
-\dokuitem  \(t_i\): initial time (the beginning of the motion).
+\dokuitem  \(t_i=0\): initial time (the beginning of the motion).
 \dokuitem  \(t_f\): final time (when the motion stops).
-\dokuitem  \(\vec{v}_{i}=\vec{v}(t_i)=(v_{xi},v_{yi})\): the initial velocity at \(t=t_i\).
-\dokuitem  \(\vec{r}_i=\vec{r}(t_i)=(x_i,y_i)\): the initial position at \(t=t_i\), where \(x_i\) is the initial \(x\) position and \(y_i\) the initial \(y\) position.
-\dokuitem  \(\vec{r}_f=\vec{r}(t_f)=(x_f,y_f)\): the final position at \(t=t_f\), where \(x_f\) is the final \(x\) position,  and \(y_f\) is the final \(y\) position.
+\dokuitem  \(\vec{v}_{i}=\vec{v}(t_i)=(v_x(0),v_y(0))=(v_{xi},v_{yi})\): the initial velocity at \(t=t_i\).
+\dokuitem  \(\vec{r}_i=\vec{r}(0)=(x(0),y(0))=(x_i,y_i)\): the initial position at \(t=0\).
+\dokuitem  \(\vec{r}_f=\vec{r}(t_f)=(x(t_f),y(t_f))=(x_f,y_f)\): the final position at \(t=t_f\).
 \end{itemize}
+
+
+\begin{figure}
+\hspace{-0.3cm}
+\includegraphics[width=0.53\textwidth]
+{/CurrentPorjects/Minireference/miniref_figures/plots_and_diagrams/projecticle-concepts_tikz.pdf}
+\end{figure}
+
+
 
 \dokutitleleveltree{Formulas}
 \label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
@@ -358,7 +739,7 @@ Manifestations of the gravitational pull of the planet Earth on massive objects:
 \dokuitem  \(M\): mass of the earth. \(M=5.9721986 \times 10^{24}\) [kg].
 \dokuitem  \(m\): mass of an object.
 \dokuitem  \(\vec{W}=\vec{F}_g\): The weight (the force on a object due to gravity).
-\dokuitem  \(G\): Gravitational constant = \(6.67{\texttimes}10^{-11}\) [\(\frac{Nm^2}{kg^2}\)].
+\dokuitem  \(G\): Gravitational constant = \(6.67 \times 10^{-11}\) [\(\frac{Nm^2}{kg^2}\)].
 \dokuitem  \(\vec{F}_g=\frac{GMm}{r^2}\): Force of gravity between two objects of mass \(M\) and \(m\) respectively. Measured in Newtons [N].
 \dokuitem  \(\vec{F}_g=gm\) (downward): The force of gravity on the surface of the earth, where \(g=\frac{GM}{r^2} \approx9.81\ldots\) [N/kg]=[m/s\^{ }2].
 \end{itemize}
@@ -497,32 +878,6 @@ Newton's second law is a relationship between these three concepts:
 \dokuitem  \(\vec{F}\): vector used to denote any kind of \dokuitalic{force}. 
 \dokuitem  \(\vec{a}\): the \dokuitalic{acceleration} of the object. 
 \end{itemize}
-
-Both forces and accelerations are vectors.
-To work with vectors, we have work with their \dokuitalic{components}:
-
-
-\begin{itemize}
-\dokuitem  \(F_x\): the \dokuitalic{component} of \(\vec{F}\) in the \(x\) direction.
-\dokuitem  \(F_y\): the \dokuitalic{component} of \(\vec{F}\) in the \(y\) direction.
-\end{itemize}
-
-Vectors are meaningless unless it is clear with respect to which \dokuitalic{coordinate system}
-they are expressed.
-
-
-\begin{itemize}
-\dokuitem  \(x\)-axis:  Usually the \(x\)-axis is horizontal and to the right, however, for problems with inclines, it will be more convenient to put the \(x\)-axis parallel to the slope.
-\dokuitem  \(y\)-axis: The \(y\)-axis is always \dokuitalic{perpendicular} to the \(x\)-axis.
-\dokuitem  \(\hat{\imath},\hat{\jmath}\): Unit vectors in the \(x\) and \(y\) directions. Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
-\end{itemize}
-
-Provided we have a coordinate system, we can write any force vector in three ways:
-\[
-  \vec{F} \equiv F_x\hat{\imath} + F_y\hat{\jmath} \equiv F_x\hat{x} + F_y\hat{y} \equiv  (F_x,F_y),
-\]
-note that there are two ways to write the unit vectors: \(\hat{\imath}\equiv\hat{x}\)
-and \(\hat{\jmath}\equiv\hat{y}\).
 
 
 What types of forces are there in force diagrams?
@@ -950,845 +1305,845 @@ Conservation of energy:
 %because it will allow you to solve very complicated problems simply by
 %accounting for all different kinds of energies.
 
-
-
-\dokutitleleveltwo{Uniform circular motion}
-\label{42333dad828328e1c0baeb79429a3185}%% uniform_circular_motion
-
-When a car makes a long left turn, the passenger riding shotgun will feel pushed
-towards the right and into the door. 
-If we assume the car moves at a constant speed \(v\) in the turn, and that
-the radius of the curve is \(R\), what is the force of contact between the 
-passenger and the door?
-This question may sound complicated, but actually it boils down to a single formula.
-This entire section is dedicated to that formula and to objects
-moving around in a circle in general.
-
-
-\dokutitleleveltree{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
-
-\begin{itemize}
-\dokuitem  \(\hat{x},\hat{y}\): the a usual coordinate system.
-\end{itemize}
-
-In this section we will use a new type of coordinate system:
-
-
-\begin{itemize}
-\dokuitem  \(\hat{r},\hat{t}\): the \dokuitalic{radial} and \dokuitalic{tangential} directions of a circular coordinate system. No matter where you are on the circle, the radial direction always points towards the centre, while the tangential direction is always perpendicular. On a bicycle wheel, the spokes are in the \(\hat{r}\) direction, while the pavement is in the \(\hat{t}\) direction.
-\dokuitem  \(\vec{v}=(v_x,v_y)_{\hat{x}\hat{y}}=(v_r,v_t)_{\hat{r}\hat{t}}\): Velocity of particle, can be expressed as in \(xy\) or \(rt\) coordinates
-\dokuitem  \(\vec{a}=(a_r,a_t)_{\hat{r}\hat{t}}\): the \dokuitalic{acceleration} of the particle.
-\end{itemize}
-
-Every time you have uniform circular motion (\(v_{t}=const\)), 
-these variables will be related:
-
-
-\begin{itemize}
-\dokuitem  \(R\): Radius of the circle of motion.
-\dokuitem  \(v_t\): Speed of the circular motion in \([m/s]\). Sometimes referred to as \dokuitalic{tangential} speed.
-\dokuitem  \(a_r\): Radial acceleration. The relation is \(a_r=\frac{v_t^2}{R}\).
-\end{itemize}
-
-There is some special terminology used to describe circular motion:
-
-
-\begin{itemize}
-\dokuitem  \(C\): the \dokuitalic{circumference} of the circle of motion. For a circle of radius \(R\), \(C=2\pi R\).
-\dokuitem  \(T\): the \dokuitalic{period}, how long it takes for the object to complete one circle. Measured in seconds.
-\dokuitem  \(f\): the frequency of rotation. How many times per second does an object pass by the same point on the circle. \(f=\frac{1}{T}\). Measured in Hertz [Hz]=[1/s].
-\dokuitem  \(\omega\equiv\frac{v_t}{R}\): angular velocity, how fast the angle of the object is rotating \(\omega=2\pi f\). 
-\dokuitem  \(RPM\): the \dokuitalic{revolutions per minute} which is the angular velocity expressed in units of revolutions (1[rev]=$2\pi$[rad]) and minutes (1[min]=60[s]).
-\end{itemize}
-
-The angular velocity \(\omega\) is very useful because it describes the speed of 
-circular motion of \dokuitalic{any} radius. 
-Indeed, different points on a rotating disk will have different tangential speeds \(v_t\)
-depending on how far from the radius they are, so it is much better to describe the
-angular velocity and multiply by the radius as needed.
-
-
-\dokutitleleveltree{Formulas}
-\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
-
-\dokutitlelevelfour{Three directions}
-
-Let's freeze time and zoom in on an object moving in a circle.
-We can draw a force diagram with three directions:
-
-
-\begin{enumerate}\dokuitem  \(\hat{r}\): towards the centre of the circle of rotation.
-\dokuitem  \(\hat{t}\): in the instantaneous direction where the car is moving right now. This is called the \dokuitalic{tangential} direction, from the greek to touch (imagine a straight line ``touching'' the circle).
-\dokuitem  \(\hat{y}\): if necessary, we imagine a third \dokuitalic{vertical} axis pointing up out of the plane of rotation.
-\end{enumerate}
-
-\dokutitlelevelfour{Motion in a circle}
-
-A circle of radius \(R\) has circumference:
-\[
- C = 2 \pi R.
-\]
-An object moving along this circular path with
-tangential speed \(v_t\).
-The period, \(T\), is defined as how long it will take
-the object to complete one turn and is equal to:
-\[
- T = \frac{2\pi R}{v_t} = \frac{2\pi}{\omega} = \frac{1}{f}.
-\]
-
-
-\dokutitlelevelfour{Radial acceleration}
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitJpeFEm.png}
-\end{wrapfigure}
-
-The one equation of this section is this:
-\[
-  a_r = \frac{v^2_t}{ R },
-\]
-and it relates the \dokuitalic{radial} acceleration necessary to keep
-an object turning in a circle of radius \(R\) at constant speed \(v_t\).
-
-In particular, knowing \(v_t\) and \(R\) we can fill-in the right
-hand side of the equation \(F=ma\) in the \(r\) direction:
-\[
-  \sum \vec{F}_{r} = ma_r = m \frac{v^2_t}{ R }.
-\]
-This means that we can solve for \(F_r\),
-which could be due to a rope pulling towards the centre, of a tire-road friction force \(F_f\)
-or some other force acting towards the centre.
-
-%
-%\dokutitleleveltree{Explanations}
-%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
-
-%\dokutitlelevelfour{Radial coordinate system}
-
-%To understand this whole \(\hat{r}\) and \(\hat{t}\) business, I want you to imagine for a
-%second that you can freeze time. The \(\hat{r}\) direction will be towards the centre
-%of the circle and \(\hat{t}\) is along a line touching the circle,  i.e., though moving 
-%in a circle overall, instantaneously you are moving in the \(\hat{t}\) direction.
-%If you unfreeze time and one microsecond elapses the \(\hat{r}\) and \(\hat{t}\) directions
-%will change, you will have moved a little along the circle and the \(\hat{r}\) vector
-%will have to rotate to keep pointing at the centre. Similarly, your instantaneous direction of motion, \(\hat{t}\), will have shifted a bit. 
-
-%
-%\dokutitlelevelfour{Period}
-
-%From kinematics we know that motion with constant velocity (UVM)
-%is described by the formula \(x = vt\), where the speed is 
-%\dokuitalic{defined} as ratio of distance travelled over time: \(v=\frac{\Delta x}{\Delta t}\).
-%In this case the distance travelled, \(\Delta x\), is not a straight line 
-%but a curve following the circumference of a circle:
-%\[
-% C = 2\pi R.
-%\]
-%The period is defined as the time it takes for the object to complete one full turn:
-%\[
-% T = \frac{\text{distance}}{\text{speed}} = \frac{2\pi R}{v_t}.
-%\]
-
-%Tangential speed \(v_t\) is measured in \([m/s]\), whereas \(R\) is measured in \([m]\)
-%so if you divide the two you get seconds \([s]\).
-
-%
-%\dokutitlelevelfour{Radial acceleration}
-
-%Newton's first law says that if there is no acceleration acting on a moving object,
-%then it will continue moving (1) in a straight line and (2) maintain the same speed.
-%So far we have studied mostly problems involving \dokuitalic{linear acceleration}, 
-%where some $a_x$ is causing changes in speed.
-%This section deals with problems where the speed $\|\vec{v}\|$ 
-%stays constant, but $\vec{v}$ changes direction.
-
-%Circular motion violates the requirement (1) in Newton's law (conservation of momentum). 
-%The logic is as follows. If you see any motion that is \dokuitalic{not a straight line}, 
-%then there must be some acceleration involved which is producing the rotation.
-%This is the radial acceleration.
-
-%
-%\dokutitlelevelfour{Centrifugal force}
-
-%People often get confused about the meaning of things when they talk
-%about circular motion. There is the point of view of the passenger,
-% and there is the point of view of the car door, 
-%which is holding the passenger into the circular trajectory.
-
-%
-
-%\begin{itemize}
-%\dokuitem  \(\vec{F}_{dp}\): The amount of force the door is exerting on the passenger.
-%\dokuitem  \(\vec{F}_{pd}\): The amount of force the passenger is exerting on the door.
-%\end{itemize}
-
-%This is the same force really, but one is relevant in the sum-of-the-forces
-%calculation for the passenger \(\sum F_{psngr}\), whereas the second should be 
-%added with all the other forces that act on the car (like the friction 
-%between the pavement and the car tires).
-
-%Viewed from the point of view of the passenger there is no confusion.
-%The force \(F_{dp}\) acting towards the centre of rotation is causing
-%a \(ma_r=m\frac{v_t^2}{R}\), and thus the circular motion 
-%of the passenger results.
-
-%Viewed from the point of view of the door, it feels a 
-%certain push towards the outside of the circle which corresponds to the counter-force 
-%to the force that the passenger feels.
-%This comes from Newton's third law, which says that for each contact force 
-%\(C_{12}\) exerted by object 1 on object 2, there exists a counter force 
-%exerted of equal magnitude and opposite direction, \(C_{21}\) which is the
-%force of object 2 pushing back.
-
-%The confusion people get into, and the whole \dokuitalic{false concept} of centrifugal force,
-%comes from thinking of a force diagram on yourself and falsely including the 
-%outwards force on the door. You have to be clear. Which force diagram
-%are you doing? If you are thinking of yourself as the object, the force that you
-%feel is a \dokuitalic{centripetal} force. The door pushes you each instant towards the
-%centre of the circle. If it weren't for the door, you would fly straight on.
-
-%
-%In some problems, it is also necessary to consider the \(y\) direction of the force diagram,
-%where you will have the weight of the passenger \(\vec{W}=-mg\hat{\jmath}\).
-%You should be able to solve joint \(ry\)-dimension problems, 
-%with radial and vertical forces \(F_r\), \(F_y\) and radial and vertical 
-%accelerations \(a_r\), \(a_y\).
-
-%
-
-\dokutitleleveltwo{Angular motion}
-\label{318857367a8b72161a4bda9b7e83ce98}%% angular_motion
-
-We will now study the physics of rotating objects.
-Rotating disks, wheels, spinning footballs and ice skaters.
-Anything spinning really.
-
-%
-%This is also a review chapter.
-%You already know all the basic concepts for linear motion:
-%position, velocity, acceleration, force, momentum and energy.
-%In this chapter we define the \dokuitalic{angular} equivalents for 
-%each of these, which will be appropriate whenever we have a rotating object.
-
-
-\dokutitleleveltree{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
-
-Angular force:
-
-
-\begin{itemize}
-\dokuitem  \(\mathcal{T}\): the \dokuitalic{torque} is rotational force. Measured in newton-meters [Nm].
-\end{itemize}
-
-Angular mass:
-
-
-\begin{itemize}
-\dokuitem  \(I\): is the \dokuitalic{moment of inertia} of an object, and tells you how difficult it is to make it turn. Measured in [kg m\^{ }2].
-\end{itemize}
-
-Angular F=ma:
-
-
-\begin{itemize}
-\dokuitem  \(\sum\mathcal{T}=I\alpha\): tells us that angular acceleration (\(\alpha\))  is caused by angular forces (torques) and the constant of proportionality  is the moment of inertia  which takes into account the mass of an object,  but also its shape. 
-\end{itemize}
-
-Angular motion (kinematics):
-
-
-\begin{itemize}
-\dokuitem  \(\theta\equiv\frac{x_t}{R}\): angular displacement. Measured in radians [rad].
-\dokuitem  \(\omega\equiv\frac{v_t}{R}\): angular velocity. Measured in [rad/s] or [RPM].
-\dokuitem  \(\alpha\equiv\frac{a_t}{R}\): angular acceleration. Measured in [rad/s\^{ }2].
-\end{itemize}
-
-Angular momentum:
-
-
-\begin{itemize}
-\dokuitem  \(L=I\omega\): the \dokuitalic{angular momentum} of a spinning object. Measured in [kg m\^{ }2/s].
-\end{itemize}
-
-Angular kinetic energy:
-
-
-\begin{itemize}
-\dokuitem  \(K_r=\frac{1}{2}I\omega^2\): The \dokuitalic{angular kinetic energy} of a  spinning object. Measured in joules [J]=[kg m\^{ }2/s\^{ }2].
-\end{itemize}
-
-\dokutitleleveltree{Formulas}
-\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
-
-\dokutitlelevelfour{Torque}
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=150pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitb5N2t4.png}
-\end{wrapfigure}
-
-Torque is defined as the rotational tendency of a force:
-\[
- \mathcal{T} = F_{\perp}\times |r|= |F||r|\sin\theta.
-\]
-Note that only the perpendicular part of the force \(F_{\perp}\) is helping to cause a rotation.
-
-To understand the meaning of the torque equation, you should stop reading and go
-experiment with a regular door. If you push close to the hinges, it will take a lot 
-more force to produce the same torque since the \(r\) will be small.
-Also, if you grab the handles on both sides and pull away from the hinge,
-your entire force will be \(F_{||}\), so no matter how hard you pull
-you will cause zero torque.
-
-The predominant convention is to call torques that produce counter-clockwise 
-motion positive and torques that cause clockwise rotation negative.
-
-
-\dokutitlelevelfour{Torques cause angular acceleration}
-
-The same way we have forces that cause acceleration (\(F=ma\)),
-we have torques that cause angular acceleration:
-
-\[
- \sum \mathcal{T} = \mathcal{T}_{net} = I \alpha.
-\]
-
-
-\dokutitlelevelfour{Moment of inertia}
-
-\[
-  I = \{ \text{ how difficult it is to make an object turn } \}
-\]
-\[
- I_{disk} = \frac{1}{2}mR^2, \quad I_{ring}=mR^2, 
-\]
-\[
- I_{sphere} = \frac{2}{5} mR^2, \quad I_{sph. shell} = \frac{2}{3} mR^2.
-\]
-
-
-\dokutitlelevelfour{Angular kinematics}
-
-Instead of talking about position \(x\), we will now talk about
-the angular orientation \(\theta\).
-Instead of talking about velocity \(v\), we will talk about the
-angular velocity \(\omega\).
-Instead of acceleration, we have angular acceleration \(\alpha\).
-
-Except for these change of actors, the \dokuitalic{play} remains the same.
-Just like in the linear case, there are three equations
-that fully describe uniform accelerated angular motion:
-\[
-  \alpha(t) = \alpha,
-\]
-\[
-  \omega(t) = \alpha t + \omega_0,
-\]
-\[
-  \theta(t) = \frac{1}{2}\alpha t^2 + \omega_0t + \theta_0,
-\]
-\[
- \omega_f^2 = \omega_0^2 + 2\alpha\Delta\theta.
-\]
-
-A special case of these equations is when there is no net torque
-acting on the object. No torque means there will be no angular acceleration,
-so the equations become a little simpler:
-\[
-  \alpha(t) = 0,
-\]
-\[
-  \omega(t) = \omega_0,
-\]
-\[
-  \theta(t) = \omega_0t + \theta_0.
-\]
-We call that \dokuitalic{uniform velocity angular motion}.
-
-
-\dokutitlelevelfour{Angular momentum}
-
-The angular momentum of a spinning object is given by:
-\[
- L = I \omega.
-\]
-The angular momentum of an object is a conserved quantity in the absence of torque:
-\[
- L_{in} = L_{out}.
-\]
-This is similar to the way momentum \(\vec{p}\) is a conserved quantity 
-in the absence of external forces \(\vec{F}_{net}\).
-
-
-\dokutitlelevelfour{Rotational kinetic energy}
-\[
- K_r = \frac{1}{2} I \omega^2,
-\]
-which is the rotational analogue to the linear kinetic energy \(\frac{1}{2}mv^2\).
-
-
-\dokutitleleveltree{Static equilibrium II}
-\label{e72ff188b85a8b9f85fd747dcd2decbf}%% static_equilibrium_ii
-
-Equilibrium is the situation where \(\vec{F}_{net}=0\).
-The forces on the objects balance each other, so there is no acceleration.
-
-Conversely if you see an object that is not moving, then the forces
-on it must be in equilibrium. There must be zero net force on it.
-No net \(x\)-force:
-\[
- \sum F_x = 0,
-\]
-no net \(y\)-force on it
-\[
- \sum F_y = 0,
-\]
-and (this is the new part), if you see that it is not
-rotating, then it must also have no net toques on it:
-\[
- \sum \mathcal{T}_{(A)} = 0,
-\]
-where we can take the torques with respect to \dokuitalic{any} centre of rotation (A).
-
-%
-%\dokutitlelevelfour{Example: walking the plank}
-
-%Plank is one third of the way out, and not attached to the ship.
-%It weights 300 kg in total, so 100kg sticking out of the ship
-%and 200kg on the ship.
-%How far on the plank can you walk before it tips into the sea?
-
-%
-%\dokutitleleveltree{Explanations}
-%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
-
-%\dokutitlelevelfour{Torque}
-
-%People in the Mid West and other rural areas like to buy trucks because they have a lot of torque.
-%Big engine, big torque. You can pull stuff. Wait isn't that force? But toque should be good too?
-%What is the difference?  I am confused.
-
-%Don't be confused. Torque is just force times distance, i.e. we have to take into account not only 
-%what force is exerted but also the leverage: how far from the center of rotation you are exerting the force:
-%\[
-% \mathcal{T} = F_{rot} \times r.
-%\]
-%The bigger the leverage \(r\), the bigger torque you will create with a fixed amount of force.
-
-%When it comes down to the question how much you can pull, and you want to answer it by
-%looking at the specs of your truck, you have to look at (1) the max torque \(\mathcal{T}\) and (2) the radius of
-%your wheels \(r\), and divide the numbers to get the maximum pulling force \(F\).
-
-%
-%\dokutitlelevelfour{Rotational F=ma}
-
-%The angular analogue of $F=ma$ is:
-%\[
-% \mathcal{T} = I \alpha,
-%\]
-%where
-%\[
-% I = \sum m_i r_i^2 = \int_{obj} r^2 \ dm.
-%\]
-
-%
-%\dokutitleleveltree{Examples}
-%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
-
-%\dokutitlelevelfour{Rotational UVM}
-
-%Something is spinning at a constant angular velocity during
-%some time \(t\). Just use \(\theta(t) = \omega t + \theta_0\).
-%Waaay too simple and boring.
-
-%
-%\dokutitlelevelfour{Rotational UAM}
-
-%A pulley of radius \(R\) and moment of inertia \(I\) has a rope wound around it
-%and a mass \(m\) attached at the end of that rope.
-%What is the angular acceleration caused by the mass
-%as it unwinds the rope.
-
-%The force diagram on \(m\) tells us that \(mg-T=ma_y\) (where \(\hat{y}\) points downwards).
-%The torque diagram on the disk tells us that \(TR = I \alpha\).
-%Adding \(R\) times the first equation to the second we get:
-%\[
-% R({mg - T}) + T  R  = R m a_y + I \alpha,
-%\]
-%or after simplification we get:
-%\[
-% R  m  g = R m a_y + I \alpha.
-%\]
-%But we know that the rope forms a solid connection between the disk and the mass block,
-%so we must also have \(R \alpha = a_y\), so if we substitute for \(a_y\) we get:
-%\[
-% R  m  g = R m R \alpha + I \alpha = (R^2 m + I) \alpha,
-%\]
-%or 
-%\[
-% \alpha = \frac{  R  m  g  }{ R^2 m + I }.
-%\]
-%This makes sense. The numerator is the ``cause'', and the denominator is the effective moment of inertia of the system
-%as a whole.
-
-%\dokutitleleveltree{Discussion}
-%\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-
-%It is really important that you connect all of the above 
-%rotational concepts with their linear counterparts.
-
-%
-
-
-\dokutitleleveltwo{Simple harmonic motion}
-\label{cd80db888044ca76c4e83c74b55b1b83}%% simple_harmonic_motion
-
-This law describes the motion of a mass attached to a spring, a pendulum and any system that goes back and forth in a cyclic fashion.
-
-
-\dokutitleleveltree{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
-
-\begin{itemize}
-\dokuitem  \(A\): Amplitude of the movement, how far does the object go back and forth.
-\dokuitem  \(t\): time.
-\dokuitem  \(x(t)\): position of object at time \(t\).
-\dokuitem  \(\omega\): angular frequency.
-\dokuitem  \(\phi\): phase constant.
-\dokuitem  \((\omega t + \phi)=\theta\): phase, the argument of the function \(\sin\).
-\dokuitem  \(T\): the \dokuitalic{period} is the time it takes for the movement to repeat. Measured in seconds [s].
-\dokuitem  \(f\): frequency [Hz]=[1/s].
-\end{itemize}
-
-\dokutitleleveltree{Formulas}
-\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
-Frequency is defined as ``how many cycles in one second'' and is
-equal to the inverse of the period (how long one cycle takes):
-\[
- f=1/T=\frac{\omega}{2\pi} \text{ [Hz].}
-\]
-The relation between \(f\) (frequency) and \(\omega\) (angular frequency)
-is a multiplication by \(2\pi\) needed to match the units:
-1 cycle needs to be multiplied by the number of radians it takes to 
-make one full turn.
-
-The equation of motion of an object undergoing simple harmonic motion is:
-\[
- x(t)=A\cos(\omega t   + \phi).
-\]
-%
-%Now don't be scared. It is really simple.
-%Let us just study the properties of \(\sin(x)\) for a moment,
-%so that you can be get familiar with the math of periodic functions.
-
-%
-%\dokutitlelevelfour{The function sin(x)}
-
-%\begin{wrapfigure}{r}{0pt}
-%\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitmrNnmQ.png}
-%\end{wrapfigure}
-
-%
-%The functions \(f(x)=\sin(x)\) and \(f(x)=\cos(x)\) are both angular functions,
-%that is, they take an angle \(\theta\) as input.
-%Sometimes we call the input \(x\), but in the next paragraphs
-%we will call the input \(\theta\) so that we keep in mind
-%that we are talking about angles.
-
-%
-%The period \(T\) of \(\sin(t)\) with no coefficients
-%inside of it is \(2\pi\), because this is how long
-%it takes (in radians) to do one full turn.
-
-%
-%\dokutitlelevelfour{Time-scaling sin}
-
-%If you want a sin function with a different period,
-%you have to add a multiplier in front of \(x\) inside
-%the sin. This multiplier is, by convention, called
-%\(\omega\), so now we have a input-scaled \(\sin\) function:
-%\[
-% \sin(\omega t ),
-%\]
-%which will have period
-%\[
-% T=\frac{2\pi}{\omega}.
-%\]
-%No seriously, if you don't believe me check for yourself.
-%If you let \(t\) go from \(0\) to \(T\) you should see
-%the motion go though one cycle. 
-%Indeed, when multiplied with the scaling \(\omega=\frac{2\pi}{T}\),
-%the input to sin goes from \(0\) to \(2\pi\) as \(t\) goes from \(0\) to \(T\).
-
-%
-%\dokutitlelevelfour{Sin or cos up to you}
-
-%Simple harmonic motion is equally well described
-%by the \(\sin\) function or the \(\cos\) function.
-
-%You should use cos when the spring starts from the stretched position: 
-%\(x_i = x_{max}=A\), because naturally when \(t=0\) cos
-%will be one, and the overall function will be:
-%\[
-% x(t) = A\cos(\omega t).
-%\]
-
-%If the harmonic motion starts from \(x(t)=0\)
-%when \(t=0\), then \(\sin\) is a more appropriate
-%function to describe this motion:
-%\[
-% x(t) = A\sin(\omega t),
-%\]
-%which correctly predicts the initial position \(x(0)=0\).
-
-%Any combination of the above scenarios is possible too.
-%So now it becomes difficult to see what the motion is,
-%with \dokuitalic{two} amplitudes (one for stretched initial conditions,
-%and one for centered  initial conditions) and a sum of 
-%sin and cos:
-%\[
-% x(t) = A_1\cos(\omega t) + A_2\sin(\omega t).
-%\]
-%
-%Lo and behold. There is actually a simpler way of 
-%writing the above equation. Sin and cos are 
-%identical except for the fact that one is a
-%shifted version of the other.
-%By using trigonometric identity Kung Fu, we can 
-%rewrite the above in terms of sin or cos with some 
-%combined amplitude and a \dokuitalic{phase shift}:
-%\[
-% x(t)=A\cos(\omega t   + \phi).
-%\]
-%The initial conditions $x_i$ and $v_i$ are used 
-%to find either the individual coefficients $A_1$ and $A_2$
-%of the sin and the cos or the common coefficient $A$ and
-%the phase shift $\phi$.
-
-%Let me go over what just happened here one more time,
-%because this is some crazy stuff.
-%You are not supposed to learn about this stuff until 
-%the \dokuitalic{differential equations} class, but I will tell
-%you about it right now because it is like \dokuitalic{woooow}.
-%Let's draw an analogy with a situation which we have
-%seen previously. We are trying to describe (and predict)
-%the position of an object as a function of time \(x(t)\).
-%In kinematics there was \dokuitalic{one} equation \(x(t)=x_i+v_it + \frac{1}{2}at^2\),
-%and depending on the initial velocity and the initial position we got 
-%different trajectories, because of the different values of \(x_i\)
-%and \(v_i\).
-%In the case of simple harmonic motion we have \dokuitalic{two} functions and
-%the initial position \(x_i\) and initial velocity \(v_i\) determine
-%how much of each function we should include
-%in the formula for \(x(t)\).
-
-%The thing to remember is that you can pick cos or sin 
-%as the situation requires and, if the situation requires
-%it, add a phase factor.
-%I assure you that the fact that \(a\sin(x)+b\cos(x)\) can
-%be expressed as \(A\cos(x+\phi)\) or \(A\sin(x-\psi)\) is not 
-%magic, but simple application of \hyperref[dfc96c1062532291f8378374353a33c7]{trig{\textbackslash}\_identities}.
-
-
-\dokutitlelevelfour{Mass and spring}
-
-Suppose you have a mass \(m\) attached
-to a spring with spring constant \(k\).
-If disturbed from rest, this mass-spring
-system will undergo simple harmonic motion
-with angular frequency:
-\[
- \omega = \sqrt{ \frac{k}{m} }.
-\]
-%
-%A typical exam question is to tell you \(k\) and \(m\)
-%and ask about the period \(T\), at which point you have
-%to remember the definition of period to obtain the 
-%answer:
-%\[
-% T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }.
-%\]
-
-
-\dokutitlelevelfour{Pendulum}
-
-Consider an object suspended at the end of a long string 
-of length \(\ell\) in a gravitational field of strength \(g\).
-If disturbed from equilibrium this system will undergo
-simple harmonic motion, by swinging from side to side.
-
-The period of oscillation will be:
-\[
- T = 2\pi \sqrt{ \frac{\ell}{g} }.
-\]
-%Note in particular that this equation does not depend
-%on the amplitude of the oscillation (how far the pendulum swings)
-%nor the mass of the pendulum. Kind of cool no?
-%For a long while, this was how people kept track of time: with pendulum clocks.
-
-%To describe the angular position of the pendulum 
-%we can use a the formula:
-%\[
-% \theta(t) = \theta_{max} \cos(\omega t + \phi),
-%\]
-%where \(\theta_{max}\) is the maximum angle the pendulum swings to.
-%The coefficient inside the \(\cos\) is equal to:
-%\[
-% \omega \equiv \frac{2\pi}{T} = \sqrt{ \frac{g}{\ell} }.
-%\]
-
-
-\dokutitlelevelfour{SHM equations of motion}
-
-These are the new equations of motion which you need
-to learn how to use:
-
-\begin{align*}
-x(t) &= A\cos(\omega t + \phi), \\
-v(t) &= -A\omega \sin(\omega t + \phi), \\
-a(t) &= -A\omega^2\cos(\omega t + \phi).
-\end{align*}
-
-Note that the velocity and the acceleration of the object
-are also periodic functions. 
-Pay attention to the \dokuitalic{amplitude} of the velocity:
-\[
- v_{max} = \omega A,
-\]
-and the \dokuitalic{amplitude} of the acceleration:
-\[
- a_{max} = \omega^2 A.
-\]
-You will often be asked to solve for these quantities,
-which is going to be an easy task if you know \(A\) and \(\omega\).
-
-%
-%And equivalent set of equations of motion exists with \(x(t)\propto \sin(\omega t + \psi)\),
-%but in this section we will just talk about the \(\cos\) kind of \(x(t)\). 
-%Everything I say would be true if we had
-%started with \(x(t)\propto \sin(\omega t + \psi)\) instead.
-
-
-\dokutitlelevelfour{Energy}
-
-The potential energy stored in the spring is: 
-\[
- U(t)= \frac{1}{2} kx(t)^2 =\frac{1}{2}kA^2\cos^2(\omega t +\phi).
-\]
-
-
-The kinetic energy of the mass is:
-\[
- K(t)= \frac{1}{2} mv(t)^2 = \frac {1}{2}m\omega^2A^2\sin^2(\omega t +\phi).
-\]
-
-The total energy is: \\ 
-\begin{align*}
- E_{total}
- &= U(t) + K(t) \\
- &= \frac{1}{2}kA^2\cos^2(\omega t) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t) \\
- &= \frac{1}{2}kA^2\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} =\frac{1}{2}kA^2 = U_{max} \\
-% &= \frac{1}{2}m\omega^2A^2\cos^2(\omega t ) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t ) \ \ (\text{since } k  = m\omega^2 )\\
- &=  %\frac{1}{2}m\underbrace{\omega^2A^2}_{v_{max}^2}\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} 
-  \frac{1}{2}mv_{max}^2 = K_{max}.
-\end{align*}
-
-%
-%\dokutitlelevelfour{Conservation of energy}
-
-%In simple harmonic motion, the total 
-%energy is conserved:
-%\[
-% E_T = U+ K.
-%\]
-%Energy shifts between the potential energy of the spring
-%and the kinetic energy of the moving mass.
-%For any two points \(t_i\) and \(t_f\):
-%\[
-% U_i + K_i = U_f + K_f.
-%\]
-
-%Two particularly important moments of the SHM are
-%the points where it is at its maximum position
-%and zero velocity \(x=\pm A\), \(K=0\), \(E_T= U\), 
-%which corresponds to all the energy being stored in the spring,
-%and the point where it has zero displacement but
-%maximal velocity \(x=0, U=0, v=\pm A\omega, E_T=K\),
-%which corresponds to all the energy being kinetic.
-
-%
-%\dokutitleleveltree{Explanations}
-%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
-
-%\dokutitlelevelfour{Derivation of SHM equation}
-
-%OK, wait a minute, you are saying. 
-%First I told you about uniform velocity \(x(t)=v_it+x_i\)
-%and then I added in acceleration \(x(t) = x_i + v_it + \frac{1}{2}at^2\),
-%which is a little more complex but still manageable.
-%Now I am talking about \(\sin\) and \(\cos\) and Greek letters with dubious
-%names like phase. 
-%Are you phased by all of this?
-%When I was learning this stuff, I was totally
-%phased because I didn't understand where the \(\sin\) and \(\cos\) came from.
-
-%The \(\sin\) comes from \(F=ma\),
-%and the fact that the force of a spring is \(F_{s} = -kx\).
-
-%Recall the definition of acceleration:
-%\[
-% a=\frac{dv}{dt} = \frac{d^2x(t)}{dt^2}.
-%\]
-
-%We now substitute these facts into \(F=ma\) to get:
-
-%\begin{align*}
-% F & =ma \\
-% -kx  	&= ma 	\\
-% -kx(t) &= m\frac{d^2x(t)}{dt^2} \\
-% 0 & = m\frac{d^2x}{dt^2}+ kx(t) \\
-% 0 & = \frac{d^2x}{dt^2}+ \frac{k}{m}x(t).
-%\end{align*}
-
-%This is as far as Newton's second law will be able to bring us.
-%The formula \(F=ma\) is not enough 
-%to tell us the exact function \(x(t)\), like in
-%the UVM and UAM kinematics motion in the earlier
-%chapters.  Instead of knowing the function \(x(t)\),
-%we know one of its properties, namely, that its
-%second derivative is equal to the negative of itself
-%multiplied by some numbers.
-
-%Can you think of a function whose second derivative
-%is equal to itself times \(\frac{k}{m}\)? 
-%Ok I thought of one:
-%\[
-% x_1(t)=A \cos( \sqrt{ \frac{k}{m}}t + \phi),
-%\]
-%and come to think of it I thought of a second
-%one which also works:
-%\[
-% x_2(t)=A \sin( \sqrt{ \frac{k}{m}}t + \psi).
-%\]
-%Hmm, now you see where the \(\sin\) comes from 
-%and why we said that \(\omega = \sqrt{ \frac{k}{m} }\)
-%for a mass-spring system. It is all from \(F=ma\).
-
-%
-%\dokutitleleveltree{Examples}
-%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
-
-%In various word problems you will either be told the initial
-%amplitude \(x_i=A\) or the initial velocity \(v_i=\omega A\)
-%and asked to solve for some unknown. 
-%Nothing should be too difficult provided
-%you write down the equations 
-%\(x(t)\), \(v(t)\) and \(a(t)\) and fill in the knowns.
-
-%
-%\dokutitleleveltree{Links}
-%\label{807765384d9d5527da8848df14a4f02f}%% links
-
-%
+%	
+
+%	\dokutitleleveltwo{Uniform circular motion}
+%	\label{42333dad828328e1c0baeb79429a3185}%% uniform_circular_motion
+
+%	When a car makes a long left turn, the passenger riding shotgun will feel pushed
+%	towards the right and into the door. 
+%	If we assume the car moves at a constant speed \(v\) in the turn, and that
+%	the radius of the curve is \(R\), what is the force of contact between the 
+%	passenger and the door?
+%	This question may sound complicated, but actually it boils down to a single formula.
+%	This entire section is dedicated to that formula and to objects
+%	moving around in a circle in general.
+
+%	
+%	\dokutitleleveltree{Concepts}
+%	\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
+
+%	\begin{itemize}
+%	\dokuitem  \(\hat{x},\hat{y}\): the a usual coordinate system.
+%	\end{itemize}
+
+%	In this section we will use a new type of coordinate system:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(\hat{r},\hat{t}\): the \dokuitalic{radial} and \dokuitalic{tangential} directions of a circular coordinate system. No matter where you are on the circle, the radial direction always points towards the centre, while the tangential direction is always perpendicular. On a bicycle wheel, the spokes are in the \(\hat{r}\) direction, while the pavement is in the \(\hat{t}\) direction.
+%	\dokuitem  \(\vec{v}=(v_x,v_y)_{\hat{x}\hat{y}}=(v_r,v_t)_{\hat{r}\hat{t}}\): Velocity of particle, can be expressed as in \(xy\) or \(rt\) coordinates
+%	\dokuitem  \(\vec{a}=(a_r,a_t)_{\hat{r}\hat{t}}\): the \dokuitalic{acceleration} of the particle.
+%	\end{itemize}
+
+%	Every time you have uniform circular motion (\(v_{t}=const\)), 
+%	these variables will be related:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(R\): Radius of the circle of motion.
+%	\dokuitem  \(v_t\): Speed of the circular motion in \([m/s]\). Sometimes referred to as \dokuitalic{tangential} speed.
+%	\dokuitem  \(a_r\): Radial acceleration. The relation is \(a_r=\frac{v_t^2}{R}\).
+%	\end{itemize}
+
+%	There is some special terminology used to describe circular motion:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(C\): the \dokuitalic{circumference} of the circle of motion. For a circle of radius \(R\), \(C=2\pi R\).
+%	\dokuitem  \(T\): the \dokuitalic{period}, how long it takes for the object to complete one circle. Measured in seconds.
+%	\dokuitem  \(f\): the frequency of rotation. How many times per second does an object pass by the same point on the circle. \(f=\frac{1}{T}\). Measured in Hertz [Hz]=[1/s].
+%	\dokuitem  \(\omega\equiv\frac{v_t}{R}\): angular velocity, how fast the angle of the object is rotating \(\omega=2\pi f\). 
+%	\dokuitem  \(RPM\): the \dokuitalic{revolutions per minute} which is the angular velocity expressed in units of revolutions (1[rev]=$2\pi$[rad]) and minutes (1[min]=60[s]).
+%	\end{itemize}
+
+%	The angular velocity \(\omega\) is very useful because it describes the speed of 
+%	circular motion of \dokuitalic{any} radius. 
+%	Indeed, different points on a rotating disk will have different tangential speeds \(v_t\)
+%	depending on how far from the radius they are, so it is much better to describe the
+%	angular velocity and multiply by the radius as needed.
+
+%	
+%	\dokutitleleveltree{Formulas}
+%	\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+
+%	\dokutitlelevelfour{Three directions}
+
+%	Let's freeze time and zoom in on an object moving in a circle.
+%	We can draw a force diagram with three directions:
+
+%	
+%	\begin{enumerate}\dokuitem  \(\hat{r}\): towards the centre of the circle of rotation.
+%	\dokuitem  \(\hat{t}\): in the instantaneous direction where the car is moving right now. This is called the \dokuitalic{tangential} direction, from the greek to touch (imagine a straight line ``touching'' the circle).
+%	\dokuitem  \(\hat{y}\): if necessary, we imagine a third \dokuitalic{vertical} axis pointing up out of the plane of rotation.
+%	\end{enumerate}
+
+%	\dokutitlelevelfour{Motion in a circle}
+
+%	A circle of radius \(R\) has circumference:
+%	\[
+%	 C = 2 \pi R.
+%	\]
+%	An object moving along this circular path with
+%	tangential speed \(v_t\).
+%	The period, \(T\), is defined as how long it will take
+%	the object to complete one turn and is equal to:
+%	\[
+%	 T = \frac{2\pi R}{v_t} = \frac{2\pi}{\omega} = \frac{1}{f}.
+%	\]
+
+%	
+%	%\dokutitlelevelfour{Radial acceleration}
+%	%\begin{wrapfigure}{r}{0pt}
+%	%\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitJpeFEm.png}
+%	%\end{wrapfigure}
+
+%	The one equation of this section is this:
+%	\[
+%	  a_r = \frac{v^2_t}{ R },
+%	\]
+%	and it relates the \dokuitalic{radial} acceleration necessary to keep
+%	an object turning in a circle of radius \(R\) at constant speed \(v_t\).
+
+%	In particular, knowing \(v_t\) and \(R\) we can fill-in the right
+%	hand side of the equation \(F=ma\) in the \(r\) direction:
+%	\[
+%	  \sum \vec{F}_{r} = ma_r = m \frac{v^2_t}{ R }.
+%	\]
+%	This means that we can solve for \(F_r\),
+%	which could be due to a rope pulling towards the centre, of a tire-road friction force \(F_f\)
+%	or some other force acting towards the centre.
+
+%	%
+%	%\dokutitleleveltree{Explanations}
+%	%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+
+%	%\dokutitlelevelfour{Radial coordinate system}
+
+%	%To understand this whole \(\hat{r}\) and \(\hat{t}\) business, I want you to imagine for a
+%	%second that you can freeze time. The \(\hat{r}\) direction will be towards the centre
+%	%of the circle and \(\hat{t}\) is along a line touching the circle,  i.e., though moving 
+%	%in a circle overall, instantaneously you are moving in the \(\hat{t}\) direction.
+%	%If you unfreeze time and one microsecond elapses the \(\hat{r}\) and \(\hat{t}\) directions
+%	%will change, you will have moved a little along the circle and the \(\hat{r}\) vector
+%	%will have to rotate to keep pointing at the centre. Similarly, your instantaneous direction of motion, \(\hat{t}\), will have shifted a bit. 
+
+%	%
+%	%\dokutitlelevelfour{Period}
+
+%	%From kinematics we know that motion with constant velocity (UVM)
+%	%is described by the formula \(x = vt\), where the speed is 
+%	%\dokuitalic{defined} as ratio of distance travelled over time: \(v=\frac{\Delta x}{\Delta t}\).
+%	%In this case the distance travelled, \(\Delta x\), is not a straight line 
+%	%but a curve following the circumference of a circle:
+%	%\[
+%	% C = 2\pi R.
+%	%\]
+%	%The period is defined as the time it takes for the object to complete one full turn:
+%	%\[
+%	% T = \frac{\text{distance}}{\text{speed}} = \frac{2\pi R}{v_t}.
+%	%\]
+
+%	%Tangential speed \(v_t\) is measured in \([m/s]\), whereas \(R\) is measured in \([m]\)
+%	%so if you divide the two you get seconds \([s]\).
+
+%	%
+%	%\dokutitlelevelfour{Radial acceleration}
+
+%	%Newton's first law says that if there is no acceleration acting on a moving object,
+%	%then it will continue moving (1) in a straight line and (2) maintain the same speed.
+%	%So far we have studied mostly problems involving \dokuitalic{linear acceleration}, 
+%	%where some $a_x$ is causing changes in speed.
+%	%This section deals with problems where the speed $\|\vec{v}\|$ 
+%	%stays constant, but $\vec{v}$ changes direction.
+
+%	%Circular motion violates the requirement (1) in Newton's law (conservation of momentum). 
+%	%The logic is as follows. If you see any motion that is \dokuitalic{not a straight line}, 
+%	%then there must be some acceleration involved which is producing the rotation.
+%	%This is the radial acceleration.
+
+%	%
+%	%\dokutitlelevelfour{Centrifugal force}
+
+%	%People often get confused about the meaning of things when they talk
+%	%about circular motion. There is the point of view of the passenger,
+%	% and there is the point of view of the car door, 
+%	%which is holding the passenger into the circular trajectory.
+
+%	%
+
+%	%\begin{itemize}
+%	%\dokuitem  \(\vec{F}_{dp}\): The amount of force the door is exerting on the passenger.
+%	%\dokuitem  \(\vec{F}_{pd}\): The amount of force the passenger is exerting on the door.
+%	%\end{itemize}
+
+%	%This is the same force really, but one is relevant in the sum-of-the-forces
+%	%calculation for the passenger \(\sum F_{psngr}\), whereas the second should be 
+%	%added with all the other forces that act on the car (like the friction 
+%	%between the pavement and the car tires).
+
+%	%Viewed from the point of view of the passenger there is no confusion.
+%	%The force \(F_{dp}\) acting towards the centre of rotation is causing
+%	%a \(ma_r=m\frac{v_t^2}{R}\), and thus the circular motion 
+%	%of the passenger results.
+
+%	%Viewed from the point of view of the door, it feels a 
+%	%certain push towards the outside of the circle which corresponds to the counter-force 
+%	%to the force that the passenger feels.
+%	%This comes from Newton's third law, which says that for each contact force 
+%	%\(C_{12}\) exerted by object 1 on object 2, there exists a counter force 
+%	%exerted of equal magnitude and opposite direction, \(C_{21}\) which is the
+%	%force of object 2 pushing back.
+
+%	%The confusion people get into, and the whole \dokuitalic{false concept} of centrifugal force,
+%	%comes from thinking of a force diagram on yourself and falsely including the 
+%	%outwards force on the door. You have to be clear. Which force diagram
+%	%are you doing? If you are thinking of yourself as the object, the force that you
+%	%feel is a \dokuitalic{centripetal} force. The door pushes you each instant towards the
+%	%centre of the circle. If it weren't for the door, you would fly straight on.
+
+%	%
+%	%In some problems, it is also necessary to consider the \(y\) direction of the force diagram,
+%	%where you will have the weight of the passenger \(\vec{W}=-mg\hat{\jmath}\).
+%	%You should be able to solve joint \(ry\)-dimension problems, 
+%	%with radial and vertical forces \(F_r\), \(F_y\) and radial and vertical 
+%	%accelerations \(a_r\), \(a_y\).
+
+%	%
+
+%	\dokutitleleveltwo{Angular motion}
+%	\label{318857367a8b72161a4bda9b7e83ce98}%% angular_motion
+
+%	We will now study the physics of rotating objects.
+%	Rotating disks, wheels, spinning footballs and ice skaters.
+%	Anything spinning really.
+
+%	%
+%	%This is also a review chapter.
+%	%You already know all the basic concepts for linear motion:
+%	%position, velocity, acceleration, force, momentum and energy.
+%	%In this chapter we define the \dokuitalic{angular} equivalents for 
+%	%each of these, which will be appropriate whenever we have a rotating object.
+
+%	
+%	\dokutitleleveltree{Concepts}
+%	\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
+
+%	Angular force:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(\mathcal{T}\): the \dokuitalic{torque} is rotational force. Measured in newton-meters [Nm].
+%	\end{itemize}
+
+%	Angular mass:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(I\): is the \dokuitalic{moment of inertia} of an object, and tells you how difficult it is to make it turn. Measured in [kg m\^{ }2].
+%	\end{itemize}
+
+%	Angular F=ma:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(\sum\mathcal{T}=I\alpha\): tells us that angular acceleration (\(\alpha\))  is caused by angular forces (torques) and the constant of proportionality  is the moment of inertia  which takes into account the mass of an object,  but also its shape. 
+%	\end{itemize}
+
+%	Angular motion (kinematics):
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(\theta\equiv\frac{x_t}{R}\): angular displacement. Measured in radians [rad].
+%	\dokuitem  \(\omega\equiv\frac{v_t}{R}\): angular velocity. Measured in [rad/s] or [RPM].
+%	\dokuitem  \(\alpha\equiv\frac{a_t}{R}\): angular acceleration. Measured in [rad/s\^{ }2].
+%	\end{itemize}
+
+%	Angular momentum:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(L=I\omega\): the \dokuitalic{angular momentum} of a spinning object. Measured in [kg m\^{ }2/s].
+%	\end{itemize}
+
+%	Angular kinetic energy:
+
+%	
+%	\begin{itemize}
+%	\dokuitem  \(K_r=\frac{1}{2}I\omega^2\): The \dokuitalic{angular kinetic energy} of a  spinning object. Measured in joules [J]=[kg m\^{ }2/s\^{ }2].
+%	\end{itemize}
+
+%	\dokutitleleveltree{Formulas}
+%	\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+
+%	%\dokutitlelevelfour{Torque}
+%	%\begin{wrapfigure}{r}{0pt}
+%	%\includegraphics[width=150pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitb5N2t4.png}
+%	%\end{wrapfigure}
+
+%	Torque is defined as the rotational tendency of a force:
+%	\[
+%	 \mathcal{T} = F_{\perp}\times |r|= |F||r|\sin\theta.
+%	\]
+%	Note that only the perpendicular part of the force \(F_{\perp}\) is helping to cause a rotation.
+
+%	To understand the meaning of the torque equation, you should stop reading and go
+%	experiment with a regular door. If you push close to the hinges, it will take a lot 
+%	more force to produce the same torque since the \(r\) will be small.
+%	Also, if you grab the handles on both sides and pull away from the hinge,
+%	your entire force will be \(F_{||}\), so no matter how hard you pull
+%	you will cause zero torque.
+
+%	The predominant convention is to call torques that produce counter-clockwise 
+%	motion positive and torques that cause clockwise rotation negative.
+
+%	
+%	\dokutitlelevelfour{Torques cause angular acceleration}
+
+%	The same way we have forces that cause acceleration (\(F=ma\)),
+%	we have torques that cause angular acceleration:
+
+%	\[
+%	 \sum \mathcal{T} = \mathcal{T}_{net} = I \alpha.
+%	\]
+
+%	
+%	\dokutitlelevelfour{Moment of inertia}
+
+%	\[
+%	  I = \{ \text{ how difficult it is to make an object turn } \}
+%	\]
+%	\[
+%	 I_{disk} = \frac{1}{2}mR^2, \quad I_{ring}=mR^2, 
+%	\]
+%	\[
+%	 I_{sphere} = \frac{2}{5} mR^2, \quad I_{sph. shell} = \frac{2}{3} mR^2.
+%	\]
+
+%	
+%	\dokutitlelevelfour{Angular kinematics}
+
+%	Instead of talking about position \(x\), we will now talk about
+%	the angular orientation \(\theta\).
+%	Instead of talking about velocity \(v\), we will talk about the
+%	angular velocity \(\omega\).
+%	Instead of acceleration, we have angular acceleration \(\alpha\).
+
+%	Except for these change of actors, the \dokuitalic{play} remains the same.
+%	Just like in the linear case, there are three equations
+%	that fully describe uniform accelerated angular motion:
+%	\[
+%	  \alpha(t) = \alpha,
+%	\]
+%	\[
+%	  \omega(t) = \alpha t + \omega_0,
+%	\]
+%	\[
+%	  \theta(t) = \frac{1}{2}\alpha t^2 + \omega_0t + \theta_0,
+%	\]
+%	\[
+%	 \omega_f^2 = \omega_0^2 + 2\alpha\Delta\theta.
+%	\]
+
+%	A special case of these equations is when there is no net torque
+%	acting on the object. No torque means there will be no angular acceleration,
+%	so the equations become a little simpler:
+%	\[
+%	  \alpha(t) = 0,
+%	\]
+%	\[
+%	  \omega(t) = \omega_0,
+%	\]
+%	\[
+%	  \theta(t) = \omega_0t + \theta_0.
+%	\]
+%	We call that \dokuitalic{uniform velocity angular motion}.
+
+%	
+%	\dokutitlelevelfour{Angular momentum}
+
+%	The angular momentum of a spinning object is given by:
+%	\[
+%	 L = I \omega.
+%	\]
+%	The angular momentum of an object is a conserved quantity in the absence of torque:
+%	\[
+%	 L_{in} = L_{out}.
+%	\]
+%	This is similar to the way momentum \(\vec{p}\) is a conserved quantity 
+%	in the absence of external forces \(\vec{F}_{net}\).
+
+%	
+%	\dokutitlelevelfour{Rotational kinetic energy}
+%	\[
+%	 K_r = \frac{1}{2} I \omega^2,
+%	\]
+%	which is the rotational analogue to the linear kinetic energy \(\frac{1}{2}mv^2\).
+
+%	
+%	\dokutitleleveltree{Static equilibrium II}
+%	\label{e72ff188b85a8b9f85fd747dcd2decbf}%% static_equilibrium_ii
+
+%	Equilibrium is the situation where \(\vec{F}_{net}=0\).
+%	The forces on the objects balance each other, so there is no acceleration.
+
+%	Conversely if you see an object that is not moving, then the forces
+%	on it must be in equilibrium. There must be zero net force on it.
+%	No net \(x\)-force:
+%	\[
+%	 \sum F_x = 0,
+%	\]
+%	no net \(y\)-force on it
+%	\[
+%	 \sum F_y = 0,
+%	\]
+%	and (this is the new part), if you see that it is not
+%	rotating, then it must also have no net toques on it:
+%	\[
+%	 \sum \mathcal{T}_{(A)} = 0,
+%	\]
+%	where we can take the torques with respect to \dokuitalic{any} centre of rotation (A).
+
+%	%
+%	%\dokutitlelevelfour{Example: walking the plank}
+
+%	%Plank is one third of the way out, and not attached to the ship.
+%	%It weights 300 kg in total, so 100kg sticking out of the ship
+%	%and 200kg on the ship.
+%	%How far on the plank can you walk before it tips into the sea?
+
+%	%
+%	%\dokutitleleveltree{Explanations}
+%	%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+
+%	%\dokutitlelevelfour{Torque}
+
+%	%People in the Mid West and other rural areas like to buy trucks because they have a lot of torque.
+%	%Big engine, big torque. You can pull stuff. Wait isn't that force? But toque should be good too?
+%	%What is the difference?  I am confused.
+
+%	%Don't be confused. Torque is just force times distance, i.e. we have to take into account not only 
+%	%what force is exerted but also the leverage: how far from the center of rotation you are exerting the force:
+%	%\[
+%	% \mathcal{T} = F_{rot} \times r.
+%	%\]
+%	%The bigger the leverage \(r\), the bigger torque you will create with a fixed amount of force.
+
+%	%When it comes down to the question how much you can pull, and you want to answer it by
+%	%looking at the specs of your truck, you have to look at (1) the max torque \(\mathcal{T}\) and (2) the radius of
+%	%your wheels \(r\), and divide the numbers to get the maximum pulling force \(F\).
+
+%	%
+%	%\dokutitlelevelfour{Rotational F=ma}
+
+%	%The angular analogue of $F=ma$ is:
+%	%\[
+%	% \mathcal{T} = I \alpha,
+%	%\]
+%	%where
+%	%\[
+%	% I = \sum m_i r_i^2 = \int_{obj} r^2 \ dm.
+%	%\]
+
+%	%
+%	%\dokutitleleveltree{Examples}
+%	%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
+
+%	%\dokutitlelevelfour{Rotational UVM}
+
+%	%Something is spinning at a constant angular velocity during
+%	%some time \(t\). Just use \(\theta(t) = \omega t + \theta_0\).
+%	%Waaay too simple and boring.
+
+%	%
+%	%\dokutitlelevelfour{Rotational UAM}
+
+%	%A pulley of radius \(R\) and moment of inertia \(I\) has a rope wound around it
+%	%and a mass \(m\) attached at the end of that rope.
+%	%What is the angular acceleration caused by the mass
+%	%as it unwinds the rope.
+
+%	%The force diagram on \(m\) tells us that \(mg-T=ma_y\) (where \(\hat{y}\) points downwards).
+%	%The torque diagram on the disk tells us that \(TR = I \alpha\).
+%	%Adding \(R\) times the first equation to the second we get:
+%	%\[
+%	% R({mg - T}) + T  R  = R m a_y + I \alpha,
+%	%\]
+%	%or after simplification we get:
+%	%\[
+%	% R  m  g = R m a_y + I \alpha.
+%	%\]
+%	%But we know that the rope forms a solid connection between the disk and the mass block,
+%	%so we must also have \(R \alpha = a_y\), so if we substitute for \(a_y\) we get:
+%	%\[
+%	% R  m  g = R m R \alpha + I \alpha = (R^2 m + I) \alpha,
+%	%\]
+%	%or 
+%	%\[
+%	% \alpha = \frac{  R  m  g  }{ R^2 m + I }.
+%	%\]
+%	%This makes sense. The numerator is the ``cause'', and the denominator is the effective moment of inertia of the system
+%	%as a whole.
+
+%	%\dokutitleleveltree{Discussion}
+%	%\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
+
+%	%It is really important that you connect all of the above 
+%	%rotational concepts with their linear counterparts.
+
+%	%
+
+%	
+%	\dokutitleleveltwo{Simple harmonic motion}
+%	\label{cd80db888044ca76c4e83c74b55b1b83}%% simple_harmonic_motion
+
+%	This law describes the motion of a mass attached to a spring, a pendulum and any system that goes back and forth in a cyclic fashion.
+
+%	
+%	\dokutitleleveltree{Concepts}
+%	\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
+
+%	\begin{itemize}
+%	\dokuitem  \(A\): Amplitude of the movement, how far does the object go back and forth.
+%	\dokuitem  \(t\): time.
+%	\dokuitem  \(x(t)\): position of object at time \(t\).
+%	\dokuitem  \(\omega\): angular frequency.
+%	\dokuitem  \(\phi\): phase constant.
+%	\dokuitem  \((\omega t + \phi)=\theta\): phase, the argument of the function \(\sin\).
+%	\dokuitem  \(T\): the \dokuitalic{period} is the time it takes for the movement to repeat. Measured in seconds [s].
+%	\dokuitem  \(f\): frequency [Hz]=[1/s].
+%	\end{itemize}
+
+%	\dokutitleleveltree{Formulas}
+%	\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
+%	Frequency is defined as ``how many cycles in one second'' and is
+%	equal to the inverse of the period (how long one cycle takes):
+%	\[
+%	 f=1/T=\frac{\omega}{2\pi} \text{ [Hz].}
+%	\]
+%	The relation between \(f\) (frequency) and \(\omega\) (angular frequency)
+%	is a multiplication by \(2\pi\) needed to match the units:
+%	1 cycle needs to be multiplied by the number of radians it takes to 
+%	make one full turn.
+
+%	The equation of motion of an object undergoing simple harmonic motion is:
+%	\[
+%	 x(t)=A\cos(\omega t   + \phi).
+%	\]
+%	%
+%	%Now don't be scared. It is really simple.
+%	%Let us just study the properties of \(\sin(x)\) for a moment,
+%	%so that you can be get familiar with the math of periodic functions.
+
+%	%
+%	%\dokutitlelevelfour{The function sin(x)}
+
+%	%\begin{wrapfigure}{r}{0pt}
+%	%\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/lib/plugins/tmp/texitimages/texitmrNnmQ.png}
+%	%\end{wrapfigure}
+
+%	%
+%	%The functions \(f(x)=\sin(x)\) and \(f(x)=\cos(x)\) are both angular functions,
+%	%that is, they take an angle \(\theta\) as input.
+%	%Sometimes we call the input \(x\), but in the next paragraphs
+%	%we will call the input \(\theta\) so that we keep in mind
+%	%that we are talking about angles.
+
+%	%
+%	%The period \(T\) of \(\sin(t)\) with no coefficients
+%	%inside of it is \(2\pi\), because this is how long
+%	%it takes (in radians) to do one full turn.
+
+%	%
+%	%\dokutitlelevelfour{Time-scaling sin}
+
+%	%If you want a sin function with a different period,
+%	%you have to add a multiplier in front of \(x\) inside
+%	%the sin. This multiplier is, by convention, called
+%	%\(\omega\), so now we have a input-scaled \(\sin\) function:
+%	%\[
+%	% \sin(\omega t ),
+%	%\]
+%	%which will have period
+%	%\[
+%	% T=\frac{2\pi}{\omega}.
+%	%\]
+%	%No seriously, if you don't believe me check for yourself.
+%	%If you let \(t\) go from \(0\) to \(T\) you should see
+%	%the motion go though one cycle. 
+%	%Indeed, when multiplied with the scaling \(\omega=\frac{2\pi}{T}\),
+%	%the input to sin goes from \(0\) to \(2\pi\) as \(t\) goes from \(0\) to \(T\).
+
+%	%
+%	%\dokutitlelevelfour{Sin or cos up to you}
+
+%	%Simple harmonic motion is equally well described
+%	%by the \(\sin\) function or the \(\cos\) function.
+
+%	%You should use cos when the spring starts from the stretched position: 
+%	%\(x_i = x_{max}=A\), because naturally when \(t=0\) cos
+%	%will be one, and the overall function will be:
+%	%\[
+%	% x(t) = A\cos(\omega t).
+%	%\]
+
+%	%If the harmonic motion starts from \(x(t)=0\)
+%	%when \(t=0\), then \(\sin\) is a more appropriate
+%	%function to describe this motion:
+%	%\[
+%	% x(t) = A\sin(\omega t),
+%	%\]
+%	%which correctly predicts the initial position \(x(0)=0\).
+
+%	%Any combination of the above scenarios is possible too.
+%	%So now it becomes difficult to see what the motion is,
+%	%with \dokuitalic{two} amplitudes (one for stretched initial conditions,
+%	%and one for centered  initial conditions) and a sum of 
+%	%sin and cos:
+%	%\[
+%	% x(t) = A_1\cos(\omega t) + A_2\sin(\omega t).
+%	%\]
+%	%
+%	%Lo and behold. There is actually a simpler way of 
+%	%writing the above equation. Sin and cos are 
+%	%identical except for the fact that one is a
+%	%shifted version of the other.
+%	%By using trigonometric identity Kung Fu, we can 
+%	%rewrite the above in terms of sin or cos with some 
+%	%combined amplitude and a \dokuitalic{phase shift}:
+%	%\[
+%	% x(t)=A\cos(\omega t   + \phi).
+%	%\]
+%	%The initial conditions $x_i$ and $v_i$ are used 
+%	%to find either the individual coefficients $A_1$ and $A_2$
+%	%of the sin and the cos or the common coefficient $A$ and
+%	%the phase shift $\phi$.
+
+%	%Let me go over what just happened here one more time,
+%	%because this is some crazy stuff.
+%	%You are not supposed to learn about this stuff until 
+%	%the \dokuitalic{differential equations} class, but I will tell
+%	%you about it right now because it is like \dokuitalic{woooow}.
+%	%Let's draw an analogy with a situation which we have
+%	%seen previously. We are trying to describe (and predict)
+%	%the position of an object as a function of time \(x(t)\).
+%	%In kinematics there was \dokuitalic{one} equation \(x(t)=x_i+v_it + \frac{1}{2}at^2\),
+%	%and depending on the initial velocity and the initial position we got 
+%	%different trajectories, because of the different values of \(x_i\)
+%	%and \(v_i\).
+%	%In the case of simple harmonic motion we have \dokuitalic{two} functions and
+%	%the initial position \(x_i\) and initial velocity \(v_i\) determine
+%	%how much of each function we should include
+%	%in the formula for \(x(t)\).
+
+%	%The thing to remember is that you can pick cos or sin 
+%	%as the situation requires and, if the situation requires
+%	%it, add a phase factor.
+%	%I assure you that the fact that \(a\sin(x)+b\cos(x)\) can
+%	%be expressed as \(A\cos(x+\phi)\) or \(A\sin(x-\psi)\) is not 
+%	%magic, but simple application of \hyperref[dfc96c1062532291f8378374353a33c7]{trig{\textbackslash}\_identities}.
+
+%	
+%	\dokutitlelevelfour{Mass and spring}
+
+%	Suppose you have a mass \(m\) attached
+%	to a spring with spring constant \(k\).
+%	If disturbed from rest, this mass-spring
+%	system will undergo simple harmonic motion
+%	with angular frequency:
+%	\[
+%	 \omega = \sqrt{ \frac{k}{m} }.
+%	\]
+%	%
+%	%A typical exam question is to tell you \(k\) and \(m\)
+%	%and ask about the period \(T\), at which point you have
+%	%to remember the definition of period to obtain the 
+%	%answer:
+%	%\[
+%	% T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }.
+%	%\]
+
+%	
+%	\dokutitlelevelfour{Pendulum}
+
+%	Consider an object suspended at the end of a long string 
+%	of length \(\ell\) in a gravitational field of strength \(g\).
+%	If disturbed from equilibrium this system will undergo
+%	simple harmonic motion, by swinging from side to side.
+
+%	The period of oscillation will be:
+%	\[
+%	 T = 2\pi \sqrt{ \frac{\ell}{g} }.
+%	\]
+%	%Note in particular that this equation does not depend
+%	%on the amplitude of the oscillation (how far the pendulum swings)
+%	%nor the mass of the pendulum. Kind of cool no?
+%	%For a long while, this was how people kept track of time: with pendulum clocks.
+
+%	%To describe the angular position of the pendulum 
+%	%we can use a the formula:
+%	%\[
+%	% \theta(t) = \theta_{max} \cos(\omega t + \phi),
+%	%\]
+%	%where \(\theta_{max}\) is the maximum angle the pendulum swings to.
+%	%The coefficient inside the \(\cos\) is equal to:
+%	%\[
+%	% \omega \equiv \frac{2\pi}{T} = \sqrt{ \frac{g}{\ell} }.
+%	%\]
+
+%	
+%	\dokutitlelevelfour{SHM equations of motion}
+
+%	These are the new equations of motion which you need
+%	to learn how to use:
+
+%	\begin{align*}
+%	x(t) &= A\cos(\omega t + \phi), \\
+%	v(t) &= -A\omega \sin(\omega t + \phi), \\
+%	a(t) &= -A\omega^2\cos(\omega t + \phi).
+%	\end{align*}
+
+%	Note that the velocity and the acceleration of the object
+%	are also periodic functions. 
+%	Pay attention to the \dokuitalic{amplitude} of the velocity:
+%	\[
+%	 v_{max} = \omega A,
+%	\]
+%	and the \dokuitalic{amplitude} of the acceleration:
+%	\[
+%	 a_{max} = \omega^2 A.
+%	\]
+%	You will often be asked to solve for these quantities,
+%	which is going to be an easy task if you know \(A\) and \(\omega\).
+
+%	%
+%	%And equivalent set of equations of motion exists with \(x(t)\propto \sin(\omega t + \psi)\),
+%	%but in this section we will just talk about the \(\cos\) kind of \(x(t)\). 
+%	%Everything I say would be true if we had
+%	%started with \(x(t)\propto \sin(\omega t + \psi)\) instead.
+
+%	
+%	\dokutitlelevelfour{Energy}
+
+%	The potential energy stored in the spring is: 
+%	\[
+%	 U(t)= \frac{1}{2} kx(t)^2 =\frac{1}{2}kA^2\cos^2(\omega t +\phi).
+%	\]
+
+%	
+%	The kinetic energy of the mass is:
+%	\[
+%	 K(t)= \frac{1}{2} mv(t)^2 = \frac {1}{2}m\omega^2A^2\sin^2(\omega t +\phi).
+%	\]
+
+%	The total energy is: \\ 
+%	\begin{align*}
+%	 E_{total}
+%	 &= U(t) + K(t) \\
+%	 &= \frac{1}{2}kA^2\cos^2(\omega t) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t) \\
+%	 &= \frac{1}{2}kA^2\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} =\frac{1}{2}kA^2 = U_{max} \\
+%	% &= \frac{1}{2}m\omega^2A^2\cos^2(\omega t ) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t ) \ \ (\text{since } k  = m\omega^2 )\\
+%	 &=  %\frac{1}{2}m\underbrace{\omega^2A^2}_{v_{max}^2}\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} 
+%	  \frac{1}{2}mv_{max}^2 = K_{max}.
+%	\end{align*}
+
+%	%
+%	%\dokutitlelevelfour{Conservation of energy}
+
+%	%In simple harmonic motion, the total 
+%	%energy is conserved:
+%	%\[
+%	% E_T = U+ K.
+%	%\]
+%	%Energy shifts between the potential energy of the spring
+%	%and the kinetic energy of the moving mass.
+%	%For any two points \(t_i\) and \(t_f\):
+%	%\[
+%	% U_i + K_i = U_f + K_f.
+%	%\]
+
+%	%Two particularly important moments of the SHM are
+%	%the points where it is at its maximum position
+%	%and zero velocity \(x=\pm A\), \(K=0\), \(E_T= U\), 
+%	%which corresponds to all the energy being stored in the spring,
+%	%and the point where it has zero displacement but
+%	%maximal velocity \(x=0, U=0, v=\pm A\omega, E_T=K\),
+%	%which corresponds to all the energy being kinetic.
+
+%	%
+%	%\dokutitleleveltree{Explanations}
+%	%\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
+
+%	%\dokutitlelevelfour{Derivation of SHM equation}
+
+%	%OK, wait a minute, you are saying. 
+%	%First I told you about uniform velocity \(x(t)=v_it+x_i\)
+%	%and then I added in acceleration \(x(t) = x_i + v_it + \frac{1}{2}at^2\),
+%	%which is a little more complex but still manageable.
+%	%Now I am talking about \(\sin\) and \(\cos\) and Greek letters with dubious
+%	%names like phase. 
+%	%Are you phased by all of this?
+%	%When I was learning this stuff, I was totally
+%	%phased because I didn't understand where the \(\sin\) and \(\cos\) came from.
+
+%	%The \(\sin\) comes from \(F=ma\),
+%	%and the fact that the force of a spring is \(F_{s} = -kx\).
+
+%	%Recall the definition of acceleration:
+%	%\[
+%	% a=\frac{dv}{dt} = \frac{d^2x(t)}{dt^2}.
+%	%\]
+
+%	%We now substitute these facts into \(F=ma\) to get:
+
+%	%\begin{align*}
+%	% F & =ma \\
+%	% -kx  	&= ma 	\\
+%	% -kx(t) &= m\frac{d^2x(t)}{dt^2} \\
+%	% 0 & = m\frac{d^2x}{dt^2}+ kx(t) \\
+%	% 0 & = \frac{d^2x}{dt^2}+ \frac{k}{m}x(t).
+%	%\end{align*}
+
+%	%This is as far as Newton's second law will be able to bring us.
+%	%The formula \(F=ma\) is not enough 
+%	%to tell us the exact function \(x(t)\), like in
+%	%the UVM and UAM kinematics motion in the earlier
+%	%chapters.  Instead of knowing the function \(x(t)\),
+%	%we know one of its properties, namely, that its
+%	%second derivative is equal to the negative of itself
+%	%multiplied by some numbers.
+
+%	%Can you think of a function whose second derivative
+%	%is equal to itself times \(\frac{k}{m}\)? 
+%	%Ok I thought of one:
+%	%\[
+%	% x_1(t)=A \cos( \sqrt{ \frac{k}{m}}t + \phi),
+%	%\]
+%	%and come to think of it I thought of a second
+%	%one which also works:
+%	%\[
+%	% x_2(t)=A \sin( \sqrt{ \frac{k}{m}}t + \psi).
+%	%\]
+%	%Hmm, now you see where the \(\sin\) comes from 
+%	%and why we said that \(\omega = \sqrt{ \frac{k}{m} }\)
+%	%for a mass-spring system. It is all from \(F=ma\).
+
+%	%
+%	%\dokutitleleveltree{Examples}
+%	%\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
+
+%	%In various word problems you will either be told the initial
+%	%amplitude \(x_i=A\) or the initial velocity \(v_i=\omega A\)
+%	%and asked to solve for some unknown. 
+%	%Nothing should be too difficult provided
+%	%you write down the equations 
+%	%\(x(t)\), \(v(t)\) and \(a(t)\) and fill in the knowns.
+
+%	%
+%	%\dokutitleleveltree{Links}
+%	%\label{807765384d9d5527da8848df14a4f02f}%% links
+
+%	%
 
 
 
