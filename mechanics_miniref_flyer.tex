@@ -1,10 +1,13 @@
-\documentclass[twocolumn,8pt]{extarticle}
-
-\title{ \Huge Mechanics in four pages}
-%\author{Ivan Savov} 
+\documentclass[letterpaper,9pt,journal]{IEEEtran}
 
 
-\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
+\def\fourrr{four }
+%\documentclass[twocolumn,8pt]{extarticle}
+\title{ \Huge MECHANICS explained in \fourrr pages}
+\author{Excerpt from the MATH and PHYSICS Minireference by Ivan Savov} 
+
+
+%\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
 
 \usepackage[english]{babel} %% Use your own babel language
 \date{}
@@ -28,8 +31,8 @@
 
 %\usepackage{standalone}
 
-\usepackage{enumitem}
-\setitemize{itemsep=-0.04in}   % LISTS WERE TOO AIRY
+%\usepackage{enumitem}
+%\setitemize{itemsep=-0.02in}   % LISTS WERE TOO AIRY
 
 
 
@@ -57,6 +60,8 @@
 \newcommand{\dokuheadingstyle}[1]{#1}
 
 
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
 
 
 
@@ -73,33 +78,46 @@
 
 
 \begin{document}
+\maketitle
 
+%\vspace*{-1cm}
 
+%
 
-\twocolumn[
-  \begin{@twocolumnfalse}
-\begin{center}
-\fontsize{27}{16}\selectfont
-%EZ \ MECHANICS \ TUTORIALS
-MECHANICS \ \  in \ \  FOUR PAGES
-\normalsize 
-%\vspace{2mm}
-%by Ivan Savov
-\vspace{6mm}
-\end{center}
-	%    \maketitle
-	%    \begin{abstract}
-	%      ...
-	%    \end{abstract}
-  \end{@twocolumnfalse}
-  ]
+%\twocolumn[
+%  \begin{@twocolumnfalse}
+%\begin{center}
+%\fontsize{27}{16}\selectfont
+%%EZ \ MECHANICS \ TUTORIALS
+%MECHANICS \ \  in \ \  FOUR PAGES
+%\normalsize 
+%%\vspace{2mm}
+%%by Ivan Savov
+%\vspace{6mm}
+%\end{center}
+%	%    \maketitle
+%	%    \begin{abstract}
+%	%      ...
+%	%    \end{abstract}
+%  \end{@twocolumnfalse}
+%  ]
   
 
-%\begin{abstract}
-%{\small This document is a self contained reference of the key concepts in Mechanics. 
-%Because I know that you have beers to drink and parties to go to, I will teach you the
-%important parts right now so you can chill later on in the semester. }
-%\end{abstract}
+\begin{abstract}
+%This document is a self contained tutorial on Mechanics.
+Mechanics is the precise study of the motion of objects, the forces acting
+on them and more abstract concepts such as momentum and energy.
+You probably have an intuitive understanding of these concepts already,
+but in the next \fourrr pages you will learn how to use precise mathematical
+equations to support your intuition. Perhaps more importantly, we will also learn
+where the equations come from.
+%There will be parties to go to and beers to drink later on in the semester, 
+%so it is best to learn about all the important concepts of physics right now 
+%and have time to chill later on in the semester. 
+%%
+%If you understand everything that is covered in the next \fourrr pages,
+%I can guarantee you that you will be able to pass the final exam.
+\end{abstract}
 
 
 
@@ -124,94 +142,102 @@ MECHANICS \ \  in \ \  FOUR PAGES
 
 \section{Introduction}
 
-Mechanics is the precise study of the motion of objects, the forces acting
-on them and more abstract concepts such as momentum and energy.
-You probably have an intuitive understanding of these concepts already,
-but in this tutorial you will learn how to use precise mathematical
-equations to support your intuition. Perhaps more importantly, I will also
-teach you where the equations come from.
 
-The key concept which we want to obtain in a physics problem is the 
-\emph{equation of motion} $x(t)$ of an object which describes its position at all times. 
+
+The key concept which we want to obtain in any physics problem is the 
+\emph{equation of motion} $x(t)$ of an object, which describes its position as a function of time.
 %
-To find $x(t)$ we will start from 
-Newton's second law $F=ma$, which says that forces \emph{cause} objects to accelerate
-and that the amount of acceleration produced is inversely proportional to the mass of the object. 
-Once we the acceleration of an object (the rate of change of its velocity), we can use \emph{integration}
-to find the velocity of the object at all times $v(t)$ and from there we can also
-find its position as a function of time $x(t)$:
+Once you know $x(t)$, you can answer many of the question pertaining to the motion of the object.
+To find the initial position $x_i$ of the object, you simply plug $t=0$ into the equation of motion $x_i = x(0)$.
+To find the time(s) when the object reaches a distance of 20[m] from the origin, we simply solve for $t$ in $x(t)=20$[m].
+Many of the problems on you final exam in physics will be of this form, so it is really important that you know
+how to find the equation of motion for any object.
+
+The first step in finding $x(t)$ is to calculate all the \emph{forces} that act on the object.
+Forces are the \emph{cause} of motion, so if you want to understand motion you need to understand forces. 
+Newton's second law $F=ma$ states that  the amount of \emph{acceleration} produced by a force is inversely 
+proportional to the mass of the object. Once you have the acceleration, you can compute $x(t)$ using some simple
+calculus steps, which we will discuss shortly.
+For now, though, we want to focus on the causes of motion: the forces.
+There are many kinds of forces that could be acting on an object: the weight of an object $\vec{W}$ is a type force, 
+the force of friction $\vec{F}_f$ is another type another, the tension in a rope $\vec{T}$ yet another type of force
+and there are many others.
+Note the little arrow on top of each force, which is there to remind you that forces are \emph{vector} quantities.
+Unlike regular numbers, forces act in a particular direction, so it is possible that the effects of 
+one force are counteracting another force. For example the force of the weight of a flower pot 
+is exactly counter-acted by the tension in the rope on which it is suspended, thus,
+while there are two forces that may be acting on the pot, there is no \emph{net force} acting on it.
+Since there is no net force to cause motion and since the pot wasn't moving to begin with, 
+it will just sit there motionless despite the fact that there are forces acting on it!
+The first step when analyzing a physics problem will be calculation of the \emph{net force}
+acting on the object, which is the sum of all the forces acting on the object: $\vec{F}_{net} \equiv \sum \vec{F}$.
+Once we have found the net force we can use $\vec{F}_{net}=m\vec{a}$ to find the resulting acceleration.
+
+It turns out that once you know the acceleration of an object $a(t)$, 
+you can easily find its velocity $v(t)$ function and once you know the velocity 
+function you can find the position function $x(t)$, which is what we wanted to find in the first place.
+The acceleration is the change in the velocity of the object, thus if you know
+that the object stated with an initial velocity of $v_i \equiv v(0)$,
+and you want to find the velocity at later time $t=\tau$, 
+you have to add up all the acceleration that the object felt during this time $v(\tau)=v_i+\int_0^\tau a(t)\;dt$.
+The symbol $\int \cdot \;dt$ is called an \emph{integral} and is fancy way of finding the total
+of some quantity over time. In order to find $x(t)$, we perform a second integration step
+in which we add up all the changes in the position (velocity) in order to find the final position $x(t)$.
+%
+We can summarize the entire process which is used to find $x(t)$ in the following equation:
 \begin{equation}
- \frac{1}{m}\sum \vec{F} = a(t) \overset{\ \int\!dt }{\longrightarrow} v(t) \overset{\ \int\!dt }{\longrightarrow} x(t).
+ \frac{1}{m}\sum \vec{F} = a(t) \ \overset{v_i+ \int\!dt }{\longrightarrow} \ v(t) \ \overset{x_i+ \int\!dt }{\longrightarrow} \ x(t).
  \label{fma-eqn}
 \end{equation}
-Note that the left hand side in the above equation involves the calculation of \emph{net force}
-which is the sum of all the forces acting on the object: $\vec{F}_{\mathrm{net}} \equiv \sum \vec{F}$.
 %
-%Kinematics is the study of the right hand side in the above equation:
-%it involves computing the velocity and the position starting from the acceleration.
+The right hand side of the equation is called a \emph{dynamics} problem and involves 
+the calculation of the \emph{net force} $\vec{F}_{net} \equiv \sum \vec{F}$.
+The right hand side in the above equation is called \emph{kinematics} and focusses on
+the use of integration in order to find $v(t)$ from $a(t)$ and $x(t)$ from $v(t)$.
+Don't worry about this integration business; 
+it is quite simple and we will cover everything you need to know about it in the next section.  
+
+
+The same principles of cause and effect can be also be applied to the study of circular motion.
+
+
+We saw that Newton's second law and equations like 
+Momentum 
 
 
 \begin{equation}
-  U(h) = \int_0^h  \vec{F}_g \cdot d\vec{y} = mgh.
+  U(h) = - \int_0^h  \vec{F}_g \cdot d\vec{y} = - \int_0^h  (- mg\hat{\jmath}) \cdot \hat{\jmath} \;dy    = mgh.
 \end{equation}
 
-You may have observed that both of the above equations contained
-vector quantities and involved integrals. Indeed, in order to properly
-understand the laws of physics, you need to know about vectors and
-a little bit of calculus.  The background section will introduce these
-concepts.
-
-\section{Background}
-
-The basic quantities that will appear in the equations of physics are 
-measured in meters [m], seconds [s], meters per second [m/s],  meters per second squared [m/s$^2$] and
-Newtons [N]. You should always keep in mind which units are being used (meters vs. kilometres) and
-\emph{what type} the type quantity you are manipulating (length vs. velocity). 
-%
-You should also be aware whether the quantities are regular numbers 
-or \emph{vectors} with multiple components.
-
-
-\subsection{Vectors}
-
-Forces, velocities, and accelerations are vector quantities.
-When working with vectors you will have to work their \dokuitalic{components}:
-
-\begin{itemize}
-\dokuitem $\vec{F}=(F_x,F_y)$: a vector quantity, a force.
-\dokuitem  \(x\)-axis:  The \(x\)-axis is the horizontal the coordinate system.
-\dokuitem  \(y\)-axis: The \(y\)-axis is an axis \dokuitalic{perpendicular} to the \(x\)-axis.
-\dokuitem  \(F_x\): the \dokuitalic{component} of \(\vec{F}\) along the \(x\) axis.
-\dokuitem  \(F_y\): the \dokuitalic{component} of \(\vec{F}\) along the \(y\) axis.
-\dokuitem  \(\hat{\imath},\hat{\jmath}\): Unit vectors in the \(x\) and \(y\) directions. 
-%\end{itemize}
-%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
-%\begin{itemize}
-%Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
-\end{itemize}
-
-Given the $xy$ coordinate system, we can denote a vector in three equivalent ways:
-\[
-  \vec{F}  
-  \ \equiv \ (F_x,F_y)
-  \ \equiv \  F_x\hat{\imath} + F_y\hat{\jmath} 
-  %\equiv F_x\hat{x} + F_y\hat{y} \equiv  (F_x,F_y)
-  \ \equiv \ 
-  \|\vec{F}\| \angle \theta,
-\]
-where $\|\vec{F}\|$ denotes the length of the vector $\vec{F}$ and
-$\theta$ is the angle that it makes with the $x$ axis.
 
 
 
+\section{Calculus essentials}
+
+Calculus involves $f(t)$...
+
+You need calculus in order to do quantitative analysis of how variables
+change over time (derivatives) or sum up all kinds of contributions that
+add up to a total (integration).
+
+%The basic quantities that will appear in the equations of physics are 
+%measured in meters [m], seconds [s], meters per second [m/s],  meters per second squared [m/s$^2$] and
+%Newtons [N]. You should always keep in mind which units are being used (meters vs. kilometres) and
+%\emph{what type} the type quantity you are manipulating (length vs. velocity). 
+%%
+%You should also be aware whether the quantities are regular numbers 
+%or \emph{vectors} with multiple components.
 
 
+\subsection{Derivatives}
 
+
+a
 
 \subsection{Integrals}
 \label{3369022ed3e212789ba2790306add593}%% integrals
 \begin{wrapfigure}{r}{0pt}
-\includegraphics[width=0.21\textwidth]{/Library/WebServer/Documents/miniref/data/media/calculus/integral_as_region_under_curve_t.png}
+\includegraphics[width=110pt]{/Library/WebServer/Documents/miniref/data/media/calculus/integral_as_region_under_curve_t.png}
 \end{wrapfigure}
 
 An integral corresponds to the computation of an \dokuitalic{area}
@@ -267,19 +293,19 @@ that corresponds to the area under $f(t)$ between
 $t=0$ and the time $t=\tau$.
 
 \begin{wrapfigure}{r}{0pt}
-\includegraphics[width=84pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_one_tikz-0.png}
+\includegraphics[width=110pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_one_tikz-0.png}
 \end{wrapfigure}
 
 We can easily find this area because the region under the curve is rectangular:
 \[ 
- \! F(\tau) \!= \! \! \int_0^\tau \!\! f(t)\;dt  = 3 \tau.
+ \! F(\tau) \equiv A(0,\tau) =  \! \int_0^\tau \!\! f(t)\;dt  = 3 \tau.
 \]
 Indeed the area is equal to the height times the length of the 
 base of the rectangle.
 
 
 \begin{wrapfigure}{r}{0pt}
-\includegraphics[width=84pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_two_tikz-0.png}
+\includegraphics[width=110pt]{/Library/WebServer/Documents/miniref/data/media/calculus/simple_integral_two_tikz-0.png}
 \end{wrapfigure}
 
 Anther important calculation is the area under 
@@ -288,7 +314,7 @@ which corresponds to the area under $g(t)$ between $0$ and $\tau$.
 This area is also easily computed since the region under the curve 
 is triangular:
 \[
- G(\tau) = \int_0^\tau f(t) \; dt = \frac{\tau\times\tau}{2} = \frac{1}{2}\tau^2,
+ G(\tau) \equiv A(0,\tau) = \int_0^\tau g(t) \; dt = \frac{\tau\times\tau}{2} = \frac{1}{2}\tau^2,
 \]
 since the area of a triangle is the product of the length of
 the base times the height divided by two.
@@ -306,7 +332,7 @@ of a function is the total amount of the function accumulated
 during some time period.
 You should try to remember the formulas:
 \[
- \int_c^\tau a \;dt = a\tau + C, \quad 
+ \int_c^\tau a \;dt = a\tau + C, \qquad 
  \int_c^\tau at \;dt = \frac{1}{2}a\tau^2 + C,
 \]
 which correspond to the integral of a constant function
@@ -344,6 +370,8 @@ derive the equation of motion for a particle in free fall.
 
 
 
+
+
 \dokutitleleveltwo{Kinematics}
 \label{508ac5264059de6a350383a9f1e87977}%% kinematics
 Kinematics (from the Greek word \dokuitalic{kinema} for \dokuitalic{motion}) is the study of trajectories of moving objects.  
@@ -353,13 +381,13 @@ or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
 \dokutitleleveltree{Concepts}
 \label{408d82ccb63ca28fa1665f5ee146b453}%% position_velocity_and_acceleration_revisited
 
-The key notions which we use to describe the motion of some object are:
+The key notions used to describe the motion of an objects are:
 \begin{itemize}
 \dokuitem  $t$: the time, measured in seconds [s].
-\dokuitem  $x(t)$: the position of an object as a function of time, also known as the equation of motion.
-\dokuitem  $v(t)$: the velocity of the object over time.
-\dokuitem  $a(t)$: the acceleration of the object.
-\dokuitem  $x_i=x(0), v_i=v(0)$: the initial conditions.
+\dokuitem  $x(t)$: the position of an object as a function of time -- also known as the equation of motion. Measured in meters [m].
+\dokuitem  $v(t)$: the velocity of the object as a function of time. [m/s]
+\dokuitem  $a(t)$: the acceleration of the object as a function of time. [m/s$^2$]
+\dokuitem  $x_i=x(0), v_i=v(0)$: the starting position and velocity.
 \end{itemize}
 
 
@@ -422,20 +450,20 @@ If the object undergoes a \dokuitalic{constant} acceleration $a(t)=a$,
 like your car if you floor the \dokuitalic{accelerator} pedal, then
 the equations of motion are:
 
-\begin{align*}
+\begin{align}
   x(t) &= \frac{1}{2}at^2 +  v_i t + x_i, \\
   v(t) &= at + v_i, \\
   a(t) &= a.
-\end{align*}
+\end{align}
 
 There is also another very useful equation to remember:
 \[
  v(t)^2 = v_i^2 + 2a[x(t)- x_i],
 \]
 which is usually written
-\[
+\be
  v_f^2 = v_i^2 + 2a\Delta x.
-\]
+\ee
 
 That is it. Memorize these equations, plug-in the right numbers,
 and you can solve any kinematics problem humanly imaginable.
@@ -619,6 +647,42 @@ throwing a ball downwards will make it fall to the ground faster than just dropp
 
 
 
+\section{Vectors}
+
+Forces, velocities, and accelerations are vector quantities.
+When working with vectors you will have to work their \dokuitalic{components}:
+
+\begin{itemize}
+\dokuitem $\vec{F}=(F_x,F_y)$: a vector quantity, a force.
+\dokuitem  \(x\)-axis:  The \(x\)-axis is the horizontal the coordinate system.
+\dokuitem  \(y\)-axis: The \(y\)-axis is an axis \dokuitalic{perpendicular} to the \(x\)-axis.
+\dokuitem  \(F_x\): the \dokuitalic{component} of \(\vec{F}\) along the \(x\) axis.
+\dokuitem  \(F_y\): the \dokuitalic{component} of \(\vec{F}\) along the \(y\) axis.
+\dokuitem  \(\hat{\imath},\hat{\jmath}\): Unit vectors in the \(x\) and \(y\) directions. 
+%\end{itemize}
+%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
+%\begin{itemize}
+%Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
+\end{itemize}
+
+Given the $xy$ coordinate system, we can denote a vector in three equivalent ways:
+\[
+  \vec{F}  
+  \ \equiv \ (F_x,F_y)
+  \ \equiv \  F_x\hat{\imath} + F_y\hat{\jmath} 
+  %\equiv F_x\hat{x} + F_y\hat{y} \equiv  (F_x,F_y)
+  \ \equiv \ 
+  \|\vec{F}\| \angle \theta,
+\]
+where $\|\vec{F}\|$ denotes the length of the vector $\vec{F}$ and
+$\theta$ is the angle that it makes with the $x$ axis.
+
+
+
+
+
+
+
 \section{Projectile motion}
 
 The basic concepts of kinematics  in two dimensions are:
@@ -645,7 +709,7 @@ form an \dokuitalic{initial} point an goes to a \dokuitalic{final} point we will
 
 \begin{figure}
 \hspace{-0.3cm}
-\includegraphics[width=0.53\textwidth]
+\includegraphics[width=0.5\textwidth]
 {/CurrentPorjects/Minireference/miniref_figures/plots_and_diagrams/projecticle-concepts_tikz.pdf}
 \end{figure}
 
