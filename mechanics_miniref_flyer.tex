@@ -4,10 +4,12 @@
 \def\fourrr{four }
 %\documentclass[twocolumn,8pt]{extarticle}
 \title{ \Huge MECHANICS explained in \fourrr pages}
-\author{Excerpt from the MATH and PHYSICS Minireference by Ivan Savov} 
+\author{Excerpt from the \emph{MATH and PHYSICS Minireference} by Ivan Savov} 
 
 
 %\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
+
+\usepackage[bmargin=1cm,rmargin=0.9cm,lmargin=0.9cm,tmargin=1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
 
 \usepackage[english]{babel} %% Use your own babel language
 \date{}
@@ -142,10 +144,8 @@ where the equations come from.
 
 \section{Introduction}
 
-
-
-The key concept which we want to obtain in any physics problem is the 
-\emph{equation of motion} $x(t)$ of an object, which describes its position as a function of time.
+To solve a physics problem is to obtain the \emph{equation of motion} $x(t)$, 
+which describes position of the object as a function of time.
 %
 Once you know $x(t)$, you can answer many of the question pertaining to the motion of the object.
 To find the initial position $x_i$ of the object, you simply plug $t=0$ into the equation of motion $x_i = x(0)$.
@@ -153,13 +153,14 @@ To find the time(s) when the object reaches a distance of 20[m] from the origin,
 Many of the problems on you final exam in physics will be of this form, so it is really important that you know
 how to find the equation of motion for any object.
 
+%\paragraph{{\bf Forces}}
 The first step in finding $x(t)$ is to calculate all the \emph{forces} that act on the object.
 Forces are the \emph{cause} of motion, so if you want to understand motion you need to understand forces. 
-Newton's second law $F=ma$ states that  the amount of \emph{acceleration} produced by a force is inversely 
-proportional to the mass of the object. Once you have the acceleration, you can compute $x(t)$ using some simple
-calculus steps, which we will discuss shortly.
-For now, though, we want to focus on the causes of motion: the forces.
-There are many kinds of forces that could be acting on an object: the weight of an object $\vec{W}$ is a type force, 
+Newton's second law $F=ma$ states that  the amount force acting on an object produces an \emph{acceleration}
+inversely proportional to the mass of the object. 
+Once you have the acceleration, you can compute $x(t)$ using two simple calculus steps.
+For now, though, we want to focus on the causes of motion: the forces acting on the object.
+There are many kinds of forces: the weight of an object $\vec{W}$ is a type force, 
 the force of friction $\vec{F}_f$ is another type another, the tension in a rope $\vec{T}$ yet another type of force
 and there are many others.
 Note the little arrow on top of each force, which is there to remind you that forces are \emph{vector} quantities.
@@ -198,27 +199,134 @@ Don't worry about this integration business;
 it is quite simple and we will cover everything you need to know about it in the next section.  
 
 
-The same principles of cause and effect can be also be applied to the study of circular motion.
+Newton's second law can also be applied to the study of circular motion.
+Circular motion is described by the angle of rotation $\theta(t)$, 
+the angular velocity $\omega(t)$ and the angular acceleration $\alpha(t)$.
+The causes of angular acceleration are angular force, which we call \emph{torques} $\mcal{T}$.
+Apart from this change to angular quantities, the principles behind the circular motion 
+are exactly the same as those for linear motion.
+%and Newton's second law for rotational motion is $\mcal{T}_{net}=I\alpha$.
+%We will 
+%The quantity $I$ is called the \emph{moment of inertia} and describes how difficult it is to make an object turn.
+%Circular motion is therefore 
+%\begin{equation}
+% \frac{1}{I}\sum \mathcal{T} = \alpha(t) \ \overset{\omega_i+ \int\!dt }{\longrightarrow} \ \omega(t) \ \overset{\theta_i+ \int\!dt }{\longrightarrow} \ \theta(t).
+% \label{fma-eqn}
+%\end{equation}
 
 
-We saw that Newton's second law and equations like 
-Momentum 
+%\begin{equation}
+%  U(h) = - \int_0^h  \vec{F}_g \cdot d\vec{y} = - \int_0^h  (- mg\hat{\jmath}) \cdot \hat{\jmath} \;dy    = mgh.
+%  \nonumber
+%\end{equation}
 
 
-\begin{equation}
-  U(h) = - \int_0^h  \vec{F}_g \cdot d\vec{y} = - \int_0^h  (- mg\hat{\jmath}) \cdot \hat{\jmath} \;dy    = mgh.
-\end{equation}
+During a collision between two objects there will be a sudden spike in the contact force between them,
+which can be difficult to measure and quantify.
+It is therefore not possible to use Newton's law $F=ma$ to predict the accelerations that occur during collisions.
+%and the resulting motion of the objects after they collide.
+In order to predict the motion of the objects after the collision we must use a \emph{momentum} calculation.
+An object of mass $m$ moving with velocity $\vec{v}$ has momentum $\vec{p}\equiv m\vec{v}$.
+The principle of conservation of momentum states that {\bf the total amount of momentum before and
+after the collision is remains constant}. Thus, if two objects with initial momenta $\vec{p}_{i1}$ and $\vec{p}_{i2}$ collide,
+the total momentum before in the collision must be equal to the total momentum after the collision:
+\[
+	\sum \vec{p}_i = \sum \vec{p}_f 	
+	\qquad
+	\Rightarrow
+	\qquad
+	\vec{p}_{i1} + \vec{p}_{i2} 
+		=
+		\vec{p}_{f1} + \vec{p}_{f2}.
+\]
+Using this equation, it is possible to calculate the final momenta $\vec{p}_{f1}$, $\vec{p}_{f2}$
+of the objects after the collision. 
+
+
+Another way of solving physics problems is to use the the concept of energy.
+Instead of trying to describe the entire motion of the object, 
+we can focus only on the initial parameters and the final parameters.
+The law of conservation of energy states that {\bf the total energy of the system is a constant}.
+Knowing the initial energy of a system, therefore, allows us to infer the final energy.
+
+
+In the remainder of this document, 
+we will learn more about each of the above concepts and ways of thinking. 
+Before we begin with the physics material, we must introduce some mathematical
+background, which will allow us to better understand the concepts.
+
+
+\section{Preliminaries}
+
+In order to understand the equations of physics you need to be familiar with
+vector calculations and how to calculate some basic integrals. 
+We will introduce these concepts in the next two subsections.
+
+\subsection{Vectors}
+
+Forces, velocities, and accelerations are vector quantities.
+A vector quantity $\vec{v}$ can be expressed in terms of its \dokuitalic{components}
+or in terms of its length and direction.
+\begin{itemize}
+%\dokuitem $\vec{v}=(v_x,v_y)$: A vector.
+\dokuitem  \(x\)-axis:  The \(x\)-axis is the horizontal the coordinate system.
+\dokuitem  \(y\)-axis: The \(y\)-axis is an axis \dokuitalic{perpendicular} to the \(x\)-axis.
+\dokuitem  \(v_x\): the \dokuitalic{component} of \(\vec{v}\) along the \(x\) axis.
+\dokuitem  \(v_y\): the \dokuitalic{component} of \(\vec{v}\) along the \(y\) axis.
+\dokuitem  \(\hat{\imath}\equiv(1,0),\hat{\jmath}\equiv(0,1)\): Unit vectors in the \(x\) and \(y\) directions. 
+\dokuitem  $\|\vec{v}\|$: The length of the vector $\vec{v}$.
+\dokuitem	 $\theta$: The angle that $\vec{v}$ makes with the $x$ axis.
+%\end{itemize}
+%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
+%\begin{itemize}
+%Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
+\end{itemize}
+
+Given the $xy$ coordinate system, we can denote a vector in three equivalent ways:
+\[
+  \vec{v}  
+  \ \equiv \ (v_x,v_y)
+  \ \equiv \  v_x\hat{\imath} + v_y\hat{\jmath} 
+  %\equiv v_x\hat{x} + v_y\hat{y} \equiv  (v_x,v_y)
+  \ \equiv \ 
+  \|\vec{v}\| \angle \theta.
+\]
+%where $\|\vec{v}\|$ denotes the length of the vector $\vec{v}$ and
+%$\theta$ is the angle that it makes with the $x$ axis.
+
+Given a vector expressed as a length and direction $\|\vec{v}\| \angle \theta$,
+we calculate its components as follows:
+\[
+  v_x = \|\vec{v}\| \cos\theta, \qquad \text{and} \qquad   v_y = \|\vec{v}\|\sin\theta.
+\]
+Alternately, a vector expressed in component notation $\vec{v}=(v_x,v_y)$ 
+is converted to the length-and-direction form as follows:
+\[
+ \|\vec{v}\|  = \sqrt{ v_x^2 + v_y^2 }, \qquad \text{and} \qquad \theta = \tan^{-1}\!\left( \frac{ F_{y} }{ F_{x} } \right).
+\]
+It is important to be able to be able to convert between these two forms;
+the component notation is useful for calculations whereas the length-and-direction
+form will provide you with a geometric intuition.
 
 
 
+The \emph{dot product} between two vectors $\vec{v}$ and $\vec{w}$ 
+can be  computed in two different ways:
+\[
+ \vec{v}\cdot\vec{w} = v_xw_y + v_yw_y = \|\vec{v}\| \|\vec{w}\| \cos\phi,
+\]
+where $\phi$ is the angle between the vectors $\vec{v}$ and $\vec{w}$.
+The dot product calculates how similar the two vectors are.
+For example, we have $\hat{\imath} \cdot \hat{\jmath} =0$,
+since the vectors $\hat{\imath}$ and $\hat{\jmath}$ are orthogonal -- they point in completely different directions.
+%
 
-\section{Calculus essentials}
 
-Calculus involves $f(t)$...
+%Calculus involves $f(t)$...
 
-You need calculus in order to do quantitative analysis of how variables
-change over time (derivatives) or sum up all kinds of contributions that
-add up to a total (integration).
+%You need calculus in order to do quantitative analysis of how variables
+%change over time (derivatives) or sum up all kinds of contributions that
+%add up to a total (integration).
 
 %The basic quantities that will appear in the equations of physics are 
 %measured in meters [m], seconds [s], meters per second [m/s],  meters per second squared [m/s$^2$] and
@@ -229,10 +337,9 @@ add up to a total (integration).
 %or \emph{vectors} with multiple components.
 
 
-\subsection{Derivatives}
-
-
-a
+%\subsection{Derivatives}
+%
+%a
 
 \subsection{Integrals}
 \label{3369022ed3e212789ba2790306add593}%% integrals
@@ -361,13 +468,12 @@ an arbitrary line $f(t)=mt+b$ as follows:
 since the integral of the sum of two functions is the
 sum of the integrals.
 
-Now that you know about some basic integrals, we can 
-start learning about the laws of physics and
+Now that you know about vectors and integrals, 
+we can start our discussion on the laws of physics and
 derive the equation of motion for a particle in free fall. 
 
 
-
-
+%\subsection{Fundamental Theorem of Calculus}
 
 
 
@@ -425,7 +531,7 @@ The main subject in this section is how to use
 
 
 
-\dokutitlelevelfour{Uniform acceleration motion}
+\subsection{Uniform acceleration motion}
 
  (UAM)
  
@@ -638,8 +744,8 @@ and then solve using the quadratic equation:
  t_{f} = \frac{-b \pm \sqrt{ b^2 - 4ac }}{2a} = \frac{-5 \pm \sqrt{ 25 +  866.12}}{9.81} =  2.53 \text{ [s]}.
 \]
 We ignored the negative-time solution.
-Comparing with the first Moroccan example, we see that the answer makes sense: 
-throwing a ball downwards will make it fall to the ground faster than just dropping it.
+%Comparing with the first Moroccan example, we see that the answer makes sense: 
+%throwing a ball downwards will make it fall to the ground faster than just dropping it.
 
 
 
@@ -647,35 +753,6 @@ throwing a ball downwards will make it fall to the ground faster than just dropp
 
 
 
-\section{Vectors}
-
-Forces, velocities, and accelerations are vector quantities.
-When working with vectors you will have to work their \dokuitalic{components}:
-
-\begin{itemize}
-\dokuitem $\vec{F}=(F_x,F_y)$: a vector quantity, a force.
-\dokuitem  \(x\)-axis:  The \(x\)-axis is the horizontal the coordinate system.
-\dokuitem  \(y\)-axis: The \(y\)-axis is an axis \dokuitalic{perpendicular} to the \(x\)-axis.
-\dokuitem  \(F_x\): the \dokuitalic{component} of \(\vec{F}\) along the \(x\) axis.
-\dokuitem  \(F_y\): the \dokuitalic{component} of \(\vec{F}\) along the \(y\) axis.
-\dokuitem  \(\hat{\imath},\hat{\jmath}\): Unit vectors in the \(x\) and \(y\) directions. 
-%\end{itemize}
-%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
-%\begin{itemize}
-%Any vector can be written as \(\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}\) or as \(\vec{v}=(v_x,v_y)\).
-\end{itemize}
-
-Given the $xy$ coordinate system, we can denote a vector in three equivalent ways:
-\[
-  \vec{F}  
-  \ \equiv \ (F_x,F_y)
-  \ \equiv \  F_x\hat{\imath} + F_y\hat{\jmath} 
-  %\equiv F_x\hat{x} + F_y\hat{y} \equiv  (F_x,F_y)
-  \ \equiv \ 
-  \|\vec{F}\| \angle \theta,
-\]
-where $\|\vec{F}\|$ denotes the length of the vector $\vec{F}$ and
-$\theta$ is the angle that it makes with the $x$ axis.
 
 
 
@@ -969,46 +1046,39 @@ divided by the mass gives you the acceleration of the object:
 \]
 
 
-\dokutitlelevelfour{Vector components}
+%
+%In what follows, you will be asked a countless number of times to
+%\[
+% \text{Find the component of } \vec{F} \text{ in the ? direction. }
+%\]
+%Which is another way of asking you to find the number \(v_?\).
 
-If a vector \(\vec{v}\) makes an angle \(\theta\) with the \(x\)-axis then:
-\[
-  v_x = |\vec{v}|\cos\theta, \qquad \text{and} \qquad   v_y = |\vec{v}|\sin\theta.
-\]
-The vector \(v_x\hat{\imath}\) corresponds to the the part of \(\vec{v}\)
-that points in the \(x\)-direction. 
+%The answer is usually equal to the length \(|\vec{F}|\) multiplied by
+%either \(\cos\) or \(\sin\) and sometimes \(-1\) all 
+%\dokubold{depending on way the coordinate system is chosen}.
+%So don't guess. Look at the coordinate system. If the vector points
+%in the direction where \(x\)-increases, then \(v_x\) should be a positive
+%number. If it points in the opposite direction, then \(v_x\) should be 
+%negative.
 
-In what follows, you will be asked a countless number of times to
-\[
- \text{Find the component of } \vec{F} \text{ in the ? direction. }
-\]
-Which is another way of asking you to find the number \(v_?\).
+%Vector components are important, because to add forces \(\vec{F}_1\)
+%and \(\vec{F}_2\) you have to add their components:
+%\[
+% (F_{1x},F_{1y}) + (F_{1x},F_{2y}) 
+% = \vec{F}_1 + \vec{F}_2 
+% = (F_{1x}+F_{2x},F_{1y}+F_{2y})
+% = \vec{F}_{net}.
+%\]
+%Instead of dealing with vectors in the bracket notation as above,
+%when solving force diagrams it is easier to simply write the \(x\)-equation
+%on one line, and the \(y\)-equation on a separate line.
+%\[
+% F_{netx} = F_{1x}+F_{2x},
+%\]
+%\[
+% F_{nety} = F_{1y}+F_{2y}.
+%\]
 
-The answer is usually equal to the length \(|\vec{F}|\) multiplied by
-either \(\cos\) or \(\sin\) and sometimes \(-1\) all 
-\dokubold{depending on way the coordinate system is chosen}.
-So don't guess. Look at the coordinate system. If the vector points
-in the direction where \(x\)-increases, then \(v_x\) should be a positive
-number. If it points in the opposite direction, then \(v_x\) should be 
-negative.
-
-Vector components are important, because to add forces \(\vec{F}_1\)
-and \(\vec{F}_2\) you have to add their components:
-\[
- (F_{1x},F_{1y}) + (F_{1x},F_{2y}) 
- = \vec{F}_1 + \vec{F}_2 
- = (F_{1x}+F_{2x},F_{1y}+F_{2y})
- = \vec{F}_{net}.
-\]
-Instead of dealing with vectors in the bracket notation as above,
-when solving force diagrams it is easier to simply write the \(x\)-equation
-on one line, and the \(y\)-equation on a separate line.
-\[
- F_{netx} = F_{1x}+F_{2x},
-\]
-\[
- F_{nety} = F_{1y}+F_{2y}.
-\]
 It is a good idea to always write those two equations together
 as a block  so it remains clear that  you are talking
 about the same problem, but the first row represents the \(x\)-dimension 
@@ -1087,14 +1157,14 @@ The momentum is equal to the velocity of the moving object multiplied by the obj
 Therefore, since the car weights \(1000\times1000=10^{6}\) times more than the piece of paper, it has \(10^6\) times more momentum when moving at the same speed. 
 A collision with it will ``hurt'' that much more.
 
-Note that momentum is a vector, so we will have to do a lot of that length-and-direction-to-components transformation stuff:
-\[
- (p_x, p_y) = \vec{p} = (|\vec{p}|\cos\theta, |\vec{p}|\sin\theta) = |\vec{p}| \angle \theta,
-\]
-and also converting backwards from component notation to magnitude-direction:
-\[
- |\vec{p}| = \sqrt{ p_x^2 + p_y^2 }, \qquad \theta = \tan^{-1}\!\left( \frac{ p_{y} }{ p_{x} } \right).
-\]
+%Note that momentum is a vector, so we will have to do a lot of that length-and-direction-to-components transformation stuff:
+%\[
+% (p_x, p_y) = \vec{p} = (|\vec{p}|\cos\theta, |\vec{p}|\sin\theta) = |\vec{p}| \angle \theta,
+%\]
+%and also converting backwards from component notation to magnitude-direction:
+%\[
+% |\vec{p}| = \sqrt{ p_x^2 + p_y^2 }, \qquad \theta = \tan^{-1}\!\left( \frac{ p_{y} }{ p_{x} } \right).
+%\]
 
 
 \dokutitleleveltree{Concepts}
@@ -1167,15 +1237,15 @@ Instead of thinking about velocities \(v(t)\) and motion trajectories \(x(t)\), 
 
 The concepts of energy come up in several different contexts.
 
+\noindent
 Moving objects:
-
-
 \begin{itemize}
 \dokuitem  \(m\): the mass of an object.
 \dokuitem  \(v\): the velocity.
 \dokuitem  \(E_K=K\): kinetic energy \( = \frac{1}{2}mv^2\).
 \end{itemize}
 
+\noindent
 Moving objects by force:
 
 
@@ -2209,6 +2279,12 @@ Conservation of energy:
 
 %	%
 
+
+
+\section{Conclusion}
+
+% Summary
+The numbered equations...
 
 
 \section{Minireference}
