@@ -1,0 +1,150 @@
+
+%!TEX root = mechanics_miniref_flyer.tex
+
+To solve a physics problem is to obtain the \emph{equation of motion} $x(t)$, 
+which describes the position of the object as a function of time.
+%
+Once you know $x(t)$, you can answer any question pertaining to the motion of the object.
+To find the initial position $x_i$ of the object, you simply plug $t=0$ into the equation of motion $x_i = x(0)$.
+To find the time(s) when the object reaches a distance of 20[m] from the origin, we simply solve for $t$ in $x(t)=20$[m].
+Many of the problems on the final exam will be of this form so if know how to find $x(t)$,
+you will be in good shape for the exam.
+
+%\paragraph{{\bf Forces}}
+\vspace{-3mm}
+\subsection{Dynamics is the study of forces}
+The first step towards finding $x(t)$ is to calculate all the \emph{forces} that act on the object.
+Forces are the \emph{cause} of motion, so if you want to understand motion you need to understand forces. 
+Newton's second law $F=ma$ states that {\bf a force acting on an object produces an acceleration}
+inversely proportional to the mass of the object. 
+Once you have the acceleration, you can compute $x(t)$ using calculus.
+We will discuss the calculus procedure for getting from $a(t)$ to $x(t)$ shortly.
+For now, let us focus on the causes of motion: the forces acting on the object.
+There are many kinds of forces: the weight of an object $\vec{W}$ is a type force, 
+the force of friction $\vec{F}_f$ is another type of force, the tension in a rope $\vec{T}$ is 
+yet another type of force and there are many others.
+Note the little arrow on top of each force, which is there to remind you that forces are \emph{vector} quantities.
+Unlike regular numbers, forces act in a particular direction, so it is possible that the effects of 
+one force are counteracting another force. For example the force of the weight of a flower pot 
+is exactly counter-acted by the tension in the rope on which it is suspended, thus,
+while there are two forces that may be acting on the pot, there is no \emph{net force} acting on it.
+Since there is no net force to cause motion and since the pot wasn't moving to begin with, 
+it will just sit there motionless despite the fact that there are forces acting on it!
+The first step when analyzing a physics problem is to calculate the \emph{net force}
+acting on the object, which is the sum of all the forces acting on the object $\vec{F}_{net} \equiv \sum \vec{F}$.
+Knowing the net force, we can use $\vec{a}(t) = \frac{\vec{F}_{net}}{m}$ to find the acceleration.
+
+\vspace{-3mm}
+\subsection{Kinematics is the study of motion}
+If you know the acceleration of an object $a(t)$ and its initial velocity $v_i$, 
+you can find its velocity $v(t)$ function at all later times. 
+This is because the acceleration function $a(t)$ describes the change in the velocity of the object.
+If you know that the object started with an initial velocity of $v_i \equiv v(0)$,
+the velocity at a later time $t=\tau$ is equal to $v_i$ plus the "total velocity change" between $t=0$ and $t=\tau$.
+The mathematical way of saying this is $v(\tau)=v_i+\int_0^\tau a(t)\;dt$.
+The symbol $\int \cdot \;dt$ is called an \emph{integral} and is fancy way of finding the total
+of some quantity over a given time period. 
+In the above formula we were calculating the total of $a(t)$ between $t=0$ and $t=\tau$.
+
+To understand what is going on, it may be useful to draw an analogy with a scenario you are more familiar with.
+Consider the function $\textrm{ba}(t)$ which represents your account balance at time $t$,
+and the function $\textrm{tr}(t)$ which corresponds to the transactions (deposits and withdraws) on your account.
+The function $\textrm{tr}(t)$ describes the change in the function $\textrm{ba}(t)$,
+the same way the function $a(t)$ describes the change in $v(t)$.
+Knowing the initial balance of your account at the beginning of the month,
+you can calculate the balance at the end of the month as follows $\textrm{ba}(30)=$\textrm{ba}(0)$+\int_0^{30} \textrm{tr}(t)\:dt$.
+
+If you know the initial position $x_i$ and the velocity function $v(t)$ you can find the position function $x(t)$ by using integration again.  
+We find the position at time $t=\tau$ by adding up all the velocity (changes in the position). 
+The formula is $x(\tau) = x_i + \int_0^\tau v(t)\:dt$.
+
+
+The entire procedure for predicting the motion of objects can be summarized as follows:
+\begin{equation}
+\frac{1}{m} \underbrace{ \left( \sum \vec{F} = \vec{F}_{net}  \right) }_{\text{dynamics}} = \underbrace{ a(t) \ \overset{v_i+ \int\!dt }{\longrightarrow} \ v(t) \ \overset{x_i+ \int\!dt }{\longrightarrow} \ x(t) }_{\text{kinematics}}.
+ \label{fma-eqn}
+\end{equation}
+%
+If you understand the above equation, then you understand mechanics.
+My goal for the next couple of pages is to introduce you to all the concepts that 
+appear in that equation and the relationships between them. 
+
+
+
+
+\vspace{-3mm}
+\subsection{Other concepts}
+
+Apart from equation \eqref{fma-eqn}, there is a number of other topics which are part of a standard Mechanics class. 
+
+Newton's second law can also be applied to the study of circular motion.
+Circular motion is described by the angle of rotation $\theta(t)$, 
+the angular velocity $\omega(t)$ and the angular acceleration $\alpha(t)$.
+The causes of angular acceleration are angular forces, which we call \emph{torques} $\mcal{T}$.
+Apart from this change to angular quantities, the principles behind the circular motion 
+are exactly the same as those for linear motion.
+%and Newton's second law for rotational motion is $\mcal{T}_{net}=I\alpha$.
+%We will 
+%The quantity $I$ is called the \emph{moment of inertia} and describes how difficult it is to make an object turn.
+%Circular motion is therefore 
+%\begin{equation}
+% \frac{1}{I}\sum \mathcal{T} = \alpha(t) \ \overset{\omega_i+ \int\!dt }{\longrightarrow} \ \omega(t) \ \overset{\theta_i+ \int\!dt }{\longrightarrow} \ \theta(t).
+% \label{fma-eqn}
+%\end{equation}
+
+
+%\begin{equation}
+%  U(h) = - \int_0^h  \vec{F}_g \cdot d\vec{y} = - \int_0^h  (- mg\hat{\jmath}) \cdot \hat{\jmath} \;dy    = mgh.
+%  \nonumber
+%\end{equation}
+
+
+
+During a collision between two objects there will be a sudden spike in the contact force between them,
+which can be difficult to measure and quantify.
+It is therefore not possible to use Newton's law $F=ma$ to predict the accelerations that occur during collisions.
+%and the resulting motion of the objects after they collide.
+In order to predict the motion of the objects after the collision we must use a \emph{momentum} calculation.
+An object of mass $m$ moving with velocity $\vec{v}$ has momentum $\vec{p}\equiv m\vec{v}$.
+The principle of conservation of momentum states that {\bf the total amount of momentum before and
+after the collision is conserved}. Thus, if two objects with initial momenta $\vec{p}_{i1}$ and $\vec{p}_{i2}$ collide,
+the total momentum before the collision must be equal to the total momentum after the collision:
+\[
+	\sum \vec{p}_i = \sum \vec{p}_f 	
+	\qquad
+	\Rightarrow
+	\qquad
+	\vec{p}_{i1} + \vec{p}_{i2} 
+		=
+		\vec{p}_{f1} + \vec{p}_{f2}.
+\]
+Using this equation, it is possible to calculate the final momenta $\vec{p}_{f1}$, $\vec{p}_{f2}$
+of the objects after the collision. 
+
+
+Another way of solving physics problems is to use the concept of energy.
+Instead of trying to describe the entire motion of the object, 
+we can focus only on the initial parameters and the final parameters.
+The law of conservation of energy states that {\bf the total energy of the system is conserved}.
+Knowing the total initial energy of a system allows us to find final energy,
+and from this calculate the final motion parameters.
+
+\vspace{-3mm}
+\subsection{Reality check}
+
+Of course, you must realize that reading a \fourrr page tutorial on Mechanics will not make an expert out of you.
+Mechanics expertise can only come from doing exercises on your own:
+``Il faut souffrir pour \^etre boll\'e."
+What we \emph{can} do in \fourrr pages is to go over all the important 
+concepts and state the important formulas which connect the concepts.
+%
+There are two ways of looking at Mechanics: either as an opportunity to play {\sc lego} with scientific building blocks,
+or as a horrible chore inflicted upon requiring complicated mathematical prerequisites.
+The choice is up to you.
+
+Speaking of prerequisites, I want to reassure you that you 
+have nothing to worry about on that front.
+The hardest math you will have to do is solving a quadratic equation.
+We will cover everything you need to know about vectors and integrals
+in the next section.
+
