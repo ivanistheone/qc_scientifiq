@@ -1,11 +1,11 @@
 \documentclass[letterpaper,9pt,journal]{IEEEtran}
 
 
-\def\fourrr{six }
-\def\Fourrr{Six }
+\def\fourrr{seven }
+\def\Fourrr{Seven }
 %\documentclass[twocolumn,8pt]{extarticle}
-\title{ \Huge MECHANICS Explained in \Fourrr Pages}
-\author{Excerpt from the new book \href{http://minireference.com/contents}{\emph{MATH and PHYSICS Prerequisites}} by Ivan Savov} 
+\title{ \Huge Newtonian mechanics explained in \fourrr pages}
+\author{Excerpt from the new book \href{http://minireference.com/contents}{\texttt{MATH and PHYSICS Prerequisites}} by Ivan Savov} 
 
 
 %\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
@@ -28,6 +28,8 @@
 
 
 
+
+\usepackage{textcomp}		% for 1/2
 
 
 
@@ -123,7 +125,9 @@ Mechanics is the precise study of the motion of objects, the forces acting
 on them and more abstract concepts such as momentum and energy.
 You probably have an intuitive understanding of these concepts already,
 but in the next \fourrr pages you will learn how to use precise mathematical
-equations to support your intuition. 
+equations to support your intuition. All topics will be covered including prerequisites.
+%This document is a complete course on
+%Newtonian mechanics.
 %Perhaps more importantly, we will also learn
 %where the equations come from.
 %There will be parties to go to and beers to drink later on in the semester, 
@@ -136,7 +140,7 @@ equations to support your intuition.
 
 
 
-%\dokutitlelevelone{Mechanics}
+%
 %\label{05f8e33b48d5f8430980e3d1f38e5116}%% mechanics
 
 %Mechanics is the precise study of moving objects, forces and energy.
@@ -146,7 +150,7 @@ equations to support your intuition.
 %
 %Mechanics is the part of physics that is most well understood.
 %Ever since Newton figured out the whole $F=ma$ thing and 
-%the law of gravitation, people have \dokuitalic{used} mechanics in order
+%the law of gravitation, people have \emph{used} mechanics in order
 %to achieve great technological feats. 
 
 %There will be math, yes, but nothing too complicated.
@@ -155,39 +159,197 @@ equations to support your intuition.
 %be able to calculate and predict phenomena in the world around you
 %simply by plugging numbers into the right equation.
 
-\section{Introduction}
-
-\input{long_intro.tex}
+\section*{Introduction}
 
 %\section{Short Introduction}
-
 %\input{short_intro.tex}
 
+
+%!TEX root = mechanics_miniref_flyer.tex
+
+To solve a physics problem is to obtain the \emph{equation of motion} $x(t)$, 
+which describes the position of the object as a function of time.
+%
+Once you know $x(t)$, you can answer any question pertaining to the motion of the object.
+To find the initial position $x_i$ of the object, you simply plug $t=0$ into the equation of motion $x_i = x(0)$.
+To find the time(s) when the object reaches a distance of 20[m] from the origin, you simply solve for $t$ in $x(t)=20$[m].
+Many of the problems on the final exam will be of this form so,
+if know how to find $x(t)$,
+you will be in good shape for the exam.
+
+%\paragraph{{\bf Forces}}
+\vspace{-3mm}
+\subsection{Dynamics is the study of forces}
+The first step towards finding $x(t)$ is to calculate all the \emph{forces} that act on the object.
+Forces are the \emph{cause} of motion, so if you want to understand motion you need to understand forces. 
+Newton's second law $F=ma$ states that {\bf a force acting on an object produces an acceleration}
+inversely proportional to the mass of the object. 
+Once you have the acceleration, you can compute $x(t)$ using calculus.
+We will discuss the calculus procedure for getting from $a(t)$ to $x(t)$ shortly.
+For now, let us focus on the causes of motion: the forces acting on the object.
+There are many kinds of forces: the weight of an object $\vec{W}$ is a type force, 
+the force of friction $\vec{F}_f$ is another type of force, the tension in a rope $\vec{T}$ is 
+yet another type of force and there are many others.
+Note the little arrow on top of each force, which is there to remind you that forces are \emph{vector quantities}.
+Unlike regular numbers, forces act in a particular direction, so it is possible for the effects of 
+one force to counteract the effects of another force. For example the weight of a flower pot 
+is exactly counter-acted by the tension in the rope on which it is suspended, thus,
+while there are two forces that are acting on the pot, there is no \emph{net force} acting on it.
+Since there is no net force to cause motion and since the pot wasn't moving to begin with, 
+it will just sit there motionless despite the fact that there are forces acting on it!
+To find the \emph{net force} acting on the object you have to calculate 
+the sum of all the forces acting on the object $\vec{F}_{net} \equiv \sum \vec{F}$.
+Once you have the net force, you can use the formula $\vec{a}(t) = \frac{\vec{F}_{net}}{m}$ 
+to find the acceleration of the object.
+
+\vspace{-2mm}
+\subsection{Kinematics is the study of motion}
+If you know the acceleration of an object $a(t)$ as a function of time and its initial velocity $v_i=v(0)$, 
+you can find its velocity $v(t)$ function at all later times. 
+This is because the acceleration function $a(t)$ describes the change in the velocity of the object.
+If you know that the object started with an initial velocity of $v_i \equiv v(0)$,
+the velocity at a later time $t=\tau$ is equal to $v_i$ plus the ``total velocity change" between $t=0$ and $t=\tau$.
+The mathematical way of saying this is $v(\tau)=v_i+\int_0^\tau a(t)\;dt$.
+The symbol $\int \cdot \;dt$ is called an \emph{integral} and is fancy way of finding the total
+of some quantity over a given time period. 
+To find the change in the velocity we calculate the total of $a(t)$ between $t=0$ and $t=\tau$.
+
+To understand what is going on, it may be useful to draw an analogy with a scenario you are more familiar with.
+Consider the function $\textrm{ba}(t)$ which represents your bank account balance at time $t$,
+and the function $\textrm{tr}(t)$ which corresponds to the transactions (deposits and withdraws) on your account.
+The function $\textrm{tr}(t)$ describes the change in the function $\textrm{ba}(t)$,
+the same way the function $a(t)$ describes the change in $v(t)$.
+Knowing the balance of your account at the beginning of the month,
+you can calculate the balance at the end of the month as follows: $\textrm{ba}(30)=\textrm{ba}(0)+\int_0^{30} \textrm{tr}(t)\:dt$.
+
+If you know the initial position $x_i$ and the velocity function $v(t)$ you can find the position function $x(t)$ by using integration again.  
+We find the position at time $t=\tau$ by adding up all the velocity (changes in the position). 
+The formula is $x(\tau) = x_i + \int_0^\tau v(t)\:dt$.
+
+
+The entire procedure for predicting the motion of objects can be summarized as follows:
+\begin{equation}
+\frac{1}{m} \underbrace{ \left( \sum \vec{F} = \vec{F}_{net}  \right) }_{\text{dynamics}} = \underbrace{ a(t) \ \overset{v_i+ \int\!dt }{\longrightarrow} \ v(t) \ \overset{x_i+ \int\!dt }{\longrightarrow} \ x(t) }_{\text{kinematics}}.
+ \label{fma-eqn}
+\end{equation}
+%
+If you understand the above equation, then you understand mechanics.
+My goal for the next couple of pages is to introduce you to all the concepts that 
+appear in this equation and the relationships between them. 
+
+
+
+
+\vspace{-3mm}
+\subsection{Other stuff}
+
+Apart dynamics and kinematics, we will discuss a number of other topics.
+%which are part of a standard Mechanics class. 
+
+Newton's second law can also be applied to the study of objects in rotation.
+Angular motion is described by the angle of rotation $\theta(t)$, 
+the angular velocity $\omega(t)$ and the angular acceleration $\alpha(t)$.
+The causes of angular acceleration are angular forces, which we call \emph{torques} $\mcal{T}$.
+Apart from this change to angular quantities, the principles behind circular motion 
+are exactly the same as those for linear motion.
+%and Newton's second law for rotational motion is $\mcal{T}_{net}=I\alpha$.
+%We will 
+%The quantity $I$ is called the \emph{moment of inertia} and describes how difficult it is to make an object turn.
+%Circular motion is therefore 
+%\begin{equation}
+% \frac{1}{I}\sum \mathcal{T} = \alpha(t) \ \overset{\omega_i+ \int\!dt }{\longrightarrow} \ \omega(t) \ \overset{\theta_i+ \int\!dt }{\longrightarrow} \ \theta(t).
+% \label{fma-eqn}
+%\end{equation}
+
+
+%\begin{equation}
+%  U(h) = - \int_0^h  \vec{F}_g \cdot d\vec{y} = - \int_0^h  (- mg\hat{\jmath}) \cdot \hat{\jmath} \;dy    = mgh.
+%  \nonumber
+%\end{equation}
+
+
+
+During a collision between two objects, 
+there will be a sudden spike in the contact force between them,
+which can be difficult to measure and quantify.
+It is therefore not possible to use Newton's law $F=ma$ to predict the accelerations that occur during collisions.
+%and the resulting motion of the objects after they collide.
+In order to predict the motion of the objects after the collision we must use a \emph{momentum} calculation.
+An object of mass $m$ moving with velocity $\vec{v}$ has momentum $\vec{p}\equiv m\vec{v}$.
+The principle of conservation of momentum states that {\bf the total amount of momentum before and
+after the collision is conserved}. Thus, if two objects with initial momenta $\vec{p}_{i1}$ and $\vec{p}_{i2}$ collide,
+the total momentum before the collision must be equal to the total momentum after the collision:
+\[
+	\sum \vec{p}_i = \sum \vec{p}_f 	
+	\qquad
+	\Rightarrow
+	\qquad
+	\vec{p}_{i1} + \vec{p}_{i2} 
+		=
+		\vec{p}_{f1} + \vec{p}_{f2}.
+\]
+Using this equation, it is possible to calculate the final momenta $\vec{p}_{f1}$, $\vec{p}_{f2}$
+of the objects after the collision. 
+
+
+Another way of solving physics problems is to use the concept of energy.
+Instead of trying to describe the entire motion of the object, 
+we can focus only on the initial parameters and the final parameters.
+The law of conservation of energy states that {\bf the total energy of the system is conserved}.
+Knowing the total initial energy of a system allows us to find the final energy,
+and from this calculate the final motion parameters.
+
+We will discuss all of these topics in the remainder of the document.
+
+\vspace{-1mm}
+\subsection{The plan}
+
+Most people think of mechanics as a horrible chore inflicted upon them
+which requires complicated mathematical prerequisites.
+Instead, I propose a different way of thinking about mechanics,
+namely, as an opportunity to play {\sc lego} with a bunch of cool
+scientific building blocks.
+%
+
+Of course, you must realize that simply reading this \fourrr page tutorial cannot 
+make a Mechanics expert out of you.  
+Mechanics expertise comes from solving exercises on your own.
+What we \emph{can} do in \fourrr pages is go over all the important 
+concepts and describe the physics formulas which connect these concepts.
+The good news is that {\bf there are only twenty equations that you need to know
+to understand mechanics}.
+Don't worry about prerequisites.
+The hardest math you will have to do is solving a quadratic equation
+and we will cover everything you need to know about 
+vectors and calculus in the next section.
+Flip the page to continue.\hfill $\Rightarrow$
+
+%\vspace{1cm}
 
 
 \section{Preliminaries}
 
 In order to understand the equations of physics you need to be familiar with
-vector calculations and how to calculate some basic integrals. 
-We introduce these concepts in the next two subsections.
+vector calculations and to know a bit about integrals. 
+We will introduce these concepts in the next two subsections.
 
 \vspace{-3mm}
 \subsection{Vectors}
 
 Forces, velocities, and accelerations are vector quantities.
-A vector quantity $\vec{v}$ can be expressed in terms of its \dokuitalic{components}
-or in terms of its length and direction.
+A vector quantity $\vec{v}$ can be expressed in terms of its \emph{components}
+or in terms of its \emph{length and direction}.
 \begin{itemize}
-%\dokuitem $\vec{v}=(v_x,v_y)$: A vector.
-\dokuitem  $x$ axis:  The $x$ axis is the horizontal the coordinate system.
-\dokuitem  $y$ axis: The $y$ axis is an axis \dokuitalic{perpendicular} to the $x$ axis.
-\dokuitem  $v_x$: the \dokuitalic{component} of $\vec{v}$ along the $x$ axis.
-\dokuitem  $v_y$: the \dokuitalic{component} of $\vec{v}$ along the $y$ axis.
-\dokuitem  $\hat{\imath}\equiv(1,0),\hat{\jmath}\equiv(0,1)$: Unit vectors in the $x$ and $y$ directions. 
-\dokuitem  $\|\vec{v}\|$: The length of the vector $\vec{v}$.
-\dokuitem	 $\theta$: The angle that $\vec{v}$ makes with the $x$ axis.
+%\item $\vec{v}=(v_x,v_y)$: A vector.
+\item  $x$ axis:  The $x$ axis is the horizontal axis in the coordinate system.
+\item  $y$ axis: The $y$ axis is \emph{perpendicular} to the $x$ axis.
+\item  $v_x$: the \emph{component} of $\vec{v}$ along the $x$ axis.
+\item  $v_y$: the \emph{component} of $\vec{v}$ along the $y$ axis.
+\item  $\hat{\imath}\equiv(1,0),\hat{\jmath}\equiv(0,1)$: Unit vectors in the $x$ and $y$ directions. 
+\item  $\|\vec{v}\|$: The length of the vector $\vec{v}$.
+\item	 $\theta$: The angle that $\vec{v}$ makes with the $x$ axis.
 %\end{itemize}
-%Vectors are expressed with respect to a \dokuitalic{coordinate system}:
+%Vectors are expressed with respect to a \emph{coordinate system}:
 %\begin{itemize}
 %Any vector can be written as $\vec{v}=v_x\hat{\imath}+v_y\hat{\jmath}$ or as $\vec{v}=(v_x,v_y)$.
 \end{itemize}
@@ -212,7 +374,7 @@ we calculate its components using:
 Alternately, a vector expressed in component notation $\vec{v}=(v_x,v_y)$ 
 can be converted to the length-and-direction form as follows:
 \[
- \|\vec{v}\|  = \sqrt{ v_x^2 + v_y^2 }, \qquad \text{and} \qquad \theta = \tan^{-1}\!\left( \frac{ F_{y} }{ F_{x} } \right).
+ \|\vec{v}\|  = \sqrt{ v_x^2 + v_y^2 }, \qquad \text{and} \qquad \theta = \tan^{-1}\!\left( \frac{ v_{y} }{ v_{x} } \right).
 \]
 It is important that you know how to convert between these two forms;
 the component notation is useful for calculations, 
@@ -227,7 +389,7 @@ can be  computed in two different ways:
 where $\phi$ is the angle between the vectors $\vec{v}$ and $\vec{w}$.
 The dot product calculates how similar the two vectors are.
 For example, we have $\hat{\imath} \cdot \hat{\jmath} =0$
-since the vectors $\hat{\imath}$ and $\hat{\jmath}$ are orthogonal -- they point in completely different directions.
+since the vectors $\hat{\imath}$ and $\hat{\jmath}$ are orthogonal --- they point in completely different directions.
 %
 
 
@@ -257,12 +419,12 @@ since the vectors $\hat{\imath}$ and $\hat{\jmath}$ are orthogonal -- they point
 \includegraphics[width=100pt]{/Library/WebServer/Documents/miniref/data/media/calculus/integral_as_region_under_curve_t.png}
 \end{wrapfigure}
 
-An integral corresponds to the computation of an \dokuitalic{area}
+An integral corresponds to the computation of an \emph{area}
 under a curve $f(t)$ between two points:
 \[
  A(a,b) \equiv \int_{t=a}^{t=b} f(t)\;dt.
 \]
-The symbol $\int$ is a mnemonic for \dokuitalic{sum}, 
+The symbol $\int$ is a mnemonic for \emph{sum}, 
 since the area under the curve corresponds in some
 sense to the sum of the values of the function $f(t)$
 between $t=a$ and $t=b$.
@@ -270,15 +432,15 @@ The integral is the total amount of $f$ between $a$ and $b$.
 %
 %For certain functions, it is possible to find an anti-derivative function 
 %$F(t)$ which is the ``running total'' of the total area under the curve. 
-%The area under $f(t)$ between $a$ and $b$ is computed as the \dokuitalic{change} in $F(\tau)$:
+%The area under $f(t)$ between $a$ and $b$ is computed as the \emph{change} in $F(\tau)$:
 %\[
 % A(a,b) = F(b) - F(a).
 %\]
 
 %The anti-derivative function $F(\tau)$ is also known 
-%as the \dokuitalic{indefinite integral} of $f(t)$ because it 
+%as the \emph{indefinite integral} of $f(t)$ because it 
 %corresponds to the integral calculation without the
-%need to specify a \dokuitalic{definite} number for the upper limit:
+%need to specify a \emph{definite} number for the upper limit:
 %\[
 % F(\tau) = \int^\tau_0 f(t)\;dt + F(0) = A(0,\tau) + F(0).
 %\]
@@ -315,7 +477,7 @@ We can easily find this area because the region under the curve is rectangular:
 \[ 
  \! F(\tau) \equiv A(0,\tau) =  \! \int_0^\tau \!\! f(t)\;dt  = 3 \tau
 \]
-since the area of a rectangle is equal to base times the height.
+since the area of a rectangle is equal to the length of the base times the height.
 
 
 \begin{wrapfigure}{r}{0pt}
@@ -328,7 +490,7 @@ which corresponds to the area under $g(t)$ between $0$ and $\tau$.
 This area is also easily computed since the region under the curve 
 is triangular:
 \[
- \!\!G(\tau) \!\equiv \!A(0,\tau) \!=\! \int_0^\tau \!\! g(t) \; dt \!= \!\frac{\tau\times\tau}{2} \!= \!\frac{1}{2}\tau^2,
+ \!\!G(\tau) \!\equiv \!A(0,\tau) \!=\! \int_0^\tau \!\! g(t) \; dt \!= \!\frac{\tau\times\tau}{2} \!= \!\frac{1}{2}\tau^2
 \]
 since the area of a triangle is the product of the length of
 the base times the height divided by two.
@@ -344,7 +506,7 @@ the base times the height divided by two.
 
 For the purpose of understanding mechanics,
 what you need to know is that the integral of a function is the total amount of the function accumulated during some time period. 
-You should try to remember the formulas:
+You should also try to remember the formulas:
 \[
  \int_c^\tau a \;dt = a\tau + C, \qquad 
  \int_c^\tau at \;dt = \frac{1}{2}a\tau^2 + C,
@@ -361,7 +523,7 @@ which depends on the starting point of the area calculation.
 In the above examples we used $c=0$ as the initial
 point so we had $C=0$.
 
-The integral of the sum of two functions is the sum of the integrals
+The integral of the sum of two functions is the sum of their integrals.
 Using this fact and the two formulas above, 
 we can also compute the integral for the function $f(t)=mt+b$ as follows:
 \be
@@ -375,12 +537,13 @@ we can also compute the integral for the function $f(t)=mt+b$ as follows:
 
 
 Now that you know about vectors and integrals, 
-we can start our discussion on the laws of physics.
+we can start our discussion of the laws of physics.
 
 
 \section{Kinematics}
-\label{508ac5264059de6a350383a9f1e87977}%% kinematics
-Kinematics (from the Greek word \dokuitalic{kinema} for \dokuitalic{motion}) is the study of 
+\label{sec:kinematics}
+
+Kinematics (from the Greek word \emph{kinema} for \emph{motion}) is the study of the
 trajectories of moving objects.  
 The equations of kinematics can be used to calculate how long a ball thrown upwards will stay in the air, 
 or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
@@ -391,11 +554,11 @@ or to calculate the acceleration needed to go from 0 to 100 km/h in 5 seconds.
 
 The key notions used to describe the motion of an objects are:
 \begin{itemize}
-\dokuitem  $t$: the time, measured in seconds [s].
-\dokuitem  $x(t)$: the position of an object as a function of time -- also known as the equation of motion. % Measured in meters [m].
-\dokuitem  $v(t)$: the velocity of the object as a function of time.% [m/s]
-\dokuitem  $a(t)$: the acceleration of the object as a function of time. %[m/s$^2$]
-\dokuitem  $x_i=x(0), v_i=v(0)$: initial position and velocity (initial conditions).
+\item  $t$: the time, measured in seconds [s].
+\item  $x(t)$: the position of an object as a function of time --- also known as the equation of motion. % Measured in meters [m].
+\item  $v(t)$: the velocity of the object as a function of time.% [m/s]
+\item  $a(t)$: the acceleration of the object as a function of time. %[m/s$^2$]
+\item  $x_i=x(0), v_i=v(0)$: initial position and velocity (initial conditions).
 \end{itemize}
 
 The position, velocity and acceleration functions ($x(t)$, $v(t)$ and $a(t)$) are connected. 
@@ -416,14 +579,14 @@ The acceleration function describes how the velocity changes over time.
 
 Assume now that we know the acceleration of the object $a(t)$ and that we want to find $v(t)$.
 The acceleration is the change in the velocity of the object, 
-thus if you know that the object stated with an initial velocity of $v_i \equiv v(0)$,
+thus if you know that the object started with an initial velocity of $v_i \equiv v(0)$,
 and you want to find the velocity at later time $t=\tau$, 
 you have to add up all the acceleration that the object felt 
 during this time $v(\tau)=v_i+\int_0^\tau a(t)\;dt$.
 The velocity as a function of time is given by the initial 
 velocity $v_i$ plus the integral of the acceleration.
 
-If we further integrate the velocity function, 
+If we integrate the velocity function, 
 we will  obtain the position function $x(t)$.
 Thus, the procedure for finding $x(t)$ starting from $a(t)$ can be summarized as follows:
 \[
@@ -436,24 +599,26 @@ case of motion with constant acceleration.
 \vspace{-3mm}
 \subsection{Uniform acceleration motion}
 
-Suppose the object starts from an initial position $x_i$ with initial velocity $v_i$ and 
+Suppose that an object starts from an initial position $x_i$ with initial velocity $v_i$ and 
 undergoes a constant acceleration $a(t)=a$ from time $t=0$ until $t=\tau$.
 What will be its velocity $v(\tau)$ and position $x(\tau)$ at time $t=\tau$?
  
-%This is how the \dokuitalic{equations of motion} are derived. 
+%This is how the \emph{equations of motion} are derived. 
 %Assuming that the acceleration is constant in time $a(t) =a$,
 We can find the velocity of the object %at any time $t=\tau$ 
 by integrating the acceleration from $t=0$ until $t=\tau$:
-%\dokuitalic{adding up} all the acceleration from $t=0$ (integrating)
+%\emph{adding up} all the acceleration from $t=0$ (integrating)
 %to obtain the change in the velocity
 \begin{align*}
  v(\tau) = v_i + \int_0^\tau a(t) \ dt &= v_i + \int_0^\tau a \ dt = v_i + a\tau,
- \intertext{where we used the formula for the integral of a constant function. To obtain $x(t)$ we integrate $v(t)$ and obtain:}
+\end{align*}
+where we used the formula for the integral of a constant function. To obtain $x(t)$ we integrate $v(t)$ and obtain:
+\begin{align*}
  x(\tau) = x_i + \int_0^\tau v(t) \; dt &= x_i + \int_0^\tau (at+v_i) \; dt = x_i + \frac{1}{2}a\tau^2 + v_i\tau,
 \end{align*}
 where we used the integral formula from equation \eqref{integral-formula}.
-Note that both of the above integrals calculations required the knowledge of the initial conditions $x_i$ and $v_i$.
-This is because the integral calculations tell us about the \emph{change} in the quantities relative to their initial value.
+Note that the above integral calculations required the knowledge of the initial conditions $x_i$ and $v_i$.
+This is because the integral calculations tell us the \emph{change} in the quantities relative to their initial values.
 %so we must add
 %the initial conditions 
 %in the velocity $\int_0^\tau a(t)\;dt %= \Delta v 
@@ -474,8 +639,8 @@ This is because the integral calculations tell us about the \emph{change} in the
 We can summarize our findings regarding uniform acceleration motion (UAM)
 in the following three equations: 
 \begin{align}
-  a(t) &= a, \qquad \qquad \qquad \text{(by the definition of UAM)} \nonumber \\
-  v(t) &= at + v_i, \label{UAM-v}\\
+  a(t) &= a, \qquad \qquad \qquad \qquad  \text{(by the definition of UAM)} \nonumber \\
+  v(t) &= at + v_i, 				  \label{UAM-v} \\
   x(t) &= \tfrac{1}{2}at^2 +  v_i t + x_i. \label{UAM-x}
 \end{align}
 These equations fully describe all aspects of the motion of an object undergoing a 
@@ -494,8 +659,8 @@ which is obtained by combining equation \eqref{UAM-v} and \eqref{UAM-x} in a par
 A special case of the above equations is the case with zero acceleration $a(t)=0$.
 If there is no acceleration (change in velocity) then the velocity of the motion will be
 constant so we call this \emph{uniform velocity motion} (UVM). 
-The equations of motion for UVM are: $v(t)=v_i$ and $x(t)=v_it + x_i$.
-If you understand the difference between UVM and UAM, and three formulas above,
+The equations of motion for UVM are $v(t)=v_i$ and $x(t)=v_it + x_i$.
+If you understand the difference between UVM and UAM and the three formulas above,
 then you are ready to solve \emph{any} kinematics problem. % which you will run into.
 
 \vspace{-3mm}
@@ -504,7 +669,8 @@ then you are ready to solve \emph{any} kinematics problem. % which you will run 
 We say that an object is in \emph{free fall} if the only force acting on it is the force of gravity.
 On the surface of the earth, the force of gravity will produce a constant acceleration
 of $a=-9.81$[m/s$^2$]. The negative sign is there because the gravitational acceleration
-is directed downwards, and we assume that the we measure distance from the ground up.
+is directed downwards, and we assume that the $y$ axis points upwards.
+% measure distance from the ground up.
 % towards the center of the Earth.
 
 \medskip
@@ -529,12 +695,12 @@ Assume the acceleration is constant. \ Sol: Use \eqref{UAM-v}. Ans: $a=5.56$[m/s
 {\bf Moroccan example.}
 Suppose your friend wants to send you a ball wrapped in aluminum 
 foil from his balcony, which is located at a height of $x_i=44.145$[m]. 
-At  $t=0$[s] he \dokuitalic{throws} the ball straight down with an initial velocity 
+At  $t=0$[s] he \emph{throws} the ball straight down with an initial velocity 
 of $v_i=-10$[m/s]. How long does it take for the ball to hit the ground?
 %
 %Some time later, your friend wants to send you another aluminum 
 %ball from his apartment located on the 14th floor (height of $x_i=44.145$[m]). 
-%In order to decrease the time of flight, he \dokuitalic{throws} the ball 
+%In order to decrease the time of flight, he \emph{throws} the ball 
 %straight down with an initial velocity of $v_i=-10$[m/s].
 %How long does it take before the ball hits the ground?
 \ \ \ Sol: Solve for $t$ in \eqref{UAM-x} using $a=-9.81$.  Ans: $t=2.53$[s].
@@ -549,26 +715,26 @@ of $v_i=-10$[m/s]. How long does it take for the ball to hit the ground?
 
 
 \section{Projectile motion}
-
+\label{sec:projectile-motion}
 We will now analyze an important kinematics problem in \emph{two} dimensions.
 The motion of a projectile is described by:
 %The which will allow us to predict the f projectiles.
 \begin{itemize}
-\dokuitem  $\vec{r}(t)\equiv (x(t),y(t))$: the position of the object at time $t$.
-\dokuitem  $\vec{v}(t) \equiv (v_x(t), v_y(t) ) $: the velocity of the object as a function of time.
-\dokuitem  $\vec{a}(t) \equiv (a_x(t), a_y(t) ) $: the acceleration as a function of time.
+\item  $\vec{r}(t)\equiv (x(t),y(t))$: the position (vector) of the object at time $t$.
+\item  $\vec{v}(t) \equiv (v_x(t), v_y(t) ) $: the velocity of the object as a function of time.
+\item  $\vec{a}(t) \equiv (a_x(t), a_y(t) ) $: the acceleration as a function of time.
 \end{itemize}
 
 %When solving some problem, where we calculate 
-The motion of an object starts form an \dokuitalic{initial} position an goes to a 
-\dokuitalic{final} position for which we will use the following terminology:
+The motion of an object starts form an \emph{initial} position an goes to a 
+\emph{final} position for which we will use the following terminology:
 
 \begin{itemize}
-\dokuitem  $t_i=0$: initial time (the beginning of the motion).
-\dokuitem  $t_f$: final time (when the motion stops).
-\dokuitem  $\vec{v}_{i}=\vec{v}(0)=(v_x(0),v_y(0))=(v_{xi},v_{yi})$: the initial velocity at $t=0$.
-\dokuitem  $\vec{r}_i=\vec{r}(0)=(x(0),y(0))=(x_i,y_i)$: the initial position at $t=0$.
-\dokuitem  $\vec{r}_f=\vec{r}(t_f)=(x(t_f),y(t_f))=(x_f,y_f)$: the final position at $t=t_f$.
+\item  $t_i=0$: initial time (the beginning of the motion).
+\item  $t_f$: final time (when the motion stops).
+\item  $\vec{v}_{i}=\vec{v}(0)=(v_x(0),v_y(0))=(v_{xi},v_{yi})$: the initial velocity at $t=0$.
+\item  $\vec{r}_i=\vec{r}(0)=(x(0),y(0))=(x_i,y_i)$: the initial position at $t=0$.
+\item  $\vec{r}_f=\vec{r}(t_f)=(x(t_f),y(t_f))=(x_f,y_f)$: the final position at $t=t_f$.
 \end{itemize}
 
 
@@ -579,7 +745,7 @@ kinematics problems:  UVM in the $x$ direction and UAM in the $y$ direction.
 \subsection{Formulas}
 \label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
 
-The acceleration felt by a flying projectile is:
+The acceleration felt by a flying projectile is
 \[ 
  \vec{a}(t) = %\frac{d}{dt}\left(\vec{v}(t)\right) = 
   (a_x(t),a_y(t)) = (0,-9.81) \ \ [\text{m}/\text{s}^2].
@@ -587,56 +753,15 @@ The acceleration felt by a flying projectile is:
 There is no acceleration in the $x$ direction (ignoring air friction) and we have
 a uniform downward acceleration due to gravity in the $y$ direction.
 Therefore, the equations of motion of the projectile are the following:
-\[
-\begin{array}{rclrcl}
- x(t)     &\!\!\!\! =\!\!\!\! & v_{ix}t + x_i,  	 & 	y(t) &\!\!\!\!=\!\!\!\!& \frac{1}{2}(-9.81)t^2 + v_{iy}t + y_i, \\
- v_x(t) & \!\!\!\!=\!\!\!\! & v_{ix},		 & 	\qquad v_y(t)  &\!\!\!\!=\!\!\!\!& -9.81 t + v_{iy},  \\
- &&							&	v_{yf}^2 & \!\!\!\!=\!\!\!\! & v_{yi}^2 + 2(-9.81)(y_f - y_i).
-\end{array}
-\]
+\begin{align*}
+ x(t)     &\! =\!  v_{ix}t + x_i,  	 & 	y(t) &\!=\! \frac{1}{2}(-9.81)t^2 + v_{iy}t + y_i, \\
+ v_x(t) & \!=\!  v_{ix},		  & 	v_y(t)  &\!=\! -9.81 t + v_{iy},  \\
+ & 							&	v_{yf}^2 & \!=\!  v_{yi}^2 + 2(-9.81)(y_f - y_i).
+\end{align*}
 In the $x$ direction we have the equations of uniform velocity motion (UVM),
 while in the $y$ direction, we have equations of uniformly accelerated motion (UAM).
 Indeed, projectile motion problems can be decomposed into two separate sets of equations
 coupled through the time variable $t$.
-
-%In the $x$ direction we have uniform velocity motion (UVM):
-%\begin{align*}
-% x(t)     & = v_{ix}t + x_i,  \\
-% v_x(t) & =v_{ix},
-%\end{align*}
-%while in the $y$ direction, we have uniformly accelerated motion (UAM):
-%\begin{align*}
-% y(t) & = \frac{1}{2}(-9.81)t^2 + v_{iy}t + y_i, \\
-% v_y(t) & = -9.81 t + v_{iy}, \\
-% v_{yf}^2 & = v_{yi}^2 + 2(-9.81)(y_f - y_i).
-% \end{align*}
-
-
-
-%Sometimes you have to describe both the $x$ and the $y$ coordinate
-%of the motion of a particle:
-%\[
-% \vec{r}(t)=(x(t), y(t)).
-%\]
-%We choose $x$ to be the horizontal component of the projectile motion,
-%and $y$ to be its height.
-
-%The velocity of the projectile will be:
-%\[ 
-% \vec{v}(t) = \frac{d}{dt}\left(\vec{r}(t)\right) = \left(\frac{dx(t)}{dt}, \frac{dy(t)}{dt} \right) = (v_x(t),v_y(t)),
-%\]
-%and the initial velocity is:
-%\[ 
-%  \vec{v}_i = \vec{v}(0) = \|\vec{v}_i\|\angle \theta = (v_x(0), v_y(0)) = (v_{ix}, v_{iy})=
-%(|\vec{v}_i|\cos\theta, |\vec{v}_i|\sin\theta).
-%\]
-
-%Note how we have zero acceleration in the $x$ direction so we can use
-%the UVM equations of motion for $x(t)$ and $v_x(t)$.
-%In the
-%
-%\subsubsection{Projectile motion}
-
 
 
 {\bf Example.} 
@@ -644,7 +769,7 @@ Let us now consider the example illustrated in Figure~1 %\ref{fig:proj-motion}
 which shows an
 object being thrown with an initial velocity $8.96$[m/s] at an angle of $51.3^\circ$ 
 from an initial height of $1$[m].
-Calculate the maximum height $h$ that the object will reach,
+You are asked to calculate the maximum height $h$ that the object will reach,
 and the distance $d$ where the object will hit the ground.
 
 Your first step when reading any physics problem should be to extract the 
@@ -668,7 +793,7 @@ What will be the maximum height reached $h$ and distance travelled $d$ by the ob
 We can now plug the values of $\vec{r}_i$ and $\vec{v}_i$ into the equations of motion and find the desired quantities.
 %
 When the object reaches its maximum height, it will have zero velocity
-in the $y$ direction $v_{y}(t_{top})=0$.  We can use this fact, and the $v_y(t)$ 
+in the $y$ direction: $v_{y}(t_{top})=0$.  We can use this fact, and the $v_y(t)$ 
 equation in order to find $t_{top} = 7/9.81= 0.714$[s]. The maximum height 
 is then obtained by evaluating the function $y(t)$ at $t=t_{top}$: 
 $h = y(t_{top})= 1 + 7(0.714) + \tfrac{1}{2}(-9.81)(0.714)^2 = 3.5$[m].
@@ -678,19 +803,20 @@ to find the time $t_f$ when the object hits the ground.
 The solution is $t_f=1.55$[s]. 
 We then plug this value into the equation for $x(t)$ to obtain
 $d= x(t_f)=0 + 5.6(1.55)=8.68$[m].
-You can verify that these answers match the trajectory in Figure~1.
+You can verify that these answers match the trajectory illustrated in Figure~1.
 
 
 
 \section{Dynamics}
+\label{sec:dynamics}
 
-Dynamics is the study of various forces that act on objects.
+Dynamics is the study of the various forces that act on objects.
 Forces are vector quantities measured in Newtons [N].
 In this section we will explore all the different kinds of forces.
 
 \vspace{-3mm}
 \subsection{Kinds of forces}
-\label{517db664a569f42f769556092e40d53e}%% kinds_of_forces
+
 
 We next list all the forces which you are supposed to know about.
 
@@ -703,21 +829,21 @@ given by the formula $\vec{F}_g=\frac{GMm}{r^2}$[N], where
 $G=6.67 \times 10^{-11}$[$\frac{\text{Nm}^2}{\text{kg}^2}$] is
 the \emph{gravitational constant}.
 
-On the surface of the earth, which has mass $M=5.9721986\times 10^{24}$[kg] 
-and radius $r=6.3675\times10^6$[m], the force of gravity on an object of 
+On the surface of the earth, which has mass $M=5.972\times 10^{24}$[kg] 
+and radius $r=6.367\times10^6$[m], the force of gravity on an object of 
 mass $m$ is given by
 \be
   F_g=\frac{GMm}{r^2} = \underbrace{\frac{GM}{r^2}}_{g}m = 9.81 m = W.
   \label{FORCE-G}
 \ee
-We call this force the \emph{weight} of the object and to be precises
+We call this force the \emph{weight} of the object and to be precise
 we should write $\vec{W}=-mg\hat{\jmath}$ to indicate that the force acts
-\emph{downwards} -- in the negative $y$ direction.
+\emph{downwards} --- in the negative $y$ direction.
 Verify using your calculator that $\frac{GM}{r^2}=9.81\equiv g$. 
 
 
 \subsubsection{Force of a spring}
-A spring is a piece of metal twisted into a coil that has a certain natural lenght.
+A spring is a piece of metal twisted into a coil that has a certain natural length.
 The spring will resist any attempts to stretch it or compress it.
 The force exerted by a spring is given by
 \be
@@ -725,15 +851,15 @@ The force exerted by a spring is given by
   \label{FORCE-Spring}
 \ee
 where $x$ is the amount by which the spring is displaced from its natural length
-and the constant $k$[N/m] is a measure of the  \dokuitalic{strength} of the spring.
+and the constant $k$[N/m] is a measure of the  \emph{strength} of the spring.
 Note the negative sign: if you try to stretch the spring (positive $x$) then the force
 of a spring will pull against you (in the negative $x$ direction),
-if you try to compress the spring (negative $x$) it will push against you (in the positive $x$ direction).
+if you try to compress the spring (negative $x$) it will push back against you (in the positive $x$ direction).
 
 
 \subsubsection{Normal force}
 The normal force is the force between two surfaces in contact. 
-The word \emph{normal} means ``perpendicular to the surface of'' in this case.
+The word \emph{normal} means ``perpendicular to the surface of'' in this context.
 The reason why my coffee mug does not fall to the floor right now, 
 is that the table exerts a normal force $\vec{N}$ on it keeping in place.
 
@@ -765,18 +891,13 @@ It always acts in the direction opposite to the motion.
 \subsubsection{Tension}
 A force can also be exerted on an object remotely by attaching a rope to the object.
 The force exerted on the object will be equal to the \emph{tension} in the rope $\vec{T}$.
-Note that tension always pulls \dokuitalic{away} from an object:  you can't push a dog on a leash.
+Note that tension always pulls \emph{away} from an object:  you can't push a dog on a leash.
 
 
 \vspace{-3mm}
 \subsection{Force diagrams}
 
-
-%Welcome to force-accounting 101. In this section we will learn how 
-%identify all the forces acting on an object and predict the resulting
-%acceleration.
-
-Newton's 2nd law says that the \dokuitalic{net} force on an object causes an acceleration:
+Newton's 2nd law says that the \emph{net} force on an object causes an acceleration:
 \be
  \sum \vec{F}=\vec{F}_{net} = m\vec{a}.
  \label{FeqMA}
@@ -788,19 +909,13 @@ We will now learn how to calculate the net force acting on an object.
 \label{31bb2b3f8fca76563afa16cf8fbccb90}%% recipe_for_solving_force_diagrams
 
 \begin{enumerate}
-\dokuitem  Draw a diagram centred on the object. Draw all the vectors of all the forces acting on the object:
-    $\vec{W}$, $\vec{N}$, $\vec{T}$, $\vec{F}_{fs}$, $\vec{F}_{fk}$,
-    $\vec{F}_{s}$ as applicable.
-\dokuitem  Choose a coordinate system, and indicate clearly in the force diagram what you will call the positive $x$ direction, 
+\item  Draw a diagram centred on the object. Draw all the vectors of all the forces acting on the object:
+    $\vec{W}$, $\vec{F}_{s}$, $\vec{N}$,$\vec{F}_{fs}$, $\vec{F}_{fk}$ and  $\vec{T}$ as applicable.
+\item  Choose a coordinate system, and indicate clearly in the force diagram what you will call the positive $x$ direction, 
 and what you will call the positive $y$ direction. All quantities in the subsequent equations will be expressed \emph{with respect to} this coordinate system.
-\dokuitem  Write down this following ``template'': \[ \sum F_x = \qquad \qquad \qquad = ma_x \]   \[ \sum F_y = \qquad \qquad \qquad = ma_y \]
-\dokuitem   Fill in the template by calculating the $x$ and $y$ components of each force acting on the object.
-\dokuitem  Solve the equations for the unknown quantities.
-%Consistency checks:
-%\begin{enumerate}\dokuitem  Check signs. If the force in the diagram is acting in the $x$ direction  then its component must be positive. If the force is acting in the  opposite direction to $\hat{x}$, then its component should be negative.
-%\dokuitem  Verify that whenever $F_x \propto \cos\theta$, then $F_y \propto \sin\theta$.  If instead we use an angle $\phi$ defined with respect to the $y$ axis we would have $F_x \propto \sin\phi$, and $F_y \propto \cos\phi$. 
-%\end{enumerate}
-%\dokuitem  Solve the two equations finding the one or two unknowns.  If there are two unknowns, you may need to solve two equations simultaneously by isolation and substitution.
+\item  Write down this following ``template'': \[ \sum F_x = \qquad \qquad \qquad = ma_x \]   \[ \sum F_y = \qquad \qquad \qquad = ma_y \]
+\item   Fill in the template by calculating the $x$ and $y$ components of each of the forces acting on the object.
+\item  Solve the equations for the unknown quantities.
 \end{enumerate}
 
 Let us now illustrate the procedure by solving an example problem.
@@ -814,9 +929,9 @@ What is its acceleration?
 \includegraphics[width=150pt]{/Library/WebServer/Documents/miniref/data/media/physics/force-diagrams-incline_tight_crop.png}
 \end{wrapfigure}
 
-Step 1: We draw a diagram which includes the weight and the contact forces between the object and the incline split into $N$ and $F_{fk}$.
+Step 1: We draw a diagram which includes the weight, the normal force and the kinetic force of friction.
 
-Step 2: We pick the coordinate system to be tilted along the incline. This is important because this way the motion is purely  in the $x$ direction,
+Step 2: We choose the coordinate system to be tilted along the incline. This is important because this way the motion is purely  in the $x$ direction,
 while the $y$ direction will be static.
 
 
@@ -831,8 +946,8 @@ and substitute known values to obtain:
  \sum F_y &= N - mg\cos\theta  = 0. 
 \end{align*}
 
-Step 5: We solve for $a_x$ by first finding $N=mg\cos\theta$ and then substituting this
-value into the $x$ equation:
+Step 5: We solve for $a_x$ by first finding $N=mg\cos\theta$ in the $y$ equation 
+and then substituting this value into the $x$ equation:
 \[
  a_x 
  = \frac{1}{m}\left( mg\sin\theta - \mu_k mg\cos\theta \right)
@@ -843,20 +958,22 @@ value into the $x$ equation:
 
 
 \section{Momentum}
+\label{sec:momentum}
 
 During a collision between two objects there will be a sudden spike in the contact force between them,
 which can be difficult to measure and quantify. 
 It is therefore not possible to use Newton's law $F=ma$ to predict the accelerations that occur during collisions.
-In order to predict the motion of the objects after the collision we must use a \dokuitalic{momentum} calculation.
+In order to predict the motion of the objects after the collision we must use a \emph{momentum} calculation.
 
 \vspace{-3mm}
 \subsection{Definition}
 
 The momentum of a moving object is equal to the velocity of the moving object 
 multiplied by the object's mass:
-\[ 
+\be 
  \vec{p} = m\vec{v} \qquad [\text{kg}\:\text{m}/\text{s}].
-\]
+ \label{MOMENTUM}
+\ee
 Momentum is a vector quantity.
 If the velocity of the object is $\vec{v}=20\hat{\imath}=(20,0)$[m/s]
 and it has a mass of 100[kg] then its momentum is $\vec{p}=2000\hat{\imath}=(2000,0)$[kg$\:$m/s].
@@ -867,7 +984,7 @@ and it has a mass of 100[kg] then its momentum is $\vec{p}=2000\hat{\imath}=(200
 The law of conservation of momentum states that the total amount of momentum before and
 after the collision is the same. 
 In a collision involving two moving objects, if we know the initial momenta
-of the objects before the collision, we can calculate their momenta after the collision:
+of the objects, we can calculate their momenta after the collision:
 \be
  \sum \vec{p}_{in} = \sum \vec{p}_{out} \quad \Rightarrow \quad
   \vec{p}_{1,in} + \vec{p}_{2,in}  =    \vec{p}_{1,out} + \vec{p}_{2,out}.
@@ -876,7 +993,7 @@ of the objects before the collision, we can calculate their momenta after the co
 This conservation law is one of the furthest reaching laws of physics you will learn in Mechanics.
 The quantity of motion (momentum) cannot be created or destroyed,  it can only be exchanged between systems.
 This law applies very generally: for fluids, for fields, and even for collisions involving atomic particles 
-described by quantum mechanics. 
+described by the laws of quantum mechanics. 
 
 
 {\bf Example.} 
@@ -888,15 +1005,17 @@ What will be outgoing velocity of the objects if they stick together after the c
 $\qquad$ 
 Sol: The conservation of momentum equation says that: $\vec{p}_{in,1} + \vec{p}_{in,2} = \vec{p}_{out}$
 so $0.4\times (10,0) \ \ + \ \  2\times (0,-30) \ \  = \ \ 2.4 \times \vec{v}_{out}$.
-Ans: $\vec{v}_{out} =(1.666, - 25.0)$.
+Ans: $\vec{v}_{out} =(1.666, - 25.0)$[m/s].
 
 
 
 \section{Energy}
+\label{sec:energy}
 
-Instead of thinking about velocities $v(t)$ and motion trajectories $x(t)$, 
-we can solve physics problems using \dokuitalic{energy} calculations.
-The key idea in this section is the principle of \dokuitalic{total energy conservation}, 
+Instead of finding the %velocities $v(t)$ and 
+position function $x(t)$, 
+we can solve physics problems using \emph{energy} calculations.
+The key idea  is the principle of \emph{total energy conservation}, 
 which tells us that, in any physical process, 
 the sum of the initial energies is equal to the sum of the final energies.
 
@@ -950,59 +1069,11 @@ If a constant force $\vec{F}$ acts on a object
 \item[$U_s$]
   \textbf{Spring potential energy:}
   The potential energy stored in a spring
-    when it is displaced by $\vec{x}$[m] from its relaxed position 
-    is given by $U_{s} = \frac{1}{2}k\|\vec{x}\|^2$[J],
+    when it is displaced by $x$[m] from its relaxed position 
+    is given by $U_{s} = \frac{1}{2}k|x|^2$[J],
     where $k$[N/m] is the spring constant.
 \end{description}
 
-
-
-%
-
-%\dokutitlelevelthree{Work}
-
-%If an external force $\vec{F}$ acts on a object as it moves through a distance $\vec{d}$, 
-%the \dokuitalic{work} done by this force is
-%\[
-% W=\vec{F}\cdot \vec{d} = \|\vec{F}\| \|\vec{d}\|\cos \theta \qquad \text{[J]},
-%\]
-%where the second equality follows from the geometrical interpretation 
-%of the dot product: $\vec{u}\cdot \vec{v} = \|\vec{u}\| \|\vec{v}\|\cos \theta$,
-%with $\theta$ is the angle between $\vec{u}$ and $\vec{v}$.
-
-%If the force $\vec{F}$ acts in the same direction as the displacement $\vec{d}$,
-%then it will do positive work ($\cos(180^\circ)=+1$): 
-%the force will be adding energy to the system.
-%If the force acts in the direction opposite to the displacement,
-%then the work done will be negative ($\cos(180^\circ)=-1$), 
-%which means that energy is being withdrawn from the system.
-
-%
-%\subsubsection{Gravitational potential energy}
-
-%An object raised to a height $h$ above the ground 
-%has a gravitational potential energy given by:
-%\[ 
-% U_g(h) = mgh	\qquad \text{[J]},
-%\]
-%where $m$ is the mass of the object and $g=9.81$[m/s$^2$] 
-%is the gravitational acceleration on the surface of Earth.
-
-%
-%\subsubsection{Spring potential energy}
-
-%The potential energy stored in a spring
-%when it is displaced by $\vec{x}$[m] from its relaxed position 
-%is given by 
-%\[
-% U_{s} = \frac{1}{2}k\|\vec{x}\|^2	\qquad \text{[J]},
-%\]
-%where $k$[N/m] is the spring constant.
-
-%Note that it doesn't matter whether the spring is stretched or compressed
-%by a certain length: only the magnitude of the displacement matters $\|\vec{x}\|$.
-
-%
 
 \vspace{-3mm}
 \subsection{Conservation of energy}
@@ -1010,16 +1081,16 @@ If a constant force $\vec{F}$ acts on a object
 Consider a system which starts from an initial state (i),
 undergoes some motion and arrives at a final state (f).
 The law of conservation of energy states that 
-\dokubold{energy cannot be created or destroyed in any physical process}.
+\textbf{energy cannot be created or destroyed in any physical process}.
 This means that the initial energy of the system plus the work 
-that was \dokuitalic{in}put into the system must equal 
-the final energy of the system plus any work that the was \dokuitalic{out}put:
+that was \emph{in}put into the system must equal 
+the final energy of the system plus any work that the was \emph{out}put:
 \be
   \sum E_{i} \ \ + W_{in} \ \ \  =  \ \ \ \sum E_{f} \ \  + W_{out}.
   \label{CONSERVATIONofENERGY}
 \ee
 The expression $\sum E_{(a)}$ corresponds to the sum of 
-the different types of energy the system has in state (a).
+the different types of energy the system has in state $(a)$.
 If we write down the equation in full we have:
 \[
  K_i + U_{gi} + U_{si} \ \ \  + W_{in}  \ \ \ = \ \ \  K_f + U_{gf} + U_{sf} \ \ \ + W_{out}.
@@ -1029,7 +1100,7 @@ For example, we do not need to consider the spring potential energy $U_s$
 in physics problems that do not involve springs.
 %
 
-%\dokutitleleveltree{Explanations}
+%\subsubsection{Explanations}
 %\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
 
 %Work and energy are measured in Joules [J].
@@ -1044,14 +1115,14 @@ in physics problems that do not involve springs.
 %\subsubsection{Kinetic energy}
 
 %A moving object has energy $K=\frac{1}{2}m\|\vec{v}\|^2$[J],
-%which we call \dokuitalic{kinetic} energy from the Greek word for motion \dokuitalic{kinema}.
+%which we call \emph{kinetic} energy from the Greek word for motion \emph{kinema}.
 
 %Note that velocity $\vec{v}$ and speed $\|\vec{v}\|$ are not the same as energy. Suppose you have two objects of the same mass and one is moving twice faster than the other. The faster object will have twice the velocity, but four times more kinetic energy.
 
 %
 %\subsubsection{Work}
 
-%When hiring someone to help you move, you have to pay them for the \dokuitalic{work} they do.
+%When hiring someone to help you move, you have to pay them for the \emph{work} they do.
 %Work is the product of how much force is necessary for the move and the distance of the move.
 %The more force, the more work there will be for a fixed displacement.
 %The more displacement (think moving to the South Shore versus moving next door) the 
@@ -1069,50 +1140,47 @@ in physics problems that do not involve springs.
 %since it neither speeds up or slows down the motion.
 
 %
-\dokutitleleveltree{Work}
+\subsubsection{Work}
 
-The amount of work done by a force $\vec{F}$ during a displacement $\vec{d}$ is:
+The work done by a force $\vec{F}$ during a displacement $\vec{d}$ is:
 \[
   W  = \vec{F}\cdot \vec{d} = \|\vec{F}\|\|\vec{d}\|\cos\theta \quad = \int_0^d \vec{F}(x)\cdot d\vec{x}.
 \]
 % brake up the work calculation into small steps 
 %on the right is used whenever the force $\vec{F}(x)$ changes
-Note the use of the dot product since only the part of $\vec{F}$ that is pushing in the direction 
-of the displacement $\vec{d}$ produces any work.
-The expression on the right must be used when the force is not constant.
+Note the use of the dot product to obtain only the part of $\vec{F}$ that is pushing 
+in the direction of the displacement $\vec{d}$.
+The expression on the right must be used when the strength of the force 
+changes during the motion.
 
 
-\dokutitleleveltree{Potential energy}
+\subsubsection{Potential energy is stored work}
 
-Some kinds of work are just a waste of your time, like working in a bank for example. 
-You work and you get your paycheque, but nothing remains with you.
-Other kinds of work leave you with some \dokuitalic{resource} at the end of the work day.
-Maybe you learn something, or you network with a lot of good people.
-In physics, we make a similar distinction. 
 Some types of work, like work against friction, 
-are called \dokuitalic{dissipative} since they just waste energy.
-Other kinds of work are called \dokuitalic{conservative} since the work you do
-is not lost: it is converted into \dokuitalic{potential energy}.
-
-The gravitational and spring forces are conservative.
+are called \emph{dissipative} since they just waste energy.
+Other kinds of work are called \emph{conservative} since the work you do
+is not lost: it is converted into \emph{potential energy}.
+%
+The gravitational force and the spring force are conservative forces.
 Any work you do while lifting an object up into the air against the force 
-of gravity is not lost, but \dokuitalic{stored} in the potential energy of the object.
+of gravity is not lost but \emph{stored} in the potential energy of the object.
 The gravitational potential energy of lifting an object from
-a height of $y=0$ to a height of $y=h$ is given by:
-\begin{align*}
+a height of $y=0$ to a height of $y=h$ is defined as the \emph{negative}
+of the work done:
+\begin{align}
   U_g(h) &\equiv - W_{done}   = - \vec{F}_g \cdot \vec{h} =  - (- mg \hat{\jmath})\cdot h\hat{\jmath} = mgh.
-\end{align*}
-You can get \dokuitalic{all} the work/energy back if you let go of the 
-object. The energy will come back in the form of kinetic energy as the object
-gets accelerated during the fall.
+  \label{GRAVpotENERGY}
+\end{align}
+You can get \emph{all} that energy back if you let go of the 
+object. The energy will come back in the form of kinetic energy since the object
+will pick up speed during the fall.
 
-
-The spring potential energy stored in a spring as it is
+The potential energy stored in a spring as it is
 compressed from $y=0$ to $y=x$[m] is given by:
-\begin{align*}
- U_s(x) &= -W_{done} = -\!\int_0^x \!\vec{F}_{s}(y) \cdot d\vec{y} = k\int_0^x \!\! y\: dy  = \frac{1}{2}kx^2.
-\end{align*}
-
+\begin{align}
+ U_s(x) &= -W_{done} = -\!\int_0^x \!\vec{F}_{s}(y) \cdot d\vec{y} = k\!\int_0^x \!\! y\: dy  = \frac{1}{2}kx^2.
+  \label{SPRINGpotENERGY}
+\end{align}
 
 
 {\bf Example.}
@@ -1121,11 +1189,12 @@ What is his speed when he hits the ground?
 We will use $\sum E_i  =  \sum E_f$, where $_i$ is at the top of the building
 and $_f$ is at the bottom. We have $K_i + U_i   =    K_f + U_f$ and
 plugging-in the numbers we get: $ 0      +  m \times9.81 \times100  =    \frac{1}{2}mv^2   + 0$.
-When we can cancel the mass $m$ from both sides of the equation, 
+When we cancel the mass $m$ from both sides of the equation, 
 we are left with $9.81\times 100  =    \frac{1}{2}v_f^2$
 which can be solved for $v_f$. 
-We find $v_f =\sqrt{ 2\times 9.81\times 100}=44.2945$[m/s] when he hits the ground.
-This is like $160$[km/h]. That will definitely hurt.
+We find $v_f =\sqrt{ 2\times 9.81\times 100}=44.2945$[m/s].
+This is like $160$[km/h]. Ouch! This is really the \emph{f}inal time for this banker.
+%That will definitely hurt.
 
 
 
@@ -1136,25 +1205,27 @@ This is like $160$[km/h]. That will definitely hurt.
 
 
 \section{Uniform circular motion}
+\label{sec:uniform-circular-motion}
 
-TODO  shorten ZZZZZZZZZZZ
-
-
-Circular motion is different from linear motion and we will have
-to develop new techniques and concepts which are better suited
+Circular motion is different from linear motion. 
+In linear motion the acceleration leads to changes in the speed of the object
+whereas in circular motion the speed of the object stays constant, 
+but the velocity continuously changes direction.
+We will now discuss the techniques and concepts which are well suited
 for the description of circular motion.
 
 \vspace{-3mm}
-\subsection{A new coordinate system}
-\label{7194f08cce3613f8375fbc7dc78ba314}%% a_new_coordinate_system
+\subsection{New coordinate system}
 
-Instead of the usual coordinate system $\hat{x},\hat{y},\hat{z}$ which is static, 
-we can use a new coordinate system $\hat{t},\hat{r},\hat{z}$ that is ``attached'' to the rotating object.
-
-Three important directions can be identified:
-\begin{enumerate}\dokuitem  $\hat{t}$: The \dokuitalic{tangential} direction in the instantaneous direction of motion of the object. The name comes from the Greek word for ``touch'' (imagine a straight line ``touching'' the circle).
-\dokuitem  $\hat{r}$: The \dokuitalic{radial} direction always points towards the centre of the circle of rotation.
-\dokuitem  $\hat{z}$: The usual $\hat{z}$ direction, which is perpendicular to the plane of rotation. 
+Instead of the usual coordinate system $\hat{x},\hat{y}$ which is static, 
+we will use a new coordinate system $\hat{t},\hat{r}$ that is ``attached'' to the rotating object:
+\begin{enumerate}
+\item  $\hat{t}$: 
+	The \emph{tangential} direction in the instantaneous direction of motion of the object. 
+	The name comes from the Greek word for ``touch'' (imagine a straight line ``touching'' the circle of rotation).
+\item  $\hat{r}$: 
+	The \emph{radial} direction always points towards the centre of rotation.
+%\item  $\hat{z}$: The usual $\hat{z}$ direction, which is perpendicular to the plane of rotation. 
 \end{enumerate}
 %
 %From the point of view of a static observer, the tangential and radial directions 
@@ -1162,566 +1233,166 @@ Three important directions can be identified:
 %however from the point of view of the rotating objects the tangential and radial
 %directions are fixed.
 
-We can use the new coordinate system to describe the position, velocity and acceleration 
-of the object undergoing circular motion:
-\begin{itemize}
-\dokuitem  $\vec{v}=(v_r,v_t)_{\hat{r}\hat{t}}$: The \dokuitalic{velocity} of object expressed with respect to  the $\hat{r}\hat{t}$ coordinates.
-\dokuitem  $\vec{a}=(a_r,a_t)_{\hat{r}\hat{t}}$: The \dokuitalic{acceleration} of the object in the $\hat{r}\hat{t}$ coordinates.
-\end{itemize}
-%
-%The most important parameters of motion are the tangential velocity $v_t$,
-%the radial acceleration $a_r$ and the radius of the circle of motion $R$.
-%We have $v_r=0$ since the motion is entirely in the $\hat{t}$ direction,
-%and $a_t=0$ because we assumed that the tangential velocity $v_t$ remains constant
-%(\dokuitalic{uniform} circular motion).
-
-%In the next section we will learn how to calculate the radial acceleration of $a_r$[m/s$^2$].
+The $\hat{r}\hat{t}$-coordinate system makes it very easy 
+to describe the velocity and the acceleration of an object undergoing circular motion.
+The velocity of the object is always in the tangential direction $\vec{v} =(0,v_t)_{\hat{r}\hat{t}}= 0\hat{r}+v_t \hat{t}$.
+The constant $v_t$ is called the \emph{tangential velocity}. 
+The acceleration of a rotating object is always in the radial direction 
+$\vec{a}=(a_r,0)_{\hat{r}\hat{t}} = a_r \hat{r}$.
+The constant $a_r$ is called the \emph{radial acceleration}.
 
 \vspace{-3mm}
 \subsection{Radial acceleration}
-%\label{35d47b1314dc34f3055a4b3508ef47da}%% radial_acceleration
-%\begin{wrapfigure}{r}{0pt}
-%\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/circular-motion-ar-vt.png}
-%\end{wrapfigure}
 
 The defining feature of circular motion is the presence of an acceleration
 that acts perpendicularly to direction of motion.
-At each instant the object wants to continue moving along the tangential direction,
-but the radial acceleration causes the velocity to change direction.
-The result of this constant inward acceleration is that the object will
-follow a circular path.
-
+The result of this inward acceleration is that the object will follow a circular path.
 The radial acceleration $a_r$ of an object moving in a circle of radius $R$
 with a tangential velocity $v_t$ is given by:
-\[
+\be
   a_r = \frac{v^2_t}{ R }.
-\]
-This is an important equation which relates the three key parameters of circular motion.
+  \label{RADIALa}
+\ee
 
-%According to Newton's second law $\vec{F}=m\vec{a}$, the radial acceleration of the object 
-%must be caused by a \dokuitalic{radial force}.
-We can calculate the magnitude of this radial force $F_r$ as follows:
-\[
-  F_{r} = ma_r = m \frac{v^2_t}{ R }.
-\]
-%The above formula allows us to connect the observable aspects of the circular motion $v_t$ and $R$
-%with its cause: the force $F_r$ which always acts towards the centre of rotation.
-Circular motion \dokuitalic{requires} a radial force.
-%From now on, every time you see an object undergoing an circular motion,
-%you should try to visualize the radial force which is causing the circular motion.
+Using Newton's second law $\vec{F}=m\vec{a}$, we can also calculate the magnitude of the 
+radial force $F_r$ which is necessary to cause this rotation: $F_{r} = ma_r = m \frac{v^2_t}{ R }$.
+In words, this equation tells us the amount of radial force that is \emph{required} in order to keep an object moving
+in a circular path. 
 
-%In the rock-on-a-rope example described in the beginning of this section,
-%the circular motion was caused by the tension of the rope which always 
-%acts in the radial direction (towards the centre of rotation).
-%We are now in a position to calculate the value of the tension $T$ in the rope 
-%using the equation:
-%\[
-% F_{r} = T  = ma_r, 
-% \qquad
-% \Rightarrow \qquad 
-%  T=m \frac{v^2_t}{ R }.
-%%\]
-
-%
-%\subsubsection{Example}
-
-%During a student protest, a young activist called David is stationed on the rooftop 
-%of a building of height $12$[m].
-%A mob of blood-thirsty neoconservatives is slowly approaching his position
-%determined to lynch him because of his leftist views. 
-%David has put together a make-shift weapon by attaching a 0.3[kg] rock to the end 
-%of a shoelace of length $1.5$[m]. 
-%The maximum tension that the shoelace can support is 500[N].
-%What is the maximum tangential velocity $\max\{v_t\}$ that the shoelace can support?
-%What is the maximum \dokuitalic{range} for this projectile when it is launched from the roof?
-
-%The first part of the question is answered easily using the $T=m \frac{v^2_t}{ R }$ formula:
-%$\max\{v_t\} = \sqrt{ \frac{R T}{m} }= \sqrt{ \frac{1.5\times 500}{0.3} }=50$[m/s].
-%To answer the second question, we must solve for the distance travelled 
-%by a projectile with initial velocity $\vec{v}_i=(v_{ix},v_{iy})=(50,0)$[m/s] launched
-%from $\vec{r}_i=(x_i,y_i)=(0,12)$[m]. 
-%First we solve for the total time of flight $t_f=\sqrt{2\times 12/9.81}=1.56$[s].
-%Then we find the range by multiplying this time by the horizontal speed 
-%$x(t_f)=0+v_{ix} t_f = 50\times 1.56=78.20$[m].
-
-%After carrying out these calculations on a piece of paper, David starts to spin-up
-%the rock and waits for the neocons to come into range. 
-
-%
-%\subsection{Circular motion parameters}
-%\label{a4e54e5f1580d56ea6a589beec5eec77}%% circular_motion_parameters
-
-%
-%We now introduce some further terminology used to describe circular motion:
-
-%
-%\begin{itemize}
-%\dokuitem  $C=2\pi R$[m]: The \dokuitalic{circumference} of the circle of motion.
-%\dokuitem  $T$: The \dokuitalic{period} of the motion is how long it takes for the object to complete one full circle.  The period is measured in seconds [s].
-%\dokuitem  $f=\frac{1}{T}$: The frequency of rotation. How many times per second does the object pass by some reference point on the circle. Frequency is measured in Hertz [Hz]=[1/s]. We sometimes describe the frequency of rotation in \dokuitalic{revolutions per minute} (RPM).
-%\dokuitem  $\omega\equiv\frac{v_t}{R}=2\pi f$: The \dokuitalic{angular velocity} describes how fast the  object is rotating. Angular velocity is measured in [rad/s].
-%\end{itemize}
-
-%Recall that a circle of radius $R$ has circumference $C = 2 \pi R$.
-%The period $T$ is defined as how long it will take the object to complete one full turn
-%around the circle:
-%\[
-% T = \frac{\text{distance}}{\text{speed}} = \frac{C}{v_t} = \frac{2\pi R}{v_t},
-%\]
-%where $C=2\pi R$ is total distance that must be travelled to compete one turn
-%and $v_t$ is the velocity of the object along the curve.
-%Every $T$[s] the object will complete one full turn.
-
-%Another way of describing the motion is to talk about the \dokuitalic{frequency}:
-%\[
-%  f=\frac{1}{T} =  \text{[Hz]}.
-%\]
-%The frequency tells you how many turns the object completes in one second.
-%If the object competes one turn in $T=0.2$[s], then the motion has frequency $f=5$[Hz],
-%or $f=60\times 5 = 300$[RPM]. 
-
-%
-%The most natural parameter for describing rotation is in terms
-%of the \dokuitalic{angular velocity} $\omega$[rad/s].
-%We know that one full turn corresponds to an angle of rotation of $2\pi$[rad],
-%so the angular velocity is obtained by dividing $2\pi$ by the time
-%it takes to complete one turn:
-%\[
-% \omega = \frac{2\pi}{T} = 2\pi f  = \frac{v_t}{R}.
-%\]
-
-%The angular velocity $\omega$ is very useful because it describes 
-%the speed of the circular motion without any reference to the radius.
-%If we know that the angular velocity of an object is $\omega$,
-%we can obtain the tangential velocity by multiplying times the radius: 
-%$v_t=R\omega$[m/s].
-
-%
-%Let us now look at some examples in which we are asked 
-%to compute some angular velocities.
-
-%
-%\subsubsection{Bicycle odometer}
-
-%Imagine that you place a small speed detector gadget on one of the spokes
-%of the front wheel of your bicycle.
-%Your bike's wheels have a radius $R=14$[in] and the gadget is attached 
-%at a distance of $\frac{3}{4}R$[m] from the centre of the wheel.
-%Find the angular velocity $\omega$, period $T$, and frequency $f$ of rotation 
-%for the wheel when the speed of the bicycle relative to the ground is $40$[km/h].
-%What is the tangential velocity $v_t$ of the detector gadget?
-
-%The velocity of the bicycle relative to the ground $v_{bike}=40$[km/h],
-%is equal to the tangential velocity of the rim:
-%\[
-% v_{bike} 
-% = v_{rim} 
-% = 40 [\text{km/h}] 
-%    \times \frac{ 1000 [\text{m}] }{ 1 [\text{km}]} 
-%    \times \frac{ 1 [\text{h}] }{ 3600 [\text{s}]} 
-% = 11.11 [\text{m/s}].
-%\]
-%We can find the angular velocity using $\omega = \frac{v_{rim}}{R}$
-%and the the radius of the wheel $R=14[\text{in}]=0.355$[m].
-%We obtain $\omega = \frac{11.11}{0.355}=  31.24[\text{rad/s}]$.
-%From this we can easily calculate $T=\frac{2\pi}{\omega}=0.20$[s]
-%and $f=\frac{1}{0.20}=5$[Hz].
-%Finally, to compute the tangential velocity of the gadget
-%we multiply the angular velocity $\omega$ by its radius of
-%rotation to obtain $v_{det}= \omega \times \frac{3}{4}R = 8.333$[m/s].
-
-%
-%\subsubsection{Rotation of the Earth}
-
-%It takes exactly 23 hours, 56 minutes and 4.09 seconds for 
-%the Earth to compete one full turn ($2\pi$ radians) around its axis of rotation.
-%What is its angular velocity?
-%What is the tangential speed at a latitude of $45^\circ$ (Montreal)?
-
-%We can find $\omega$ by carrying out a simple conversion:
-%\[
-% \frac{2\pi \text{ [rad]}}{ 1 \text{ [day]} }
-% \cdot
-% \frac{1 \text{ [day]}}{ 23.93447 \text{ [h]} }
-% \cdot
-% \frac{1 \text{ [h]}}{ 3600 \text{ [s]} }
-% = 
-% 7.2921\times 10^{-5} \text{ [rad/s]}.
-%\]
-
-%The radius of the trajectory traced out by someone at a latitude $45^\circ$ (Montreal)
-%is given by $r=R\cos(45^\circ)=4.5025\times 10^6$[m], 
-%where $R=6.3675×10^6$[m] is the radius of the Earth.
-%Thus, though it may seem that you are not moving right now, 
-%in reality you are hurtling through space at a speed of 
-%\[
-% v_t = r \omega  = 4.5025\times 10^6 \times 7.2921\times 10^{-5} = 464.32 \text{ [m/s]}.
-%\]
-%Which is like $1671.56$[km/h]. Just try to imagine that for a second. 
-%You can try to use this fact if you get stopped by the cops one day for 
-%a speeding infraction: ``Yes officer, I was doing 130[km/h], but this is
-%really a negligible speed relative to the velocity of the Earth which
-%is like 1671[km/h].''
-
-%
-%\subsection{Three dimensions}
-%\label{f472e64c6fac435c49aa45d2088b1b1b}%% three_dimensions
-
-%For some problems involving circular motion, it will 
-%be necessary to consider the $z$ direction in the force diagram.
-%The best approach in this case is to draw the force diagram
-%as a cross section which is perpendicular to the tangential direction.
-%The diagram will show the $\hat{r}$ and $\hat{z}$ axes.
-
-%Using the force diagram in you should be able to find the all the forces
-%in the radial and vertical directions and solve for accelerations $a_r$, $a_z$.
-%Remember that you can always use the relation $a_r=\frac{v_t^2}{R}$ which
-%connects the value of $a_r$ with the tangential velocity $v_t$ and the 
-%radius of rotation $R$.
-
-%
-%\paragraph{Example}
-
-%Japanese people of the future want to design a giant racetrack for retired superconducting speed trains.
-%The shape of the race track is a big circle with radius $R=3$[km]. Because the trains
-%are magnetically levitated, there is no friction between the track and the train $\mu_s=0, \mu_k=0$. 
-%What is the bank angle required for the race track so that trains moving
-%at a speed of exactly $400$[km/h] will stay on the track without moving laterally?
-
-%\begin{wrapfigure}{r}{0pt}
-%\includegraphics[width=200pt]{/Library/WebServer/Documents/miniref/data/media/physics/superconducting-train-race.png}
-%\end{wrapfigure}
-
-%We begin by drawing a force diagram which shows a cross-cut of the 
-%train in the $\hat{r}$ and $\hat{z}$ directions.
-%The bank angle of the racetrack is $\theta$, this is the angle we are looking for.
-%Because of the frictionless-ness of levitated superconducting suspension 
-%there cannot be any force of friction $F_f$ so the only forces on the
-%train will be it weight $mg$ and the normal force $\vec{N}$.
-
-%The next step is to write down the force equations for the two directions:
-%\begin{align*}
-% \sum F_r &= N\sin\theta = m a_r =  m \frac{v_t^2}{R}  
-% \quad \Rightarrow  \quad N\sin\theta = m \frac{v_t^2}{R}, \\
-% \sum F_z &= N\cos\theta - mg = 0 \ \  \quad \quad \Rightarrow  \quad N\cos\theta = mg.
-%\end{align*}
-%Note how the normal force $\vec{N}$ is split into two parts:
-%the vertical component counter balances the  weight of the train, 
-%while the component in the $\hat{r}$ direction 
-%is the force that is responsible for maintaining the rotational 
-%motion of the train around the track.
-
-%We want to solve for $\theta$ in the above equations.
-%A commonly used trick for solving equations containing multiple
-%trigonometric functions is to divide one equation by the other.
-%We obtain:
-%\[
-% \frac{ N \sin\theta }{ N\cos\theta } =\frac{ m \frac{v_t^2}{R} }{ mg}
-% \quad
-% \Rightarrow
-%  \quad \tan\theta = \frac{ v_t^2 }{ Rg }.
-%\]
-%The final answer is 
-% $\theta = \tan^{-1}\!\!\left(\frac{v_t^2}{gR} \right)
-% = \tan^{-1}\!\!\left(\frac{(400\times\frac{1000}{3600})^2}{9.81 \times 3000} \right) = 22.76^\circ$.
-%If the angle were any steeper, the trains would fall towards the centre.
-%If the bank angle were any shallower, the trains would fly off to the side.
-%The angle $22.76^\circ$ is just right.
-
-
-%\subsection{Discussion}
-%\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-
-%\subsubsection{Radial acceleration}
-
-%In the \hyperref[508ac5264059de6a350383a9f1e87977]{kinematics} section we studied problems involving \dokuitalic{linear acceleration}:
-%in which an acceleration $a$ was acting in the same direction as the velocity
-%and was thus causing a change the magnitude of the velocity $v$.
-
-%Circular motion deals with a different situation in which the speed $\|\vec{v}\|$
-%of the object remains constant but the velocity $\vec{v}$ changes direction.
-%At each point along the circle, the velocity of the object points along the 
-%tangential direction, and during each instant the radial acceleration pulls 
-%the object inwards and causes it to rotate.
-
-%Another term for radial acceleration is \dokuitalic{centripetal} acceleration,
-%which literally means ``tending towards the centre''.
-
-%
-%\subsubsection{Centrifugal force}
-
-%When a car makes a long left turn, the passenger riding shotgun will feel pushed
-%towards the right: into the passenger door. 
-%Some people erroneously attribute this effect to a \dokuitalic{centrifugal force},
-%which acts away from the centre of rotation.
-%During a sharp turn, these people feel as though they are being flung out of the car 
-%and therefore they conclude that there must be some force which is responsible for this.
-
-%The reason why we feel as though we are being throw out of the car 
-%is due to Newton's first law which says that, in the absence of external forces,
-%an object will continue moving in a straight line.
-%Since your initial motion is in the $\hat{t}$ direction, 
-%your body will naturally continue moving in that direction
-%because of Newton's first law. 
-
-%There is a force involved in the turn, but it is not
-%acting away from the centre but \dokuitalic{towards} the centre of rotation.
-%This is the force of the car door pushing you inwards.
-%At each instant, the door pushes you towards the centre of the circle
-%so it is a \dokuitalic{centripetal} force.
-%If it weren't for the door, you would fly straight on.
-
-%
-%\subsubsection{Radial forces do no work}
-
-%An interesting property of radial forces is that they do zero work. 
-%Recall that the work done by a force $\vec{F}$ during a displacement $\vec{d}$
-%is computed using the dot product $W=\vec{F}\cdot \vec{d}$.
-%For circular motion, the displacement is always in the $\hat{t}$ direction,
-%whereas the radial force is in the $\hat{r}$ direction so their dot product is zero.
-
-%This is why it is possible for the speed of the object in undergoing circular motion
-%to remain constant despite the fact that it is being accelerated. The effects of
-%the radial acceleration do not increase the speed: they only act to change the direction
-%of the velocity.
-
-
+{\bf Example. }  A rock of mass $m=0.3$[kg] is swinging around in a horizontal circle attached at the end of a rope.
+The tangential velocity of the rock is $v_t=50$[m/s] and the radius of the circle is $R=1.5$[m].
+What is the tension $T$ in the rope?   The tension in the rope $\vec{T}$ is the force which is causing 
+the rotation. We have $F_r =T = ma_r$ from which find that the tension in the rope is $T=m \frac{v^2_t}{ R }=500$[N].
 
 
 
 
 
 \section{Angular motion}
-\label{318857367a8b72161a4bda9b7e83ce98}%% angular_motion
+\label{sec:angular-motion}
 
-We will now study the physics of objects in rotation.
-A simple example of this kind of motion is a rotating disk.
-Other examples include rotating bicycle wheels, 
-spinning footballs and spinning figure skaters.
-
-As you will see shortly, the basic concepts used to describe
-angular motion are directly analogous to the concepts for linear motion:
+The basic concepts used to describe the rotation of objects %around a fixed axis 
+are directly analogous to the concepts for linear motion:
 position, velocity, acceleration, force, momentum and energy.
-
-\vspace{-3mm}
-\subsection{Review of linear motion}
-\label{d407efe356fb48bfb4c0b1d01b89ab3e}%% review_of_linear_motion
-
-It is instructive to begin our discussion with a brief review of the 
-concepts and formulas used to describe the linear motion of objects.
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=110pt]{/Library/WebServer/Documents/miniref/data/media/physics/linear-motion-concepts.png}
-\end{wrapfigure}
-
-The linear motion of an object is described by its position $x(t)$,
-velocity $v(t)$ and acceleration $a(t)$ as functions of time. 
-The position function tells you where the object is, 
-the velocity tells you how fast it is moving and 
-the acceleration measures the change in the velocity of the object.
-
-The motion of objects is governed by Newton's first and second laws.
-In the absence of external forces, objects will maintain a uniform velocity (UVM)
-which corresponds to the equations of motion: $x(t)=x_i+v_it$, $v(t)=v_i$.
-
-If there is a net force $\vec{F}$ acting on the object, 
-the force will cause the object to accelerate and the magnitude
-of the acceleration is obtained using the formula $F=ma$.
-A constant force acting on an object will produce a constant acceleration (UAM),
-which corresponds to the equations of motion: $x(t)=x_i+v_it+\frac{1}{2}at^2$, $v(t)=v_i + at$.
-
-We also learned how to quantify the \dokuitalic{momentum} $\vec{p}=m\vec{v}$ and 
-the \dokuitalic{kinetic energy} $K=\frac{1}{2}mv^2$ of moving objects.
-The momentum vector is the natural measure of the ``quantity of motion'',
-which plays a key role in collisions.
-The kinetic energy measures how much energy the object has by virtue of its motion. 
-
-The mass of the object $m$ is an important factor in many of the equations of physics.
-In the equation $F=ma$, the mass $m$ measures the objects \dokuitalic{inertia},
-i.e., how much resistance the object offers to being accelerated. 
-The mass of the object also appears in the formulas for momentum and kinetic energy:
-the heavier the object is, the larger its momentum and kinetic energy will be.
+This means that you already know all the equations of angular motion --- 
+you just have to do a ``search and replace'' the new quantities.
+We will now look into this more closely.
 
 \vspace{-3mm}
 \subsection{Concepts}
-\label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
 
-We now introduce the new concepts which are used to describe the angular motion of objects.
-
-
+The new concepts used to describe the angular motion of objects are
 \begin{itemize}
-\dokuitem  The kinematics of rotating objects is described in terms of angular quantities:
+\item  The angular kinematics quantities:
 \begin{itemize}
-\dokuitem  $\theta(t)$[rad]: The angular position.
-\dokuitem  $\omega(t)$[rad/s]: The angular velocity. 
-\dokuitem  $\alpha(t)$[rad/s$^2$]: The angular acceleration.
+\item  $\theta(t)$[rad]: The angular position.
+\item  $\omega(t)$[rad/s]: The angular velocity. 
+\item  $\alpha(t)$[rad/s$^2$]: The angular acceleration.
 \end{itemize}
 
-\dokuitem  $I$[kg m$^2$]: The \dokuitalic{moment of inertia} of an object tells you how difficult it is to make it turn.  The quantity $I$ plays the same role in angular motion as the mass $m$ plays in linear motion.
-\dokuitem  $\mathcal{T}$[N$\:$m]: The \dokuitalic{torque} is a measures the angular force.
-\dokuitem  The angular equivalent of Newton's second law $\sum F=ma$ is given by the equation $\sum\mathcal{T}=I\alpha$.  In words, this law states that applying an angular force (torque) $\mathcal{T}$ will produce an amount of angular acceleration $\alpha$ which is inversely proportional to the moment of inertia $I$ of the object.
-\dokuitem  $L=I\omega$[kg$\:$m$^2$/s]: The \dokuitalic{angular momentum} of a rotating object describes the ``quantity of spinning stuff''.
-\dokuitem  $K_r=\frac{1}{2}I\omega^2$[J]: The \dokuitalic{angular} or \dokuitalic{rotational} kinetic energy  quantifies the amount of energy an object has by virtue of its rotational motion.
+\item  $I$[kg m$^2$]: The \emph{moment of inertia} of an object tells you how difficult it is to make it turn.  The quantity $I$ plays the same role in angular motion as the mass $m$ plays in linear motion.
+\item  $\mathcal{T}$[N$\:$m]: The \emph{torque} is a measures angular force: the cause of rotation.
+%\item  The angular equivalent of Newton's second law $\sum F=ma$ is the equation $\sum\mathcal{T}=I\alpha$.  
+%In words, this law states that applying an angular force (torque) $\mathcal{T}$ will produce an amount of angular acceleration $\alpha$ which is inversely proportional to the moment of inertia $I$ of the object.
+\item  $L=I\omega$[kg$\:$m$^2$/s]: The \emph{angular momentum} of a rotating object describes the ``quantity of spinning stuff''.
+\item  $K_r=\frac{1}{2}I\omega^2$[J]: The \emph{angular} or \emph{rotational} kinetic energy  quantifies the amount of energy an object has by virtue of its rotational motion.
 \end{itemize}
 
 \vspace{-3mm}
 \subsection{Formulas}
-\label{51d24e1edefe34e683025dbba5c6eed6}%% formulas
 
-
-\subsubsection{Angular kinematics}
+%\subsubsection{Angular kinematics}
 
 Instead of talking about position $x$, velocity $v$ and acceleration $a$,
 we will now talk about the angular position $\theta$, angular velocity $\omega$
 and angular acceleration $\alpha$.
-Except for this change of ingredients, the \dokuitalic{recipe} for fining the 
-equations of motion remains the same:
-\[
- \alpha(t) 
+Except for this change of ingredients, the \emph{recipe} for fining the 
+equation of motion remains the same:
+$\alpha(t) 
   \ \ \overset{\omega_i + \int\!dt}{\longrightarrow} 
   \ \ \omega(t) \ \  \overset{\theta_i+ \int\!dt }{\longrightarrow} 
-  \ \ \theta(t).
-\]
-Given the knowledge of the angular acceleration $\alpha(t)$,
-the initial velocity $\omega_i$ and the initial position $\theta_i$,
-we can use integration in order to find the equation of motion $\theta(t)$
-which describes the angular position of the rotating object at all times.
-
-Though this recipe can be applied to any form of angular acceleration function, 
-you are only \dokuitalic{required} to know the equations of motion for two special cases:
-the case of constant angular acceleration $\alpha(t)=\alpha$ and the
-case of zero angular acceleration $\alpha(t)=0$.
-These are the angular analogues of \dokuitalic{uniform acceleration motion} and \dokuitalic{uniform velocity motion}
-which we studied in the kinematics section.
-
-The equations which describe \dokuitalic{uniformly accelerated angular motion} are the following:
-\begin{align*}
-  \alpha(t) &= \alpha, 						\\
-  \omega(t) &= \alpha t + \omega_i, 				\\
-  \theta(t) &= \frac{1}{2}\alpha t^2 + \omega_it + \theta_i, 	\\
- \omega_f^2 &= \omega_i^2 + 2\alpha(\theta_f - \theta_i).
-\end{align*}
-Note how the form of the equations is \dokuitalic{identical} to the UAM equations.
-This should come as no surprise since the both sets of equations are
-obtained from the same integrals.
-
-The equations of motion for \dokuitalic{uniform velocity angular motion} are:
-\begin{align*}
-  \alpha(t) &= 0, 			\\
-  \omega(t) &= \omega_i, 		\\
-  \theta(t) &= \omega_it + \theta_i.
-\end{align*}
-
-
+  \ \ \theta(t)$.
+In particular, if you apply this recipe to the case of \emph{uniformly accelerated angular motion} 
+($\alpha(t) = \alpha$), we obtain the equations $\omega(t)= \alpha t + \omega_i$ and 
+$\theta(t) = \frac{1}{2}\alpha t^2 + \omega_it + \theta_i$,
+which are analogous to equations  \eqref{UAM-v} and  \eqref{UAM-x}.
 
 \subsubsection{Relation to linear quantities}
+%
+%The  are the
+%natural parameters for describing the motion of rotation objects.
+We can relate the angular quantities $\theta$, $\omega$ and $\alpha$ to quantities 
+like distance, velocity and acceleration by multiplying the angular quantity by the radius:
+$d = R\theta$, $v_t = R\omega$, $a_t = R\alpha$.
 
-The angular quantities $\theta$, $\omega$ and $\alpha$ are the
-natural parameters for describing the motion of rotation objects.
-In certain situations, however, we may want to relate the angular 
-quantities to linear quantities like distance, velocity and linear acceleration.
-This can be accomplished by multiplying the angular quantity by the radius of motion:
-\[
-  d = R\theta, \quad v = R\omega, \quad a = R\alpha.
-\]
+%For example, suppose you have a spool of network cable with radius 20[cm]
+%and you need to measure out a length of 20[m] so as to connect your computer
+%to your neighbours' router. How many turns from the spool will you need?
+%To find out, we can solve for $\theta$ in the formula $d=R\theta$
+%and obtain $\theta = 20/0.2=200$[rad] which corresponds to 31.8 turns.
 
-For example, suppose you have a spool of network cable with radius 20[cm]
-and you need to measure out a length of 20[m] so as to connect your computer
-to your neighbours' router. How many turns from the spool will you need?
-To find out, we can solve for $\theta$ in the formula $d=R\theta$
-and obtain $\theta = 20/0.2=200$[rad] which corresponds to 31.8 turns.
 
-\vspace{-3mm}
 \subsubsection{Torque}
 
-Torque is angular force. 
-In order to make an object rotate, you must exert a torque on it.
-Torque is measured in Newton metres [N$\:$m]. 
-
 \begin{wrapfigure}{r}{0pt}
-\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/torque-definition.png}
+\includegraphics[width=130pt]{/Library/WebServer/Documents/miniref/data/media/physics/torque-definition.png}
 \end{wrapfigure}
-
+Torque is angular force. 
+In order to get an object to rotate you must exert a torque on it.
+Torque is measured in Newton metres [N$\:$m]. 
 The torque produced by a force depends on how far from the centre of rotation it is applied:
-\[
- \mathcal{T} = F_{\!\perp}\: r = \|F\|\sin\theta\; r,
-\]
+\be
+ \mathcal{T} = F_{\!\perp}\: r = \|\vec{F}\|\sin\theta\; r,
+ \label{TORQUE}
+\ee
 where $r$ is called the leverage.  
-Note that only the $F_{\perp}$ component of the force causes the rotation. 
+Note that only the $F_{\perp}$ component of the force causes rotation. 
 
-To understand the meaning of the torque equation, you should stop reading right now
-and go to experiment with a door. 
-If you push the door close to the hinges, it will take a lot force to make it move
-than if you push far from the hinges. The more leverage $r$ you have,
-the more torque you will produce. 
-Also, if you pull on the door handle away from the hinges,
-your force will have only a $F_{||}$ component so no matter how hard 
-you pull, you will not cause the door to move.
+%To understand the meaning of the torque equation, you should stop reading right now
+%and go to experiment with a door. 
+%If you push the door close to the hinges, it will take a lot force to make it move
+%than if you push far from the hinges. The more leverage $r$ you have,
+%the more torque you will produce. 
+%Also, if you pull on the door handle away from the hinges,
+%your force will have only a $F_{||}$ component so no matter how hard 
+%you pull, you will not cause the door to move.
 
-The standard convention is to call torques that produce counter-clockwise 
-motion positive and torques that cause clockwise rotation negative.
+%The standard convention is to call torques that produce counter-clockwise 
+%motion positive and torques that cause clockwise rotation negative.
 
-
-The relationship between torque and force can also be used in the other direction.
-If an electric motor produces a torque of $\mathcal{T}$[N$\:$m] and is attached to
-a chain wheel of radius $R$ then the pull in the chain will be:
-\[
-  F_{\perp} = \mathcal{T}/R \qquad [\text{N}].
-\]
-Using this equation, you could compute the maximum pulling force produced by your car.
-You will have to lookup the value of the maximum torque produced by your car's 
-engine and then divide by the radius of your wheels.
+%
+%The relationship between torque and force can also be used in the other direction.
+%If an electric motor produces a torque of $\mathcal{T}$[N$\:$m] and is attached to
+%a chain wheel of radius $R$ then the pull in the chain will be:
+%\[
+%  F_{\perp} = \mathcal{T}/R \qquad [\text{N}].
+%\]
+%Using this equation, you could compute the maximum pulling force produced by your car.
+%You will have to lookup the value of the maximum torque produced by your car's 
+%engine and then divide by the radius of your wheels.
 
 
 \subsubsection{Moment of inertia}
-
-The momentum of inertia of an object describes how difficult to make the object rotate:
+The quantity $I$ is defined as follows:
+%The momentum of inertia of an object describes how difficult to make the object rotate:
 \[
   I = \{ \text{ how difficult it is to make an object turn } \}.
 \]
-
-The calculation of the moment of inertia takes into account the mass distribution 
-of the object. An object which has most of its mass close to the centre will
-have a smaller moment of inertia, whereas objects which have their mass far from
-the centre will have a large moment of inertia.
-
-The formula for calculating the moment of inertia is:
+The moment of inertia depends on the \emph{mass distribution} of the object:
 \[
- I = \sum m_i r_i^2 = \int_{obj} r^2 \; dm \qquad [\text{kg}\:\text{m}^2].
+ I_{disk} = \frac{1}{2}mR^2, \quad I_{ring}=mR^2, \quad  I_{sphere} = \frac{2}{5} mR^2.
 \]
-The above equation indicates that we need to weight each part of the object
-by the squared distance of that part from the centre,
-hence the units $[\text{kg}\:\text{m}^2]$.
-
-We rarely calculate the moment of inertia of objects using the above formula.
-Most of the physics problems you will have to solve will involve 
-geometrical shapes for which the moment of inertia is given by simple formulas:
-\[
- I_{disk} = \frac{1}{2}mR^2, \quad I_{ring}=mR^2, 
-\]
-\[
- I_{sphere} = \frac{2}{5} mR^2, \quad I_{sph. shell} = \frac{2}{3} mR^2.
-\]
-When you learn more about calculus, you will be able to derive on your own
-each of the above formulas. For now, however, just try to remember
-the formulas for the inertia of a disk and a ring 
-as they are likely to come up in problems.
-
 The quantity $I$ plays the same role in the equations of angular motion 
 as the mass $m$ plays in the equations of linear motion.
 
-
-\subsubsection{Torques cause angular acceleration}
-Recall Newton's second law $F=ma$ which describes the amount of
-acceleration produced by a given force acting on an object.
-The angular analogue of Newton's second law is the following equation:
-\[
-  \mathcal{T} = I \alpha.
-\]
-The above equation indicates that the angular acceleration produced
-by the a toque $\mathcal{T}$ is inversely proportional to the 
-object's moment of inertia.
-Torque is the cause of angular acceleration.
+\subsubsection{Torque causes angular acceleration}
+The angular analogue of Newton's second law is the following equation
+\be
+  \mathcal{T} = I \alpha,
+  \label{angularFeqMA}
+\ee
+which indicates that the angular acceleration produced
+by the a toque $\mathcal{T}$ is inversely proportional to the object's moment of inertia.
 
 
 \subsubsection{Angular momentum}
@@ -1729,857 +1400,370 @@ Torque is the cause of angular acceleration.
 The angular momentum of a spinning object measures the ``amount of rotational motion''
 that the object has.
 The formula for the angular momentum of a an object with moment of inertia $I$
-rotating at an angular velocity $\omega$ is:
-\[
- L = I \omega \qquad [kg\:\text{m}^2/\text{s}].
-\]
-
-The angular momentum of an object is a conserved quantity in the absence of torque:
-\[
- L_{in} = L_{out}.
-\]
-This is similar to the way momentum $\vec{p}$ is a conserved quantity 
+rotating at an angular velocity $\omega$ is $L = I \omega$~$[kg\:\text{m}^2/\text{s}]$.
+The angular momentum of an object is a conserved quantity in the absence of torque
+$L_{in} = L_{out}$. This is analogous to the way momentum $\vec{p}$ is a conserved quantity 
 in the absence of external forces.
 
 
 \subsubsection{Rotational kinetic energy}
 
-The kinetic energy of a rotating object is calculated as follows:
-\[
- K_r = \frac{1}{2} I \omega^2 \qquad [\text{J}].
-\]
+The kinetic energy of a rotating object is $K_r = \frac{1}{2} I \omega^2$[J].
 This is the rotational analogue to the linear kinetic energy $\frac{1}{2}mv^2$.
-
 The amount of work produced by a torque $\mathcal{T}$ which is
-applied during an angular displacement of $\theta$ is given by:
-\[ 
- W = \mathcal{T}\theta \qquad [\text{J}].
-\]
-
-Using the above equations, we can now include the energy and work
-associated with rotational motion into conservation of energy calculations.
+applied during an angular displacement of $\theta$ is $W = \mathcal{T}\theta$[J].
+%
+%Using the above equations, we can now include the energy and work
+%associated with rotational motion into conservation of energy calculations.
 
 
-\vspace{-3mm}
-\subsection{Examples}
-\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
-
-\subsubsection{Rotational UVM}
-
-A disk is spinning at a constant angular velocity of $12$[rad/s].
-How many turns will the disk complete in one minute?
-
-Since the angular velocity is constant, we can use 
-the equation $\theta(t) = \omega t + \theta_i$ to find
-the total angular displacement after one minute.
-We obtain $\theta(60)=12\times 60=720$[rad].
-To obtain the number of turns, we divide this number
-by $2\pi$ and obtain 114.6[turns].
-
-
-\subsubsection{Rotational UAM}
-
-A solid disk of mass $20$[kg] and radius $30$[cm] is initially spinning with an 
-angular velocity of $20$[rad/s]. A brake pad applied to the edge of the disk
-produces a friction force of 60[N]. How long before the disk stops?
+{\bf Example.}  
+A solid disk of mass $20$[kg] and radius $30$[cm] is spinning with an 
+angular velocity of $20$[rad/s]. A brake pad is applied to the edge of the disk
+producing $F_{fk}=60$[N].  How long before the disk stops?
 
 To solve the kinematics problem, we need to find the angular acceleration
 produced by the brake. We can do this using the equation $\mathcal{T}=I\alpha$.
-We must find $\mathcal{T}$ and $I_{disk}$ and solve for $\alpha$.
+We must find $\mathcal{T}$ and $I_{disk}$ and then solve for $\alpha$.
 The torque produced by the brake is calculated using the force-times-leverage 
 formula: $\mathcal{T}=F_{\perp}r= 60\times 0.3=18$[N$\:$m].
 The moment of inertia of a disk is given by 
 $I_{disk} = \frac{1}{2}mR^2=\frac{1}{2}(20)(0.3)^2=0.9$[kg m$^2$].
-Thus we have $\alpha=20$[rad/s$^2$].
+Thus we have $\alpha=-20$[rad/s$^2$].
 We can now use the UAM formula for the angular velocity 
 $\omega(t) = \alpha t + \omega_i$ and solve for the time
 when the motion will stop: $0 = \alpha t + \omega_i$.
 The disk will come to a stop after $t=\omega_i/\alpha = 1$[s].
 
 
-\subsubsection{Combined motion}
-
-A pulley of radius $R$ and moment of inertia $I$ has a rope wound around it
-and a mass $m$ attached at the end of the rope.
-What will be the angular acceleration of the disk if we let the mass 
-drop to the ground while unwinding the rope.
-
-A force diagram on the mass tells us that $mg-T=ma_y$ (where $\hat{y}$ points downwards).
-The torque diagram on the disk tells us that $TR = I \alpha$.
-Adding $R$ times the first equation to the second we get:
-\[
- R({mg - T}) + T  R  = R m a_y + I \alpha,
-\]
-or after simplification we get:
-\[
- R  m  g = R m a_y + I \alpha.
-\]
-But we know that the rope forms a solid connection between the disk and the mass block,
-so we must also have $R \alpha = a_y$ so if we substitute for $a_y$ we get:
-\[
- R  m  g = R m R \alpha + I \alpha = (R^2 m + I) \alpha.
-\]
-Solving for $\alpha$ we obtain:
-\[
- \alpha = \frac{  R  m  g  }{ R^2 m + I }.
-\]
-This answer makes sense intuitively.
-The numerator is the ``cause'' of the motion while 
-the denominator is the effective moment of inertia of the mass-pulley system as a whole.
-
-
-\subsubsection{Conservation of angular momentum}
-
-A spinning figure skater starts from an initial angular velocity of $\omega_i=12$[rad/s]
-with her arms far away from her body. 
-The moment of inertia of her body in this configuration is $I_i=3$[kg$\:$m$^2$]. 
-She then brings her arms close to her body and in the process her moment 
-of inertia becomes $I_f=0.5$[kg$\:$m$^2$]. What will be her new angular velocity?
-
-We will solve this problem using the law of conservation of angular momentum:
-\[
-  L_i = L_f \qquad \Rightarrow \qquad I_i\omega_i = I_f \omega_f,
-\]
-which we can solve for the final angular velocity $\omega_f$.
-The answer is $\omega_f = I_i\omega_i/I_f= 3\times 12/0.5=72$[rad/s],
-which corresponds to 11.46 turns per second. 
-
-
-\subsubsection{Conservation of energy}
-
-A 14[in] bicycle wheel with mass $m=4$[kg] with all its mass concentrated
-near the rim is set in rolling motion at a velocity of 20[m/s] up an incline.
-How far up the incline will the wheel reach before it stops?
-
-We will solve this problem using the principle of conservation of energy
-$\sum E_i = \sum E_f$. We must take into account both the linear and rotational 
-kinetic energies of the wheel:
-\begin{align*}
-  K_i \ \ + \ \ K_{ri} \ + U_i  & =   K_f + K_{rf} + U_f \\
-  \frac{1}{2}mv^2 + \frac{1}{2}I\omega^2 + 0 \ 	& =  \ 0 \ + \ 0 \ + mgh.
-\end{align*}
-
-The first step is to calculate $I_{wheel}$ using the formula
-$I_{wheel} = \frac{1}{2}mR^2 = 4 \times (0.355)^2=0.5$[kg m$^2$].
-If the linear velocity of the wheel is 20[m/s], then its
-angular velocity is $\omega=20/0.355=56.34$[rad/s].
-We can now use these values in the energy equation:
-\[
- \frac{1}{2}(4)(20)^2 + \frac{1}{2}(0.5)(56.34)^2 + 0 
- = 800.0 + 793.55 = (4)(9.81)h.
-\]
-Therefore the maximum height reached will be $h=40.61$[m] up the hill.
-
-Note that roughly half of the kinetic energy of the wheel was stored in the 
-rotational motion. This shows that it is important to take into account $K_r$
-when solving problems using energy principles. 
-
-
-\subsection{Static equilibrium}
-\label{a264232f7983ac829a790f4573f9fe59}%% static_equilibrium
-
-We say that a system is in equilibrium when all the forces and torques
-acting on the system balance each other out. Since there is no net force
-on the system, it will just sit there motionless.
-
-Conversely, if you see an object that is not moving, then the forces
-on it must be in equilibrium: 
-\[
- \sum F_x = 0, \quad  \sum F_y = 0,  \quad  \sum \mathcal{T} = 0.
-\]
-There must be zero net force in the $x$ direction, zero net force in 
-the $y$ direction and zero torque on the object.
-
-
-\subsubsection{Example: Walking the plank}
-
-A heavy wooden plank is placed so that one third of its length
-protrudes from the side of a pirate shit. 
-The plank has a length of 12[m] and total weight 120[kg]; 
-40[kg] of its weight is suspended above the ocean, 
-while 80[kg] is lying on the ship's deck.
-How far out on the plank can a 80[kg] person walk before 
-the plank tips over?
-
-
-We will use the torque equilibrium equation $\sum \mathcal{T}_E = 0$
-where we calculate the torques relative to the edge of the ship.
-The torque produced by person when he has walked a distance of
-$x$[m] from the edge of ship is $\mathcal{T}_1 = -80x$.
-The torque produced by the weight of the plank is given by 
-$\mathcal{T}_2=120\times 2=240$[N$\:$m] since the weight acts
-in the centre of gravity of the plank.
-The maximum distance that can be walked before the plank tips
-over is therefore $x=240/80=3$[m].
-
-\vspace{-3mm}
-\subsection{Discussion}
-\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-
-Our coverage of the ideas of rotational motion has been very brief.
-The reason for this, is that there was no new physics to be learned.
-In this section we used the techniques and ideas developed in the
-context of linear motion to describe the rotational motion of objects. 
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=110pt]{/Library/WebServer/Documents/miniref/data/media/physics/angular-motion-concepts.png}
-\end{wrapfigure}
-
-It is really important that you see the parallels between 
-the new rotational concepts and their linear counterparts.
-To help you see the connections, 
-you can compare the diagram shown on the right with the diagram from the beginning of this section.
-
-Let us summarize. If you know the torque acting on an object, 
-then you can calculate its angular acceleration $\alpha$. 
-Knowing the angular acceleration $\alpha(t)$ and the initial conditions $\theta_i$ and $\omega_i$,
-you can then find the other equations of motion $\omega(t)$ and $\theta(t)$ at all times.
-
-Furthermore, the angular velocity $\omega$ is related to the \dokuitalic{angular momentum}
-$L=I\omega$ and the \dokuitalic{rotational kinetic energy} $K_r=\frac{1}{2}I \omega^2$ of 
-the rotating object. The angular momentum measures the ``quantity of rotational motion'',
-while the rotational kinetic energy measures how much energy the object has by virtue of 
-its rotational motion. 
-
-The moment of inertia $I$ plays the role of the mass $m$ in the rotational equations.
-In the equation $\mathcal{T}=I\alpha$, the moment of inertia $I$ measures how
-difficult it is to make the object turn.
-The moment of inertia also appears in the formulas for the angular momentum and 
-rotational kinetic energy.
-
-
+\vspace{-1mm}
 \section{Simple harmonic motion}
-\label{cd80db888044ca76c4e83c74b55b1b83}%% simple_harmonic_motion
+\label{sec:simple-harmonic-motion}
 
-Vibrations and oscillations are all around us. 
-White light is made up of many oscillations of the electromagnetic field at different frequencies (colors).
-Sounds are made up of a combination of many air vibrations with different frequencies and strengths.
-In this section we will learn about \dokuitalic{simple harmonic motion}, 
-which describes the oscillation of a mechanical system at a fixed frequency and with a constant amplitude.
-By studying oscillations in their simplest form, you will pick up important
-intuition which you can apply to all other types of oscillations.
+We will now learn about \emph{simple harmonic motion} 
+which describes oscillations and vibrations in mechanical systems.
+% at a fixed frequency and with a constant amplitude.
 
+%
+%\begin{wrapfigure}{r}{0pt}
+%\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
+%\end{wrapfigure}
 
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
-\end{wrapfigure}
+%The canonical example of simple harmonic motion is the motion of a mass-spring system
+%illustrated in the figure on the right. The block is free to slide along
+%the horizontal frictionless surface. If the system is disturbed from its
+%equilibrium position, it will start to oscillate back and forth at 
+%a certain \emph{natural} frequency, which depends on the mass of the block and the spring constant.
 
-The canonical example of simple harmonic motion is the motion of a mass-spring system
-illustrated in the figure on the right. The block is free to slide along
-the horizontal frictionless surface. If the system is disturbed from its
-equilibrium position, it will start to oscillate back and forth at 
-a certain \dokuitalic{natural} frequency, which depends on the mass of the block and the spring constant.
-
-In this section we will focus our attention on two mechanical systems:
-the mass-spring system and the simple pendulum. 
-We will follow the usual approach and describe the positions, velocities, accelerations
-and energies associated with these types of motion. 
-The notion of \dokuitalic{simple harmonic motion} (SHM) is far more important than just these two systems. 
-The equations and intuition developed for the analysis of the  oscillation of these simple mechanical 
-systems can be applied much more generally to sound oscillations, 
-electric current oscillations and even quantum oscillations.
-Pay attention, that is all I am saying.
+%In this section we will focus our attention on two mechanical systems:
+%the mass-spring system and the simple pendulum. 
+%We will follow the usual approach and describe the positions, velocities, accelerations
+%and energies associated with these types of motion. 
+%The notion of \emph{simple harmonic motion} (SHM) is far more important than just these two systems. 
+%The equations and intuition developed for the analysis of the  oscillation of these simple mechanical 
+%systems can be applied much more generally to sound oscillations, 
+%electric current oscillations and even quantum oscillations.
+%Pay attention, that is all I am saying.
 
 \vspace{-3mm}
 \subsection{Concepts}
 \label{ff4e01de0bd379280a0157bd102cc5f0}%% concepts
 
 \begin{itemize}
-\dokuitem  $A$: The \dokuitalic{amplitude} of the movement, how far the object goes back and forth relative to the centre position.
-\dokuitem  $x(t)$[m], $v(t)$[m/s], $a(t)$[m/s$^2$]: The position, velocity and acceleration of the object as functions of time.
-\dokuitem  $T$[s]: The \dokuitalic{period} of the motion, i.e., how long it takes for the motion to repeat. 
-\dokuitem  $f$[Hz]: The \dokuitalic{frequency} of the motion.
-\dokuitem  $\omega$[rad/s]: The \dokuitalic{angular frequency} of the simple harmonic motion.
-\dokuitem  $\phi$[rad]: The phase constant. The Greek letter $\phi$ is pronounced ``phee''. 
+\item  $A$: The \emph{amplitude} of the movement, how far the object goes back and forth relative to the centre position.
+\item  $x(t)$[m], $v(t)$[m/s], $a(t)$[m/s$^2$]: The position, velocity and acceleration of the object as functions of time.
+\item  $T$[s]: The \emph{period} of the motion, i.e., \emph{how long} it takes for the motion to repeat. 
+\item  $f$[Hz]: The \emph{frequency} of the motion, i.e., \emph{how often} the motion repeats.
+\item  $\omega$[rad/s]: The \emph{angular frequency} of the motion, $\omega = 2\pi f$.
+\item  $\phi$[rad]: The phase constant. The Greek letter $\phi$ is pronounced ``phee''. 
 \end{itemize}
 
-\vspace{-3mm}
-\subsection{Simple harmonic motion}
-\label{cd80db888044ca76c4e83c74b55b1b83}%% simple_harmonic_motion
+%\vspace{-3mm}
+%\subsection{Simple harmonic motion}
 
 \begin{wrapfigure}{r}{0pt}
 \includegraphics[width=130pt]{/Library/WebServer/Documents/miniref/data/media/physics/shm-moving-dot-cos-shape-obvious-w-axes.png}
 \end{wrapfigure}
 
+\noindent
 The figure on the right illustrates a spring-mass system undergoing simple harmonic motion. 
 Observe that the position of the mass as a function of time behaves like the cosine function. 
-From the diagram, we can also identify two important parameters of the motion:  the amplitude $A$, 
-which describes the maximum displacement of the mass from the centre position, 
+From the diagram, we can identify two important parameters of the motion:  the amplitude $A$, 
+which describes the maximum displacement of the mass from the centre position
 and the period $T$, which describes how long it takes for the mass to come back to its initial position.
 
 The equation which describes the position of the object as a function of time is the following:  
-\[
+\be
  x(t)=A\cos(\omega t   + \phi).
-\]
-The constant $\omega$ (omega) is called the \dokuitalic{angular frequency} of the motion.
+ \label{SHM-x}
+\ee
+The constant $\omega$ (omega) is called the \emph{angular frequency} of the motion.
 It is related to the period $T$ by the equation $\omega = \frac{2\pi}{T}$.
-The additive constant $\phi$ (phee) is called the \dokuitalic{phase constant} or \dokuitalic{phase shift}
+The additive constant $\phi$ is called the \emph{phase constant} or \emph{phase shift}
 and its value depends on the initial condition for the motion $x_i\equiv x(0)$.
 
-I don't want you to be scared by the formula for simple harmonic motion.
-I know there are a lot of Greek letters that appear in it, but it is actually pretty simple.
-In order to understand the purpose of the three parameters $A$, $\omega$ and $\phi$,
-we will do a brief review of the properties of the $\cos$ function.
-
-\vspace{-3mm}
 \subsubsection{Review of sin and cos functions}
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/data/media/physics/800px-sine_cosine_plot_svg.png}
-\end{wrapfigure}
-
-The functions $f(t)=\sin(t)$ and $f(t)=\cos(t)$ are periodic functions 
-which oscillate between $-1$ and $1$ with a period of $2\pi$.
-Previously we used the functions $\cos$ and $\sin$ in order to find the horizontal and vertical components of vectors,
-and called the input variable $\theta$ (theta).
-However, in this section the input variable is the time $t$ measured in seconds.
-Look carefully at the plot of $\cos(t)$ function.
+In order to understand the purpose of the three parameters $A$, $\omega$ and $\phi$,
+we will now do a brief review of the properties of the $\cos$ function.
+%
+%\begin{wrapfigure}{r}{0pt}
+%\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/data/media/physics/800px-sine_cosine_plot_svg.png}
+%\end{wrapfigure}
+The function %s $f(t)=\sin(t)$ and 
+$f(t)=\cos(t)$ is periodic a function which oscillates between $-1$ and $1$ with a period of $2\pi$.
 As $t$ goes from $t=0$ to $t=2\pi$ the function $\cos$ completes one full cycle.
-The \dokuitalic{period} of $\cos(t)$ is $T=2\pi$, because this is how long it takes 
-(in radians) for a point to go around the unit circle.
-
-
-\subsubsection{Time-scaling}
 
 To describe periodic motion with a different period, 
 we can still use the $\cos$ function but we must add 
-a multiplier in front of the variable $t$ inside the $\cos$ function.
-This multiplier is called the \dokuitalic{angular frequency} and is usually denoted $\omega$ (omega).
-The input-scaled $\cos$ function:
-\[
- f(t) = \cos(\omega t ),
-\]
-has a period of $T=\frac{2\pi}{\omega}$.
-
-If want to have a periodic function with period $T$,
-you should use the multiplier constant $\omega = \frac{2\pi}{T}$ inside the $\cos$ function.
+a multiplier in front of the variable $t$ inside the $\cos$ function: 
+$f(t) = \cos(\omega t )$.
+%
+If you want to have a periodic function with period $T$,
+you should use the multiplier constant $\omega = \frac{2\pi}{T}$.
 When you vary $t$ from $0$ to $T$, the function $\cos(\omega t )$
-will go through one cycle because the quantity $\omega t$ goes from $0$ to $2\pi$.
-You shouldn't just take my word for this: 
-try this for yourself by building \href{http://www.wolframalpha.com/input/?i=plot(cos(2*pi/3*t))}{a cos function with a period of 3 units}.
-
-The \dokuitalic{frequency} of a periodic motion motion describes how many times per second the it repeats. 
-The frequency is equal to the inverse of the period:
-\[
- f=\frac{1}{T}=\frac{\omega}{2\pi} \text{ [Hz].}
-\]
-The relation between $f$ (frequency) and $\omega$ (angular frequency) is a factor of $2\pi$.
-This  multiplication is  needed to convert the units:  $f$ measures ``real world cycles'',
-and we need a factor of $2\pi$ because the natural cycle length of the $\cos$ function is $2\pi$ radians.
-
-
-\subsubsection{Output-scaling}
+goes through one cycle because the quantity $\omega t$ goes from $0$ to $2\pi$.
+The \emph{frequency} of a periodic motion describes how many times per second it repeats. 
+The frequency is equal to the inverse of the period $f=\frac{1}{T}=\frac{\omega}{2\pi}$[Hz].
 
 If we want to have oscillations that go between $A$ and $-A$ instead
-of between $-1$ and $1$, we can simply multiply the $\cos$ function by the appropriate \dokuitalic{amplitude}:
-\[
- f(t)=A\cos(\omega t).
-\]
-The above function has period $T=\frac{2\pi}{\omega}$ and 
-oscillates between $-A$ and $A$ on the $y$ axis.
-
-
-\subsubsection{Time-shifting}
+of between $-1$ and $1$, we can multiply the $\cos$ function by the appropriate \emph{amplitude}:
+$f(t)=A\cos(\omega t)$.
+%This function has period $T=\frac{2\pi}{\omega}$ and 
+%oscillates between $-A$ and $A$ on the $y$ axis.
 
 The function $A\cos(\omega t)$ starts from its maximum value at $t=0$.
-In the case of the mass-spring system, this corresponds to the case 
+For a mass-spring system, this corresponds to the case 
 when the motion begins with the spring maximally stretched $x_i\equiv x(0)=A$. 
-
 In order to describe other starting positions for the motion, 
-it may be necessary to introduce a \dokuitalic{phase shift} inside the $\cos$ function:
+it may be necessary to introduce a \emph{phase shift} inside the $\cos$ function
 \[
  f(t)=A\cos(\omega t   + \phi).
 \]
 The constant $\phi$ must be chosen so that at $t=0$, the function $f(t)$ correctly 
 describes the initial position of the system.
+For example, the a harmonic motion which starts from the centre $x_i \equiv x(0)=0$
+is described by $x(t) =  A\sin(\omega t)=A\cos\!\left(\omega t - \frac{\pi}{2}\right)$.
+Note that the function $x(t)$ correctly describes %the initial position: 
+$x(0)=0$.
 
-For example, if the harmonic motion starts from the centre $x_i \equiv x(0)=0$
-and is initially going in the positive direction, then the equation of motion is
-described by the function $A\sin(\omega t)$.
-However, since $\sin(\theta)=\cos(\theta - \frac{\pi}{2})$ we can equally
-well describe the motion in terms of a shifted $\cos$ function:
-\[
- x(t) = A\cos\!\left(\omega t - \frac{\pi}{2}\right) = A\sin(\omega t).
-\]
-Note that the function $x(t)$ correctly describes the initial position: $x(0)=0$.
+%To summarize, 
+%The constant in front of the $\cos$ tells us the amplitude $A$ of the motion, 
+%the multiplicative constant $\omega$ inside the $\cos$ is related to the period/frequency of the motion
+%$\omega = \frac{2\pi}{T} = 2\pi f$. 
+%Finally, the additive constant $\phi$ is chosen depending on the initial conditions.
 
-Simple harmonic motion is equally well described by the $\sin$ function or the $\cos$ function. 
-The choice is up to you, but remember to add an appropriate phase shift $\phi$ (if necessary), 
-so that the function you choose correctly describes the initial conditions.
+\vspace{-3mm}
+\subsection{Physics}
 
-
-By now the meaning of all the parameters in the simple harmonic motion equation should be clear to you.
-The constant in front of the $\cos$ tells us the amplitude $A$ of the motion, 
-the multiplicative constant $\omega$ inside the $\cos$ is related to the period/frequency of the motion
-$\omega = \frac{2\pi}{T} = 2\pi f$. 
-Finally, the additive constant $\phi$ is chosen depending on the initial conditions.
-
-
-\subsection{Mass and spring}
-\label{9f2186d07a8793dba3466841ad113e28}%% mass_and_spring
-
-OK, enough math. It is time to learn about the first physical system which exhibits 
+OK, enough math. It is time to learn about a physical system which exhibits 
 simple harmonic motion: the mass-spring system.
-
-An object of mass $m$ is attached to a spring with spring constant $k$.
-If disturbed from rest, this mass-spring system will undergo simple harmonic motion
-with angular frequency:
-\[
- \omega = \sqrt{ \frac{k}{m} }.
-\]
+\begin{wrapfigure}{r}{0pt}
+\includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
+\end{wrapfigure}
+An object of mass $m$ attached to a spring with spring constant $k$
+will undergo simple harmonic motion with angular frequency:
+\be
+ \omega = \sqrt{ \frac{k}{m} }.	
+ \label{OMEGA-MASS-SPRING}
+\ee
 A stiff spring attached to a small mass will result in very rapid oscillations.
 A weak spring or a large mass will result in slow oscillations.
-
+%
 A typical exam question will tell you $k$ and $m$ and ask about the period $T$.
-If you remember the definition of $T$, you can easily calculate the answer:
-\[
- T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }.
-\]
+If you remember the definition of $T$, you can easily calculate the answer $T = \frac{2\pi}{\omega} =  2\pi \sqrt{ \frac{m}{k} }$[s].
 
 
-\subsubsection{Equations of motion}
-
-The general equations of motion for the mass-spring system are as follows:
-\begin{align*}
-x(t) &= A\cos(\omega t + \phi), \\
-v(t) &= -A\omega \sin(\omega t + \phi), \\
-a(t) &= -A\omega^2\cos(\omega t + \phi).
-\end{align*}
-
-The general shape of the function $x(t)$ is $\cos$-like.
-The \dokuitalic{angular frequency} $\omega$ parameter is governed by the physical properties of the system.
-The parameters $A$ and $\phi$ describe the specifics of the motion, namely, 
-the \dokuitalic{size} of the oscillation and where it starts from.
-
-The function $v(t)$ is obtained, as usual, by taking the derivative of $x(t)$.
-The function $a(t)$ is obtained by taking the derivative of $v(t)$, 
-which corresponds to the second derivative of $x(t)$.
-
-
-\subsubsection{Motion parameters}
-
-The velocity and the acceleration of the object are also periodic functions.
-
-We can find the \dokuitalic{maximum} values of the velocity and the acceleration
-by reading off the coefficient in front of the $\sin$ and $\cos$
-in the functions $v(t)$ and $a(t)$.
-
-
-\begin{enumerate}\dokuitem  The maximum velocity of the object: \[
-      v_{max} =  A \omega.
-    \]
-\dokuitem  The maximum acceleration: \[
-     a_{max} = A \omega^2.
-    \]
-\end{enumerate}
-The velocity is maximum as the object passes through the centre, 
-while the acceleration is maximum when the spring is maximally stretched (compressed).
-
-You will often be asked to solve for the quantities $v_{max}$ and $a_{max}$ in exercises and exams.
-This is an easy task if you remember the above formulas and you know the values of the amplitude $A$ and 
-the angular frequency $\omega$.
+We showed the position function $x(t)$ of the mass-spring system in equation \eqref{SHM-x}.
+We can obtain the velocity and the acceleration functions of the mass-spring system
+by computing the derivatives of $x(t)$:
+\be
+v(t) = -A\omega \sin(\omega t + \phi),  \qquad a(t) = -A\omega^2\cos(\omega t + \phi).
+\label{SHM-va}
+\ee
 
 
 \subsubsection{Energy}
 
-The potential energy stored in a spring which is stretched (compressed) by 
+Recall that the potential energy stored in a spring which is stretched (compressed) by 
 a length $x$ is given by the formula $U_s=\frac{1}{2}k x^2$.
 Since we know $x(t)$, we can obtain the potential energy of the mass-spring
-system as a function of time:
-\[
- U_s(t)= \frac{1}{2} kx(t)^2 =\frac{1}{2}kA^2\cos^2(\omega t +\phi).
-\]
+system as a function of time $U_s(t)= \frac{1}{2} k[x(t)]^2$.
+The kinetic energy of the mass as a function of time is given by
+$K(t)= \frac{1}{2} m[v(t)]^2$.
+
 The potential energy reaches its maximum value $U_{s,max}=\frac{1}{2}kA^2$
 when the spring is fully stretched or fully compressed.
-
-The kinetic energy of the mass as a function of time is given by:
-\[
- K(t)= \frac{1}{2} mv(t)^2 = \frac {1}{2}m\omega^2A^2\sin^2(\omega t +\phi).
-\]
 The kinetic energy is maximum when the mass passes through the center position.
 The maximum kinetic energy is given by 
 $K_{max} = \frac{1}{2} mv_{max}^2= \frac{1}{2}mA^2\omega^2$.
 
 
+
 \subsubsection{Conservation of energy}
 
-The conservation of energy equation tells us that the total energy of the mass-spring system is conserved.
-The sum of the potential energy and the kinetic energy at any two instants $t_1$ and $t_2$ is the same:
-\[
- U_{s1} + K_2 = U_{s2} + K_2.
-\]
-
-It is also useful to calculate the total energy of the system:
-\[
- E_T = U_s(t) + K(t) = \text{const}.
-\]
-This means that even if $U_s(t)$ and $K(t)$ change over time,
-the total energy of the system always remains constant.
-
-We can use the identity $\cos^2\theta + \sin^2\theta =1$ to verify that 
-the total energy is indeed a constant \dokuitalic{and} that it is equal $U_{s,max}$ and $K_{max}$:
-\begin{align*}
- E_{T}
- &= U_s(t) + K(t) \\
- &= \frac{1}{2}kA^2\cos^2(\omega t) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t) \\
- &= \frac{1}{2}m\omega^2A^2\cos^2(\omega t ) + \frac {1}{2}m\omega^2A^2\sin^2(\omega t ) \ \ \ (\text{since } k  = m\omega^2 )\\
- &= \frac{1}{2}m\underbrace{\omega^2A^2}_{v_{max}^2}\underbrace{\left[ \cos^2(\omega t) + \sin^2(\omega t)\right]}_{=1} = \frac{1}{2}mv_{max}^2 = K_{max} \\
- & =\frac{1}{2}m(\omega A)^2 = \frac{1}{2}(m \omega^2) A^2 =\frac{1}{2}kA^2 = U_{s,max}.
-\end{align*}
-
-The best way to understand SHM is to visualize how the energy of the system shifts between the 
-potential energy of the spring and the kinetic energy of the moving mass.
+We know that, in the absence of dissipative forces, the energy of a system is conserved.
+The best way to understand SHM is to think of the energy in the system which
+shifts between the potential energy of the spring and the kinetic energy of the moving mass.
 When the spring is maximally stretched $x=\pm A$, 
 the mass will have zero velocity and hence zero kinetic energy $K=0$. 
 At this moment all the energy of the system is stored in the spring  $E_T= U_{s,max}$.
-The other important moment is when the mass has zero displacement but maximal velocity $x=0, U_s=0, v=\pm A\omega, E_T=K_{max}$,
+The other important moment is when the mass has zero displacement but maximal velocity 
+$x=0, U_s=0, v=\pm A\omega, E_T=K_{max}$,
 which corresponds to all the energy being stored as kinetic energy.
+The \emph{total energy} of the system is constant $E_T = U_s(t) + K(t) = \text{const}$.
 
-\vspace{-3mm}
-\subsection{Pendulum motion}
-\label{8c0668f76ddfe02953e8e4864c93ce3e}%% pendulum_motion
+You will often be asked in exercises  to find the quantities $v_{max}= A \omega$ and $a_{max} = A \omega^2$.
+This is an easy task if you know the values of the amplitude $A$ and 
+the angular frequency $\omega$.
 
-We now turn our attention to another simple mechanical system whose
-motion is also described by the simple harmonic motion equations. 
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=150pt]{/Library/WebServer/Documents/miniref/data/media/physics/pendulum.png}
-\end{wrapfigure}
-
-Consider an {aa a \bf bb} object suspended at the end of a long string of length $\ell$ in a gravitational field of strength $g$.
-If we start the pendulum from a certain angle $\theta_{max}$ away from the vertical position and then release it,
-the pendulum will swing back and forth undergoing simple harmonic motion.
-
-The period of oscillation is given by the following formula:
-\[
- T = 2\pi \sqrt{ \frac{\ell}{g} }.
-\]
-Note that the period does not depend on the amplitude of the oscillation (how far the pendulum swings)
-nor the mass of the pendulum. The only factor that plays a role is the length of the string $\ell$.
-The angular frequency for a pendulum of length $\ell$ is going to be:
-\[
- \omega \equiv \frac{2\pi}{T} = \sqrt{ \frac{g}{\ell} }.
-\]
-
-We describe the position of the pendulum in terms of the angle $\theta$ that it makes with
-the vertical line. The equations of motion are described in terms of the angular variables: 
-the angular position $\theta$, the angular velocity $\omega_\theta$ and the angular acceleration 
-$\alpha_\theta$:
-\begin{align*}
-\theta(t) 	 	&= \theta_{max}	\:	\cos\!\left( \sqrt{ \frac{g}{\ell} } t + \phi\right), \\
-\omega_\theta(t) 	&= -\theta_{max}\sqrt{ \frac{g}{\ell} } \:  \sin\!\left( \sqrt{ \frac{g}{\ell} } t + \phi\right), \\
-\alpha_\theta(t) 	&= -\theta_{max}\frac{g}{\ell} \: \cos\!\left( \sqrt{ \frac{g}{\ell} } t + \phi\right).
-\end{align*}
-The angle $\theta_{max}$ describes the maximum angle that the pendulum swings to.
-Note how I had to invent a new name $\omega_\theta$ for the angular velocity
-of the pendulum $\omega_\theta(t)=\frac{d}{dt}\!\left(\theta(t)\right)$ so 
-as not to confuse it with the constant $\omega=\frac{2\pi}{T}$ inside the $\cos$ function,
-which  describes \dokuitalic{angular frequency} of the periodic motion.
-
-
-\subsubsection{Energy}
-
-The motion of the pendulum is best understood by imagining how the energy of the
-system shifts between the gravitational potential energy of the mass and its kinetic energy.
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=75pt]{/Library/WebServer/Documents/miniref/data/media/physics/pendulum-potential-energy-at-max-angle.png}
-\end{wrapfigure}
-
-The pendulum will have a maximum potential energy when it swings to the side by the angle $\theta_{max}$ .
-At that angle, the vertical position of the mass will be increased by a height $h$ above the lowest point.
-We can calculate $h$ as follows:
-\[
- h = \ell - \ell \cos \theta_{max}.
-\]
-Thus the maximum gravitational potential energy of the mass is:
-\[
- U_{g,max}= mgh= mg\ell(1-\cos\theta_{max}).
-\]
-
-By the conservation of energy principle, the maximum kinetic energy of the
-pendulum must equal to the maximum of the gravitational potential energy:
-\[
- mg\ell(1-\cos\theta_{max}) = U_{g,max} = K_{max} = \frac{1}{2} mv_{max}^2,
-\]
-where $v_{max}=\ell \omega_\theta$ is the linear velocity of the mass as it swings
-through the vertical position.
-
-
-\subsection{Explanations}
-\label{678d5f6d14642c24a1e4bceffedbe407}%% explanations
-
-It is worthwhile to understand how the equations of simple harmonic motion come about. 
-In this subsection, we will discuss how the equations are derived from Newton's second law $F=ma$.
-
-
-\subsubsection{Trigonometric derivatives}
-
-The slope (derivative) of the function $\sin(t)$ varies between $-1$ and $1$.
-The slope is largest when $\sin$ passes through the $x$ axis and the slope is
-zero when it reaches its maximum and minimum values. 
-A careful examination of the graphs of the bare functions $\sin$ and $\cos$
-reveals that the derivative of the function $\sin(t)$ is described by the 
-function $\cos(t)$ and vice versa:
-\[
- f(t) = \sin(t) \:\qquad \Rightarrow \qquad f'(t) = \cos(t),
-\]
-\[
- f(t) = \cos(t) \qquad \Rightarrow \qquad f'(t) = -\sin(t).
-\]
-When you learn more about calculus you will know how to find the derivative 
-of any function you want, but for now just take my word that the above two
-formulas are true.
-
-The \hyperref[5dfdb867806a445d5fd86b759e7e07ed]{chain rule} for derivatives tells us that
-the derivative of a composite function $f(g(x))$ is given by $f'(g(x))\cdot g'(x)$,
-i.e., you must take the derivative of the outer function and then multiply by 
-the derivative of the inner function.
-We can use the chain rule to the find derivative of the simple harmonic motion position function:
-\[
- x(t)=A\cos(\omega t +\phi) 
- \quad \Rightarrow \quad
- v(t) \equiv x^{\prime}(t)=-A\sin(\omega t +\phi)\cdot(\omega)  = -A\omega\sin(\omega t +\phi),
-\]
-where the outer function is $f(x)=A\cos(x)$ with derivative $f'(x)=-A\sin(x)$
-and the inner function is $g(x)=\omega x +\phi$ with derivative $g'(x)=\omega$.
-
-The same reasoning is used to obtain the second derivative: 
-\[
- a(t)\equiv \frac{d}{dt}\!\left\{ v(t) \right\} =-A\omega^2 \cos(\omega t +\phi) = -\omega^2 x(t).
-\]
-Note that $a(t)=x^{\prime\prime}(t)$ has the same form as $x(t)$, 
-but always acts in the opposite direction.
-
-I hope this clarifies for you how we obtained the functions $v(t)$ and $a(t)$:
-we simply took the derivative of the function $x(t)$.
-
-
-\subsubsection{Derivation of mass-spring SHM equation}
-
-You may be wondering where the equation $x(t)=A\cos(\omega t + \phi)$ comes from.
-This formula looks very different from the kinematics equations for linear motion
-$x(t) = x_i + v_it + \frac{1}{2}at^2$, 
-which we obtained starting from Newton's second law $F=ma$ after two integration steps. 
-
-In this section, I suddenly pulled out the $x(t)=A\cos(\omega t + \phi)$ out of thin air,
-as if by revelation. Why did we suddenly start talking about $\cos$ functions and 
-Greek letters with dubious names like phase.  Are you phased by all of this?
-When I was first learning about simple harmonic motion, I was totally phased because 
-I didn't see where the $\sin$ and $\cos$ came from. 
-
-The $\cos$ also comes from $F=ma$, but the story is a little more complicated this time.
-The force exerted by a spring is $F_{s} = -kx$.
-If you draw a force diagram on the mass, you will see
-that the force of the spring is the only force acting on it:
-\[
- \sum F = F_s =ma   
- \qquad \Rightarrow \qquad  
- -kx  	= ma.
-\]
-Recall that acceleration is the second derivative of the position:
-\[
- a=\frac{dv}{dt} = \frac{d^2x(t)}{dt^2}.
-\]
-
-We now rewrite the equation $-kx = ma$ entirely in terms of the function $x(t)$ and its second derivative:
-\begin{align*}
- -kx(t) &= m\frac{d^2x(t)}{dt^2} \\
- 0 & = m\frac{d^2x(t)}{dt^2}+ kx(t) \\
- 0 & = \frac{d^2x(t)}{dt^2}+ \frac{k}{m}x(t).
-\end{align*}
-
-This is called a \dokuitalic{differential equation}.
-Instead of looking for an \dokuitalic{unknown number} as in normal equations,
-in differential equations we are looking fro an \dokuitalic{unknown function} $x(t)$. 
-We do not know what $x(t)$ is, but do know one of its properties, 
-namely, that the second derivative of $x(t)$ is equal to 
-the negative of the function multiplied by some constant.
-
-To solve a differential equation, 
-you have to guess which function $x(t)$ satisfies these properties.
-There is an entire class called \dokuitalic{Differential equations}, in which Engineers
-and Physicists learn how to do this guessing thing.
-Can you think of a function which is equal to its second derivative up to some constants?
-
-
-OK, I thought of one:
-\[
- x_1(t)=A_1 \cos\!\left( \sqrt{ \frac{k}{m}}t \right),
-\]
-and come to think of it I thought of a second one which also works:
-\[
- x_2(t)=A_2 \sin\!\left( \sqrt{ \frac{k}{m}}t \right).
-\]
-You should try this for yourself: verify that $0=x^{\prime\prime}_1(t) + \frac{k}{m}x_1(t)$
-and $0= x^{\prime\prime}_2(t) + \frac{k}{m}x_2(t)$, 
-which means that these functions are both \dokuitalic{solutions} to the differential equation
-$0 = x^{\prime\prime}(t)+\omega^2 x(t)$.
-
-Since both $x_1(t)$ and $x_2(t)$ are solutions, then any combination of them must
-also be a solution:
-\[
- x(t) = A_1\cos(\omega t) + A_2\sin(\omega t).
-\]
-This is \dokuitalic{kind of} the answer we were looking for. 
-I say \dokuitalic{kind of} because the function $x(t)$ is specified in terms of two components 
-describes by coefficients $A_1$ and $A_2$ instead of a single amplitude 
-$A$ and a phase $\phi$.
-
-Lo and behold, using the \hyperref[dfc96c1062532291f8378374353a33c7]{trigonometric identity}
-$\cos(a + b)=\cos(a)\cos(b) - \sin(a)\sin(b)$
-we can express the function $x(t)$ as a time-shifted trigonometric function:
-\[
- x(t)=A\cos(\omega t   + \phi) = A_1\cos(\omega t) + A_2\sin(\omega t).
-\]
-The expression on the left is the preferred way of describing SHM
-because the parameters $A$ and $\phi$ can be measured more easily in the real world.
-
-Let me go over what just happened here one more time.
-Our goal is to find the equation of motion which
-predicts the position of an object as a function of time $x(t)$.
-Let's draw an analogy with a situation which we have seen previously.
-In linear kinematics, uniform accelerated motion $a(t)=a$ is described by 
-the equation $x(t)=x_i+v_it + \frac{1}{2}at^2$ in terms of the parameters $x_i$ and $v_i$.
-Depending on the initial velocity and the initial position of the object,
-we would obtain different trajectories.
-Simple harmonic motion with angular frequency $\omega$ is described by the
-equation $x(t)=A\cos(\omega t + \phi)$ in terms of the parameters $A$ and $\phi$,
-which are the \dokuitalic{natural} parameters for describing SHM.
-
-
-\subsubsection{Derivation of pendulum SHM equation}
-
-To see how the SHM equation of motion arises in the case of the pendulum,
-we need to start from the torque equation $\mathcal{T}=I\alpha$. 
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics{/Library/WebServer/Documents/miniref/data/media/physics/pendulum-torque-due-to-gravity.png}
-\end{wrapfigure}
-
-The diagram on the right illustrates how we can calculate the torque on the pendulum 
-which is caused by the force of gravity as a function of the displacement angle $\theta$.
-Recall that the torque calculation only takes into account the $F_{\!\perp}$ component
-of any force, since it is the only part which causes a rotation:
-\[
- \mathcal{T}_\theta  = F_{\!\perp} \ell = mg\sin\theta \ell.
-\]
-If we now substitute this into the equation $\mathcal{T}=I\alpha$, 
-we obtain the following:
-\begin{align*}
- \mathcal{T} 		&=	I	\alpha 				\\
-  mg\sin\theta(t) \ell	&= 	m\ell^2 \frac{d^2\theta(t)}{dt^2} 	\\
-  g\sin\theta(t)	&= 	\ell \frac{d^2\theta(t)}{dt^2} 		
-\end{align*}
-
-What follows is something which is not mathematically rigorous, but will allow us to continue
-and solve this problem.  When $\theta$ is a small angle we can use the following approximation:
-\[
- \sin(\theta)\ \approx  \ \theta,  \qquad \qquad \text{ for } \theta \ll  1.
-\]
-This type of equation is called a \dokuitalic{small angle approximation}.
-You will see where it comes from later on when you learn 
-about \hyperref[bef99584217af744e404ed44a33af589]{Taylor series approximations} to functions.
-For now, you can convince yourself of the above formula by zooming many
-times on the graph of the function $\sin$ near the origin
-to see that $y=\sin(x)$ will look very much like $y=x$. 
-Try this out.
-
-Using the small angle approximation for $\sin\theta$ we can rewrite the 
-equation involving $\theta(t)$ and its second derivative as follows:
-\begin{align*}
-  g\sin\theta(t)	&= 		\ell \frac{d^2\theta(t)}{dt^2} 		\\
-  g\theta(t)		&\approx 	\ell \frac{d^2\theta(t)}{dt^2} 		\\
-  0			&=		\frac{d^2\theta(t)}{dt^2}+ \frac{g}{\ell}\theta(t).
-\end{align*}
-
-At this point we can recognize that we are dealing with the same differential
-equation as in the case of the mass-spring system: $0 = \theta^{\prime\prime}(t)+\omega^2 \theta(t)$,
-which has solution:
-\[
- \theta(t) = \theta_{max}\cos(\omega t + \phi),
-\]
-where the constant inside the $\cos$ function is $\omega=\sqrt{\frac{g}{\ell}}$.
-
-
-\subsection{Examples}
-\label{bfebe34154a0dfd9fc7b447fc9ed74e9}%% examples
-
-When asked to solve word problems, you will usually be told the initial amplitude 
-$x_i=A$ or the initial velocity $v_i=\omega A$ of the SHM and the question
-will ask you to calculate some other quantity. 
-Answering these problems shouldn't be too difficult provided you write down the 
-general equations for $x(t)$, $v(t)$ and $a(t)$, fill-in the knowns quantities
-and then solve for the unknowns.
-
-
-\subsubsection{Standard example}
-
+{ \bf Example.} 
 You are observing a mass-spring system build from a $1$[kg] mass and a 250[N/m] spring.
 The amplitude of the oscillation is 10[cm]. Determine (a) the maximum speed of the mass, 
-(b) the maximum acceleration, and (c ) the total mechanical energy of the system.
+(b) the maximum acceleration, and (c) the total mechanical energy of the system.
 
-First we must find the angular frequency for this system $\omega = \sqrt{k/m}=\sqrt{250/1}=15.81$[rad/s].
+First we find the angular frequency for this system $\omega = \sqrt{k/m}=\sqrt{250/1}=15.81$[rad/s].
 To find (a) we use the equation $v_{max} = \omega A = 15.81 \times 0.1=1.58$[m/s].
 Similarly, we can find the maximum acceleration using $a_{max} = \omega^2 A = 15.81^2 \times 0.1=25$[m$^2$/s].
-There are two equivalent ways for solving (c ). 
-We can obtain the  total energy of the system by considering the potential energy of the spring when 
-it is maximally extended (compressed) $E_T=U_s(A) = \frac{1}{2}kA^2 = 1.25$[J], 
+To solve (c), we can either calculate the total energy of the system by considering the potential energy of the 
+spring when it is maximally extended (compressed) $E_T=U_s(A) = \frac{1}{2}kA^2 = 1.25$[J], 
 or we can obtain the total energy from the maximum kinetic energy $E_T=K=\frac{1}{2}m v_{max}^2 = 1.25$[J].
 
 
-\subsection{Discussion}
-\label{bd8bc36eb41bc90c585ae7e902e9e284}%% discussion
-
-In this section we learned about simple harmonic motion, which is described by the equation $x(t)=A\cos(\omega t + \phi)$.
-You may be wondering what \dokuitalic{non-simple} harmonic motion is.
-A simple extension of what we learned would be to study oscillating systems where the energy is slowly dissipating.
-This is known as \dokuitalic{damped harmonic motion} for which the equation of motion looks like $x(t)=Ae^{-\gamma t}\cos(\omega t + \phi)$, which describes an oscillation whose magnitude slowly decreases. The coefficient $\gamma$ is known as the damping
-coefficient and indicates how fast the energy of the system is dissipated.
-
-The concept of SHM comes up in many other areas of physics.
-When you learn about electric circuits, capacitors and inductors, you will run into
-equations of the form $0 = v^{\prime\prime}(t)+\omega^2 v(t)$,
-which indicates that the \dokuitalic{voltage} in a circuit is undergoing simple harmonic motion. 
-Guess what, the same equation used to describe the mechanical motion of the mass-spring system
-will be used to describe the voltage in an oscillating circuit!
 
 
-\subsection{Links}
-\label{807765384d9d5527da8848df14a4f02f}%% links
+\section*{Summary}
 
-[ Plot of the simple harmonic motion using a can of spray-paint ] \\ 
-\href{http://www.youtube.com/watch?v=p9uhmjbZn-c}{http://www.youtube.com/watch?v=p9uhmjbZn-c}
+The fundamental purpose of mechanics is to predict the motion of objects using equations.
+% by finding their 
+In the beginning of this tutorial, I made the claim that there are only twenty 
+equations that you need to know in order to do this
+% in order to find the \emph{equation of motion} 
+for any mechanical system.
+%
+Let us now verify this claim and review the material.
 
-[ 15 pendulums with different lengths ] \\ 
-\href{http://www.youtube.com/watch?v=yVkdfJ9PkRQ}{http://www.youtube.com/watch?v=yVkdfJ9PkRQ}
+%F=ma
+Our goal was to find $x(t)$ for all times $t$.
+However, there are no equations of physics which will tell us $x(t)$ directly.
+Instead, we have Newton's second law \eqref{FeqMA},
+which tells us that the acceleration of the object $a(t)$
+is equal to the \emph{net force} acting on the object divided by the object's mass.
+%=x^{\prime\prime}x(t)$,
+%which is the second derivative of the position function $x(t)$.
+In order to find $x(t)$ starting from $a(t)$ we must use integration (twice).
+This entire mechanics \emph{recipe} is described  in equation \eqref{fma-eqn}.
+
+%In Section~\ref{sec:dynamics} we saw how to perform vector addition in order
+%to find the net force.
+
+% Four types of motion
+In the remainder of the document we applied this recipe in several different contexts.
+In Section~\ref{sec:kinematics} we looked at kinematics problems in one dimension,
+and derived equations \eqref{UAM-v} and \eqref{UAM-x}, 
+which describe the motion of a particle undergoing constant acceleration (UAM).
+%
+In Section~\ref{sec:projectile-motion} we studied the problem of projectile motion by decomposing it into
+two separate kinematics subproblems: one in the $x$ direction (UVM) and one in the $y$ direction (UAM).
+%
+In Section~\ref{sec:uniform-circular-motion} we studied the circular motion of objects %
+and stated equation \eqref{RADIALa} which describes an important relationship between the radial acceleration,
+the tangential velocity and the radius of the circle of rotation.
+%
+In Section~\ref{sec:angular-motion} we described rotational motion in terms of angular quantities.
+We defined the concept of \emph{torque} in equation \eqref{TORQUE} and used this
+concept to write down the angular equivalent of Newton's second law in equation \eqref{angularFeqMA}.
+%
+Finally, in Section~\ref{sec:simple-harmonic-motion} we stated equation \eqref{SHM-x}
+which describes simple harmonic motion and formula \eqref{OMEGA-MASS-SPRING} 
+which is used to find the angular frequency of a mass-spring system.
+%\label{SHM-va}
+
+%
+%We also learned how to quantify the //momentum// $\vec{p}=m\vec{v}$ and
+%the //kinetic energy// $K=\frac{1}{2}mv^2$ of moving objects.
+%The momentum vector is the natural measure of the "quantity of motion",
+%which plays a key role in collisions.
+%The kinetic energy measures how much energy the object has by virtue of its motion.
+
+%The mass of the object $m$ is an important factor in many of the equations of physics.
+%In the equation $F=ma$, the mass $m$ measures the objects //inertia//,
+%i.e., how much resistance the object offers to being accelerated.
+%The mass of the object also appears in the formulas for momentum and kinetic energy:
+%the heavier the object is, the larger its momentum and its kinetic energy will be.
+
+
+We also discussed three conservation laws:
+the conservation of linear momentum law $\sum\vec{p}_{i} = \sum\vec{p}_{f}$ 
+from equation \eqref{CONSofMOMENTUM}, 
+the conservation of angular momentum law ($L_{i} = L_{f}$) and the conservation of  energy law %$\sum E_{i} = \sum E_{f}$ 
+in equation \eqref{CONSERVATIONofENERGY}.
+Each of these three fundamental quantities is conserved overall and cannot be created nor destroyed. 
+In Section~\ref{sec:momentum} we described how momentum calculations can be used to analyze collisions,
+while in Section~\ref{sec:energy} we used energy formulas like 
+equations  \eqref{GRAVpotENERGY} and  \eqref{SPRINGpotENERGY} to analyze the motion of objects in
+terms of energy principles.
+%
+
+As you can see, twenty equations really are enough for all of Mechanics.
+%we really did cover a lot of material in a very 
+%As a homework exercise, I recommend that you go over each of the numbered equations in this 
+%document and try to describe what it says in words. For example 
 
 
 
 
+\vspace{-1mm}
+\section*{About the book}
+%I hope that this short tutorial helped with you understanding of the concepts of mechanics.
+%The reason why I wrote it is to convince you that seemingly complicated things like Calculus and 
+%Mechanics are not so complicated after all.
+%You don't need to read 500 pages in a Calculus textbook in order to find out what an integral is.
+%Physics is simple too, since there are only 20 equations that you need to know in order to 
+%solve any physics problem.
 
+If you want to learn more university-level math and physics, 
+I invite you to purchase my new textbook, which covers these topics in great detail.
+        \begin{center}
+            \setlength{\fboxsep}{0.45cm}
+            \fbox{
+            \begin{minipage}{55mm}   
+\vspace{15mm}
+\section*{\Large MATH and PHYSICS  \\ P r e r e q u i s i t e s}
+\vspace{17mm}
+\ Contents:
+\begin{itemize}
+  \item {\sc high school math}%: (40pp) %Review of algebra, functions and trigonometry.
+  \item {\sc vectors}%: (20pp) 
+  \item {\sc mechanics}%: (50pp)
+  \item {\sc differential calculus}%: (30pp)
+  \item {\sc integral calculus}%: (20pp)
+  \item {\sc linear algebra}%: (60pp) 
+\end{itemize}
+%in just 360 pages
+%The best part of the book actually fits  this material is covered in a  5?[in] x 8?[in]
+\vspace{8mm}
 
+{\small \hfill  320 pp. $\times$ 5\textonehalf[in] $\times$ 8 \textonehalf[in] }
+%\begin{alignright}
+%a
+%\begin{alignright}
 
+\end{minipage}
+            }
+        \end{center}
 
-\section{Summary}
+This book is the $\blacktriangleright\!\blacktriangleright$ button for learning science.
+%Save yourself some time: instead of reading three books you can read just one.
+%The print version will be available December 1$^{\text{st}}$. 
+Get in touch with me by email if you want order a copy of the tutorials in print
+or if you have feedback \texttt{ivan.savov@gmail.com}.
+Do you like this style of writing?
 
+%in which all the material that you normally taught in first year science is explained in a concise manner.        
 
-
-% Summary
-The numbered equations...
-
-
-
-
-\appendix 
-\section{Minireference}
-
-
-I hope this short excerpt from the \href{http://minireference.com/contents}{\texttt{MATH and PHYSICS Minireference}}
-has given you some inspiration for compact teaching. No blah blah. Straight to the point.
-
-If you liked this tutorial you can check out the other ones on \url{http://minireference.com}
-and order the printed book which has not only formulas but also compact explanations:
-\url{http://minireference.com/order_book/}.
+%
+%If you liked this tutorial you can check out the other ones on \url{http://minireference.com}
+%and order the printed book which has not only formulas but also compact explanations:
+%\url{http://minireference.com/order_book/}.
 
 \end{document}
