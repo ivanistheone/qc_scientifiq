@@ -5,12 +5,12 @@
 \def\Fourrr{Seven }
 %\documentclass[twocolumn,8pt]{extarticle}
 \title{ \Huge Newtonian mechanics explained in \fourrr pages}
-\author{Excerpt from the new book \href{http://minireference.com/contents}{\texttt{MATH and PHYSICS Prerequisites}} by Ivan Savov} 
+\author{Excerpt from the new book \href{http://minireference.com/}{\texttt{The NO BULLSHIT guide to MATH and PHYSICS}} by Ivan Savov} 
 
 
 %\usepackage[papersize={5.5in,8.5in},verbose,bmargin=0.9cm,rmargin=0.7cm,lmargin=0.7cm,tmargin=0.9cm,headsep=0.3cm,footskip=0.5cm]{geometry}
 
-\usepackage[bmargin=1.1cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
+\usepackage[letterpaper,bmargin=1.1cm,rmargin=0.95cm,lmargin=0.95cm,tmargin=1cm,headsep=0.2cm,footskip=0.5cm]{geometry}
 
 \usepackage[english]{babel} %% Use your own babel language
 \date{}
@@ -27,6 +27,8 @@
 \newcommand{\comment}[1]{\noindent [\textit{#1}]}
 
 
+
+\usepackage{pdfpages}
 
 
 \usepackage{textcomp}		% for 1/2
@@ -161,6 +163,7 @@ equations to support your intuition. All topics will be covered including prereq
 
 \section*{Introduction}
 
+
 %\section{Short Introduction}
 %\input{short_intro.tex}
 
@@ -173,9 +176,8 @@ which describes the position of the object as a function of time.
 Once you know $x(t)$, you can answer any question pertaining to the motion of the object.
 To find the initial position $x_i$ of the object, you simply plug $t=0$ into the equation of motion $x_i = x(0)$.
 To find the time(s) when the object reaches a distance of 20[m] from the origin, you simply solve for $t$ in $x(t)=20$[m].
-Many of the problems on the final exam will be of this form so,
-if know how to find $x(t)$,
-you will be in good shape for the exam.
+Many of the problems on the mechanics final exam will be of this form so,
+if you know how to find $x(t)$, you will be in good shape to ace the exam.
 
 %\paragraph{{\bf Forces}}
 \vspace{-3mm}
@@ -187,7 +189,7 @@ inversely proportional to the mass of the object.
 Once you have the acceleration, you can compute $x(t)$ using calculus.
 We will discuss the calculus procedure for getting from $a(t)$ to $x(t)$ shortly.
 For now, let us focus on the causes of motion: the forces acting on the object.
-There are many kinds of forces: the weight of an object $\vec{W}$ is a type force, 
+There are many kinds of forces: the weight of an object $\vec{W}$ is a type of force, 
 the force of friction $\vec{F}_f$ is another type of force, the tension in a rope $\vec{T}$ is 
 yet another type of force and there are many others.
 Note the little arrow on top of each force, which is there to remind you that forces are \emph{vector quantities}.
@@ -249,7 +251,7 @@ Apart dynamics and kinematics, we will discuss a number of other topics.
 Newton's second law can also be applied to the study of objects in rotation.
 Angular motion is described by the angle of rotation $\theta(t)$, 
 the angular velocity $\omega(t)$ and the angular acceleration $\alpha(t)$.
-The causes of angular acceleration are angular forces, which we call \emph{torques} $\mcal{T}$.
+The causes of angular acceleration are angular forces, which we call \emph{torques} $\mathcal{T}$.
 Apart from this change to angular quantities, the principles behind circular motion 
 are exactly the same as those for linear motion.
 %and Newton's second law for rotational motion is $\mcal{T}_{net}=I\alpha$.
@@ -270,7 +272,7 @@ are exactly the same as those for linear motion.
 
 
 During a collision between two objects, 
-there will be a sudden spike in the contact force between them,
+there will be a sudden spike in the contact force between them
 which can be difficult to measure and quantify.
 It is therefore not possible to use Newton's law $F=ma$ to predict the accelerations that occur during collisions.
 %and the resulting motion of the objects after they collide.
@@ -384,7 +386,7 @@ whereas the length-and-direction form describes the geometry of vectors.
 The \emph{dot product} between two vectors $\vec{v}$ and $\vec{w}$ 
 can be  computed in two different ways:
 \[
- \vec{v}\cdot\vec{w} = v_xw_y + v_yw_y = \|\vec{v}\| \|\vec{w}\| \cos\phi,
+ \vec{v}\cdot\vec{w} = v_xw_x + v_yw_y = \|\vec{v}\| \|\vec{w}\| \cos\phi,
 \]
 where $\phi$ is the angle between the vectors $\vec{v}$ and $\vec{w}$.
 The dot product calculates how similar the two vectors are.
@@ -490,7 +492,7 @@ which corresponds to the area under $g(t)$ between $0$ and $\tau$.
 This area is also easily computed since the region under the curve 
 is triangular:
 \[
- \!\!G(\tau) \!\equiv \!A(0,\tau) \!=\! \int_0^\tau \!\! g(t) \; dt \!= \!\frac{\tau\times\tau}{2} \!= \!\frac{1}{2}\tau^2
+ G(\tau) \!\equiv \!A(0,\tau) \!=\!\! \int_0^\tau \!\!\!g(t) \: dt \!= \!\frac{\tau\times\tau}{2} \!= \!\frac{1}{2}\tau^2
 \]
 since the area of a triangle is the product of the length of
 the base times the height divided by two.
@@ -732,7 +734,7 @@ The motion of an object starts form an \emph{initial} position an goes to a
 \begin{itemize}
 \item  $t_i=0$: initial time (the beginning of the motion).
 \item  $t_f$: final time (when the motion stops).
-\item  $\vec{v}_{i}=\vec{v}(0)=(v_x(0),v_y(0))=(v_{xi},v_{yi})$: the initial velocity at $t=0$.
+\item  $\vec{v}_{i}=\vec{v}(0)=(v_x(0),v_y(0))=(v_{ix},v_{iy})$: the initial velocity at $t=0$.
 \item  $\vec{r}_i=\vec{r}(0)=(x(0),y(0))=(x_i,y_i)$: the initial position at $t=0$.
 \item  $\vec{r}_f=\vec{r}(t_f)=(x(t_f),y(t_f))=(x_f,y_f)$: the final position at $t=t_f$.
 \end{itemize}
@@ -899,7 +901,7 @@ Note that tension always pulls \emph{away} from an object:  you can't push a dog
 
 Newton's 2nd law says that the \emph{net} force on an object causes an acceleration:
 \be
- \sum \vec{F}=\vec{F}_{net} = m\vec{a}.
+ \sum \vec{F}  \equiv \vec{F}_{net} = m\vec{a}.
  \label{FeqMA}
 \ee
 We will now learn how to calculate the net force acting on an object.
@@ -920,7 +922,7 @@ and what you will call the positive $y$ direction. All quantities in the subsequ
 
 Let us now illustrate the procedure by solving an example problem.
 
-{\bf Example\footnote{See \url{http://minireference.com/physics/force_diagrams} for more examples.}. }
+{\bf Example.} %\footnote{See \url{http://minireference.com/physics/force_diagrams} for more examples.}. }
 A block sliding down an incline with angle $\theta$. The coefficient of friction between the block and the incline is  $\mu_k$.
 What is its acceleration?
 
@@ -937,13 +939,13 @@ while the $y$ direction will be static.
 
 Step 3,4: We copy over the empty template, fill in the components
 \begin{align*}
- \sum F_x  &= |\vec{W}|\sin\theta - F_{fk}  = ma_x, \\
- \sum F_y &= N - |\vec{W}|\cos\theta  = 0, 
+ \sum F_x  &= \|\vec{W}\|\sin\theta - F_{fk}  = ma_x, \\
+ \sum F_y &= N - \|\vec{W}\|\cos\theta  \ \  = 0, 
 \end{align*}
-and substitute known values to obtain:
+and substitute the known values to obtain:
 \begin{align*}
  \sum F_x &= mg\sin\theta - \mu_kN  = ma_x, \\
- \sum F_y &= N - mg\cos\theta  = 0. 
+ \sum F_y &= N - mg\cos\theta  \ \ \  = 0. 
 \end{align*}
 
 Step 5: We solve for $a_x$ by first finding $N=mg\cos\theta$ in the $y$ equation 
@@ -1218,7 +1220,7 @@ for the description of circular motion.
 \subsection{New coordinate system}
 
 Instead of the usual coordinate system $\hat{x},\hat{y}$ which is static, 
-we will use a new coordinate system $\hat{t},\hat{r}$ that is ``attached'' to the rotating object:
+we will use a new coordinate system $\hat{t},\hat{r}$ that is ``attached'' to the object:
 \begin{enumerate}
 \item  $\hat{t}$: 
 	The \emph{tangential} direction in the instantaneous direction of motion of the object. 
@@ -1245,7 +1247,7 @@ The constant $a_r$ is called the \emph{radial acceleration}.
 \subsection{Radial acceleration}
 
 The defining feature of circular motion is the presence of an acceleration
-that acts perpendicularly to direction of motion.
+that acts perpendicularly to the direction of motion.
 The result of this inward acceleration is that the object will follow a circular path.
 The radial acceleration $a_r$ of an object moving in a circle of radius $R$
 with a tangential velocity $v_t$ is given by:
@@ -1255,14 +1257,14 @@ with a tangential velocity $v_t$ is given by:
 \ee
 
 Using Newton's second law $\vec{F}=m\vec{a}$, we can also calculate the magnitude of the 
-radial force $F_r$ which is necessary to cause this rotation: $F_{r} = ma_r = m \frac{v^2_t}{ R }$.
+radial force $F_r$ which is the cause of this rotation: $F_{r} = ma_r = m \frac{v^2_t}{ R }$.
 In words, this equation tells us the amount of radial force that is \emph{required} in order to keep an object moving
 in a circular path. 
 
 {\bf Example. }  A rock of mass $m=0.3$[kg] is swinging around in a horizontal circle attached at the end of a rope.
 The tangential velocity of the rock is $v_t=50$[m/s] and the radius of the circle is $R=1.5$[m].
 What is the tension $T$ in the rope?   The tension in the rope $\vec{T}$ is the force which is causing 
-the rotation. We have $F_r =T = ma_r$ from which find that the tension in the rope is $T=m \frac{v^2_t}{ R }=500$[N].
+the rotation. We have $F_r =T = ma_r$ from which we find that the tension in the rope must be $T=m \frac{v^2_t}{ R }=500$[N].
 
 
 
@@ -1275,7 +1277,7 @@ The basic concepts used to describe the rotation of objects %around a fixed axis
 are directly analogous to the concepts for linear motion:
 position, velocity, acceleration, force, momentum and energy.
 This means that you already know all the equations of angular motion --- 
-you just have to do a ``search and replace'' the new quantities.
+you just have to do a ``search and replace'' with the new quantities.
 We will now look into this more closely.
 
 \vspace{-3mm}
@@ -1475,7 +1477,7 @@ which describes oscillations and vibrations in mechanical systems.
 \item  $T$[s]: The \emph{period} of the motion, i.e., \emph{how long} it takes for the motion to repeat. 
 \item  $f$[Hz]: The \emph{frequency} of the motion, i.e., \emph{how often} the motion repeats.
 \item  $\omega$[rad/s]: The \emph{angular frequency} of the motion, $\omega = 2\pi f$.
-\item  $\phi$[rad]: The phase constant. The Greek letter $\phi$ is pronounced ``phee''. 
+\item  $\phi$[rad]: The \emph{phase constant}. The Greek letter $\phi$ is pronounced ``phee''. 
 \end{itemize}
 
 %\vspace{-3mm}
@@ -1486,8 +1488,8 @@ which describes oscillations and vibrations in mechanical systems.
 \end{wrapfigure}
 
 \noindent
-The figure on the right illustrates a spring-mass system undergoing simple harmonic motion. 
-Observe that the position of the mass as a function of time behaves like the cosine function. 
+The figure on the right illustrates a mass-spring system undergoing simple harmonic motion. 
+Observe that the position of the mass as a function of time behaves like the $\cos$ function. 
 From the diagram, we can identify two important parameters of the motion:  the amplitude $A$, 
 which describes the maximum displacement of the mass from the centre position
 and the period $T$, which describes how long it takes for the mass to come back to its initial position.
@@ -1502,7 +1504,7 @@ It is related to the period $T$ by the equation $\omega = \frac{2\pi}{T}$.
 The additive constant $\phi$ is called the \emph{phase constant} or \emph{phase shift}
 and its value depends on the initial condition for the motion $x_i\equiv x(0)$.
 
-\subsubsection{Review of sin and cos functions}
+\subsubsection{Review trigonometric functions}
 In order to understand the purpose of the three parameters $A$, $\omega$ and $\phi$,
 we will now do a brief review of the properties of the $\cos$ function.
 %
@@ -1510,7 +1512,7 @@ we will now do a brief review of the properties of the $\cos$ function.
 %\includegraphics[width=165pt]{/Library/WebServer/Documents/miniref/data/media/physics/800px-sine_cosine_plot_svg.png}
 %\end{wrapfigure}
 The function %s $f(t)=\sin(t)$ and 
-$f(t)=\cos(t)$ is periodic a function which oscillates between $-1$ and $1$ with a period of $2\pi$.
+$f(t)=\cos(t)$ is a periodic function which oscillates between $-1$ and $1$ with a period of $2\pi$.
 As $t$ goes from $t=0$ to $t=2\pi$ the function $\cos$ completes one full cycle.
 
 To describe periodic motion with a different period, 
@@ -1525,7 +1527,7 @@ goes through one cycle because the quantity $\omega t$ goes from $0$ to $2\pi$.
 The \emph{frequency} of a periodic motion describes how many times per second it repeats. 
 The frequency is equal to the inverse of the period $f=\frac{1}{T}=\frac{\omega}{2\pi}$[Hz].
 
-If we want to have oscillations that go between $A$ and $-A$ instead
+If we want to have oscillations that go between $-A$ and $+A$ instead
 of between $-1$ and $1$, we can multiply the $\cos$ function by the appropriate \emph{amplitude}:
 $f(t)=A\cos(\omega t)$.
 %This function has period $T=\frac{2\pi}{\omega}$ and 
@@ -1543,8 +1545,7 @@ The constant $\phi$ must be chosen so that at $t=0$, the function $f(t)$ correct
 describes the initial position of the system.
 For example, the a harmonic motion which starts from the centre $x_i \equiv x(0)=0$
 is described by $x(t) =  A\sin(\omega t)=A\cos\!\left(\omega t - \frac{\pi}{2}\right)$.
-Note that the function $x(t)$ correctly describes %the initial position: 
-$x(0)=0$.
+Note that the function $x(t)$ correctly describes the initial condition $x_i\equiv x(0)=0$.
 
 %To summarize, 
 %The constant in front of the $\cos$ tells us the amplitude $A$ of the motion, 
@@ -1555,7 +1556,7 @@ $x(0)=0$.
 \vspace{-3mm}
 \subsection{Physics}
 
-OK, enough math. It is time to learn about a physical system which exhibits 
+OK. Enough math! It is time to learn about a physical system which exhibits 
 simple harmonic motion: the mass-spring system.
 \begin{wrapfigure}{r}{0pt}
 \includegraphics[width=125pt]{/Library/WebServer/Documents/miniref/data/media/physics/mass_spring-highres.png}
@@ -1610,7 +1611,7 @@ At this moment all the energy of the system is stored in the spring  $E_T= U_{s,
 The other important moment is when the mass has zero displacement but maximal velocity 
 $x=0, U_s=0, v=\pm A\omega, E_T=K_{max}$,
 which corresponds to all the energy being stored as kinetic energy.
-The \emph{total energy} of the system is constant $E_T = U_s(t) + K(t) = \text{const}$.
+The \emph{total energy} of the system remains constant at all times: $E_T = U_s(t) + K(t) = \text{const}$.
 
 You will often be asked in exercises  to find the quantities $v_{max}= A \omega$ and $a_{max} = A \omega^2$.
 This is an easy task if you know the values of the amplitude $A$ and 
@@ -1636,9 +1637,9 @@ or we can obtain the total energy from the maximum kinetic energy $E_T=K=\frac{1
 The fundamental purpose of mechanics is to predict the motion of objects using equations.
 % by finding their 
 In the beginning of this tutorial, I made the claim that there are only twenty 
-equations that you need to know in order to do this
+equations that you need to know in order to solve any physics problem.
 % in order to find the \emph{equation of motion} 
-for any mechanical system.
+%for any mechanical system.
 %
 Let us now verify this claim and review the material.
 
@@ -1651,7 +1652,7 @@ is equal to the \emph{net force} acting on the object divided by the object's ma
 %=x^{\prime\prime}x(t)$,
 %which is the second derivative of the position function $x(t)$.
 In order to find $x(t)$ starting from $a(t)$ we must use integration (twice).
-This entire mechanics \emph{recipe} is described  in equation \eqref{fma-eqn}.
+The entire mechanics \emph{recipe} is described by equation \eqref{fma-eqn}.
 
 %In Section~\ref{sec:dynamics} we saw how to perform vector addition in order
 %to find the net force.
@@ -1674,7 +1675,7 @@ We defined the concept of \emph{torque} in equation \eqref{TORQUE} and used this
 concept to write down the angular equivalent of Newton's second law in equation \eqref{angularFeqMA}.
 %
 Finally, in Section~\ref{sec:simple-harmonic-motion} we stated equation \eqref{SHM-x}
-which describes simple harmonic motion and formula \eqref{OMEGA-MASS-SPRING} 
+which describes simple harmonic motion and formula \eqref{OMEGA-MASS-SPRING}, 
 which is used to find the angular frequency of a mass-spring system.
 %\label{SHM-va}
 
@@ -1722,13 +1723,13 @@ As you can see, twenty equations really are enough for all of Mechanics.
 %solve any physics problem.
 
 If you want to learn more university-level math and physics, 
-I invite you to purchase my new textbook, which covers these topics in great detail.
+I invite you to purchase my new textbook, which covers these topics in more detail.
         \begin{center}
             \setlength{\fboxsep}{0.45cm}
             \fbox{
             \begin{minipage}{55mm}   
 \vspace{15mm}
-\section*{\Large MATH and PHYSICS  \\ P r e r e q u i s i t e s}
+\section*{\Large NO BULLSHIT \\ guide to \\ MATH and PHYSICS  } %\\ P r e r e q u i s i t e s}
 \vspace{17mm}
 \ Contents:
 \begin{itemize}
@@ -1737,13 +1738,13 @@ I invite you to purchase my new textbook, which covers these topics in great det
   \item {\sc mechanics}%: (50pp)
   \item {\sc differential calculus}%: (30pp)
   \item {\sc integral calculus}%: (20pp)
-  \item {\sc linear algebra}%: (60pp) 
+%  \item {\sc linear algebra}%: (60pp) 
 \end{itemize}
 %in just 360 pages
 %The best part of the book actually fits  this material is covered in a  5?[in] x 8?[in]
 \vspace{8mm}
 
-{\small \hfill  320 pp. $\times$ 5\textonehalf[in] $\times$ 8 \textonehalf[in] }
+{\small \hfill  5\textonehalf[in] $\times$ 8\textonehalf[in] $\times$ 297[pages]}
 %\begin{alignright}
 %a
 %\begin{alignright}
@@ -1751,13 +1752,14 @@ I invite you to purchase my new textbook, which covers these topics in great det
 \end{minipage}
             }
         \end{center}
-
-This book is the $\blacktriangleright\!\blacktriangleright$ button for learning science.
+This book is like the $\blacktriangleright\!\blacktriangleright$ button for learning science.        
+You can find more information on \url{http://minireference.com/}.
 %Save yourself some time: instead of reading three books you can read just one.
 %The print version will be available December 1$^{\text{st}}$. 
-Get in touch with me by email if you want order a copy of the tutorials in print
-or if you have feedback \texttt{ivan.savov@gmail.com}.
-Do you like this style of writing?
+%Get in touch with me by email if you want to buy a copy of the book in print or as a PDF. 
+I will also appreciate it if you send me feedback and comments. \hfill \texttt{ivan.savov@gmail.com}
+%. I would also like to hear what you feedback
+%do you like the style of writing?
 
 %in which all the material that you normally taught in first year science is explained in a concise manner.        
 
@@ -1766,4 +1768,6 @@ Do you like this style of writing?
 %and order the printed book which has not only formulas but also compact explanations:
 %\url{http://minireference.com/order_book/}.
 
+\includepdf{concept_map_last_page.pdf}
+    
 \end{document}
