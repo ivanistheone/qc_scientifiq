@@ -1,15 +1,17 @@
 Québec Scientifiq
 =================
 
+Multilingual revue about science and technology.
 Something to read while school is out.
+De la science chill pour les cong/es forc/es.
 
-Science chill pour les cong/es forc/es.
 
 Foque le systeme avec des math pis d'la physique.
 
-Les math fail la force.
+Les math fait la force.
 
-Essaye-toi pas Charest, nous-autres on connais les math mieux que to/e mon sale!
+Le systeme has no chance once the people learn math.
+
 
 
 
